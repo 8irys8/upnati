@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15.5" viewBox="0 0 15 15.5">
+  <g id="ic_trash" transform="translate(874 -1333.5)">
+    <rect id="Прямоугольник_376" data-name="Прямоугольник 376" width="15" height="15" transform="translate(-874 1334)" fill="rgba(255,255,255,0)"/>
+    <g id="Icon_ionic-ios-trash" data-name="Icon ionic-ios-trash" transform="translate(-880.297 1329.5)">
+      <path id="Контур_17" data-name="Контур 17" d="M9.359,9l.871,10.725a1.08,1.08,0,0,0,1.081,1.081h5.2a1.08,1.08,0,0,0,1.081-1.081L18.453,9Zm2.273,9.776-.247-8.6h.683l.255,8.6Zm2.594,0h-.664v-8.6h.664Zm1.929,0h-.686l.251-8.6H16.4Z" transform="translate(-0.505 -2.139)" fill="none" stroke="#000" stroke-width="1"/>
+      <path id="Контур_18" data-name="Контур 18" d="M17.372,5.533H16.044l-.97-.849a.748.748,0,0,0-.487-.184H12.2a.76.76,0,0,0-.494.184l-.97.849H9.4c-.649,0-1.107.31-1.107.959H18.479C18.479,5.843,18.022,5.533,17.372,5.533Z" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

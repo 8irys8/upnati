@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+  <g id="ic_copy" transform="translate(900 -1334)">
+    <rect id="Прямоугольник_375" data-name="Прямоугольник 375" width="15" height="15" transform="translate(-900 1334)" fill="rgba(255,255,255,0)"/>
+    <g id="Сгруппировать_284" data-name="Сгруппировать 284" transform="translate(-1006 881.5)">
+      <g id="Прямоугольник_134" data-name="Прямоугольник 134" transform="translate(111 453.5)" fill="#fff" stroke="#000" stroke-width="1">
+        <rect width="8" height="10" rx="1" stroke="none"/>
+        <rect x="0.5" y="0.5" width="7" height="9" rx="0.5" fill="none"/>
+      </g>
+      <g id="Прямоугольник_135" data-name="Прямоугольник 135" transform="translate(109 455.5)" fill="#fff" stroke="#000" stroke-width="1">
+        <rect width="8" height="11" rx="1" stroke="none"/>
+        <rect x="0.5" y="0.5" width="7" height="10" rx="0.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>
