@@ -1,0 +1,33 @@
+{
+    "errors": {
+        "wrong_username": "שם משתמש וסיסמה שגויים, נסה שנית",
+        "wrong_password": "אנא הקלד 6 אותיות לועזיות וספרות בלבד"
+    },
+    "login": {
+        "slogan": "!!!פה יש סלוגן",
+        "username": "שם משתמש",
+        "password": "סיסמה",
+        "forgot_password": "שכחתי סיסמה",
+        "login_btn": "כניסה",
+        "or": "או",
+        "sign_facebook": "כניסה דרך פייסבוק",
+        "sign_google": "כניסה דרך גוגל",
+        "register_btn": "פתח חשבון",
+        "forgot_screen": {
+            "title": "?שכחת סיסמה",
+            "desc": "הקלד את המייל שלך ונשלח לך  קישור לשחזור הסיסמה",
+            "email": "מייל",
+            "send_btn": "שלח"
+        }
+    },
+    "register": {
+        "name": ":שם מלא*",
+        "email": ":מייל*",
+        "phone": ":טלפון*",
+        "username": ":שם משתמש*",
+        "password": ":בחר סיסמא*",
+        "confirm_terms_link": "לתנאי שימוש",
+        "confirm_terms": " אני מסכים",
+        "register_btn": "פתח חשבון"
+    }
+}

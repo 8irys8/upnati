@@ -1,0 +1,4 @@
+#!/bin/bash
+
+flutter pub run easy_localization:generate -S assets/langs -O lib/resources
+flutter pub run easy_localization:generate -S assets/langs -f keys -o locale_keys.g.dart -O lib/resources

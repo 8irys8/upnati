@@ -32,6 +32,7 @@ migrate_working_dir/
 .pub/
 /build/
 /lib/core/config/injectable_config.config.dart
+/lib/core/config/router.gr.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
