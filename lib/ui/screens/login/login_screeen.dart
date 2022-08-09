@@ -1,11 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/resources/locale_keys.g.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
+import 'package:upnati/ui/widgets/forgot_pass_dialog.dart';
 
 class LoginScreen extends HookWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -53,13 +56,25 @@ class LoginScreen extends HookWidget {
               const SizedBox(
                 height: 8,
               ),
-              Text(
-                LocaleKeys.login_forgot_password.tr(),
-                style: AppTheme.regular(
-                  size: 10,
-                  color: AppColors.text,
-                ).copyWith(
-                  decoration: TextDecoration.underline,
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const AlertDialog(
+                      insetPadding: EdgeInsets.zero,
+                      contentPadding: EdgeInsets.zero,
+                      content: ForgotPassDialog(),
+                    ),
+                  );
+                },
+                child: Text(
+                  LocaleKeys.login_forgot_password.tr(),
+                  style: AppTheme.regular(
+                    size: 10,
+                    color: AppColors.text,
+                  ).copyWith(
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -114,6 +129,7 @@ class LoginScreen extends HookWidget {
               CustomButton(
                 color: AppColors.darkBlue,
                 title: LocaleKeys.login_login_btn.tr(),
+                onPressed: () => context.router.push(const RegisterScreen()),
               ),
             ],
           ),

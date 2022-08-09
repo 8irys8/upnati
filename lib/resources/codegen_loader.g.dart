@@ -31,7 +31,7 @@ class CodegenLoader extends AssetLoader{
     "register_btn": "פתח חשבון",
     "forgot_screen": {
       "title": "?שכחת סיסמה",
-      "desc": "הקלד את המייל שלך ונשלח לך  קישור לשחזור הסיסמה",
+      "desc": "הקלד את המייל שלך ונשלח לך \n קישור לשחזור הסיסמה",
       "email": "מייל",
       "send_btn": "שלח"
     }
@@ -44,7 +44,10 @@ class CodegenLoader extends AssetLoader{
     "password": ":בחר סיסמא*",
     "confirm_terms_link": "לתנאי שימוש",
     "confirm_terms": " אני מסכים",
-    "register_btn": "פתח חשבון"
+    "register_btn": "פתח חשבון",
+    "has_business": "?האם יש לך עסק בבעלותך",
+    "yes": "כן",
+    "no": "לא"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"he": he};

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/injectable_config.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/resources/codegen_loader.g.dart';
+import 'package:upnati/resources/resource.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +38,11 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'SegoeUI'),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'SegoeUI',
+        scaffoldBackgroundColor: AppColors.white,
+      ),
     );
   }
 }

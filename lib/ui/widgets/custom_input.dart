@@ -4,10 +4,17 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:upnati/resources/resource.dart';
 
 class CustomInput extends StatelessWidget {
-  final String label;
+  final String? label;
+  final String? hint;
+  final bool? obscure;
   final TextEditingController controller;
-  const CustomInput({Key? key, required this.label, required this.controller})
-      : super(key: key);
+  const CustomInput({
+    Key? key,
+    this.label,
+    required this.controller,
+    this.hint,
+    this.obscure,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +22,22 @@ class CustomInput extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          label,
-          style: AppTheme.regular(
-            size: 12,
-            color: AppColors.text.withOpacity(0.64),
+        if (label != null)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label!,
+                style: AppTheme.regular(
+                  size: 12,
+                  color: AppColors.text.withOpacity(0.64),
+                ),
+              ),
+              const SizedBox(
+                height: 3,
+              ),
+            ],
           ),
-        ),
-        const SizedBox(
-          height: 3,
-        ),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.0),
@@ -46,17 +59,23 @@ class CustomInput extends StatelessWidget {
           child: FormBuilderTextField(
             name: key.toString(),
             controller: controller,
+            obscureText: obscure ?? false,
             style: AppTheme.semi(
               size: 18,
               color: AppColors.text.withOpacity(0.64),
             ),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               filled: true,
-              border: UnderlineInputBorder(borderSide: BorderSide.none),
-              disabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
-              errorBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+              hintText: hint,
+              border: const UnderlineInputBorder(borderSide: BorderSide.none),
+              disabledBorder:
+                  const UnderlineInputBorder(borderSide: BorderSide.none),
+              enabledBorder:
+                  const UnderlineInputBorder(borderSide: BorderSide.none),
+              focusedBorder:
+                  const UnderlineInputBorder(borderSide: BorderSide.none),
+              errorBorder:
+                  const UnderlineInputBorder(borderSide: BorderSide.none),
               fillColor: Colors.transparent,
             ),
           ),
