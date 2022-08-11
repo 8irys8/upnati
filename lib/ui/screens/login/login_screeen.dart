@@ -92,6 +92,7 @@ class LoginScreen extends HookWidget {
                   Expanded(
                     child: Divider(
                       color: AppColors.gray.withOpacity(0.49),
+                      thickness: 1,
                     ),
                   ),
                   Padding(
@@ -104,6 +105,7 @@ class LoginScreen extends HookWidget {
                   Expanded(
                     child: Divider(
                       color: AppColors.gray.withOpacity(0.49),
+                      thickness: 1,
                     ),
                   ),
                 ],
@@ -125,11 +127,11 @@ class LoginScreen extends HookWidget {
                 icon: Image.asset(Images.googleIcon),
               ),
               const SizedBox(
-                height: 11,
+                height: 26,
               ),
               CustomButton(
                 color: AppColors.darkBlue,
-                title: LocaleKeys.login_login_btn.tr(),
+                title: LocaleKeys.login_register_btn.tr(),
                 onPressed: () => context.router.push(const RegisterScreen()),
               ),
             ],

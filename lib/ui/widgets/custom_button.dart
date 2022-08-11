@@ -8,12 +8,18 @@ class CustomButton extends StatelessWidget {
   final String title;
   final Widget? icon;
   final VoidCallback? onPressed;
+  final bool? withoutShadow;
+  final double? textSize;
+  final double? buttonHeight;
   const CustomButton({
     Key? key,
     this.color = AppColors.text,
     required this.title,
     this.icon,
     this.onPressed,
+    this.withoutShadow,
+    this.textSize,
+    this.buttonHeight,
     this.textColor,
   }) : super(key: key);
 
@@ -22,25 +28,27 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        constraints: const BoxConstraints(minHeight: 50.0),
+        constraints: BoxConstraints(minHeight: buttonHeight ?? 50.0),
         width: double.infinity,
         padding: const EdgeInsets.only(top: 5, bottom: 1),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(5.0),
           border: Border.all(
-            width: 0.5,
+            width: 0.4,
             color: color.withOpacity(0.36),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: color.withOpacity(0.16),
-              offset: const Offset(-3, 1),
-              blurRadius: 2,
-              spreadRadius: 1,
-              inset: true,
-            ),
-          ],
+          boxShadow: withoutShadow == true
+              ? null
+              : [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    offset: const Offset(-3, 1),
+                    blurRadius: 3,
+                    spreadRadius: 2,
+                    inset: true,
+                  ),
+                ],
         ),
         child: Center(
           child: Row(
@@ -54,7 +62,7 @@ class CustomButton extends StatelessWidget {
                 child: Text(
                   title,
                   style: AppTheme.regular(
-                    size: 16,
+                    size: textSize ?? 16,
                     color: textColor ?? AppColors.white,
                   ),
                 ),

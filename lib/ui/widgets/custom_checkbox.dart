@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
@@ -21,7 +20,7 @@ class CustomCheckbox extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Row(children: [
-        SvgPicture.asset(value ? Svgs.icChecked : Svgs.icCheck),
+        Image.asset(value ? Images.icChecked : Images.icUnchecked),
         const SizedBox(width: 4),
         Text(
           label,

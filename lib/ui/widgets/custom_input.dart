@@ -47,16 +47,16 @@ class CustomInput extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.0),
-            color: color ?? const Color(0xFFF0F0F0),
+            color: color ?? color ?? const Color(0xFFF0F0F0),
             border: Border.all(
-              width: 0.5,
+              width: 0.4,
               color: const Color(0xFF707070).withOpacity(0.36),
             ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.text.withOpacity(0.16),
+                color: AppColors.text.withOpacity(0.3),
                 offset: const Offset(-3, 1),
-                blurRadius: 2,
+                blurRadius: 3,
                 spreadRadius: 1,
                 inset: true,
               ),
@@ -70,6 +70,7 @@ class CustomInput extends StatelessWidget {
                 isMultiline == true ? TextAlignVertical.top : null,
             controller: controller,
             obscureText: obscure ?? false,
+            obscuringCharacter: '*',
             style: AppTheme.semi(
               size: 18,
               color: AppColors.text.withOpacity(0.64),

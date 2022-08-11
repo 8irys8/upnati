@@ -38,16 +38,16 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'SegoeUI',
-        scaffoldBackgroundColor: AppColors.white,
         appBarTheme: const AppBarTheme(
-          color: AppColors.background,
-          elevation: 0,
+          color: AppColors.inputGray,
+          elevation: 3,
           iconTheme: IconThemeData(
             color: AppColors.text,
           ),
         ),
+        primarySwatch: Colors.blue,
+        fontFamily: 'SegoeUI',
+        scaffoldBackgroundColor: AppColors.white,
       ),
     );
   }
