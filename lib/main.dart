@@ -39,6 +39,13 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: AppColors.inputGray,
+          elevation: 3,
+          iconTheme: IconThemeData(
+            color: AppColors.text,
+          ),
+        ),
         primarySwatch: Colors.blue,
         fontFamily: 'SegoeUI',
         scaffoldBackgroundColor: AppColors.white,

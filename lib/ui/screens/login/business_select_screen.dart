@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
+import 'package:upnati/core/config/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 
 class BusinessSelectScreen extends HookWidget {
   const BusinessSelectScreen({Key? key}) : super(key: key);
@@ -37,30 +39,33 @@ class BusinessSelectScreen extends HookWidget {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.inputGray,
-                        borderRadius: BorderRadius.circular(3),
-                        border: Border.all(
-                          color: AppColors.gray.withOpacity(.36),
-                          width: .5,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.text.withOpacity(.16),
-                            offset: const Offset(-3, 1),
-                            blurRadius: 2,
-                            spreadRadius: 1,
-                            inset: true,
+                    child: GestureDetector(
+                      onTap: () => context.router.push(const BusinessScreen()),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.inputGray,
+                          borderRadius: BorderRadius.circular(3),
+                          border: Border.all(
+                            color: AppColors.gray.withOpacity(.36),
+                            width: .5,
                           ),
-                        ],
-                      ),
-                      alignment: Alignment.center,
-                      width: 128,
-                      height: 128,
-                      child: Text(
-                        LocaleKeys.register_yes.tr(),
-                        style: AppTheme.regular(size: 16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.text.withOpacity(.25),
+                              offset: const Offset(-3, 1),
+                              blurRadius: 2,
+                              spreadRadius: 1,
+                              inset: true,
+                            ),
+                          ],
+                        ),
+                        alignment: Alignment.center,
+                        width: 128,
+                        height: 128,
+                        child: Text(
+                          LocaleKeys.register_yes.tr(),
+                          style: AppTheme.regular(size: 16),
+                        ),
                       ),
                     ),
                   ),
@@ -78,7 +83,7 @@ class BusinessSelectScreen extends HookWidget {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.text.withOpacity(.16),
+                            color: AppColors.text.withOpacity(.25),
                             offset: const Offset(-3, 1),
                             blurRadius: 2,
                             spreadRadius: 1,

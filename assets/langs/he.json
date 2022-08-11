@@ -32,5 +32,30 @@
         "has_business": "?האם יש לך עסק בבעלותך",
         "yes": "כן",
         "no": "לא"
+    },
+    "business": {
+        "openShop": "למה לפתוח חנות אצלנו ?",
+        "withUs": "אצלנו כדי להצליח יותר עסקי וכיום\nכשכולם באונליין וזה חובה\nשתהיה חנות אינטרנטית לכל עסק",
+        "openAccount": "פתח חשבון בדקה"
+    },
+    "business_register": {
+        "shopDetails": "פרטי החנות",
+        "shopName": ":שם החנות*",
+        "downloadLogo": "אעלה לוגו העסק / החנות",
+        "occupation": "תחום העיסוק",
+        "openList": "פתח רשימה",
+        "service": "אזור מתן שרות",
+        "activityDesc": "תאור העסק",
+        "saveAndContinue": "שמור והמשך",
+        "uploadProductImg": "פרסם מוצרים לחנות",
+        "uploadProduct": "אעלה מוצר",
+        "myShop": "החנות שלי",
+        "products": "מוצרים",
+        "reviews": "ביקורות",
+        "about": "אודות",
+        "policy":"מדיניות",
+        "addToFavorites": "הוספה למעודפים",
+        "contactToStore": "צור קשר עם החנות",
+        "searchInTheStore": "חיפוש בחנות"
     }
 }
