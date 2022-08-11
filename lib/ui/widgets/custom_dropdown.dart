@@ -3,20 +3,17 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:upnati/resources/resource.dart';
 
-class CustomInput extends StatelessWidget {
+class CustomDropdown extends StatelessWidget {
   final String? label;
   final String? hint;
-  final bool? obscure;
-  final bool? isMultiline;
-  final TextEditingController controller;
   final Color? color;
-  const CustomInput({
+  final List<String> items;
+
+  const CustomDropdown({
     Key? key,
     this.label,
-    required this.controller,
     this.hint,
-    this.obscure,
-    this.isMultiline,
+    required this.items,
     this.color,
   }) : super(key: key);
 
@@ -30,15 +27,13 @@ class CustomInput extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              label == null
-                  ? const SizedBox()
-                  : Text(
-                      label!,
-                      style: AppTheme.regular(
-                        size: 12,
-                        color: AppColors.text.withOpacity(0.64),
-                      ),
-                    ),
+              Text(
+                label!,
+                style: AppTheme.regular(
+                  size: 12,
+                  color: AppColors.text.withOpacity(0.64),
+                ),
+              ),
               const SizedBox(
                 height: 3,
               ),
@@ -62,14 +57,8 @@ class CustomInput extends StatelessWidget {
               ),
             ],
           ),
-          child: FormBuilderTextField(
+          child: FormBuilderDropdown(
             name: key.toString(),
-            minLines: isMultiline == true ? 4 : 1,
-            maxLines: isMultiline == true ? 10 : 1,
-            textAlignVertical:
-                isMultiline == true ? TextAlignVertical.top : null,
-            controller: controller,
-            obscureText: obscure ?? false,
             style: AppTheme.semi(
               size: 18,
               color: AppColors.text.withOpacity(0.64),
@@ -77,6 +66,12 @@ class CustomInput extends StatelessWidget {
             decoration: InputDecoration(
               filled: true,
               hintText: hint,
+              hintStyle: AppTheme.regular(
+                size: 11,
+                color: AppColors.text,
+              ).copyWith(
+                decoration: TextDecoration.underline,
+              ),
               border: const UnderlineInputBorder(borderSide: BorderSide.none),
               disabledBorder:
                   const UnderlineInputBorder(borderSide: BorderSide.none),
@@ -88,6 +83,12 @@ class CustomInput extends StatelessWidget {
                   const UnderlineInputBorder(borderSide: BorderSide.none),
               fillColor: Colors.transparent,
             ),
+            items: items
+                .map((item) => DropdownMenuItem(
+                      value: item,
+                      child: Text(item),
+                    ))
+                .toList(),
           ),
         ),
       ],

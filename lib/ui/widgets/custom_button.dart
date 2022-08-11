@@ -4,6 +4,7 @@ import 'package:upnati/resources/resource.dart';
 
 class CustomButton extends StatelessWidget {
   final Color color;
+  final Color? textColor;
   final String title;
   final Widget? icon;
   final VoidCallback? onPressed;
@@ -13,6 +14,7 @@ class CustomButton extends StatelessWidget {
     required this.title,
     this.icon,
     this.onPressed,
+    this.textColor,
   }) : super(key: key);
 
   @override
@@ -53,7 +55,7 @@ class CustomButton extends StatelessWidget {
                   title,
                   style: AppTheme.regular(
                     size: 16,
-                    color: AppColors.white,
+                    color: textColor ?? AppColors.white,
                   ),
                 ),
               ),

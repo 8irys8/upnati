@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/injectable_config.dart';
 import 'package:upnati/core/config/router.gr.dart';
-import 'package:upnati/resources/codegen_loader.g.dart';
 import 'package:upnati/resources/resource.dart';
 
 Future<void> main() async {
@@ -42,6 +41,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'SegoeUI',
         scaffoldBackgroundColor: AppColors.white,
+        appBarTheme: const AppBarTheme(
+          color: AppColors.background,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: AppColors.text,
+          ),
+        ),
       ),
     );
   }
