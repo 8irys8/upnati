@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
+
 import 'package:upnati/ui/widgets/add_product_container.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 
@@ -118,16 +119,20 @@ class _BusinessRegistrationScreenState
                   child: Column(
                     children: [
                       Row(
-                        children: const [
-                          Expanded(
+                        children: [
+                          const Expanded(
                             child: AddProductContainer(
                               isAdded: true,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 11,
                           ),
-                          Expanded(child: AddProductContainer()),
+                          Expanded(
+                              child: GestureDetector(
+                                  onTap: () => context.router
+                                      .push(ProduceDetailScreen()),
+                                  child: AddProductContainer())),
                         ],
                       ),
                       const SizedBox(

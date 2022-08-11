@@ -146,7 +146,7 @@ class MarketDetailScreen extends HookWidget {
                 ),
                 CustomButton(
                   onPressed: () =>
-                      context.router.push(const ProduceDetailScreen()),
+                      context.router.push(const BusinessRegistrationScreen()),
                   title: LocaleKeys.market_screen_save_btn.tr(),
                   color: AppColors.darkBlue,
                 ),

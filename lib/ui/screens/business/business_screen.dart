@@ -72,7 +72,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
                   title: LocaleKeys.business_openAccount.tr(),
                   color: AppColors.darkBlue,
                   onPressed: () =>
-                      context.router.push(const BusinessRegistrationScreen()),
+                      context.router.push(const MarketDetailScreen()),
                 ),
               ),
             ],

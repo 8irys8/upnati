@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:upnati/resources/resource.dart';
@@ -25,7 +26,7 @@ class SearchField extends StatelessWidget {
             width: 10,
           ),
           Text(
-            'Search',
+            LocaleKeys.business_register_searchInTheStore.tr(),
             textAlign: TextAlign.center,
             style: AppTheme.regular(
               size: 7,

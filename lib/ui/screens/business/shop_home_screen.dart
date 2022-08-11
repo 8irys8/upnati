@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
+import 'package:upnati/ui/widgets/add_empty_product_container.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
+import 'package:upnati/ui/widgets/search_field.dart';
 
 class ShopHomeScreen extends StatefulWidget {
   const ShopHomeScreen({Key? key}) : super(key: key);
@@ -159,7 +161,45 @@ class _ShopHomeScreenState extends State<ShopHomeScreen> {
                   )
                 ],
               ),
-            )
+            ),
+            const Padding(
+              padding:
+                  EdgeInsets.only(top: 22, bottom: 14, left: 35, right: 37),
+              child: SearchField(),
+            ),
+            Row(
+              children: const [
+                Expanded(child: AddEmptyProductContainer()),
+                SizedBox(
+                  width: 7,
+                ),
+                Expanded(child: AddEmptyProductContainer()),
+              ],
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Row(
+              children: const [
+                Expanded(child: AddEmptyProductContainer()),
+                SizedBox(
+                  width: 7,
+                ),
+                Expanded(child: AddEmptyProductContainer()),
+              ],
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Row(
+              children: const [
+                Expanded(child: AddEmptyProductContainer()),
+                SizedBox(
+                  width: 7,
+                ),
+                Expanded(child: AddEmptyProductContainer()),
+              ],
+            ),
           ],
         ),
       ),
