@@ -80,8 +80,8 @@ class LoginScreen extends HookWidget {
                 height: 53,
               ),
               CustomButton(
-                onPressed: () =>
-                    context.router.push(const MarketDetailScreen()),
+                // onPressed: () =>
+                //     context.router.push(const MarketDetailScreen()),
                 title: LocaleKeys.login_login_btn.tr(),
               ),
               const SizedBox(
