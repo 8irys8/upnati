@@ -26,3 +26,13 @@ enum BankCurrency { UPSTORE_STAR, USD, NIS }
 enum SortType { ASC, DESC }
 
 enum PaymentMethod { cardcom, meshulam_card, meshulam_bit }
+
+enum PriceModifier { spm_dp, spm_ds }
+
+enum DeliveryType { dt0, dt1 }
+
+enum DeliverySpeed { ds0, ds1 }
+
+enum ItemType { it0, it1 }
+
+enum OrderStatus { Processing, Confirmed, InProgress, Closed }

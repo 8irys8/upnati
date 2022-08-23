@@ -3,7 +3,6 @@ import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
-
 import 'package:upnati/logic/services/user_service.dart';
 
 @lazySingleton

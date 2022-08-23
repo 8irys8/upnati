@@ -20,9 +20,9 @@ LocationResponse _$LocationResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LocationResponse {
-  String? get countryId => throw _privateConstructorUsedError;
-  String? get regionId => throw _privateConstructorUsedError;
-  String? get cityId => throw _privateConstructorUsedError;
+  String get countryId => throw _privateConstructorUsedError;
+  String get regionId => throw _privateConstructorUsedError;
+  String get cityId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $LocationResponseCopyWith<$Res> {
   factory $LocationResponseCopyWith(
           LocationResponse value, $Res Function(LocationResponse) then) =
       _$LocationResponseCopyWithImpl<$Res>;
-  $Res call({String? countryId, String? regionId, String? cityId});
+  $Res call({String countryId, String regionId, String cityId});
 }
 
 /// @nodoc
@@ -57,15 +57,15 @@ class _$LocationResponseCopyWithImpl<$Res>
       countryId: countryId == freezed
           ? _value.countryId
           : countryId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       regionId: regionId == freezed
           ? _value.regionId
           : regionId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cityId: cityId == freezed
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -77,7 +77,7 @@ abstract class _$$_LocationResponseCopyWith<$Res>
           _$_LocationResponse value, $Res Function(_$_LocationResponse) then) =
       __$$_LocationResponseCopyWithImpl<$Res>;
   @override
-  $Res call({String? countryId, String? regionId, String? cityId});
+  $Res call({String countryId, String regionId, String cityId});
 }
 
 /// @nodoc
@@ -101,15 +101,15 @@ class __$$_LocationResponseCopyWithImpl<$Res>
       countryId: countryId == freezed
           ? _value.countryId
           : countryId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       regionId: regionId == freezed
           ? _value.regionId
           : regionId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cityId: cityId == freezed
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -117,17 +117,18 @@ class __$$_LocationResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LocationResponse implements _LocationResponse {
-  const _$_LocationResponse({this.countryId, this.regionId, this.cityId});
+  const _$_LocationResponse(
+      {required this.countryId, required this.regionId, required this.cityId});
 
   factory _$_LocationResponse.fromJson(Map<String, dynamic> json) =>
       _$$_LocationResponseFromJson(json);
 
   @override
-  final String? countryId;
+  final String countryId;
   @override
-  final String? regionId;
+  final String regionId;
   @override
-  final String? cityId;
+  final String cityId;
 
   @override
   String toString() {
@@ -167,19 +168,19 @@ class _$_LocationResponse implements _LocationResponse {
 
 abstract class _LocationResponse implements LocationResponse {
   const factory _LocationResponse(
-      {final String? countryId,
-      final String? regionId,
-      final String? cityId}) = _$_LocationResponse;
+      {required final String countryId,
+      required final String regionId,
+      required final String cityId}) = _$_LocationResponse;
 
   factory _LocationResponse.fromJson(Map<String, dynamic> json) =
       _$_LocationResponse.fromJson;
 
   @override
-  String? get countryId;
+  String get countryId;
   @override
-  String? get regionId;
+  String get regionId;
   @override
-  String? get cityId;
+  String get cityId;
   @override
   @JsonKey(ignore: true)
   _$$_LocationResponseCopyWith<_$_LocationResponse> get copyWith =>

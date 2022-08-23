@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'business_invitation_response.g.dart';
 part 'business_invitation_response.freezed.dart';
