@@ -1,16 +1,31 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
+import 'package:upnati/logic/models/user/login_payload.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
 import 'package:upnati/ui/widgets/forgot_pass_dialog.dart';
 
-class LoginScreen extends HookWidget {
+class LoginScreen extends HookWidget with AutoRouteWrapper {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(create: (context) => GetIt.I<AuthCubit>(), child: this);
+  }
+
+  void _doLogin(BuildContext context, String userName, String password) {
+    context
+        .read<AuthCubit>()
+        .signIn(LoginPayload(identifier: userName, password: password));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,123 +33,130 @@ class LoginScreen extends HookWidget {
     final passwordController = useTextEditingController();
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 37.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 70,
-              ),
-              Center(
-                child: Image.asset(Images.upnatiLogo),
-              ),
-              const SizedBox(
-                height: 9,
-              ),
-              Center(
-                child: Text(
-                  LocaleKeys.login_slogan.tr(),
+      body: BlocListener<AuthCubit, AuthState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            successResponse: (response) {},
+          );
+        },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 37.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 70,
                 ),
-              ),
-              const SizedBox(
-                height: 65,
-              ),
-              CustomInput(
-                label: LocaleKeys.login_username.tr(),
-                controller: usernameController,
-              ),
-              const SizedBox(
-                height: 13,
-              ),
-              CustomInput(
-                label: LocaleKeys.login_password.tr(),
-                controller: passwordController,
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => const AlertDialog(
-                      insetPadding: EdgeInsets.zero,
-                      contentPadding: EdgeInsets.zero,
-                      content: ForgotPassDialog(),
-                    ),
-                  );
-                },
-                child: Text(
-                  LocaleKeys.login_forgot_password.tr(),
-                  style: AppTheme.regular(
-                    size: 10,
-                    color: AppColors.text,
-                  ).copyWith(
-                    decoration: TextDecoration.underline,
+                Center(
+                  child: Image.asset(Images.upnatiLogo),
+                ),
+                const SizedBox(
+                  height: 9,
+                ),
+                Center(
+                  child: Text(
+                    LocaleKeys.login_slogan.tr(),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 53,
-              ),
-              CustomButton(
-                // onPressed: () =>
-                //     context.router.push(const MarketDetailScreen()),
-                title: LocaleKeys.login_login_btn.tr(),
-              ),
-              const SizedBox(
-                height: 13,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Divider(
-                      color: AppColors.gray.withOpacity(0.49),
-                      thickness: 1,
+                const SizedBox(
+                  height: 65,
+                ),
+                CustomInput(
+                  label: LocaleKeys.login_username.tr(),
+                  controller: usernameController,
+                ),
+                const SizedBox(
+                  height: 13,
+                ),
+                CustomInput(
+                  label: LocaleKeys.login_password.tr(),
+                  controller: passwordController,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const AlertDialog(
+                        insetPadding: EdgeInsets.zero,
+                        contentPadding: EdgeInsets.zero,
+                        content: ForgotPassDialog(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    LocaleKeys.login_forgot_password.tr(),
+                    style: AppTheme.regular(
+                      size: 10,
+                      color: AppColors.text,
+                    ).copyWith(
+                      decoration: TextDecoration.underline,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Text(
-                      LocaleKeys.login_or.tr(),
-                      style: AppTheme.regular(size: 16),
+                ),
+                const SizedBox(
+                  height: 53,
+                ),
+                CustomButton(
+                  // onPressed: () =>
+                  //     context.router.push(const MarketDetailScreen()),
+                  title: LocaleKeys.login_login_btn.tr(),
+                ),
+                const SizedBox(
+                  height: 13,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color: AppColors.gray.withOpacity(0.49),
+                        thickness: 1,
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Divider(
-                      color: AppColors.gray.withOpacity(0.49),
-                      thickness: 1,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: Text(
+                        LocaleKeys.login_or.tr(),
+                        style: AppTheme.regular(size: 16),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 51,
-              ),
-              CustomButton(
-                color: AppColors.blue,
-                title: LocaleKeys.login_sign_facebook.tr(),
-                icon: Image.asset(Images.facebookIcon),
-              ),
-              const SizedBox(
-                height: 11,
-              ),
-              CustomButton(
-                color: AppColors.red,
-                title: LocaleKeys.login_sign_google.tr(),
-                icon: Image.asset(Images.googleIcon),
-              ),
-              const SizedBox(
-                height: 26,
-              ),
-              CustomButton(
-                color: AppColors.darkBlue,
-                title: LocaleKeys.login_register_btn.tr(),
-                onPressed: () => context.router.push(const RegisterScreen()),
-              ),
-            ],
+                    Expanded(
+                      child: Divider(
+                        color: AppColors.gray.withOpacity(0.49),
+                        thickness: 1,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 51,
+                ),
+                CustomButton(
+                  color: AppColors.blue,
+                  title: LocaleKeys.login_sign_facebook.tr(),
+                  icon: Image.asset(Images.facebookIcon),
+                ),
+                const SizedBox(
+                  height: 11,
+                ),
+                CustomButton(
+                  color: AppColors.red,
+                  title: LocaleKeys.login_sign_google.tr(),
+                  icon: Image.asset(Images.googleIcon),
+                ),
+                const SizedBox(
+                  height: 26,
+                ),
+                CustomButton(
+                  color: AppColors.darkBlue,
+                  title: LocaleKeys.login_register_btn.tr(),
+                  onPressed: () => context.router.push(const RegisterScreen()),
+                ),
+              ],
+            ),
           ),
         ),
       ),

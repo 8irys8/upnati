@@ -1,3 +1,4 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/logic/models/user/auth_response.dart';
 import 'package:upnati/logic/models/user/confirm_restore_payload.dart';
@@ -10,8 +11,9 @@ import 'package:upnati/logic/services/auth_service.dart';
 @lazySingleton
 class AuthProvider {
   final AuthService _authService;
+  final Box _boxSettings;
 
-  AuthProvider(this._authService);
+  AuthProvider(this._authService, this._boxSettings);
 
   Future<void> startRestore(RestorePassPayload passPayload) =>
       _authService.startRestore(passPayload);
@@ -37,4 +39,10 @@ class AuthProvider {
       _authService.confirmRestoreCode(confirmRestorePayload);
 
   Future<AuthResponse> getToken() => _authService.getToken();
+
+  Future<void> storeToken(AuthResponse authResponse) async {
+    await _boxSettings.put('token', authResponse.token);
+    await _boxSettings.put('id', authResponse.id);
+    await _boxSettings.put('role', authResponse.role);
+  }
 }

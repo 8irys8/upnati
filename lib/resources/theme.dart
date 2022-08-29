@@ -30,4 +30,11 @@ class AppTheme {
         fontWeight: FontWeight.w600,
         color: color,
       );
+
+  static TextStyle semiLight({Color color = AppColors.text, double? size}) =>
+      TextStyle(
+        fontSize: size,
+        fontWeight: FontWeight.w300,
+        color: color,
+      );
 }

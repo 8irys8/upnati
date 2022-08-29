@@ -10,6 +10,9 @@ class CustomInput extends StatelessWidget {
   final bool? isMultiline;
   final TextEditingController controller;
   final Color? color;
+  final TextStyle? labelStyle;
+  final bool? leftAlignment;
+  final TextStyle? hintStyle;
   const CustomInput({
     Key? key,
     this.label,
@@ -18,6 +21,9 @@ class CustomInput extends StatelessWidget {
     this.obscure,
     this.isMultiline,
     this.color,
+    this.labelStyle,
+    this.leftAlignment,
+    this.hintStyle,
   }) : super(key: key);
 
   @override
@@ -32,13 +38,26 @@ class CustomInput extends StatelessWidget {
             children: [
               label == null
                   ? const SizedBox()
-                  : Text(
-                      label!,
-                      style: AppTheme.regular(
-                        size: 12,
-                        color: AppColors.text.withOpacity(0.64),
-                      ),
-                    ),
+                  : leftAlignment == true
+                      ? Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            label!,
+                            style: labelStyle ??
+                                AppTheme.regular(
+                                  size: 12,
+                                  color: AppColors.text.withOpacity(0.64),
+                                ),
+                          ),
+                        )
+                      : Text(
+                          label!,
+                          style: labelStyle ??
+                              AppTheme.regular(
+                                size: 12,
+                                color: AppColors.text.withOpacity(0.64),
+                              ),
+                        ),
               const SizedBox(
                 height: 3,
               ),
@@ -78,6 +97,7 @@ class CustomInput extends StatelessWidget {
             decoration: InputDecoration(
               filled: true,
               hintText: hint,
+              hintStyle: hintStyle,
               border: const UnderlineInputBorder(borderSide: BorderSide.none),
               disabledBorder:
                   const UnderlineInputBorder(borderSide: BorderSide.none),

@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
   final bool? withoutShadow;
   final double? textSize;
   final double? buttonHeight;
+  final BoxBorder? border;
   const CustomButton({
     Key? key,
     this.color = AppColors.text,
@@ -21,6 +22,7 @@ class CustomButton extends StatelessWidget {
     this.textSize,
     this.buttonHeight,
     this.textColor,
+    this.border,
   }) : super(key: key);
 
   @override
@@ -34,10 +36,11 @@ class CustomButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(5.0),
-          border: Border.all(
-            width: 0.4,
-            color: color.withOpacity(0.36),
-          ),
+          border: border ??
+              Border.all(
+                width: 0.4,
+                color: color.withOpacity(0.36),
+              ),
           boxShadow: withoutShadow == true
               ? null
               : [

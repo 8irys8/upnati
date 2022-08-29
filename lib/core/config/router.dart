@@ -7,6 +7,15 @@ import 'package:upnati/ui/screens/business/shop_home_screen.dart';
 import 'package:upnati/ui/screens/login/business_select_screen.dart';
 import 'package:upnati/ui/screens/login/login_screen.dart';
 import 'package:upnati/ui/screens/login/register_screen.dart';
+import 'package:upnati/ui/screens/user/add_card_screen.dart';
+import 'package:upnati/ui/screens/user/buy_details_screen.dart';
+import 'package:upnati/ui/screens/user/category_screen.dart';
+import 'package:upnati/ui/screens/user/market_place_screen.dart';
+import 'package:upnati/ui/screens/user/message_screen.dart';
+import 'package:upnati/ui/screens/user/my_basket_screen.dart';
+import 'package:upnati/ui/screens/user/payment_details_screen.dart';
+import 'package:upnati/ui/screens/user/purchase_history_screen.dart';
+import 'package:upnati/ui/screens/user/user_main_screen.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -27,6 +36,31 @@ import 'package:upnati/ui/screens/login/register_screen.dart';
     ),
     AutoRoute(page: MarketDetailScreen),
     AutoRoute(page: ProduceDetailScreen),
+    AutoRoute(
+      page: MyBasketScreen,
+    ),
+    AutoRoute(
+      page: BuyDetailsScreen,
+    ),
+    AutoRoute(
+      page: PaymentDetailsScreen,
+    ),
+    AutoRoute(
+      page: AddCardScreen,
+    ),
+    AutoRoute(
+      page: UserMainScreen,
+    ),
+    AutoRoute(page: PurchaseHistoryScreen),
+    AutoRoute(
+      page: MessageScreen,
+    ),
+    AutoRoute(
+      page: CategoryScreen,
+    ),
+    AutoRoute(
+      page: MarketPlaceScreen,
+    )
   ],
 )
 class $AppRouter {}
