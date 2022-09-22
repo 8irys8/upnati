@@ -161,7 +161,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
               const SizedBox(
                 height: 20,
               ),
-              Center(child: Image.asset(Images.upnatiLogo)),
+              Center(child: Image.asset(Images.upnatiStoreLogo)),
               const SizedBox(
                 height: 12,
               ),

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter/material.dart';
 import 'package:upnati/resources/resource.dart';
 
 class CustomButton extends StatelessWidget {
@@ -12,6 +11,9 @@ class CustomButton extends StatelessWidget {
   final double? textSize;
   final double? buttonHeight;
   final BoxBorder? border;
+  final TextStyle? textStyle;
+  final double? topPadding;
+  final double? bottomPadding;
   const CustomButton({
     Key? key,
     this.color = AppColors.text,
@@ -23,6 +25,9 @@ class CustomButton extends StatelessWidget {
     this.buttonHeight,
     this.textColor,
     this.border,
+    this.textStyle,
+    this.topPadding,
+    this.bottomPadding,
   }) : super(key: key);
 
   @override
@@ -35,7 +40,7 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.only(top: 5, bottom: 1),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(22.0),
           border: border ??
               Border.all(
                 width: 0.4,
@@ -45,11 +50,11 @@ class CustomButton extends StatelessWidget {
               ? null
               : [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    offset: const Offset(-3, 1),
-                    blurRadius: 3,
-                    spreadRadius: 2,
-                    inset: true,
+                    color: Colors.black.withOpacity(0.16),
+                    offset: const Offset(0, 5),
+                    blurRadius: 10,
+                    // spreadRadius: 2,
+                    // inset: true,
                   ),
                 ],
         ),
@@ -58,16 +63,17 @@ class CustomButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                  top: 9,
-                  bottom: 10,
+                padding: EdgeInsets.only(
+                  top: topPadding ?? 9,
+                  bottom: bottomPadding ?? 10,
                 ),
                 child: Text(
                   title,
-                  style: AppTheme.regular(
-                    size: textSize ?? 16,
-                    color: textColor ?? AppColors.white,
-                  ),
+                  style: textStyle ??
+                      AppTheme.regular(
+                        size: textSize ?? 16,
+                        color: textColor ?? AppColors.white,
+                      ),
                 ),
               ),
               if (icon != null)

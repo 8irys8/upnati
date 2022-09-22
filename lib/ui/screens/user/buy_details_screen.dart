@@ -35,7 +35,7 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
               const SizedBox(
                 height: 20,
               ),
-              Center(child: Image.asset(Images.upnatiLogo)),
+              Center(child: Image.asset(Images.upnatiStoreLogo)),
               const SizedBox(
                 height: 12,
               ),

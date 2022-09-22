@@ -10,8 +10,9 @@ import 'package:upnati/logic/models/user/login_payload.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
+import 'package:upnati/ui/widgets/custom_checkbox.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
-import 'package:upnati/ui/widgets/forgot_pass_dialog.dart';
+import 'package:upnati/ui/widgets/custom_radio.dart';
 
 class LoginScreen extends HookWidget with AutoRouteWrapper {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,137 +30,216 @@ class LoginScreen extends HookWidget with AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    final usernameController = useTextEditingController();
-    final passwordController = useTextEditingController();
+    final _phoneController = useTextEditingController();
+    final termsChecked = useState<bool>(false);
 
     return Scaffold(
-      body: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            successResponse: (response) {},
-          );
-        },
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 37.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                Center(
-                  child: Image.asset(Images.upnatiLogo),
-                ),
-                const SizedBox(
-                  height: 9,
-                ),
-                Center(
-                  child: Text(
-                    LocaleKeys.login_slogan.tr(),
-                  ),
-                ),
-                const SizedBox(
-                  height: 65,
-                ),
-                CustomInput(
-                  label: LocaleKeys.login_username.tr(),
-                  controller: usernameController,
-                ),
-                const SizedBox(
-                  height: 13,
-                ),
-                CustomInput(
-                  label: LocaleKeys.login_password.tr(),
-                  controller: passwordController,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const AlertDialog(
-                        insetPadding: EdgeInsets.zero,
-                        contentPadding: EdgeInsets.zero,
-                        content: ForgotPassDialog(),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    LocaleKeys.login_forgot_password.tr(),
-                    style: AppTheme.regular(
-                      size: 10,
-                      color: AppColors.text,
-                    ).copyWith(
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 53,
-                ),
-                CustomButton(
-                  // onPressed: () =>
-                  //     context.router.push(const MarketDetailScreen()),
-                  title: LocaleKeys.login_login_btn.tr(),
-                ),
-                const SizedBox(
-                  height: 13,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        color: AppColors.gray.withOpacity(0.49),
-                        thickness: 1,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Text(
-                        LocaleKeys.login_or.tr(),
-                        style: AppTheme.regular(size: 16),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        color: AppColors.gray.withOpacity(0.49),
-                        thickness: 1,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 51,
-                ),
-                CustomButton(
-                  color: AppColors.blue,
-                  title: LocaleKeys.login_sign_facebook.tr(),
-                  icon: Image.asset(Images.facebookIcon),
-                ),
-                const SizedBox(
-                  height: 11,
-                ),
-                CustomButton(
-                  color: AppColors.red,
-                  title: LocaleKeys.login_sign_google.tr(),
-                  icon: Image.asset(Images.googleIcon),
-                ),
-                const SizedBox(
-                  height: 26,
-                ),
-                CustomButton(
-                  color: AppColors.darkBlue,
-                  title: LocaleKeys.login_register_btn.tr(),
-                  onPressed: () => context.router.push(const RegisterScreen()),
-                ),
-              ],
+      body:
+          // BlocListener<AuthCubit, AuthState>(
+          //   listener: (context, state) {
+          //     state.whenOrNull(
+          //       successResponse: (response) {},
+          //     );
+          //   },
+          //   child:
+          SingleChildScrollView(
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 2,
+              color: AppColors.darkBlueLight,
             ),
-          ),
+            Positioned(
+              right: -42,
+              top: MediaQuery.of(context).size.height / 1.16,
+              child: ClipPath(
+                clipper: LoginContour(),
+                child: Container(
+                  color: AppColors.darkBlueLight,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 86,
+                left: 0,
+                right: 0,
+                child: Column(
+                  children: [
+                    Image.asset(Images.upnatiStoreLogo),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      '!ברוך הבא\nטוב שבאת להרוויח כסף',
+                      textAlign: TextAlign.center,
+                      style: AppTheme.regular(size: 27, color: AppColors.white),
+                    ),
+                    const SizedBox(
+                      height: 72,
+                    ),
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 21),
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(13),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.63),
+                                    blurRadius: 6,
+                                    offset: const Offset(0, 3))
+                              ]),
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 38,
+                              ),
+                              Text(
+                                'כניסה',
+                                style: AppTheme.regular(
+                                    size: 35, color: AppColors.textGray),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 30),
+                                child: CustomInput(
+                                    label: 'מספר נייד',
+                                    controller: _phoneController),
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 46)
+                                        .copyWith(bottom: 113),
+                                child: ValueListenableBuilder<bool>(
+                                  valueListenable: termsChecked,
+                                  builder: (context, value, child) {
+                                    return CustomCheckbox(
+                                      label: LocaleKeys.register_confirm_terms
+                                          .tr(),
+                                      underlineText: LocaleKeys
+                                          .register_confirm_terms_link
+                                          .tr(),
+                                      value: value,
+                                      onTap: () {
+                                        termsChecked.value =
+                                            !termsChecked.value;
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Positioned(
+                            top: -45,
+                            left: MediaQuery.of(context).size.width / 2 - 42,
+                            child: Container(
+                              width: 85,
+                              height: 85,
+                              decoration: BoxDecoration(
+                                color: AppColors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(.16),
+                                      blurRadius: 6,
+                                      offset: const Offset(0, 3))
+                                ],
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.asset(
+                                Images.upnatiLogoNew,
+                                // height: 150,
+                                fit: BoxFit.cover,
+                              ),
+                            )),
+                        Positioned(
+                            bottom: -24,
+                            left: MediaQuery.of(context).size.width / 2 - 86,
+                            child: GestureDetector(
+                              // behavior: HitTestBehavior.translucent,
+                              onTap: () =>
+                                  context.router.push(const SmsCodeScreen()),
+                              child: AbsorbPointer(
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 66, vertical: 18),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    color: AppColors.darkBlueLight,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(.16),
+                                          blurRadius: 10,
+                                          offset: const Offset(0, 5))
+                                    ],
+                                  ),
+                                  child: Text(
+                                    'כניסה',
+                                    style: AppTheme.bold(
+                                        size: 16, color: AppColors.white),
+                                  ),
+                                ),
+                              ),
+                            ))
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 60,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(Images.googleImg),
+                        const SizedBox(
+                          width: 41,
+                        ),
+                        Image.asset(Images.fbImg),
+                      ],
+                    )
+                  ],
+                )),
+          ],
         ),
       ),
+      // ),
     );
+  }
+}
+
+class LoginContour extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    double contourX = size.width / 375;
+    double contourY = size.height / 812;
+
+    return Path()
+      ..moveTo(0 * contourX, 114.79 * contourY)
+      ..cubicTo(0 * contourX, 114.79 * contourY, 36.49 * contourX,
+          79.6 * contourY, 88.56 * contourX, 68.33 * contourY)
+      ..cubicTo(132.08 * contourX, 58.91 * contourY, 188.29 * contourX,
+          74.56 * contourY, 226.94 * contourX, 61.44 * contourY)
+      ..cubicTo(258.07 * contourX, 50.88 * contourY, 278.05 * contourX,
+          29.47 * contourY, 295.27 * contourX, 19.52 * contourY)
+      ..cubicTo(324.3 * contourX, 2.77 * contourY, 338.34 * contourX,
+          0 * contourY, 338.34 * contourX, 0 * contourY)
+      ..lineTo(338.34 * contourX, 114.79 * contourY)
+      ..lineTo(0 * contourX, 114.79 * contourY)
+      ..close();
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

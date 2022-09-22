@@ -22,87 +22,94 @@ class RegisterScreen extends HookWidget {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 37.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 70,
-              ),
-              Center(
-                child: Image.asset(Images.upnatiLogo),
-              ),
-              const SizedBox(
-                height: 9,
-              ),
-              Center(
-                child: Text(
-                  LocaleKeys.login_slogan.tr(),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 37.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 70,
                 ),
-              ),
-              const SizedBox(
-                height: 65,
-              ),
-              CustomInput(
-                label: LocaleKeys.register_name.tr(),
-                controller: nameController,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomInput(
-                label: LocaleKeys.register_email.tr(),
-                controller: emailController,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomInput(
-                label: LocaleKeys.register_phone.tr(),
-                controller: phoneController,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomInput(
-                label: LocaleKeys.register_username.tr(),
-                controller: usernameController,
-              ),
-              const SizedBox(
-                height: 27,
-              ),
-              CustomInput(
-                label: LocaleKeys.register_password.tr(),
-                controller: passwordController,
-                obscure: true,
-              ),
-              const SizedBox(
-                height: 11,
-              ),
-              ValueListenableBuilder<bool>(
-                valueListenable: termsChecked,
-                builder: (context, value, child) {
-                  return CustomCheckbox(
-                    label: LocaleKeys.register_confirm_terms.tr(),
-                    underlineText: LocaleKeys.register_confirm_terms_link.tr(),
-                    value: value,
-                    onTap: () {
-                      termsChecked.value = !termsChecked.value;
-                    },
-                  );
-                },
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomButton(
-                title: LocaleKeys.register_register_btn.tr(),
-                color: AppColors.darkBlue,
-                onPressed: () =>
-                    context.router.replace(const BusinessSelectScreen()),
-              ),
-            ],
+                Center(
+                  child: Image.asset(Images.upnatiStoreLogo),
+                ),
+                const SizedBox(
+                  height: 9,
+                ),
+                Center(
+                  child: Text(
+                    LocaleKeys.login_slogan.tr(),
+                    style: AppTheme.regular(size: 16, color: AppColors.text),
+                  ),
+                ),
+                const SizedBox(
+                  height: 65,
+                ),
+                CustomInput(
+                  label: LocaleKeys.register_name.tr(),
+                  controller: nameController,
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomInput(
+                  label: LocaleKeys.register_email.tr(),
+                  controller: emailController,
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomInput(
+                  label: LocaleKeys.register_phone.tr(),
+                  controller: phoneController,
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomInput(
+                  label: LocaleKeys.register_username.tr(),
+                  controller: usernameController,
+                ),
+                const SizedBox(
+                  height: 27,
+                ),
+                CustomInput(
+                  label: LocaleKeys.register_password.tr(),
+                  controller: passwordController,
+                  obscure: true,
+                ),
+                const SizedBox(
+                  height: 11,
+                ),
+                ValueListenableBuilder<bool>(
+                  valueListenable: termsChecked,
+                  builder: (context, value, child) {
+                    return CustomCheckbox(
+                      label: LocaleKeys.register_confirm_terms.tr(),
+                      underlineText:
+                          LocaleKeys.register_confirm_terms_link.tr(),
+                      value: value,
+                      onTap: () {
+                        termsChecked.value = !termsChecked.value;
+                      },
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 37,
+                ),
+                CustomButton(
+                  title: LocaleKeys.register_register_btn.tr(),
+                  color: AppColors.darkBlueLight,
+                  onPressed: () =>
+                      context.router.replace(const BusinessSelectScreen()),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+              ],
+            ),
           ),
         ),
       ),

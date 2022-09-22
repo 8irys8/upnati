@@ -27,28 +27,31 @@ class _BusinessScreenState extends State<BusinessScreen> {
               const SizedBox(
                 height: 70,
               ),
-              Text(
-                LocaleKeys.business_openShop.tr(),
-                style: AppTheme.regular(
-                  size: 16,
-                  color: AppColors.purple,
-                ),
-              ),
+              Image.asset(Images.upnatiStoreLogo),
               const SizedBox(
                 height: 10,
               ),
-              Image.asset(Images.upnatiLogo),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                LocaleKeys.business_withUs.tr(),
-                textAlign: TextAlign.center,
-                style: AppTheme.regular(
-                  size: 14,
-                  color: AppColors.purple,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 70),
+                child: Text(
+                  'אצלנו כדי להצליח יותר עסקית וכיום כשכולם באונליין וזה חובה שתהיה חנות אינטרנטית לכל עסק',
+                  textAlign: TextAlign.center,
+                  style: AppTheme.regular(
+                    size: 14,
+                  ),
                 ),
               ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // Text(
+              //   LocaleKeys.business_withUs.tr(),
+              //   textAlign: TextAlign.center,
+              //   style: AppTheme.regular(
+              //     size: 14,
+              //     color: AppColors.purple,
+              //   ),
+              // ),
               const SizedBox(
                 height: 90,
               ),
@@ -69,8 +72,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 24),
                 child: CustomButton(
-                  title: LocaleKeys.business_openAccount.tr(),
-                  color: AppColors.darkBlue,
+                  title: '!פה פותחים חנות בקלות',
+                  topPadding: 17,
+                  bottomPadding: 14,
+                  border: Border.all(color: AppColors.darkBlueLight),
+                  textStyle:
+                      AppTheme.semiLight(size: 16, color: AppColors.white),
+                  color: AppColors.darkBlueLight,
                   onPressed: () =>
                       context.router.push(const MarketDetailScreen()),
                 ),

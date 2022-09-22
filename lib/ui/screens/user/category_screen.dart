@@ -17,7 +17,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       appBar: AppBar(
           title: Image.asset(
-            Images.upnatiLogo,
+            Images.upnatiStoreLogo,
             height: 36,
           ),
           leading: Transform.translate(

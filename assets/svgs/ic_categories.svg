@@ -1,40 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" viewBox="0 0 25 28">
-  <g id="ic_categories" transform="translate(-314.379 -11.923)">
-    <g id="Прямоугольник_229" data-name="Прямоугольник 229" transform="translate(314.379 11.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_232" data-name="Прямоугольник 232" transform="translate(314.379 21.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_235" data-name="Прямоугольник 235" transform="translate(314.379 31.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_230" data-name="Прямоугольник 230" transform="translate(323.379 11.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_234" data-name="Прямоугольник 234" transform="translate(323.379 21.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_237" data-name="Прямоугольник 237" transform="translate(323.379 31.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_231" data-name="Прямоугольник 231" transform="translate(332.379 11.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_233" data-name="Прямоугольник 233" transform="translate(332.379 21.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
-    <g id="Прямоугольник_236" data-name="Прямоугольник 236" transform="translate(332.379 31.923)" fill="#fff" stroke="#000" stroke-width="1">
-      <rect width="7" height="8" stroke="none"/>
-      <rect x="0.5" y="0.5" width="6" height="7" fill="none"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="ic_categories" transform="translate(-108 -775)">
+    <rect id="Прямоугольник_373" data-name="Прямоугольник 373" width="6" height="6" rx="1" transform="translate(108 775)" fill="#d01363"/>
+    <rect id="Прямоугольник_376" data-name="Прямоугольник 376" width="6" height="6" rx="1" transform="translate(122 775)" fill="#d01363"/>
+    <rect id="Прямоугольник_374" data-name="Прямоугольник 374" width="6" height="6" rx="1" transform="translate(115 775)" fill="#d01363"/>
+    <rect id="Прямоугольник_377" data-name="Прямоугольник 377" width="6" height="6" rx="1" transform="translate(108 782)" fill="#d01363"/>
+    <rect id="Прямоугольник_379" data-name="Прямоугольник 379" width="6" height="6" rx="1" transform="translate(122 782)" fill="#d01363"/>
+    <rect id="Прямоугольник_378" data-name="Прямоугольник 378" width="6" height="6" rx="1" transform="translate(115 782)" fill="#d01363"/>
+    <rect id="Прямоугольник_380" data-name="Прямоугольник 380" width="6" height="6" rx="1" transform="translate(108 789)" fill="#d01363"/>
+    <rect id="Прямоугольник_382" data-name="Прямоугольник 382" width="6" height="6" rx="1" transform="translate(122 789)" fill="#d01363"/>
+    <rect id="Прямоугольник_381" data-name="Прямоугольник 381" width="6" height="6" rx="1" transform="translate(115 789)" fill="#d01363"/>
   </g>
 </svg>

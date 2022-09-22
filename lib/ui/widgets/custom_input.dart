@@ -46,37 +46,41 @@ class CustomInput extends StatelessWidget {
                             style: labelStyle ??
                                 AppTheme.regular(
                                   size: 12,
-                                  color: AppColors.text.withOpacity(0.64),
+                                  color: AppColors.textGray,
                                 ),
                           ),
                         )
-                      : Text(
-                          label!,
-                          style: labelStyle ??
-                              AppTheme.regular(
-                                size: 12,
-                                color: AppColors.text.withOpacity(0.64),
-                              ),
+                      : Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Text(
+                            label!,
+                            style: labelStyle ??
+                                AppTheme.regular(
+                                  size: 12,
+                                  color: AppColors.textGray,
+                                ),
+                          ),
                         ),
               const SizedBox(
-                height: 3,
+                height: 8,
               ),
             ],
           ),
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5.0),
-            color: color ?? color ?? const Color(0xFFF0F0F0),
+            borderRadius: BorderRadius.circular(22),
+            color: color ?? AppColors.white,
             border: Border.all(
-              width: 0.4,
+              width: 0.5,
               color: const Color(0xFF707070).withOpacity(0.36),
             ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.text.withOpacity(0.3),
+                color: AppColors.text.withOpacity(.16),
                 offset: const Offset(-3, 1),
                 blurRadius: 3,
-                spreadRadius: 1,
+                blurStyle: BlurStyle.inner,
+                spreadRadius: 3.5,
                 inset: true,
               ),
             ],
@@ -92,7 +96,7 @@ class CustomInput extends StatelessWidget {
             obscuringCharacter: '*',
             style: AppTheme.semi(
               size: 18,
-              color: AppColors.text.withOpacity(0.64),
+              color: AppColors.textGray,
             ),
             decoration: InputDecoration(
               filled: true,

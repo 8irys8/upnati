@@ -7,6 +7,11 @@ import 'package:upnati/ui/screens/business/shop_home_screen.dart';
 import 'package:upnati/ui/screens/login/business_select_screen.dart';
 import 'package:upnati/ui/screens/login/login_screen.dart';
 import 'package:upnati/ui/screens/login/register_screen.dart';
+import 'package:upnati/ui/screens/login/sms_code_screen.dart';
+import 'package:upnati/ui/screens/more_info_screen.dart';
+import 'package:upnati/ui/screens/onboard_screen.dart';
+import 'package:upnati/ui/screens/splash_screen.dart';
+import 'package:upnati/ui/screens/terms_screen.dart';
 import 'package:upnati/ui/screens/user/add_card_screen.dart';
 import 'package:upnati/ui/screens/user/buy_details_screen.dart';
 import 'package:upnati/ui/screens/user/category_screen.dart';
@@ -20,8 +25,10 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: LoginScreen, initial: true),
-    AutoRoute(page: RegisterScreen),
+    AutoRoute(
+      page: LoginScreen,
+    ),
+    AutoRoute(page: RegisterScreen, initial: true),
     AutoRoute(
       page: BusinessSelectScreen,
     ),
@@ -60,6 +67,17 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     ),
     AutoRoute(
       page: MarketPlaceScreen,
+    ),
+    AutoRoute(
+      page: OnboardScreen,
+    ),
+    AutoRoute(page: MoreInfoScreen),
+    AutoRoute(page: TermsScreen),
+    AutoRoute(
+      page: SplashScreen,
+    ),
+    AutoRoute(
+      page: SmsCodeScreen,
     )
   ],
 )

@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          color: AppColors.inputGray,
-          elevation: 3,
+          color: AppColors.white,
+          elevation: 0,
           iconTheme: IconThemeData(
             color: AppColors.text,
           ),
