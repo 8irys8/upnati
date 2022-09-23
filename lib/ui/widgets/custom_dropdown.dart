@@ -31,7 +31,7 @@ class CustomDropdown extends StatelessWidget {
                 label!,
                 style: AppTheme.regular(
                   size: 12,
-                  color: AppColors.text.withOpacity(0.64),
+                  color: AppColors.textGray,
                 ),
               ),
               const SizedBox(
@@ -41,8 +41,8 @@ class CustomDropdown extends StatelessWidget {
           ),
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5.0),
-            color: color ?? const Color(0xFFF0F0F0),
+            borderRadius: BorderRadius.circular(22),
+            color: color ?? AppColors.white,
             border: Border.all(
               width: 0.5,
               color: const Color(0xFF707070).withOpacity(0.36),
@@ -59,13 +59,32 @@ class CustomDropdown extends StatelessWidget {
           ),
           child: FormBuilderDropdown(
             name: key.toString(),
-            style: AppTheme.semi(
-              size: 18,
-              color: AppColors.text.withOpacity(0.64),
+            // icon: const Icon(Icons.check_rounded, color: AppColors.text),
+            icon: const SizedBox(),
+            // iconSize: 18,
+            // alignment: Alignment.centerLeft,
+            style: AppTheme.regular(
+              size: 11,
+              color: AppColors.text,
             ),
+
             decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.only(top: 12, bottom: 12, right: 12),
               filled: true,
               hintText: hint,
+              hintTextDirection: TextDirection.ltr,
+              suffixIcon: const Icon(
+                Icons.check_rounded,
+                color: AppColors.text,
+                size: 18,
+              ),
+
+              suffixIconConstraints: const BoxConstraints(
+                minWidth: 32,
+                minHeight: 32,
+              ),
+              // isDense: true,
               hintStyle: AppTheme.regular(
                 size: 11,
                 color: AppColors.text,

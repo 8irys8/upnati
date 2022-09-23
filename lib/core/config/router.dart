@@ -10,6 +10,7 @@ import 'package:upnati/ui/screens/login/register_screen.dart';
 import 'package:upnati/ui/screens/login/sms_code_screen.dart';
 import 'package:upnati/ui/screens/more_info_screen.dart';
 import 'package:upnati/ui/screens/onboard_screen.dart';
+import 'package:upnati/ui/screens/product_main_screen.dart';
 import 'package:upnati/ui/screens/splash_screen.dart';
 import 'package:upnati/ui/screens/terms_screen.dart';
 import 'package:upnati/ui/screens/user/add_card_screen.dart';
@@ -28,7 +29,7 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     AutoRoute(
       page: LoginScreen,
     ),
-    AutoRoute(page: RegisterScreen, initial: true),
+    AutoRoute(page: RegisterScreen),
     AutoRoute(
       page: BusinessSelectScreen,
     ),
@@ -55,9 +56,7 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     AutoRoute(
       page: AddCardScreen,
     ),
-    AutoRoute(
-      page: UserMainScreen,
-    ),
+    AutoRoute(page: UserMainScreen, initial: true),
     AutoRoute(page: PurchaseHistoryScreen),
     AutoRoute(
       page: MessageScreen,
@@ -78,7 +77,8 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     ),
     AutoRoute(
       page: SmsCodeScreen,
-    )
+    ),
+    AutoRoute(page: ProductMainScreen)
   ],
 )
 class $AppRouter {}

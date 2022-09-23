@@ -1,335 +1,172 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
-import 'package:upnati/ui/widgets/custom_input.dart';
+import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 
 class UserMainScreen extends StatefulWidget {
   const UserMainScreen({Key? key}) : super(key: key);
 
   @override
-  State<UserMainScreen> createState() => _UserMainScreenState();
+  State<UserMainScreen> createState() => _ProductMainScreenState();
 }
 
-class _UserMainScreenState extends State<UserMainScreen> {
-  final _nameController = TextEditingController();
-  final _addressController = TextEditingController();
-  final _cardNumberController = TextEditingController();
-  final _postalCodeController = TextEditingController();
+class _ProductMainScreenState extends State<UserMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text(
-              LocaleKeys.user_info_my_account.tr(),
-              style: AppTheme.bold(size: 18),
-            ),
-            leading: Column(
-              children: [
-                Transform.translate(
-                    offset: const Offset(-8, 0),
-                    child: Text('1',
-                        style: AppTheme.bold(size: 10, color: AppColors.roze))),
-                SvgPicture.asset(
-                  Svgs.icRing,
-                  height: 18,
-                  fit: BoxFit.scaleDown,
-                ),
-              ],
-            )),
-        backgroundColor: AppColors.rozeLight,
-        body: SingleChildScrollView(
-          child: SafeArea(
+      bottomNavigationBar: CustomNavigatorBar(
+        initialIndex: 0,
+      ),
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height,
+            // height: 320,
+            alignment: Alignment.topCenter,
+            color: AppColors.darkBlueLight,
+            child: Transform.translate(
+              offset: const Offset(0, 90),
               child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 39,
-              ),
-              Center(
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(300),
-                    child: Image.asset(
-                      Images.shelfImg,
-                      fit: BoxFit.fill,
-                      height: 190,
-                    )),
-              ),
-              const SizedBox(
-                height: 17,
-              ),
-              Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('אדל  מזרחי',
-                        style: AppTheme.bold(
-                          size: 18,
-                        )),
-                    const SizedBox(
-                      width: 5,
+                children: [
+                  SizedBox(
+                    width: 120,
+                    height: 120,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(150),
+                      child: Image.asset(
+                        Images.cat,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    SvgPicture.asset(
-                      Svgs.icEditGray,
-                      height: 12,
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 37),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      Svgs.icRedHeart,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(LocaleKeys.user_info_details_liked.tr(),
-                        style: AppTheme.regular(
-                          size: 14,
-                        )),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 11,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.butterfly),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.panda),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.cubik),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.chico),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.icecream),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.kelley),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.minion),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 12, left: 12),
-                        child: _ImageTile(image: Images.shelfImg),
-                      ),
-                    ],
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 37),
-                child: Text(LocaleKeys.user_info_details_purchased.tr(),
-                    style: AppTheme.regular(
-                      size: 14,
-                    )),
-              ),
-              const SizedBox(
-                height: 11,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.butterfly),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.panda),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.cubik),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.chico),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.icecream),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.kelley),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: 12,
-                        ),
-                        child: _ImageTile(image: Images.minion),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 12, left: 12),
-                        child: _ImageTile(image: Images.shelfImg),
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
+                  Text(
+                    'אדל  מזרחי',
+                    style: AppTheme.bold(size: 18, color: AppColors.white),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 29,
+            ),
+          ),
+          Positioned(
+            top: 285,
+            left: 0,
+            right: 0,
+            // bottom: 0,
+            child: Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                color: AppColors.white,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 37),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      LocaleKeys.user_info_shipping_address.tr(),
-                      style: AppTheme.regular(
-                        size: 14,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    CustomInput(
-                      controller: _nameController,
-                      hint: LocaleKeys.user_info_name_hint.tr(),
-                      hintStyle: AppTheme.regular(
-                        size: 14,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    CustomInput(
-                      controller: _addressController,
-                      hint: LocaleKeys.user_info_address_hint.tr(),
-                      hintStyle: AppTheme.regular(
-                        size: 14,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    CustomInput(
-                      controller: _postalCodeController,
-                      hint: LocaleKeys.user_info_postal_code_hint.tr(),
-                      hintStyle: AppTheme.regular(
-                        size: 14,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 27,
-                    ),
-                    Row(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 43, vertical: 11),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          LocaleKeys.user_info_credit_card.tr(),
-                          style: AppTheme.regular(
-                            size: 14,
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 9),
+                            decoration: BoxDecoration(
+                                color: AppColors.white,
+                                borderRadius: BorderRadius.circular(22),
+                                border: Border.all(color: AppColors.roze)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Svgs.icProfileRoze,
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Text(LocaleKeys.product_info_personal_info.tr(),
+                                    style: AppTheme.regular(
+                                        size: 11, color: AppColors.roze)),
+                              ],
+                            ),
                           ),
                         ),
-                        Text(LocaleKeys.user_info_edited.tr(),
-                            style: AppTheme.regular(
-                              size: 14,
-                            ).copyWith(decoration: TextDecoration.underline))
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 9),
+                            decoration: BoxDecoration(
+                                color: AppColors.white,
+                                borderRadius: BorderRadius.circular(22),
+                                border: Border.all(color: AppColors.roze)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Svgs.icBagRoze,
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Text(LocaleKeys.product_info_my_products.tr(),
+                                    style: AppTheme.regular(
+                                        size: 11, color: AppColors.roze)),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                                color: AppColors.roze,
+                                borderRadius: BorderRadius.circular(22),
+                                border: Border.all(color: AppColors.roze),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.text.withOpacity(0.16),
+                                    blurRadius: 6,
+                                    offset: const Offset(0, 3),
+                                  )
+                                ]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Svgs.icHeartWhite,
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Text(LocaleKeys.product_info_my_liked.tr(),
+                                    style: AppTheme.regular(
+                                        size: 11, color: AppColors.white)),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    CustomInput(
-                        controller: _cardNumberController,
-                        hint: '**** **** **** 1234',
-                        hintStyle: AppTheme.regular(size: 14)),
-                    const SizedBox(
-                      height: 60,
-                    )
-                  ],
-                ),
-              )
-            ],
-          )),
-        ));
-  }
-}
-
-class _ImageTile extends StatelessWidget {
-  final String image;
-  const _ImageTile({Key? key, required this.image}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(
-            width: 2,
-            color: AppColors.white,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        child: ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Image.asset(
-              Images.butterfly,
-              fit: BoxFit.cover,
-              height: 94,
-              // width: 110,
-            )));
+        ],
+      ),
+    );
   }
 }

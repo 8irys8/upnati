@@ -13,6 +13,7 @@ class CustomInput extends StatelessWidget {
   final TextStyle? labelStyle;
   final bool? leftAlignment;
   final TextStyle? hintStyle;
+  final double? borderRadius;
   const CustomInput({
     Key? key,
     this.label,
@@ -24,6 +25,7 @@ class CustomInput extends StatelessWidget {
     this.labelStyle,
     this.leftAlignment,
     this.hintStyle,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -68,7 +70,7 @@ class CustomInput extends StatelessWidget {
           ),
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(borderRadius ?? 22),
             color: color ?? AppColors.white,
             border: Border.all(
               width: 0.5,

@@ -18,7 +18,9 @@ class _MoreInfoScreenState extends State<MoreInfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
-      bottomNavigationBar: const CustomNavigatorBar(),
+      bottomNavigationBar: const CustomNavigatorBar(
+        initialIndex: 2,
+      ),
       body: SingleChildScrollView(
           child: SafeArea(
         child: Padding(

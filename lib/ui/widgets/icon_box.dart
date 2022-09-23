@@ -11,11 +11,13 @@ class IconBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
         border: Border.all(
           width: 1,
-          color: color ?? AppColors.text.withOpacity(.14),
+          color: color ?? AppColors.gray.withOpacity(.48),
         ),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
         child: Column(
@@ -27,7 +29,7 @@ class IconBox extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppTheme.regular(
                 size: 7,
-                color: color ?? AppColors.text.withOpacity(.14),
+                color: color ?? AppColors.gray.withOpacity(.48),
               ),
             ),
           ],

@@ -21,25 +21,7 @@ class CustomCheckbox extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Row(children: [
-        Container(
-          height: 13,
-          width: 13,
-          decoration: BoxDecoration(
-              color: AppColors.white,
-              border: Border.all(color: AppColors.gray),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(.16),
-                  offset: const Offset(0, 3),
-                  blurRadius: 10,
-                  blurStyle: BlurStyle.inner,
-                  spreadRadius: 3.5,
-                  inset: true,
-                ),
-              ]),
-          child: value ? const Icon(Icons.check_outlined) : null,
-        ),
-        // Image.asset(value ? Images.icChecked : Images.icUnchecked),
+        Image.asset(value ? Images.icChecked : Images.icUnchecked),
         const SizedBox(width: 4),
         Text(
           label,

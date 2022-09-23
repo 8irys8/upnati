@@ -16,6 +16,7 @@ class AppColors {
   static const Color darkBlueLight = Color(0xff006197);
   static const Color purple = Color(0xff812D83);
   static const Color roze = Color(0xffD01363);
+  static const Color rozeLightbtn = Color(0xffFC5871);
   static const Color rozeBright = Color(0xffDF2876);
   static const Color yellow = Color(0xffF9C146);
   static const Color lightOrange = Color(0xffF77E0B);

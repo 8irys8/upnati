@@ -183,6 +183,9 @@ abstract class  LocaleKeys {
   static const product_info_digital_category = 'product_info.digital_category';
   static const product_info_children_category = 'product_info.children_category';
   static const product_info_animal_category = 'product_info.animal_category';
+  static const product_info_my_products = 'product_info.my_products';
+  static const product_info_my_liked = 'product_info.my_liked';
+  static const product_info_personal_info = 'product_info.personal_info';
   static const product_info = 'product_info';
 
 }

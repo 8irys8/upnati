@@ -12,8 +12,8 @@ class SearchField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(0, 7, 8, 6),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(3),
-        color: AppColors.inputGray,
+        borderRadius: BorderRadius.circular(12),
+        color: AppColors.white,
         border: Border.all(
           width: .1,
           color: AppColors.gray,
@@ -21,7 +21,7 @@ class SearchField extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SvgPicture.asset(Svgs.icSearch),
+          SvgPicture.asset(Svgs.icSearch, color: AppColors.textGray),
           const SizedBox(
             width: 10,
           ),
@@ -29,8 +29,8 @@ class SearchField extends StatelessWidget {
             LocaleKeys.business_register_searchInTheStore.tr(),
             textAlign: TextAlign.center,
             style: AppTheme.regular(
-              size: 7,
-              color: AppColors.text.withOpacity(.14),
+              size: 12,
+              color: AppColors.text.withOpacity(.38),
             ),
           ),
         ],

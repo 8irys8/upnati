@@ -63,152 +63,143 @@ class LoginScreen extends HookWidget with AutoRouteWrapper {
                 ),
               ),
             ),
-            Positioned(
-                top: 86,
-                left: 0,
-                right: 0,
-                child: Column(
+            Column(
+              children: [
+                const SizedBox(height: 86),
+                Image.asset(Images.upnatiStoreLogo),
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  '!ברוך הבא\nטוב שבאת להרוויח כסף',
+                  textAlign: TextAlign.center,
+                  style: AppTheme.regular(size: 27, color: AppColors.white),
+                ),
+                const SizedBox(
+                  height: 72,
+                ),
+                Stack(
+                  clipBehavior: Clip.none,
                   children: [
-                    Image.asset(Images.upnatiStoreLogo),
-                    const SizedBox(
-                      height: 30,
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 21),
+                      decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(13),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.63),
+                                blurRadius: 6,
+                                offset: const Offset(0, 3))
+                          ]),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 38,
+                          ),
+                          Text(
+                            'כניסה',
+                            style: AppTheme.regular(
+                                size: 35, color: AppColors.textGray),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: CustomInput(
+                                label: 'מספר נייד',
+                                controller: _phoneController),
+                          ),
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 46)
+                                .copyWith(bottom: 113),
+                            child: ValueListenableBuilder<bool>(
+                              valueListenable: termsChecked,
+                              builder: (context, value, child) {
+                                return CustomCheckbox(
+                                  label: LocaleKeys.register_confirm_terms.tr(),
+                                  underlineText: LocaleKeys
+                                      .register_confirm_terms_link
+                                      .tr(),
+                                  value: value,
+                                  onTap: () {
+                                    termsChecked.value = !termsChecked.value;
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      '!ברוך הבא\nטוב שבאת להרוויח כסף',
-                      textAlign: TextAlign.center,
-                      style: AppTheme.regular(size: 27, color: AppColors.white),
-                    ),
-                    const SizedBox(
-                      height: 72,
-                    ),
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 21),
+                    Positioned(
+                        top: -45,
+                        left: MediaQuery.of(context).size.width / 2 - 42,
+                        child: Container(
+                          width: 85,
+                          height: 85,
                           decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(13),
+                            color: AppColors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(.16),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 3))
+                            ],
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.asset(
+                            Images.upnatiLogoNew,
+                            // height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Positioned(
+                        bottom: -24,
+                        left: MediaQuery.of(context).size.width / 2 - 86,
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () =>
+                              context.router.push(const SmsCodeScreen()),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 66, vertical: 18),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: AppColors.darkBlueLight,
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.black.withOpacity(0.63),
-                                    blurRadius: 6,
-                                    offset: const Offset(0, 3))
-                              ]),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 38,
-                              ),
-                              Text(
-                                'כניסה',
-                                style: AppTheme.regular(
-                                    size: 35, color: AppColors.textGray),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 30),
-                                child: CustomInput(
-                                    label: 'מספר נייד',
-                                    controller: _phoneController),
-                              ),
-                              const SizedBox(
-                                height: 6,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 46)
-                                        .copyWith(bottom: 113),
-                                child: ValueListenableBuilder<bool>(
-                                  valueListenable: termsChecked,
-                                  builder: (context, value, child) {
-                                    return CustomCheckbox(
-                                      label: LocaleKeys.register_confirm_terms
-                                          .tr(),
-                                      underlineText: LocaleKeys
-                                          .register_confirm_terms_link
-                                          .tr(),
-                                      value: value,
-                                      onTap: () {
-                                        termsChecked.value =
-                                            !termsChecked.value;
-                                      },
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
+                                    color: Colors.black.withOpacity(.16),
+                                    blurRadius: 10,
+                                    offset: const Offset(0, 5))
+                              ],
+                            ),
+                            child: Text(
+                              'כניסה',
+                              style: AppTheme.bold(
+                                  size: 16, color: AppColors.white),
+                            ),
                           ),
-                        ),
-                        Positioned(
-                            top: -45,
-                            left: MediaQuery.of(context).size.width / 2 - 42,
-                            child: Container(
-                              width: 85,
-                              height: 85,
-                              decoration: BoxDecoration(
-                                color: AppColors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(.16),
-                                      blurRadius: 6,
-                                      offset: const Offset(0, 3))
-                                ],
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.asset(
-                                Images.upnatiLogoNew,
-                                // height: 150,
-                                fit: BoxFit.cover,
-                              ),
-                            )),
-                        Positioned(
-                            bottom: -24,
-                            left: MediaQuery.of(context).size.width / 2 - 86,
-                            child: GestureDetector(
-                              // behavior: HitTestBehavior.translucent,
-                              onTap: () =>
-                                  context.router.push(const SmsCodeScreen()),
-                              child: AbsorbPointer(
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 66, vertical: 18),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(25),
-                                    color: AppColors.darkBlueLight,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(.16),
-                                          blurRadius: 10,
-                                          offset: const Offset(0, 5))
-                                    ],
-                                  ),
-                                  child: Text(
-                                    'כניסה',
-                                    style: AppTheme.bold(
-                                        size: 16, color: AppColors.white),
-                                  ),
-                                ),
-                              ),
-                            ))
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 60,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(Images.googleImg),
-                        const SizedBox(
-                          width: 41,
-                        ),
-                        Image.asset(Images.fbImg),
-                      ],
-                    )
+                        ))
                   ],
-                )),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(Images.googleImg),
+                    const SizedBox(
+                      width: 41,
+                    ),
+                    Image.asset(Images.fbImg),
+                  ],
+                )
+              ],
+            ),
           ],
         ),
       ),

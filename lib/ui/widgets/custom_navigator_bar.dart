@@ -7,7 +7,8 @@ import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
 class CustomNavigatorBar extends StatefulWidget {
-  const CustomNavigatorBar({Key? key}) : super(key: key);
+  final int? initialIndex;
+  const CustomNavigatorBar({Key? key, this.initialIndex = 0}) : super(key: key);
 
   @override
   State<CustomNavigatorBar> createState() => _CustomNavigatorBarState();
@@ -15,6 +16,12 @@ class CustomNavigatorBar extends StatefulWidget {
 
 class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialIndex ?? 0;
+  }
 
   @override
   Widget build(BuildContext context) {

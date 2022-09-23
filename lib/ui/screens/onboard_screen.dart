@@ -128,7 +128,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomNavigatorBar(),
+      bottomNavigationBar: const CustomNavigatorBar(
+        initialIndex: 0,
+      ),
       body: SingleChildScrollView(
         child: SafeArea(
             child: Column(

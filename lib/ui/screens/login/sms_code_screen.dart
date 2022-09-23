@@ -61,137 +61,135 @@ class SmsCodeScreen extends HookWidget with AutoRouteWrapper {
                 ),
               ),
             ),
-            Positioned(
-                top: 86,
-                left: 0,
-                right: 0,
-                child: Column(
+            Column(
+              children: [
+                const SizedBox(
+                  height: 86,
+                ),
+                Image.asset(Images.upnatiStoreLogo),
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  '!ברוך הבא\nטוב שבאת להרוויח כסף',
+                  textAlign: TextAlign.center,
+                  style: AppTheme.regular(size: 27, color: AppColors.white),
+                ),
+                const SizedBox(
+                  height: 72,
+                ),
+                Stack(
+                  clipBehavior: Clip.none,
                   children: [
-                    Image.asset(Images.upnatiStoreLogo),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      '!ברוך הבא\nטוב שבאת להרוויח כסף',
-                      textAlign: TextAlign.center,
-                      style: AppTheme.regular(size: 27, color: AppColors.white),
-                    ),
-                    const SizedBox(
-                      height: 72,
-                    ),
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(13),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(13),
+                      ),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 38,
                           ),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 38,
-                              ),
-                              Text(
-                                'קוד סמס',
-                                style: AppTheme.regular(
-                                    size: 35, color: AppColors.textGray),
-                              ),
-                              Text(
-                                'הכנס קוד',
-                                style: AppTheme.regular(
-                                    size: 10, color: AppColors.textGray),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 53),
-                                child: PinCodeTextField(
-                                  appContext: context,
-                                  controller: _codeController,
-                                  enableActiveFill: true,
-                                  cursorColor: AppColors.darkBlueLight,
-                                  keyboardType: TextInputType.number,
-                                  textStyle: AppTheme.bold(
-                                      size: 20, color: AppColors.purple),
-                                  length: 6,
-                                  onChanged: (v) {},
-                                  pinTheme: PinTheme(
-                                    shape: PinCodeFieldShape.box,
-                                    activeColor: AppColors.textGray,
-                                    selectedFillColor: AppColors.grayInput,
-                                    inactiveColor: AppColors.grayInput,
-                                    inactiveFillColor: AppColors.grayInput,
-                                    disabledColor: AppColors.grayInput,
-                                    selectedColor: AppColors.darkBlueLight,
-                                    borderRadius: BorderRadius.circular(6),
-                                    fieldHeight: 36,
-                                    fieldWidth: 40,
-                                    activeFillColor: AppColors.grayInput,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 39,
-                              ),
-                              GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  width: double.infinity,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 37),
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 20),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(25),
-                                    color: AppColors.darkBlueLight,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(.16),
-                                          blurRadius: 10,
-                                          offset: const Offset(0, 5))
-                                    ],
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'אישור',
-                                      style: AppTheme.bold(
-                                          size: 16, color: AppColors.white),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
+                          Text(
+                            'קוד סמס',
+                            style: AppTheme.regular(
+                                size: 35, color: AppColors.textGray),
                           ),
-                        ),
-                        Positioned(
-                            top: -45,
-                            left: MediaQuery.of(context).size.width / 2 - 42,
+                          Text(
+                            'הכנס קוד',
+                            style: AppTheme.regular(
+                                size: 10, color: AppColors.textGray),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 53),
+                            child: PinCodeTextField(
+                              appContext: context,
+                              controller: _codeController,
+                              enableActiveFill: true,
+                              cursorColor: AppColors.darkBlueLight,
+                              keyboardType: TextInputType.number,
+                              textStyle: AppTheme.bold(
+                                  size: 20, color: AppColors.purple),
+                              length: 6,
+                              onChanged: (v) {},
+                              pinTheme: PinTheme(
+                                shape: PinCodeFieldShape.box,
+                                activeColor: AppColors.textGray,
+                                selectedFillColor: AppColors.grayInput,
+                                inactiveColor: AppColors.grayInput,
+                                inactiveFillColor: AppColors.grayInput,
+                                disabledColor: AppColors.grayInput,
+                                selectedColor: AppColors.darkBlueLight,
+                                borderRadius: BorderRadius.circular(6),
+                                fieldHeight: 36,
+                                fieldWidth: 40,
+                                activeFillColor: AppColors.grayInput,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 39,
+                          ),
+                          GestureDetector(
+                            onTap: () =>
+                                context.router.replace(const RegisterScreen()),
                             child: Container(
-                              width: 85,
-                              height: 85,
+                              width: double.infinity,
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 37),
+                              padding: const EdgeInsets.symmetric(vertical: 20),
                               decoration: BoxDecoration(
-                                color: AppColors.white,
+                                borderRadius: BorderRadius.circular(25),
+                                color: AppColors.darkBlueLight,
                                 boxShadow: [
                                   BoxShadow(
                                       color: Colors.black.withOpacity(.16),
-                                      blurRadius: 6,
-                                      offset: const Offset(0, 3))
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 5))
                                 ],
-                                shape: BoxShape.circle,
                               ),
-                              child: Image.asset(
-                                Images.upnatiLogoNew,
-                                // height: 150,
-                                fit: BoxFit.cover,
+                              child: Center(
+                                child: Text(
+                                  'אישור',
+                                  style: AppTheme.bold(
+                                      size: 16, color: AppColors.white),
+                                ),
                               ),
-                            )),
-                      ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
+                    Positioned(
+                        top: -45,
+                        left: MediaQuery.of(context).size.width / 2 - 42,
+                        child: Container(
+                          width: 85,
+                          height: 85,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(.16),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 3))
+                            ],
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.asset(
+                            Images.upnatiLogoNew,
+                            // height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                        )),
                   ],
-                )),
+                ),
+              ],
+            ),
           ],
         ),
       ),

@@ -141,7 +141,7 @@ class CodegenLoader extends AssetLoader{
   },
   "basket_info": {
     "my_basket": "הסל שלי",
-    "nis": "ש\"ח",
+    "nis": "{} ש\"ח",
     "will_arrive_in": "יגיע ב- ",
     "acquired": "נרכש",
     "for_payment": "לתשלום",
@@ -209,7 +209,10 @@ class CodegenLoader extends AssetLoader{
     "beauty_category": "טיפוח ויופי",
     "digital_category": "קורסים\nדיגטלים",
     "children_category": "ילדים",
-    "animal_category": "חיות"
+    "animal_category": "חיות",
+    "my_products": "פריטים שרכשתי",
+    "my_liked": "פריטים שאהבתי",
+    "personal_info": "פרטים אישיים"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"he": he};

@@ -24,7 +24,7 @@ class MainContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: height ?? 170,
+        height: height,
         width: width,
         decoration: BoxDecoration(
             color: color ?? AppColors.white,
