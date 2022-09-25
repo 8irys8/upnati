@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
@@ -11,9 +12,10 @@ class AddEmptyProductContainer extends StatelessWidget {
   final String? title;
   final String? desc;
   final String? price;
+  final String? type;
 
   const AddEmptyProductContainer(
-      {Key? key, this.image, this.title, this.desc, this.price})
+      {Key? key, this.image, this.title, this.desc, this.price, this.type})
       : super(key: key);
 
   @override
@@ -26,23 +28,63 @@ class AddEmptyProductContainer extends StatelessWidget {
               borderRadius: 10,
               child: Column(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 14, right: 20, left: 20),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: image != null
-                          ? Image.asset(
-                              image!,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            )
-                          : Container(
-                              height: 100,
-                              color: AppColors.grayInput,
-                              child: Image.asset(Images.bagImage),
+                  type == null
+                      ? Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.only(
+                              top: 14, right: 20, left: 20),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: image != null
+                                ? Image.asset(
+                                    image!,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Container(
+                                    height: 100,
+                                    color: AppColors.grayInput,
+                                    child: Image.asset(Images.bagImage),
+                                  ),
+                          ),
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(7.0),
+                              child: SvgPicture.asset(
+                                type == '1'
+                                    ? Svgs.icHeeartRoze
+                                    : Svgs.icBagRoze,
+                                color: AppColors.rozeLightbtn,
+                                fit: BoxFit.scaleDown,
+                                height: 12,
+                              ),
                             ),
-                    ),
-                  ),
+                            Expanded(
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                    top: 14, right: 0, left: 20),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: image != null
+                                      ? Image.asset(
+                                          image!,
+                                          height: 100,
+                                          fit: BoxFit.cover,
+                                        )
+                                      : Container(
+                                          height: 100,
+                                          color: AppColors.grayInput,
+                                          child: Image.asset(Images.bagImage),
+                                        ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                   const SizedBox(
                     height: 8,
                   ),

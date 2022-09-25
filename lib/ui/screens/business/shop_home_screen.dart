@@ -22,8 +22,8 @@ class _ShopHomeScreenState extends State<ShopHomeScreen> {
     return Scaffold(
       appBar: AppBar(),
       bottomNavigationBar: CustomNavigatorBar(
-        initialIndex: 0,
-      ),
+          // initialIndex: 0,
+          ),
       body: SingleChildScrollView(
         child: Column(
           children: [

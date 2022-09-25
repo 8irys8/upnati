@@ -82,7 +82,9 @@ class LoginScreen extends HookWidget with AutoRouteWrapper {
                   clipBehavior: Clip.none,
                   children: [
                     Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 21),
+                      // padding: const EdgeInsets.only(top: 24),
+                      margin: const EdgeInsets.symmetric(horizontal: 21)
+                          .copyWith(top: 45, bottom: 24),
                       decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(13),
@@ -122,6 +124,8 @@ class LoginScreen extends HookWidget with AutoRouteWrapper {
                                   underlineText: LocaleKeys
                                       .register_confirm_terms_link
                                       .tr(),
+                                  onUnderlineTextTap: () =>
+                                      context.router.push(const TermsScreen()),
                                   value: value,
                                   onTap: () {
                                     termsChecked.value = !termsChecked.value;
@@ -134,7 +138,7 @@ class LoginScreen extends HookWidget with AutoRouteWrapper {
                       ),
                     ),
                     Positioned(
-                        top: -45,
+                        top: 0,
                         left: MediaQuery.of(context).size.width / 2 - 42,
                         child: Container(
                           width: 85,
@@ -156,7 +160,7 @@ class LoginScreen extends HookWidget with AutoRouteWrapper {
                           ),
                         )),
                     Positioned(
-                        bottom: -24,
+                        bottom: 0,
                         left: MediaQuery.of(context).size.width / 2 - 86,
                         child: GestureDetector(
                           behavior: HitTestBehavior.opaque,

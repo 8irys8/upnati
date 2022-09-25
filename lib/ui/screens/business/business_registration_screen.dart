@@ -22,6 +22,7 @@ class BusinessRegistrationScreen extends StatefulWidget {
 
 class _BusinessRegistrationScreenState
     extends State<BusinessRegistrationScreen> {
+  bool finalStep = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,8 +149,15 @@ class _BusinessRegistrationScreenState
                             ),
                             Expanded(
                               child: GestureDetector(
-                                  onTap: () => context.router
-                                      .push(const ProduceDetailScreen()),
+                                  onTap: () async {
+                                    var result = await context.router
+                                        .push(const ProduceDetailScreen());
+                                    if (result == true) {
+                                      setState(() {
+                                        finalStep = true;
+                                      });
+                                    }
+                                  },
                                   child: const AddProductContainer()),
                             ),
                           ],
@@ -177,14 +185,17 @@ class _BusinessRegistrationScreenState
               ),
             ),
           ),
-          const CheckedStepsRadio(
+          CheckedStepsRadio(
             secondStep: true,
+            finalStep: finalStep,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 37.0)
                 .copyWith(top: 11, bottom: 24),
             child: CustomButton(
-              onPressed: () => context.router.push(const ShopHomeScreen()),
+              onPressed: () {
+                context.router.push(const ShopHomeScreen());
+              },
               title: LocaleKeys.market_screen_save_btn.tr(),
               color: AppColors.darkBlue,
             ),

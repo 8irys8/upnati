@@ -5,6 +5,7 @@ import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
+import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({Key? key}) : super(key: key);
@@ -17,142 +18,100 @@ class _AddCardScreenState extends State<AddCardScreen> {
   final _expDateController = TextEditingController();
   final _expDateSecondController = TextEditingController();
   final _cvvController = TextEditingController();
-  final _cardNumberController = TextEditingController();
+  final _cardHolderController = TextEditingController();
+  final _cardIdController = TextEditingController();
+  final _ticketNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-            LocaleKeys.user_info_my_account.tr(),
-            style: AppTheme.bold(size: 18),
-          ),
-          leading: Column(
-            children: [
-              Transform.translate(
-                  offset: const Offset(-8, 0),
-                  child: Text('1',
-                      style: AppTheme.bold(size: 10, color: AppColors.roze))),
-              SvgPicture.asset(
-                Svgs.icRing,
-                height: 18,
-                fit: BoxFit.scaleDown,
-              ),
-            ],
-          )),
+      appBar: AppBar(),
+      bottomNavigationBar: const CustomNavigatorBar(),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 37),
-          child: SafeArea(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 37),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 29,
-                ),
-                Text(LocaleKeys.user_info_credit_card_settings.tr(),
-                    style: AppTheme.bold(
-                      size: 18,
-                    )),
-                const SizedBox(
-                  height: 18,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 37),
-                  child: Column(
-                    children: [
-                      Container(
-                          height: 176,
-                          width: double.infinity,
+                Text(LocaleKeys.buy_details_payment_methods.tr(),
+                    style: AppTheme.semi(size: 44, color: AppColors.textGray)),
+                const SizedBox(height: 44),
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 21,
+                          height: 19,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [
-                                  const Color(0xff808285).withOpacity(0.55),
-                                  const Color(0xffBEC0C2)
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 3, vertical: 26),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  color: AppColors.white,
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  child: Center(
-                                      child: Text('1158 ***************',
-                                          style: AppTheme.regular(size: 14))),
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                Container(
-                                  color: AppColors.white,
-                                  height: 10,
-                                  constraints: BoxConstraints(
-                                      maxWidth:
-                                          MediaQuery.of(context).size.width /
-                                              2),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  color: AppColors.white,
-                                  height: 10,
-                                  constraints: BoxConstraints(
-                                      maxWidth:
-                                          MediaQuery.of(context).size.width /
-                                              2),
-                                )
-                              ],
+                            color: AppColors.white,
+                            border: Border.all(
+                              color: AppColors.gray,
                             ),
-                          )),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              SvgPicture.asset(Svgs.icPlusCircle),
-                              const SizedBox(
-                                width: 13,
-                              ),
-                              Text(LocaleKeys.user_info_add_card.tr(),
-                                  style: AppTheme.regular(
-                                    size: 14,
-                                  ).copyWith(
-                                      decoration: TextDecoration.underline)),
-                            ],
                           ),
-                          Text(LocaleKeys.user_info_edited.tr(),
-                              style: AppTheme.regular(
-                                size: 14,
-                              ).copyWith(decoration: TextDecoration.underline)),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(LocaleKeys.user_info_credit_card.tr(),
+                            style: AppTheme.semiLight(
+                                size: 10, color: AppColors.textGray)),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 50,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 21,
+                          height: 19,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            border: Border.all(
+                              color: AppColors.gray,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text('paypal',
+                            style: AppTheme.semiLight(
+                                size: 10, color: AppColors.textGray)),
+                      ],
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  height: 36,
+                  height: 34,
                 ),
-                Text(LocaleKeys.user_info_enter_card_number.tr(),
-                    style: AppTheme.regular(
-                      size: 14,
-                    ).copyWith(decoration: TextDecoration.underline)),
-                const SizedBox(
-                  height: 7,
+                CustomInput(
+                  controller: _cardHolderController,
+                  label: LocaleKeys.buy_details_cardholder_name.tr(),
+                  labelStyle:
+                      AppTheme.semiLight(size: 10, color: AppColors.textGray),
                 ),
-                CustomInput(controller: _cardNumberController),
                 const SizedBox(
-                  height: 17,
+                  height: 14,
+                ),
+                CustomInput(
+                  controller: _cardIdController,
+                  label: LocaleKeys.buy_details_id_cardholder.tr(),
+                  labelStyle:
+                      AppTheme.semiLight(size: 10, color: AppColors.textGray),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomInput(
+                  controller: _ticketNumberController,
+                  label: LocaleKeys.buy_details_ticket_number.tr(),
+                  labelStyle:
+                      AppTheme.semiLight(size: 10, color: AppColors.textGray),
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,9 +123,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                           child: CustomInput(
                               label:
                                   LocaleKeys.buy_details_expiration_date.tr(),
-                              labelStyle: AppTheme.semi(
-                                  size: 10,
-                                  color: Colors.black.withOpacity(0.64)),
+                              labelStyle: AppTheme.semiLight(
+                                  size: 10, color: AppColors.textGray),
                               controller: _expDateController),
                         ),
                         Padding(
@@ -174,9 +132,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                           child: Transform.translate(
                             offset: const Offset(0, 5),
                             child: Text('/',
-                                style: AppTheme.semi(
-                                    size: 10,
-                                    color: Colors.black.withOpacity(0.64))),
+                                style: AppTheme.semiLight(
+                                    size: 10, color: AppColors.textGray)),
                           ),
                         ),
                         SizedBox(
@@ -184,8 +141,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                           child: CustomInput(
                               label: '',
                               labelStyle: AppTheme.semi(
-                                  size: 10,
-                                  color: Colors.black.withOpacity(0.64)),
+                                  size: 10, color: AppColors.textGray),
                               controller: _expDateSecondController),
                         ),
                       ],
@@ -204,12 +160,146 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 66,
+                  height: 100,
                 ),
                 CustomButton(
-                  title: LocaleKeys.user_info_save_btn.tr(),
-                  onPressed: () => {},
-                  color: AppColors.darkBlue,
+                  title: LocaleKeys.basket_info_for_payment.tr(),
+                  onPressed: () => showDialog(
+                      context: context,
+                      barrierColor: Colors.black.withOpacity(0.76),
+                      builder: (context) => AlertDialog(
+                            contentPadding: EdgeInsets.zero,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(35)),
+                            scrollable: true,
+                            content: Builder(builder: (context) {
+                              return SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                child: Column(
+                                  // crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () => Navigator.pop(context),
+                                      child: const Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 16.0, right: 12),
+                                        child: Align(
+                                            alignment: Alignment.topRight,
+                                            child: Icon(
+                                              Icons.close_outlined,
+                                              color: Colors.black,
+                                              size: 30,
+                                            )),
+                                      ),
+                                    ),
+                                    Text(
+                                        LocaleKeys.buy_details_payment_done
+                                            .tr(),
+                                        style: AppTheme.semiLight(
+                                            size: 12,
+                                            color: AppColors.textGray)),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          right: 12, bottom: 12),
+                                      child: Image.asset(Images.paymentDoneImg),
+                                    ),
+                                    Text(
+                                      LocaleKeys
+                                          .buy_details_for_transit_after_delivery
+                                          .tr(),
+                                      style: AppTheme.semiLight(
+                                        size: 10,
+                                      ).copyWith(
+                                          decoration: TextDecoration.underline),
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    Text(
+                                      LocaleKeys.buy_details_for_more_products
+                                          .tr(),
+                                      style: AppTheme.semiLight(
+                                        size: 10,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    Text(
+                                      'shushu market',
+                                      style: AppTheme.bold(
+                                              size: 12, color: AppColors.yellow)
+                                          .copyWith(
+                                              decoration:
+                                                  TextDecoration.underline),
+                                    ),
+                                    const SizedBox(height: 30),
+                                  ],
+                                ),
+                              );
+                            }),
+                          )),
+                  color: AppColors.darkBlueLight,
+                  borderRadius: 10,
+                  innerShadow: true,
+                ),
+                const SizedBox(
+                  height: 36,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: const BoxDecoration(
+                          color: AppColors.roze,
+                          shape: BoxShape.circle,
+                        ),
+                        child: SvgPicture.asset(
+                          Svgs.icWhiteSmallArrow,
+                          width: 14,
+                          fit: BoxFit.scaleDown,
+                        ),
+                      ),
+                      Container(
+                        color: AppColors.roze,
+                        height: 1,
+                        width: 70,
+                      ),
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: const BoxDecoration(
+                          color: AppColors.roze,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(LocaleKeys.buy_details_details.tr(),
+                          style: AppTheme.semiLight(size: 8)),
+                      const SizedBox(
+                        width: 68,
+                      ),
+                      Text(LocaleKeys.buy_details_payment_manner.tr(),
+                          textAlign: TextAlign.center,
+                          style: AppTheme.semiLight(size: 8)),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 24,
                 ),
               ],
             ),

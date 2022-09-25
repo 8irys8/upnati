@@ -173,8 +173,9 @@ class MarketDetailScreen extends HookWidget {
               padding: const EdgeInsets.symmetric(horizontal: 37.0)
                   .copyWith(top: 11, bottom: 24),
               child: CustomButton(
-                onPressed: () =>
-                    context.router.push(const BusinessRegistrationScreen()),
+                onPressed: () {
+                  context.router.push(const BusinessRegistrationScreen());
+                },
                 title: LocaleKeys.market_screen_save_btn.tr(),
                 color: AppColors.darkBlue,
               ),

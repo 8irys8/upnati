@@ -93,7 +93,7 @@ class CodegenLoader extends AssetLoader{
     "policy": "מדיניות",
     "addToFavorites": "הוספה למעודפים",
     "contactToStore": "צור קשר עם החנות",
-    "searchInTheStore": "חיפוש בחנות"
+    "searchInTheStore": "חיפוש בכל המרקט"
   },
   "market_screen": {
     "title": "פרטי החנות",
@@ -140,12 +140,16 @@ class CodegenLoader extends AssetLoader{
     "save_btn": "שמור והמשך"
   },
   "basket_info": {
-    "my_basket": "הסל שלי",
+    "my_basket": "עגלה",
+    "my_basket_btn": "סל שלי",
+    "shop_history": "הסטורית קניות",
     "nis": "{} ש\"ח",
     "will_arrive_in": "יגיע ב- ",
     "acquired": "נרכש",
     "for_payment": "לתשלום",
-    "delete_item": "מחק פריט"
+    "delete_item": "מחק פריט",
+    "all": "הכול",
+    "previous_purchases": "רכישות קודמות"
   },
   "buy_details": {
     "details": "פרטים",
@@ -155,13 +159,14 @@ class CodegenLoader extends AssetLoader{
     "full_name": ":שם מלא*",
     "email": ":מייל*",
     "phone": ":טלפון*",
+    "total": "סה\"כ",
     "address": "כתובת: רחוב, מספר בית",
     "settlement": "ישוב",
     "postal_code": "מיקוד",
     "pick_up": "איסוף עצמי",
     "shipping": "משלוח",
     "sending_by_email": "שליחה במייל",
-    "continue_ordering_btn": "המשך הזמנה",
+    "continue_ordering_btn": "שמירת פרטים",
     "payment_methods": "אופן תשלום",
     "credit_card": "כרטיס אשראי",
     "cardholder_name": "שם בעל הכרטיס",
@@ -169,12 +174,17 @@ class CodegenLoader extends AssetLoader{
     "ticket_number": "מספר כרטיס",
     "expiration_date": "תאריך תוקף",
     "confirmation_btn": "אישור",
-    "payment_done": "התשלום בוצע!",
+    "payment_done": "!התשלום בוצע",
     "purchased": "הרגע רכשת",
     "for_transit_after_delivery": "למעבר אחרי המשלוח",
     "for_more_products": "למוצרים נוספים בחנות"
   },
   "user_info": {
+    "name": "שם מלא",
+    "email": "מייל",
+    "phone": "פלאפון",
+    "address": "כתובת",
+    "add_card_num": "הזן מספר כרטיס",
     "my_account": "החשבון שלי",
     "categories": "קטגוריות",
     "more_info": "עוד  מידע",
@@ -195,6 +205,8 @@ class CodegenLoader extends AssetLoader{
     "purchases": "רכישות",
     "own_bussiness": "העסק שלי",
     "messages": "הודעות",
+    "known": "מוכר",
+    "client": "לקוח",
     "unread_messages": " הודעות לא נקראו"
   },
   "product_info": {
@@ -202,17 +214,22 @@ class CodegenLoader extends AssetLoader{
     "quantity": "כמות",
     "buy_now_btn": "קנה עכשיו",
     "add_to_basket_btn": "הוסף לסל",
-    "music_category": "מוסיקה ווידאו",
-    "shoes_category": "נעלים",
+    "books_category": "קורסים דיגיטלים",
+    "clothes_category": "בגדים",
     "body_health_category": "בריאות הגוף",
-    "kitchen_category": "מטבח",
-    "beauty_category": "טיפוח ויופי",
-    "digital_category": "קורסים\nדיגטלים",
-    "children_category": "ילדים",
+    "kitchen_category": "כלי בית",
+    "soska_category": "תינוקות",
+    "electronic_category": "מוצרי חשמל",
+    "beauty_category": "כלי בית",
     "animal_category": "חיות",
+    "all_categories": "כול הקטגוריות",
+    "stores": "חנויות",
     "my_products": "פריטים שרכשתי",
     "my_liked": "פריטים שאהבתי",
-    "personal_info": "פרטים אישיים"
+    "personal_info": "פרטים אישיים",
+    "affiliate_program": "תוכנית שותפים",
+    "to_all_shops": "לכול החניות הנבחרות",
+    "select_lots": "חניות נבחרות"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"he": he};

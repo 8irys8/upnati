@@ -5,7 +5,8 @@ import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({Key? key}) : super(key: key);
+  final List<String>? searchHistory;
+  const SearchField({Key? key, this.searchHistory}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

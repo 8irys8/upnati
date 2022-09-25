@@ -586,7 +586,7 @@ class ProduceDetailScreen extends HookWidget {
               padding: const EdgeInsets.symmetric(horizontal: 37.0)
                   .copyWith(top: 11, bottom: 24),
               child: CustomButton(
-                onPressed: () => context.router.pop(),
+                onPressed: () => context.router.pop(true),
                 title: LocaleKeys.market_screen_save_btn.tr(),
                 color: AppColors.darkBlue,
               ),

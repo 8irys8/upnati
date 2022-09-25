@@ -5,10 +5,18 @@ import 'package:flutter_svg/svg.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
+import 'package:upnati/ui/widgets/side_bar.dart';
 
 class CustomNavigatorBar extends StatefulWidget {
   final int? initialIndex;
-  const CustomNavigatorBar({Key? key, this.initialIndex = 0}) : super(key: key);
+  final ValueChanged<int?>? onItemPressed;
+  final SideBarController? sideBarController;
+  const CustomNavigatorBar(
+      {Key? key,
+      this.initialIndex = 0,
+      this.onItemPressed,
+      this.sideBarController})
+      : super(key: key);
 
   @override
   State<CustomNavigatorBar> createState() => _CustomNavigatorBarState();
@@ -39,63 +47,73 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
       child: SizedBox(
         height: 60,
         width: MediaQuery.of(context).size.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _CustomBottomNavItem(
-                icon: Svgs.icBasket,
-                title: LocaleKeys.user_info_my_purchases.tr(),
-                isSelected: _selectedIndex == 3,
-                onPressed: () {
-                  setState(() {
-                    _selectedIndex = 3;
-                  });
-                }),
-            _CustomBottomNavItem(
-                icon: Svgs.icAdditionalInfo,
-                title: LocaleKeys.user_info_more_info.tr(),
-                isSelected: _selectedIndex == 2,
-                onPressed: () {
-                  setState(() {
-                    _selectedIndex = 2;
-                  });
-                  context.router.push(const MoreInfoScreen());
-                }),
-            Transform.translate(
-                offset: const Offset(0, -20),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      Images.upnatiLogoNew,
-                      fit: BoxFit.cover,
-                      width: 45,
-                    ),
-                    Text(
-                      'UPstore',
-                      style: AppTheme.regular(
-                          size: 11, color: AppColors.darkBlueLight),
-                    )
-                  ],
-                )),
-            _CustomBottomNavItem(
-                icon: Svgs.icCategories,
-                title: LocaleKeys.user_info_categories.tr(),
-                isSelected: _selectedIndex == 1,
-                onPressed: () {
-                  setState(() {
-                    _selectedIndex = 1;
-                  });
-                }),
-            _CustomBottomNavItem(
-                icon: Svgs.icProfile,
-                title: LocaleKeys.user_info_my_account.tr(),
-                isSelected: _selectedIndex == 0,
-                onPressed: () {
-                  setState(() {
-                    _selectedIndex = 0;
-                  });
-                }),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _CustomBottomNavItem(
+                  icon: Svgs.icBasket,
+                  title: LocaleKeys.user_info_my_purchases.tr(),
+                  isSelected: _selectedIndex == 3,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 3;
+                    });
+                    widget.onItemPressed?.call(3);
+                  }),
+              _CustomBottomNavItem(
+                  icon: Svgs.icAdditionalInfo,
+                  title: LocaleKeys.user_info_more_info.tr(),
+                  isSelected: _selectedIndex == 2,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 2;
+                    });
+                    widget.onItemPressed?.call(2);
+                    context.router.push(const MoreInfoScreen());
+                  }),
+              Transform.translate(
+                  offset: const Offset(0, -20),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        Images.upnatiLogoNew,
+                        fit: BoxFit.cover,
+                        width: 45,
+                      ),
+                      Text(
+                        'UPstore',
+                        style: AppTheme.regular(
+                            size: 11, color: AppColors.darkBlueLight),
+                      )
+                    ],
+                  )),
+              _CustomBottomNavItem(
+                  icon: Svgs.icCategories,
+                  title: LocaleKeys.user_info_categories.tr(),
+                  isSelected: _selectedIndex == 1,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 1;
+                    });
+                    widget.onItemPressed?.call(1);
+                    context.router.push(const CategoryScreen());
+                  }),
+              _CustomBottomNavItem(
+                  icon: Svgs.icProfile,
+                  title: LocaleKeys.user_info_my_account.tr(),
+                  isSelected: _selectedIndex == 0,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                    widget.onItemPressed?.call(0);
+                    widget.sideBarController?.toggleSideBar?.call();
+                    // context.router.push(const UserMainScreen());
+                  }),
+            ],
+          ),
         ),
       ),
     );

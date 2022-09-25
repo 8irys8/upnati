@@ -129,8 +129,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const CustomNavigatorBar(
-        initialIndex: 0,
-      ),
+          // initialIndex: 0,
+          ),
       body: SingleChildScrollView(
         child: SafeArea(
             child: Column(
@@ -151,6 +151,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   child: GestureDetector(
                     onTap: () => showDialog(
                         context: context,
+                        barrierColor: Colors.black.withOpacity(.76),
                         builder: (context) => AlertDialog(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(21)),
@@ -265,10 +266,14 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           padding: const EdgeInsets.only(bottom: 18),
                           child: MainContainer(
                             child: Center(
-                              child: Text(
-                                LocaleKeys.onboard_publication.tr(),
-                                style: AppTheme.regular(
-                                    size: 18, color: Colors.black),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 77),
+                                child: Text(
+                                  LocaleKeys.onboard_publication.tr(),
+                                  style: AppTheme.regular(
+                                      size: 18, color: Colors.black),
+                                ),
                               ),
                             ),
                           ),
@@ -277,10 +282,14 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           padding: const EdgeInsets.only(bottom: 18),
                           child: MainContainer(
                             child: Center(
-                              child: Text(
-                                LocaleKeys.onboard_publication.tr(),
-                                style: AppTheme.regular(
-                                    size: 18, color: Colors.black),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 77),
+                                child: Text(
+                                  LocaleKeys.onboard_publication.tr(),
+                                  style: AppTheme.regular(
+                                      size: 18, color: Colors.black),
+                                ),
                               ),
                             ),
                           ),
@@ -296,10 +305,14 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           padding: const EdgeInsets.only(bottom: 18),
                           child: MainContainer(
                             child: Center(
-                              child: Text(
-                                LocaleKeys.onboard_publication.tr(),
-                                style: AppTheme.regular(
-                                    size: 18, color: Colors.black),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 77),
+                                child: Text(
+                                  LocaleKeys.onboard_publication.tr(),
+                                  style: AppTheme.regular(
+                                      size: 18, color: Colors.black),
+                                ),
                               ),
                             ),
                           ),
@@ -308,10 +321,14 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           padding: const EdgeInsets.only(bottom: 18),
                           child: MainContainer(
                             child: Center(
-                              child: Text(
-                                LocaleKeys.onboard_publication.tr(),
-                                style: AppTheme.regular(
-                                    size: 18, color: Colors.black),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 77),
+                                child: Text(
+                                  LocaleKeys.onboard_publication.tr(),
+                                  style: AppTheme.regular(
+                                      size: 18, color: Colors.black),
+                                ),
                               ),
                             ),
                           ),

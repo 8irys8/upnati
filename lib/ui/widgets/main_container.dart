@@ -9,6 +9,7 @@ class MainContainer extends StatelessWidget {
   final Offset? offset;
   final double? blurRadius;
   final double? borderRadius;
+  final double? opacity;
 
   const MainContainer(
       {Key? key,
@@ -18,7 +19,8 @@ class MainContainer extends StatelessWidget {
       this.offset,
       this.blurRadius,
       this.borderRadius,
-      this.width})
+      this.width,
+      this.opacity})
       : super(key: key);
 
   @override
@@ -31,7 +33,7 @@ class MainContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius ?? 15),
             boxShadow: [
               BoxShadow(
-                  color: Colors.black.withOpacity(.16),
+                  color: Colors.black.withOpacity(opacity ?? .16),
                   offset: offset ?? const Offset(0, 3),
                   blurRadius: blurRadius ?? 6)
             ]),

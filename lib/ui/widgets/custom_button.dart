@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:upnati/resources/resource.dart';
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class CustomButton extends StatelessWidget {
   final Color color;
@@ -14,6 +15,8 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
   final double? topPadding;
   final double? bottomPadding;
+  final bool? innerShadow;
+  final double? borderRadius;
   const CustomButton({
     Key? key,
     this.color = AppColors.text,
@@ -28,6 +31,8 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.topPadding,
     this.bottomPadding,
+    this.innerShadow,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -40,7 +45,7 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.only(top: 5, bottom: 1),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(22.0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 22.0),
           border: border ??
               Border.all(
                 width: 0.4,
@@ -48,15 +53,25 @@ class CustomButton extends StatelessWidget {
               ),
           boxShadow: withoutShadow == true
               ? null
-              : [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.16),
-                    offset: const Offset(0, 5),
-                    blurRadius: 10,
-                    // spreadRadius: 2,
-                    // inset: true,
-                  ),
-                ],
+              : innerShadow == true
+                  ? [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.16),
+                        offset: const Offset(-3, 1),
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                        inset: true,
+                      ),
+                    ]
+                  : [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.16),
+                        offset: const Offset(0, 5),
+                        blurRadius: 10,
+                        // spreadRadius: 2,
+                        // inset: true,
+                      ),
+                    ],
         ),
         child: Center(
           child: Row(
