@@ -8,6 +8,7 @@ import 'package:upnati/logic/models/user/restore_payload.dart';
 import 'package:upnati/logic/models/user/signup_payload.dart';
 import 'package:upnati/logic/providers/auth_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:upnati/logic/services/local_auth_service.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
@@ -15,7 +16,41 @@ part 'auth_cubit.freezed.dart';
 @injectable
 class AuthCubit extends Cubit<AuthState> {
   final AuthProvider _authProvider;
-  AuthCubit(this._authProvider) : super(const AuthState.initial());
+  final LocalAuthService _localAuthService;
+
+  AuthCubit(this._authProvider, this._localAuthService)
+      : super(const AuthState.initial());
+
+  Future<void> authByPhone(String phone) async {
+    emit(const AuthState.loading());
+    try {
+      await _localAuthService.verifyPhoneNumber(phone);
+      emit(const AuthState.success());
+    } catch (e) {
+      emit(AuthState.error(e.toString()));
+    }
+  }
+
+  Future<void> loginBySmsCode(String sms) async {
+    emit(const AuthState.loading());
+    try {
+      final userCredential = await _localAuthService.signInWithSmsCode(sms);
+      //TODO: save token and user data
+      emit(const AuthState.success());
+    } catch (e) {
+      emit(AuthState.error(e.toString()));
+    }
+  }
+
+  Future<void> logout() async {
+    emit(const AuthState.loading());
+    try {
+      await _localAuthService.signOut();
+      emit(const AuthState.success());
+    } catch (e) {
+      emit(AuthState.error(e.toString()));
+    }
+  }
 
   Future<void> signUp(SignupPayload signupPayload) async {
     emit(const AuthState.loading());

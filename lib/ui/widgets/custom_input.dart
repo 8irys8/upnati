@@ -14,6 +14,8 @@ class CustomInput extends StatelessWidget {
   final bool? leftAlignment;
   final TextStyle? hintStyle;
   final double? borderRadius;
+  final FormFieldValidator? validator;
+  final TextInputType? inputType;
   const CustomInput({
     Key? key,
     this.label,
@@ -26,6 +28,8 @@ class CustomInput extends StatelessWidget {
     this.leftAlignment,
     this.hintStyle,
     this.borderRadius,
+    this.validator,
+    this.inputType,
   }) : super(key: key);
 
   @override
@@ -89,6 +93,9 @@ class CustomInput extends StatelessWidget {
           ),
           child: FormBuilderTextField(
             name: key.toString(),
+            validator: validator,
+            keyboardType: inputType,
+            textDirection: TextDirection.ltr,
             minLines: isMultiline == true ? 4 : 1,
             maxLines: isMultiline == true ? 10 : 1,
             textAlignVertical:

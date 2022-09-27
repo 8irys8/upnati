@@ -4,6 +4,7 @@ import 'package:upnati/ui/screens/business/business_screen.dart';
 import 'package:upnati/ui/screens/business/market_detail_screen.dart';
 import 'package:upnati/ui/screens/business/product_detail_screen.dart';
 import 'package:upnati/ui/screens/business/shop_home_screen.dart';
+import 'package:upnati/ui/screens/category_detail_screen.dart';
 import 'package:upnati/ui/screens/login/business_select_screen.dart';
 import 'package:upnati/ui/screens/login/login_screen.dart';
 import 'package:upnati/ui/screens/login/register_screen.dart';
@@ -82,7 +83,8 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
       page: SmsCodeScreen,
     ),
     AutoRoute(page: ProductMainScreen),
-    AutoRoute(page: AllShopsScreen)
+    AutoRoute(page: AllShopsScreen),
+    AutoRoute(page: CategoryDetailScreen),
   ],
 )
 class $AppRouter {}

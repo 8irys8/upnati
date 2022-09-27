@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
@@ -21,7 +23,6 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   int _selectedIndex = 0;
   late PageController _pageController;
   bool selectedItem = true;
-  SideBarController _sideBarController = SideBarController();
 
   void _changeIndex(int index) {
     setState(() {
@@ -47,7 +48,6 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return SideBarWrapper(
-      controller: _sideBarController,
       child: Scaffold(
         appBar: AppBar(
           title: Column(
@@ -65,9 +65,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
           ),
           centerTitle: true,
         ),
-        bottomNavigationBar: CustomNavigatorBar(
-          sideBarController: _sideBarController,
-        ),
+        bottomNavigationBar: const CustomNavigatorBar(),
         body: SafeArea(
             child: Column(
           children: [
@@ -451,6 +449,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                               borderRadius: 25,
                               color: AppColors.darkBlueLight,
                               innerShadow: true,
+                              onPressed: () =>
+                                  context.router.push(const BuyDetailsScreen()),
                             ),
                           )
                         ],

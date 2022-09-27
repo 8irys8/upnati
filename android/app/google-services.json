@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "481572064809",
+    "project_id": "upstore-2e605",
+    "storage_bucket": "upstore-2e605.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481572064809:android:9a1c411a9a57fe2ec51638",
+        "android_client_info": {
+          "package_name": "app.upnati.upnati"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481572064809-60agserr8eh433mhhfcnmtj31qjj3ao1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApmMaI0AIFjTW4SMiyfMQHPYNsKAdBGCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481572064809-60agserr8eh433mhhfcnmtj31qjj3ao1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "481572064809-duoaf5ss24fmv69qln5ucb4m991p3p1r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.upnati.upnati-app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

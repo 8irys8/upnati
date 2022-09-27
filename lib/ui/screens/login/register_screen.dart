@@ -1,25 +1,39 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_checkbox.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
 
-class RegisterScreen extends HookWidget {
+class RegisterScreen extends StatefulWidget with AutoRouteWrapper {
   const RegisterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider<AuthCubit>(
+        create: (context) => GetIt.I<AuthCubit>(), child: this);
+  }
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final phoneController = TextEditingController();
+  final usernameController = TextEditingController();
+  final termsChecked = ValueNotifier<bool>(false);
+
   @override
   Widget build(BuildContext context) {
-    final nameController = useTextEditingController();
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
-    final phoneController = useTextEditingController();
-    final usernameController = useTextEditingController();
-    final termsChecked = useState<bool>(false);
-
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(

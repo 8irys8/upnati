@@ -10,13 +10,11 @@ import 'package:upnati/ui/widgets/side_bar.dart';
 class CustomNavigatorBar extends StatefulWidget {
   final int? initialIndex;
   final ValueChanged<int?>? onItemPressed;
-  final SideBarController? sideBarController;
-  const CustomNavigatorBar(
-      {Key? key,
-      this.initialIndex = 0,
-      this.onItemPressed,
-      this.sideBarController})
-      : super(key: key);
+  const CustomNavigatorBar({
+    Key? key,
+    this.initialIndex = 0,
+    this.onItemPressed,
+  }) : super(key: key);
 
   @override
   State<CustomNavigatorBar> createState() => _CustomNavigatorBarState();
@@ -24,10 +22,13 @@ class CustomNavigatorBar extends StatefulWidget {
 
 class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
   int _selectedIndex = 0;
-
+  SideBarController? _sideBarController;
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _sideBarController = SideBarControllerWidget.of(context)?.controller;
+    });
     _selectedIndex = widget.initialIndex ?? 0;
   }
 
@@ -61,6 +62,7 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
                       _selectedIndex = 3;
                     });
                     widget.onItemPressed?.call(3);
+                    context.router.push(const PurchaseHistoryScreen());
                   }),
               _CustomBottomNavItem(
                   icon: Svgs.icAdditionalInfo,
@@ -73,22 +75,25 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
                     widget.onItemPressed?.call(2);
                     context.router.push(const MoreInfoScreen());
                   }),
-              Transform.translate(
-                  offset: const Offset(0, -20),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        Images.upnatiLogoNew,
-                        fit: BoxFit.cover,
-                        width: 45,
-                      ),
-                      Text(
-                        'UPstore',
-                        style: AppTheme.regular(
-                            size: 11, color: AppColors.darkBlueLight),
-                      )
-                    ],
-                  )),
+              GestureDetector(
+                onTap: () => context.router.push(const MarketPlaceScreen()),
+                child: Transform.translate(
+                    offset: const Offset(0, -20),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          Images.upnatiLogoNew,
+                          fit: BoxFit.cover,
+                          width: 45,
+                        ),
+                        Text(
+                          'UPstore',
+                          style: AppTheme.regular(
+                              size: 11, color: AppColors.darkBlueLight),
+                        )
+                      ],
+                    )),
+              ),
               _CustomBottomNavItem(
                   icon: Svgs.icCategories,
                   title: LocaleKeys.user_info_categories.tr(),
@@ -109,7 +114,7 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
                       _selectedIndex = 0;
                     });
                     widget.onItemPressed?.call(0);
-                    widget.sideBarController?.toggleSideBar?.call();
+                    _sideBarController?.toggleSideBar?.call();
                     // context.router.push(const UserMainScreen());
                   }),
             ],
@@ -136,7 +141,7 @@ class _CustomBottomNavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: isSelected ? AppColors.rozeLight : AppColors.white,
+      // color: isSelected ? AppColors.rozeLight : AppColors.white,
       child: Column(
         children: [
           IconButton(

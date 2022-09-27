@@ -99,39 +99,43 @@ class BusinessSelectScreen extends HookWidget {
                       width: 47,
                     ),
                     Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: AppColors.purple,
-                            width: 3,
+                      child: GestureDetector(
+                        onTap: () =>
+                            context.router.push(const MarketPlaceScreen()),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: AppColors.purple,
+                              width: 3,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.text.withOpacity(.16),
+                                offset: const Offset(0, 3),
+                                blurRadius: 6,
+                              ),
+                            ],
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.text.withOpacity(.16),
-                              offset: const Offset(0, 3),
-                              blurRadius: 6,
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 19,
-                            ),
-                            Text(
-                              'לקוח',
-                              style: AppTheme.regular(size: 16),
-                            ),
-                            const SizedBox(
-                              height: 68,
-                            ),
-                            Image.asset(Images.packImg),
-                            const SizedBox(
-                              height: 19,
-                            ),
-                          ],
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 19,
+                              ),
+                              Text(
+                                'לקוח',
+                                style: AppTheme.regular(size: 16),
+                              ),
+                              const SizedBox(
+                                height: 68,
+                              ),
+                              Image.asset(Images.packImg),
+                              const SizedBox(
+                                height: 19,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

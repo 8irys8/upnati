@@ -1,13 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/injectable_config.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/firebase_options.dart';
 import 'package:upnati/resources/resource.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await EasyLocalization.ensureInitialized();
   await Hive.initFlutter();
   configureDependencies(Environment.prod);

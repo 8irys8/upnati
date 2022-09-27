@@ -45,7 +45,7 @@ class SideBar extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      context.router.push(const ShopHomeScreen());
+                      context.router.push(const AllShopsScreen());
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,6 +69,10 @@ class SideBar extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       context.router.push(const MessageScreen());
+                      SideBarControllerWidget.of(context)
+                          ?.controller
+                          ?.toggleSideBar
+                          ?.call();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,6 +96,10 @@ class SideBar extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       context.router.push(const PurchaseHistoryScreen());
+                      SideBarControllerWidget.of(context)
+                          ?.controller
+                          ?.toggleSideBar
+                          ?.call();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,6 +123,10 @@ class SideBar extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       context.router.push(const UserMainScreen());
+                      SideBarControllerWidget.of(context)
+                          ?.controller
+                          ?.toggleSideBar
+                          ?.call();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -138,6 +150,10 @@ class SideBar extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       context.router.push(const OnboardScreen());
+                      SideBarControllerWidget.of(context)
+                          ?.controller
+                          ?.toggleSideBar
+                          ?.call();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,9 +186,8 @@ class SideBar extends StatelessWidget {
 
 class SideBarWrapper extends StatefulWidget {
   final Widget child;
-  final SideBarController controller;
-  const SideBarWrapper(
-      {Key? key, required this.child, required this.controller})
+  final ValueChanged? onInit;
+  const SideBarWrapper({Key? key, required this.child, this.onInit})
       : super(key: key);
 
   @override
@@ -181,6 +196,7 @@ class SideBarWrapper extends StatefulWidget {
 
 class _SideBarWrapperState extends State<SideBarWrapper> {
   bool _isSideBarOpen = false;
+  late SideBarController _controller;
   void _toggleSideBar() {
     setState(() {
       _isSideBarOpen = !_isSideBarOpen;
@@ -190,22 +206,27 @@ class _SideBarWrapperState extends State<SideBarWrapper> {
   @override
   void initState() {
     super.initState();
-    widget.controller.toggleSideBar = _toggleSideBar;
+    _controller = SideBarController();
+    widget.onInit?.call(_controller);
+    _controller.toggleSideBar = _toggleSideBar;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Stack(
-        children: [
-          widget.child,
-          if (_isSideBarOpen)
-            Positioned.fill(
-              child: SideBar(
-                onBarrierPressed: () => _toggleSideBar(),
+    return SideBarControllerWidget(
+      controller: _controller,
+      child: Material(
+        child: Stack(
+          children: [
+            widget.child,
+            if (_isSideBarOpen)
+              Positioned.fill(
+                child: SideBar(
+                  onBarrierPressed: () => _toggleSideBar(),
+                ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -213,4 +234,26 @@ class _SideBarWrapperState extends State<SideBarWrapper> {
 
 class SideBarController {
   Function()? toggleSideBar;
+}
+
+class SideBarControllerWidget extends InheritedWidget {
+  final SideBarController? controller;
+
+  const SideBarControllerWidget({
+    Key? key,
+    required this.child,
+    this.controller,
+  }) : super(key: key, child: child);
+
+  final Widget child;
+
+  static SideBarControllerWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<SideBarControllerWidget>();
+  }
+
+  @override
+  bool updateShouldNotify(SideBarControllerWidget oldWidget) {
+    return true;
+  }
 }

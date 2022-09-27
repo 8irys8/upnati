@@ -1,10 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/main_container.dart';
+import 'package:upnati/ui/widgets/side_bar.dart';
 
 class OnboardScreen extends StatefulWidget {
   const OnboardScreen({Key? key}) : super(key: key);
@@ -117,9 +120,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ),
                   ),
                   const SizedBox(height: 69),
-                  Text(LocaleKeys.onboard_for_full_regulation.tr(),
-                      style:
-                          AppTheme.regular(size: 18, color: AppColors.white)),
+                  GestureDetector(
+                    onTap: () => context.router.push(const TermsScreen()),
+                    child: Text(LocaleKeys.onboard_for_full_regulation.tr(),
+                        style:
+                            AppTheme.regular(size: 18, color: AppColors.white)),
+                  ),
                 ],
               ),
             ));
@@ -127,220 +133,222 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: const CustomNavigatorBar(
-          // initialIndex: 0,
-          ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Column(
-          children: [
-            const SizedBox(height: 30),
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Center(
-                    child: Image.asset(
-                  Images.upnatiMain,
-                  fit: BoxFit.cover,
-                )),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: -12,
-                  child: GestureDetector(
-                    onTap: () => showDialog(
-                        context: context,
-                        barrierColor: Colors.black.withOpacity(.76),
-                        builder: (context) => AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(21)),
-                              scrollable: true,
-                              contentPadding: EdgeInsets.zero,
-                              content: Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () => Navigator.pop(context),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Align(
-                                          alignment: Alignment.topRight,
-                                          child: Icon(
-                                            Icons.close_outlined,
-                                            color: Colors.black,
-                                            size: 30,
-                                          )),
-                                    ),
-                                  ),
-                                  Text(
-                                    LocaleKeys.onboard_not_logged_yet.tr(),
-                                    style: AppTheme.regular(
-                                        size: 22, color: Colors.black),
-                                  ),
-                                  const SizedBox(height: 38),
-                                  GestureDetector(
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 44, vertical: 16),
-                                      decoration: BoxDecoration(
-                                          color: AppColors.darkBlueLight,
-                                          borderRadius:
-                                              BorderRadius.circular(25),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(.16),
-                                              blurRadius: 3,
-                                              offset: const Offset(0, 1),
-                                            ),
-                                          ]),
-                                      child: Text(
-                                          LocaleKeys.onboard_connect_btn.tr(),
-                                          style: AppTheme.semi(
-                                              size: 16,
-                                              color: AppColors.white)),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 30),
-                                ],
-                              ),
-                            )),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      margin: const EdgeInsets.symmetric(horizontal: 70),
-                      decoration: BoxDecoration(
-                          color: AppColors.darkBlueLight,
-                          borderRadius: BorderRadius.circular(28)),
-                      child: Text(
-                        LocaleKeys.onboard_desc.tr(),
-                        textAlign: TextAlign.center,
-                        style:
-                            AppTheme.regular(size: 18, color: AppColors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+    return SideBarWrapper(
+      child: Scaffold(
+        bottomNavigationBar: const CustomNavigatorBar(
+            // initialIndex: 0,
             ),
-            const SizedBox(height: 30),
-            GestureDetector(
-              onTap: _showModalBottomSheet,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: AppColors.darkBlueLight,
-                    borderRadius: BorderRadius.circular(28),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(.16),
-                          offset: const Offset(0, 3),
-                          blurRadius: 6)
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(Images.icSpeaker),
-                      const SizedBox(width: 8),
-                      Text(
-                        LocaleKeys.onboard_click_btn.tr(),
-                        style:
-                            AppTheme.regular(size: 27, color: AppColors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 46),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SingleChildScrollView(
+          child: SafeArea(
+              child: Column(
+            children: [
+              const SizedBox(height: 30),
+              Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 60),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 18),
-                          child: MainContainer(
-                            child: Center(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 77),
-                                child: Text(
-                                  LocaleKeys.onboard_publication.tr(),
-                                  style: AppTheme.regular(
-                                      size: 18, color: Colors.black),
+                  Center(
+                      child: Image.asset(
+                    Images.upnatiMain,
+                    fit: BoxFit.cover,
+                  )),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: -12,
+                    child: GestureDetector(
+                      onTap: () => showDialog(
+                          context: context,
+                          barrierColor: Colors.black.withOpacity(.76),
+                          builder: (context) => AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(21)),
+                                scrollable: true,
+                                contentPadding: EdgeInsets.zero,
+                                content: Column(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () => Navigator.pop(context),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Align(
+                                            alignment: Alignment.topRight,
+                                            child: Icon(
+                                              Icons.close_outlined,
+                                              color: Colors.black,
+                                              size: 30,
+                                            )),
+                                      ),
+                                    ),
+                                    Text(
+                                      LocaleKeys.onboard_not_logged_yet.tr(),
+                                      style: AppTheme.regular(
+                                          size: 22, color: Colors.black),
+                                    ),
+                                    const SizedBox(height: 38),
+                                    GestureDetector(
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 44, vertical: 16),
+                                        decoration: BoxDecoration(
+                                            color: AppColors.darkBlueLight,
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(.16),
+                                                blurRadius: 3,
+                                                offset: const Offset(0, 1),
+                                              ),
+                                            ]),
+                                        child: Text(
+                                            LocaleKeys.onboard_connect_btn.tr(),
+                                            style: AppTheme.semi(
+                                                size: 16,
+                                                color: AppColors.white)),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 30),
+                                  ],
                                 ),
-                              ),
-                            ),
-                          ),
+                              )),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        margin: const EdgeInsets.symmetric(horizontal: 70),
+                        decoration: BoxDecoration(
+                            color: AppColors.darkBlueLight,
+                            borderRadius: BorderRadius.circular(28)),
+                        child: Text(
+                          LocaleKeys.onboard_desc.tr(),
+                          textAlign: TextAlign.center,
+                          style: AppTheme.regular(
+                              size: 18, color: AppColors.white),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 18),
-                          child: MainContainer(
-                            child: Center(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 77),
-                                child: Text(
-                                  LocaleKeys.onboard_publication.tr(),
-                                  style: AppTheme.regular(
-                                      size: 18, color: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 28),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 18),
-                          child: MainContainer(
-                            child: Center(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 77),
-                                child: Text(
-                                  LocaleKeys.onboard_publication.tr(),
-                                  style: AppTheme.regular(
-                                      size: 18, color: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 18),
-                          child: MainContainer(
-                            child: Center(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 77),
-                                child: Text(
-                                  LocaleKeys.onboard_publication.tr(),
-                                  style: AppTheme.regular(
-                                      size: 18, color: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
                 ],
               ),
-            )
-          ],
-        )),
+              const SizedBox(height: 30),
+              GestureDetector(
+                onTap: _showModalBottomSheet,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.darkBlueLight,
+                      borderRadius: BorderRadius.circular(28),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(.16),
+                            offset: const Offset(0, 3),
+                            blurRadius: 6)
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(Images.icSpeaker),
+                        const SizedBox(width: 8),
+                        Text(
+                          LocaleKeys.onboard_click_btn.tr(),
+                          style: AppTheme.regular(
+                              size: 27, color: AppColors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 46),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 60),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 18),
+                            child: MainContainer(
+                              child: Center(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 77),
+                                  child: Text(
+                                    LocaleKeys.onboard_publication.tr(),
+                                    style: AppTheme.regular(
+                                        size: 18, color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 18),
+                            child: MainContainer(
+                              child: Center(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 77),
+                                  child: Text(
+                                    LocaleKeys.onboard_publication.tr(),
+                                    style: AppTheme.regular(
+                                        size: 18, color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 28),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 18),
+                            child: MainContainer(
+                              child: Center(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 77),
+                                  child: Text(
+                                    LocaleKeys.onboard_publication.tr(),
+                                    style: AppTheme.regular(
+                                        size: 18, color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 18),
+                            child: MainContainer(
+                              child: Center(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 77),
+                                  child: Text(
+                                    LocaleKeys.onboard_publication.tr(),
+                                    style: AppTheme.regular(
+                                        size: 18, color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          )),
+        ),
       ),
     );
   }
