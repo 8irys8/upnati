@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:injectable/injectable.dart';
+import 'package:upnati/core/config/interceptors.dart';
+import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/models/business/basket_response.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
 import 'package:upnati/logic/models/business/commit_order_payload.dart';
@@ -19,9 +23,15 @@ import 'package:upnati/logic/services/business_service.dart';
 
 @lazySingleton
 class BusinessProvider {
-  final BusinessService _businessService;
+  late final BusinessService _businessService;
+  final AppInterceptors _interceptors;
 
-  BusinessProvider(this._businessService);
+  BusinessProvider(this._interceptors) {
+    _businessService = BusinessService(Utils.build(interceptors: [
+      _interceptors.errorInterceptor,
+      _interceptors.tokenInterceptor,
+    ]));
+  }
 
   Future<BusinessResponse> getBusinessInfo() =>
       _businessService.getBusinessInfo();
@@ -40,7 +50,7 @@ class BusinessProvider {
       _businessService.deleteBusiness();
 
   Future<BusinessResponse> uploadBusinessImage({
-    required String file,
+    required File file,
   }) =>
       _businessService.uploadBusinessImage(file: file);
 

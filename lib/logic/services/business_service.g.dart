@@ -13,8 +13,7 @@ class _BusinessService implements BusinessService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??=
-        'http://awseb-awseb-pdp9fhn2h24u-1178641867.eu-central-1.elb.amazonaws.com/api-business';
+    baseUrl ??= 'https://qa-1.backend.upstore.app';
   }
 
   final Dio _dio;
@@ -120,7 +119,14 @@ class _BusinessService implements BusinessService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = file;
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'file',
+      MultipartFile.fromFileSync(
+        file.path,
+        filename: file.path.split(Platform.pathSeparator).last,
+      ),
+    ));
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BusinessResponse>(Options(
       method: 'POST',

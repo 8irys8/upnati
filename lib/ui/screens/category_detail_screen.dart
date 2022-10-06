@@ -49,7 +49,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                         desc:
                             'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סלעציץ רוברט  סט 3 עציצים דגם24  ',
                         price: '350',
-                        image: Images.butterfly,
+                        image:
+                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
                       )),
                       SizedBox(
                         width: 45,
@@ -57,7 +58,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                       Expanded(
                           child: AddEmptyProductContainer(
                         title: 'מוצרים ',
-                        image: Images.panda,
+                        image:
+                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
                         price: '200',
                         desc:
                             'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סל קש  גובה 24 ',
@@ -72,7 +74,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                       Expanded(
                           child: AddEmptyProductContainer(
                         title: 'מוצרים',
-                        image: Images.cat,
+                        image:
+                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
                         desc: 'עציץ רוברט  סט 24',
                         price: '1000',
                       )),
@@ -94,7 +97,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                     children: const [
                       Expanded(
                           child: AddEmptyProductContainer(
-                        image: Images.cubik,
+                        image:
+                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
                         title: 'מוצרים ',
                         price: '10',
                         desc:
@@ -107,7 +111,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                           child: AddEmptyProductContainer(
                         title: 'מוצרים חדשים',
                         price: '15',
-                        image: Images.minion,
+                        image:
+                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
                         desc:
                             'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סלעציץ רוברט  סט 3 עציצים דגם24  ',
                       )),

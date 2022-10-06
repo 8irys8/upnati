@@ -34,6 +34,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   void _doLogin(BuildContext context, String phone) {
+    if (!termsChecked.value) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('אנא אשר את התנאים תחילה'),
+      ));
+
+      return;
+    }
     if (_formKey.currentState?.validate() == false) return;
     context.read<AuthCubit>().authByPhone(phone);
   }
@@ -84,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: AppTheme.regular(size: 27, color: AppColors.white),
                   ),
                   const SizedBox(
-                    height: 72,
+                    height: 32,
                   ),
                   Stack(
                     clipBehavior: Clip.none,
@@ -92,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                         // padding: const EdgeInsets.only(top: 24),
                         margin: const EdgeInsets.symmetric(horizontal: 21)
-                            .copyWith(top: 45, bottom: 24),
+                            .copyWith(top: 45, bottom: 30),
                         decoration: BoxDecoration(
                             color: AppColors.white,
                             borderRadius: BorderRadius.circular(13),

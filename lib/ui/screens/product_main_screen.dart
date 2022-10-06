@@ -1,21 +1,34 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/models/business/item_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
 class ProductMainScreen extends StatefulWidget {
-  const ProductMainScreen({Key? key}) : super(key: key);
+  final ItemResponse? item;
+  const ProductMainScreen({Key? key, this.item}) : super(key: key);
 
   @override
   State<ProductMainScreen> createState() => _ProductMainScreenState();
 }
 
 class _ProductMainScreenState extends State<ProductMainScreen> {
+  late CarouselController _controller;
+  final ValueNotifier<int> _indexNotifier = ValueNotifier(0);
+  final ValueNotifier<int> _amountNotifier = ValueNotifier(1);
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = CarouselController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SideBarWrapper(
@@ -25,16 +38,28 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
         ),
         body: Stack(
           children: [
-            Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height,
-                // height: 300,
-                alignment: Alignment.topCenter,
-                child: Image.asset(
-                  Images.panda,
-                  fit: BoxFit.cover,
-                  // width: double.infinity,
-                  height: 325,
+            CarouselSlider(
+                carouselController: _controller,
+                items: [
+                  Container(
+                      width: double.infinity,
+                      // height: MediaQuery.of(context).size.height,
+                      // height: 300,
+                      alignment: Alignment.topCenter,
+                      child: Image.asset(
+                        Images.panda,
+                        fit: BoxFit.cover,
+                        // width: double.infinity,
+                        height: 325,
+                      )),
+                ],
+                options: CarouselOptions(
+                  onPageChanged: (index, reason) {
+                    _indexNotifier.value = index;
+                  },
+                  enableInfiniteScroll: false,
+                  viewportFraction: 1,
+                  height: MediaQuery.of(context).size.height,
                 )),
             Positioned(
               top: 285,
@@ -55,48 +80,25 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: BoxDecoration(
-                              color: AppColors.text.withOpacity(.19),
-                              shape: BoxShape.circle),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: BoxDecoration(
-                              color: AppColors.text.withOpacity(.19),
-                              shape: BoxShape.circle),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: BoxDecoration(
-                              color: AppColors.text.withOpacity(.19),
-                              shape: BoxShape.circle),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: BoxDecoration(
-                              color: AppColors.text.withOpacity(.55),
-                              shape: BoxShape.circle),
-                        ),
-                      ],
-                    ),
+                    ValueListenableBuilder<int>(
+                        valueListenable: _indexNotifier,
+                        builder: (context, value, child) {
+                          return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                widget.item?.imageUrls?.length ?? 0,
+                                (index) => Container(
+                                  width: 8,
+                                  height: 8,
+                                  margin: const EdgeInsets.only(right: 12),
+                                  decoration: BoxDecoration(
+                                      color: value == index
+                                          ? AppColors.text.withOpacity(.55)
+                                          : AppColors.text.withOpacity(.19),
+                                      shape: BoxShape.circle),
+                                ),
+                              ));
+                        }),
                     const SizedBox(
                       height: 32,
                     ),
@@ -105,6 +107,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                       child: Row(
                         children: [
                           Image.asset(
+                            //need to change
                             Images.shushuLogoImg,
                             width: 53,
                           ),
@@ -114,7 +117,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('shushu market',
+                              Text(widget.item?.businessName ?? '',
                                   style: AppTheme.bold(
                                       size: 18, color: AppColors.yellow)),
                               Row(
@@ -169,7 +172,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 45),
                                 child: Text(
-                                  'מגהץ קיטור',
+                                  widget.item?.name ?? '',
                                   style: AppTheme.bold(size: 16),
                                 ),
                               ),
@@ -178,7 +181,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                   right: 36,
                                 ),
                                 child: Text(
-                                  '• הספק 2400W לחימום מהיר של המגהץ\n• מכת טורבו של 130 גרם לדקה להסרת קמטים עקשניים במיוחד\n• 30 גרם תפוקת אדים רציפה לגיהוץ קל ונוח • תחתית קרמית חדשנית חלקה ועמידה במיוחד המגנה על הבגד  • פונקציית בקרת טמפרטורה – המאפשרת התאמה לתפוקת האדים המרבית לטמפרטורה ',
+                                  widget.item?.description.full ?? '',
                                   maxLines: 5,
                                   overflow: TextOverflow.ellipsis,
                                   style: AppTheme.regular(
@@ -202,7 +205,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                     bottomRight: Radius.circular(27),
                                   )),
                               child: Text(
-                                '15%',
+                                '${widget.item?.discountPercents}%',
                                 style: AppTheme.bold(
                                     size: 24, color: AppColors.white),
                               ),
@@ -221,7 +224,9 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            LocaleKeys.basket_info_nis.tr(args: ['350']),
+                            LocaleKeys.basket_info_nis.tr(args: [
+                              widget.item?.price?.toStringAsFixed(2) ?? ''
+                            ]),
                             style: AppTheme.bold(size: 20),
                           ),
                           Column(
@@ -239,11 +244,18 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                           width: .5)),
                                   child: Row(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 4),
-                                        child: Image.asset(
-                                          Images.icMinusAdd,
+                                      GestureDetector(
+                                        onTap: () {
+                                          if (_amountNotifier.value > 1) {
+                                            _amountNotifier.value--;
+                                          }
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          child: Image.asset(
+                                            Images.icMinusAdd,
+                                          ),
                                         ),
                                       ),
                                       Container(
@@ -259,16 +271,25 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                                   color: Color(0xff707070),
                                                   width: .5),
                                             )),
-                                        child: Text(
-                                          '1',
-                                          style: AppTheme.bold(size: 14),
-                                        ),
+                                        child: ValueListenableBuilder<int>(
+                                            valueListenable: _amountNotifier,
+                                            builder: (context, value, child) {
+                                              return Text(
+                                                value.toString(),
+                                                style: AppTheme.bold(size: 14),
+                                              );
+                                            }),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 4),
-                                        child: Image.asset(
-                                          Images.icPlusAdd,
+                                      GestureDetector(
+                                        onTap: () {
+                                          _amountNotifier.value++;
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          child: Image.asset(
+                                            Images.icPlusAdd,
+                                          ),
                                         ),
                                       ),
                                     ],

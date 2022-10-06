@@ -36,6 +36,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final userCredential = await _localAuthService.signInWithSmsCode(sms);
       //TODO: save token and user data
+      print(await userCredential.user?.getIdToken());
       emit(const AuthState.success());
     } catch (e) {
       emit(AuthState.error(e.toString()));
@@ -56,16 +57,6 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState.loading());
     try {
       final response = await _authProvider.signUp(signupPayload);
-      emit(AuthState.successResponse(response));
-    } catch (e) {
-      emit(AuthState.error(e));
-    }
-  }
-
-  Future<void> getToken() async {
-    emit(const AuthState.loading());
-    try {
-      final response = await _authProvider.getToken();
       emit(AuthState.successResponse(response));
     } catch (e) {
       emit(AuthState.error(e));

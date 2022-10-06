@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:upnati/core/config/constants.dart';
 import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
+import 'package:upnati/logic/models/user/change_user_role_payload.dart';
+import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 
@@ -14,12 +19,17 @@ abstract class UserService {
 
   @POST('/user/role')
   Future<UserDetailResponse> changeUserRole(
-    @Body() String role,
+    @Body() ChangeUserRolePayload role,
+  );
+
+  @POST('/user')
+  Future<UserDetailResponse> updateUserDetail(
+    @Body() FirebaseUserInfoPayload payload,
   );
 
   @POST('/user/image')
   Future<UserDetailResponse> uploadUserImage(
-    @Body() String file,
+    @Part(name: 'file') File file,
   );
 
   @DELETE('/user/image')

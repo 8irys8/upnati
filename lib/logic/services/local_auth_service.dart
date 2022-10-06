@@ -40,10 +40,17 @@ class LocalAuthService {
     AuthCredential authCredential = PhoneAuthProvider.credential(
         smsCode: smsCode, verificationId: _verificationCode);
 
-    return await _firebaseAuth.signInWithCredential(authCredential);
+    var userCredential =
+        await _firebaseAuth.signInWithCredential(authCredential);
+
+    return userCredential;
   }
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
+  }
+
+  Future<String?> getToken() async {
+    return await _firebaseAuth.currentUser?.getIdToken();
   }
 }

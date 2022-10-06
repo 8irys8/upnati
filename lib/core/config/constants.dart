@@ -1,10 +1,9 @@
 class Constants {
-  static const String userBaseUrl =
-      'http://awseb-awseb-pdp9fhn2h24u-1178641867.eu-central-1.elb.amazonaws.com/api-user';
+  static const String userBaseUrl = 'https://qa-1.backend.upstore.app';
 
-  static const String businessBaseUrl =
-      'http://awseb-awseb-pdp9fhn2h24u-1178641867.eu-central-1.elb.amazonaws.com/api-business';
+  static const String businessBaseUrl = 'https://qa-1.backend.upstore.app';
 
-  static const String paymentBaseUrl =
-      'http://awseb-awseb-pdp9fhn2h24u-1178641867.eu-central-1.elb.amazonaws.com/api-payment';
+  static const String paymentBaseUrl = 'https://qa-1.backend.upstore.app';
+
+  static const String dbToken = 'dbToken';
 }

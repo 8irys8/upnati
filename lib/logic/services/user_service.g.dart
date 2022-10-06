@@ -13,8 +13,7 @@ class _UserService implements UserService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??=
-        'http://awseb-awseb-pdp9fhn2h24u-1178641867.eu-central-1.elb.amazonaws.com/api-user';
+    baseUrl ??= 'https://qa-1.backend.upstore.app';
   }
 
   final Dio _dio;
@@ -26,7 +25,8 @@ class _UserService implements UserService {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = role;
+    final _data = <String, dynamic>{};
+    _data.addAll(role.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<UserDetailResponse>(Options(
       method: 'POST',
@@ -45,11 +45,42 @@ class _UserService implements UserService {
   }
 
   @override
+  Future<UserDetailResponse> updateUserDetail(payload) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(payload.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<UserDetailResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/user',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = UserDetailResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<UserDetailResponse> uploadUserImage(file) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = file;
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'file',
+      MultipartFile.fromFileSync(
+        file.path,
+        filename: file.path.split(Platform.pathSeparator).last,
+      ),
+    ));
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<UserDetailResponse>(Options(
       method: 'POST',

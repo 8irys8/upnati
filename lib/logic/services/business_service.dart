@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:upnati/core/config/constants.dart';
@@ -42,7 +44,7 @@ abstract class BusinessService {
 
   @POST('/business/image')
   Future<BusinessResponse> uploadBusinessImage({
-    @Body() required String file,
+    @Part() required File file,
   });
 
   @DELETE('/business/image')

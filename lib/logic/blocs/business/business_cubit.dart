@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/logic/models/business/basket_response.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
 import 'package:upnati/logic/models/business/commit_order_payload.dart';
@@ -70,7 +73,7 @@ class BusinessCubit extends Cubit<BusinessState> {
   }
 
   Future<void> uploadBusinessImage({
-    required String file,
+    required File file,
   }) async {
     emit(const BusinessState.loading());
     try {
@@ -263,9 +266,10 @@ class BusinessCubit extends Cubit<BusinessState> {
     }
   }
 
-  Future<void> getBusinessCategory(
+  Future<void> getBusinessCategory({
     String? locale,
-  ) async {
+  }) async {
+    locale ??= LocaleType.he.name;
     emit(const BusinessState.loading());
     try {
       final response = await _businessProvider.getBusinessCategory(locale);
@@ -275,9 +279,10 @@ class BusinessCubit extends Cubit<BusinessState> {
     }
   }
 
-  Future<void> getBusinessCategoryMap(
+  Future<void> getBusinessCategoryMap({
     String? locale,
-  ) async {
+  }) async {
+    locale ??= LocaleType.he.name;
     emit(const BusinessState.loading());
     try {
       final response = await _businessProvider.getBusinessCategoryMap(locale);

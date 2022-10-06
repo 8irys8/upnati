@@ -14,7 +14,7 @@ class CustomInput extends StatelessWidget {
   final bool? leftAlignment;
   final TextStyle? hintStyle;
   final double? borderRadius;
-  final FormFieldValidator? validator;
+  final FormFieldValidator<String?>? validator;
   final TextInputType? inputType;
   const CustomInput({
     Key? key,

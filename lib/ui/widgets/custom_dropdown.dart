@@ -7,7 +7,8 @@ class CustomDropdown extends StatelessWidget {
   final String? label;
   final String? hint;
   final Color? color;
-  final List<String> items;
+  final List<Item> items;
+  final ValueChanged<String?>? onChanged;
 
   const CustomDropdown({
     Key? key,
@@ -15,6 +16,7 @@ class CustomDropdown extends StatelessWidget {
     this.hint,
     required this.items,
     this.color,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -57,7 +59,8 @@ class CustomDropdown extends StatelessWidget {
               ),
             ],
           ),
-          child: FormBuilderDropdown(
+          child: FormBuilderDropdown<String>(
+            onChanged: onChanged,
             name: key.toString(),
             // icon: const Icon(Icons.check_rounded, color: AppColors.text),
             icon: const SizedBox(),
@@ -104,8 +107,8 @@ class CustomDropdown extends StatelessWidget {
             ),
             items: items
                 .map((item) => DropdownMenuItem(
-                      value: item,
-                      child: Text(item),
+                      value: item.value,
+                      child: Text(item.name),
                     ))
                 .toList(),
           ),
@@ -113,4 +116,11 @@ class CustomDropdown extends StatelessWidget {
       ],
     );
   }
+}
+
+class Item {
+  final String name;
+  final String value;
+
+  Item({required this.name, required this.value});
 }

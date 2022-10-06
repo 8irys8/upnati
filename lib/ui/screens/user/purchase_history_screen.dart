@@ -125,8 +125,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: 90,
-                                    width: 105,
+                                    height: 85,
+                                    width: 85,
                                     decoration: BoxDecoration(
                                         border:
                                             Border.all(color: AppColors.gray),
@@ -196,8 +196,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: 90,
-                                    width: 105,
+                                    height: 85,
+                                    width: 85,
                                     decoration: BoxDecoration(
                                         border:
                                             Border.all(color: AppColors.gray),
@@ -267,8 +267,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                      height: 90,
-                                      width: 105,
+                                      height: 85,
+                                      width: 85,
                                       decoration: BoxDecoration(
                                           border:
                                               Border.all(color: AppColors.gray),

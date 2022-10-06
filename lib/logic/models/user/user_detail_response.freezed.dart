@@ -20,16 +20,16 @@ UserDetailResponse _$UserDetailResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDetailResponse {
-  String get id => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get role => throw _privateConstructorUsedError; //enums
-  String get locale => throw _privateConstructorUsedError; // en, he
-  LocationResponse get location => throw _privateConstructorUsedError;
-  String get lastSeen => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  List<String> get images => throw _privateConstructorUsedError;
-  String get businessId => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get fullName => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError; //enums
+  String? get locale => throw _privateConstructorUsedError; // en, he
+  LocationResponse? get location => throw _privateConstructorUsedError;
+  String? get lastSeen => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
+  String? get businessId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,18 +43,18 @@ abstract class $UserDetailResponseCopyWith<$Res> {
           UserDetailResponse value, $Res Function(UserDetailResponse) then) =
       _$UserDetailResponseCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String fullName,
-      String email,
-      String role,
-      String locale,
-      LocationResponse location,
-      String lastSeen,
-      String phoneNumber,
-      List<String> images,
-      String businessId});
+      {String? id,
+      String? fullName,
+      String? email,
+      String? role,
+      String? locale,
+      LocationResponse? location,
+      String? lastSeen,
+      String? phoneNumber,
+      List<String>? images,
+      String? businessId});
 
-  $LocationResponseCopyWith<$Res> get location;
+  $LocationResponseCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -83,49 +83,53 @@ class _$UserDetailResponseCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: role == freezed
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationResponse,
+              as LocationResponse?,
       lastSeen: lastSeen == freezed
           ? _value.lastSeen
           : lastSeen // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       businessId: businessId == freezed
           ? _value.businessId
           : businessId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 
   @override
-  $LocationResponseCopyWith<$Res> get location {
-    return $LocationResponseCopyWith<$Res>(_value.location, (value) {
+  $LocationResponseCopyWith<$Res>? get location {
+    if (_value.location == null) {
+      return null;
+    }
+
+    return $LocationResponseCopyWith<$Res>(_value.location!, (value) {
       return _then(_value.copyWith(location: value));
     });
   }
@@ -139,19 +143,19 @@ abstract class _$$_UserDetailResponseCopyWith<$Res>
       __$$_UserDetailResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String fullName,
-      String email,
-      String role,
-      String locale,
-      LocationResponse location,
-      String lastSeen,
-      String phoneNumber,
-      List<String> images,
-      String businessId});
+      {String? id,
+      String? fullName,
+      String? email,
+      String? role,
+      String? locale,
+      LocationResponse? location,
+      String? lastSeen,
+      String? phoneNumber,
+      List<String>? images,
+      String? businessId});
 
   @override
-  $LocationResponseCopyWith<$Res> get location;
+  $LocationResponseCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -182,93 +186,96 @@ class __$$_UserDetailResponseCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: role == freezed
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationResponse,
+              as LocationResponse?,
       lastSeen: lastSeen == freezed
           ? _value.lastSeen
           : lastSeen // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       images: images == freezed
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       businessId: businessId == freezed
           ? _value.businessId
           : businessId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_UserDetailResponse implements _UserDetailResponse {
   const _$_UserDetailResponse(
-      {required this.id,
-      required this.fullName,
-      required this.email,
-      required this.role,
-      required this.locale,
-      required this.location,
-      required this.lastSeen,
-      required this.phoneNumber,
-      required final List<String> images,
-      required this.businessId})
+      {this.id,
+      this.fullName,
+      this.email,
+      this.role,
+      this.locale,
+      this.location,
+      this.lastSeen,
+      this.phoneNumber,
+      final List<String>? images,
+      this.businessId})
       : _images = images;
 
   factory _$_UserDetailResponse.fromJson(Map<String, dynamic> json) =>
       _$$_UserDetailResponseFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String fullName;
+  final String? fullName;
   @override
-  final String email;
+  final String? email;
   @override
-  final String role;
+  final String? role;
 //enums
   @override
-  final String locale;
+  final String? locale;
 // en, he
   @override
-  final LocationResponse location;
+  final LocationResponse? location;
   @override
-  final String lastSeen;
+  final String? lastSeen;
   @override
-  final String phoneNumber;
-  final List<String> _images;
+  final String? phoneNumber;
+  final List<String>? _images;
   @override
-  List<String> get images {
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String businessId;
+  final String? businessId;
 
   @override
   String toString() {
@@ -325,40 +332,40 @@ class _$_UserDetailResponse implements _UserDetailResponse {
 
 abstract class _UserDetailResponse implements UserDetailResponse {
   const factory _UserDetailResponse(
-      {required final String id,
-      required final String fullName,
-      required final String email,
-      required final String role,
-      required final String locale,
-      required final LocationResponse location,
-      required final String lastSeen,
-      required final String phoneNumber,
-      required final List<String> images,
-      required final String businessId}) = _$_UserDetailResponse;
+      {final String? id,
+      final String? fullName,
+      final String? email,
+      final String? role,
+      final String? locale,
+      final LocationResponse? location,
+      final String? lastSeen,
+      final String? phoneNumber,
+      final List<String>? images,
+      final String? businessId}) = _$_UserDetailResponse;
 
   factory _UserDetailResponse.fromJson(Map<String, dynamic> json) =
       _$_UserDetailResponse.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get fullName;
+  String? get fullName;
   @override
-  String get email;
+  String? get email;
   @override
-  String get role;
+  String? get role;
   @override //enums
-  String get locale;
+  String? get locale;
   @override // en, he
-  LocationResponse get location;
+  LocationResponse? get location;
   @override
-  String get lastSeen;
+  String? get lastSeen;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
-  List<String> get images;
+  List<String>? get images;
   @override
-  String get businessId;
+  String? get businessId;
   @override
   @JsonKey(ignore: true)
   _$$_UserDetailResponseCopyWith<_$_UserDetailResponse> get copyWith =>

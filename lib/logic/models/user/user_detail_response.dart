@@ -6,17 +6,18 @@ part 'user_detail_response.freezed.dart';
 
 @freezed
 class UserDetailResponse with _$UserDetailResponse {
+  @JsonSerializable(explicitToJson: true)
   const factory UserDetailResponse({
-    required String id,
-    required String fullName,
-    required String email,
-    required String role, //enums
-    required String locale, // en, he
-    required LocationResponse location,
-    required String lastSeen,
-    required String phoneNumber,
-    required List<String> images,
-    required String businessId,
+    String? id,
+    String? fullName,
+    String? email,
+    String? role, //enums
+    String? locale, // en, he
+    LocationResponse? location,
+    String? lastSeen,
+    String? phoneNumber,
+    List<String>? images,
+    String? businessId,
   }) = _UserDetailResponse;
 
   factory UserDetailResponse.fromJson(Map<String, dynamic> json) =>

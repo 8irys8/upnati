@@ -13,8 +13,7 @@ class _PaymentService implements PaymentService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??=
-        'http://awseb-awseb-pdp9fhn2h24u-1178641867.eu-central-1.elb.amazonaws.com/api-payment';
+    baseUrl ??= 'https://qa-1.backend.upstore.app';
   }
 
   final Dio _dio;

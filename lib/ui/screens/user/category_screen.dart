@@ -1,18 +1,27 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/search_field.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
-class CategoryScreen extends StatefulWidget {
+class CategoryScreen extends StatefulWidget with AutoRouteWrapper {
   const CategoryScreen({Key? key}) : super(key: key);
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider<BusinessCubit>(
+        create: (context) => GetIt.I<BusinessCubit>(), child: this);
+  }
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {

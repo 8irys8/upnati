@@ -9,13 +9,16 @@ import 'package:upnati/logic/models/user/restore_pass_payload.dart';
 import 'package:upnati/logic/models/user/restore_payload.dart';
 import 'package:upnati/logic/models/user/signup_payload.dart';
 import 'package:upnati/logic/services/auth_service.dart';
+import 'package:upnati/logic/services/local_auth_service.dart';
 
 @lazySingleton
 class AuthProvider {
   late final AuthService _authService;
+  final LocalAuthService _localAuthService;
 
-  AuthProvider() {
-    _authService = AuthService(Dio());
+  AuthProvider(this._localAuthService) {
+    //todo: fix later
+    _authService = AuthService(Utils.build());
   }
 
   Future<void> startRestore(RestorePassPayload passPayload) =>
@@ -41,12 +44,14 @@ class AuthProvider {
   ) =>
       _authService.confirmRestoreCode(confirmRestorePayload);
 
-  Future<AuthResponse> getToken() => _authService.getToken();
-
   Future<void> storeToken(AuthResponse authResponse) async {
     var _boxSettings = await Utils.box;
     await _boxSettings.put('token', authResponse.token);
     await _boxSettings.put('id', authResponse.id);
     await _boxSettings.put('role', authResponse.role);
+  }
+
+  Future<String?> getToken() async {
+    return await _localAuthService.getToken();
   }
 }

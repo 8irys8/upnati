@@ -6,8 +6,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
+import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
@@ -15,7 +17,10 @@ class SmsCodeScreen extends StatefulWidget with AutoRouteWrapper {
   const SmsCodeScreen({Key? key}) : super(key: key);
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(create: (context) => GetIt.I<AuthCubit>(), child: this);
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (context) => GetIt.I<AuthCubit>()),
+      BlocProvider(create: (context) => GetIt.I<UserCubit>()),
+    ], child: this);
   }
 
   @override
@@ -35,17 +40,37 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            success: () => context.router.replace(const RegisterScreen()),
-            error: (err) => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(err),
-              ),
-            ),
-          );
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<AuthCubit, AuthState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: () {
+                  context.read<UserCubit>().getUserDetails();
+                },
+                error: (err) => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(err),
+                  ),
+                ),
+              );
+            },
+          ),
+          BlocListener<UserCubit, UserState>(
+            listener: (context, state) {
+              state.whenOrNull(successUserStateResponse: (data) {
+                if (data.businessId == null &&
+                    data.role == RoleType.role_business_owner.name) {
+                  context.router.replace(const BusinessSelectScreen());
+                } else {
+                  context.router.replace(const MarketPlaceScreen());
+                }
+              }, errorUserState: (err) {
+                context.router.replace(const RegisterScreen());
+              });
+            },
+          ),
+        ],
         child: SingleChildScrollView(
           child: Stack(
             clipBehavior: Clip.none,

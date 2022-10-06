@@ -1,20 +1,26 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:upnati/core/config/router.gr.dart';
-import 'package:upnati/resources/locale_keys.g.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/resources/resource.dart';
-import 'package:upnati/resources/resources.dart';
-import 'package:upnati/ui/widgets/category_container.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
+import 'package:upnati/ui/widgets/list_of_shops.dart';
 import 'package:upnati/ui/widgets/search_field.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
-class AllShopsScreen extends StatefulWidget {
+class AllShopsScreen extends StatefulWidget with AutoRouteWrapper {
   const AllShopsScreen({Key? key}) : super(key: key);
 
   @override
   State<AllShopsScreen> createState() => _AllShopsScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider<BusinessCubit>(
+        create: (context) => GetIt.I<BusinessCubit>(), child: this);
+  }
 }
 
 class _AllShopsScreenState extends State<AllShopsScreen> {
@@ -35,32 +41,7 @@ class _AllShopsScreenState extends State<AllShopsScreen> {
                 Text(LocaleKeys.product_info_stores.tr(),
                     style: AppTheme.regular(size: 20)),
                 const SizedBox(height: 16),
-                Row(
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () =>
-                            context.router.push(const ShopHomeScreen()),
-                        child: AspectRatio(
-                            aspectRatio: 1.3,
-                            child: CategoryContainer(
-                              withRoof: true,
-                              child: Image.asset(Images.bodyHealthImg),
-                            )),
-                      ),
-                    ),
-                    const SizedBox(width: 35),
-                    Expanded(
-                      child: AspectRatio(
-                          aspectRatio: 1.3,
-                          child: CategoryContainer(
-                            withRoof: true,
-                            child: Image.asset(Images.appliancesImg),
-                          )),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
+                const GridOfShops(),
               ],
             ),
           )),

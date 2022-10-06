@@ -81,11 +81,7 @@ class ProduceDetailScreen extends HookWidget {
                             color: Colors.white,
                             label: LocaleKeys.add_product_category.tr(),
                             hint: LocaleKeys.add_product_dropdown_help.tr(),
-                            items: const [
-                              'Cat 1',
-                              'Cat 2',
-                              'Cat 3',
-                            ],
+                            items: [],
                           ),
                           const SizedBox(
                             height: 29,
@@ -493,11 +489,7 @@ class ProduceDetailScreen extends HookWidget {
                         child: Column(
                           children: [
                             CustomDropdown(
-                              items: const [
-                                '1-3,',
-                                '3-5',
-                                '5-7',
-                              ],
+                              items: [],
                               label:
                                   LocaleKeys.add_product_delivery_pending.tr(),
                               hint: LocaleKeys.add_product_delivery_pending_desc
@@ -507,11 +499,7 @@ class ProduceDetailScreen extends HookWidget {
                               height: 11,
                             ),
                             CustomDropdown(
-                              items: const [
-                                '1-3,',
-                                '3-5',
-                                '5-7',
-                              ],
+                              items: [],
                               label: LocaleKeys.add_product_delivery.tr(),
                               hint: LocaleKeys.add_product_delivery_desc.tr(),
                             ),

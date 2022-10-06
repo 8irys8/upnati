@@ -1,30 +1,72 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/models/business/business_response.dart';
+import 'package:upnati/logic/models/business/item_response.dart';
+import 'package:upnati/logic/models/description.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/add_empty_product_container.dart';
 import 'package:upnati/ui/widgets/category_container.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
+import 'package:upnati/ui/widgets/list_of_shops.dart';
 import 'package:upnati/ui/widgets/search_field.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
-class MarketPlaceScreen extends StatefulWidget {
+class MarketPlaceScreen extends StatefulWidget with AutoRouteWrapper {
   const MarketPlaceScreen({Key? key}) : super(key: key);
 
   @override
   State<MarketPlaceScreen> createState() => _MarketPlaceScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return MultiBlocProvider(providers: [
+      BlocProvider<BusinessCubit>(
+          create: (context) => GetIt.I<BusinessCubit>()),
+    ], child: this);
+  }
 }
 
 class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
+  final PagingController<int, ItemResponse> _pageController =
+      PagingController<int, ItemResponse>(firstPageKey: 1);
+
+  void _fetchPage(int pageKey) async {
+    await context.read<BusinessCubit>().getAllItems(
+        param: 'creationDate',
+        pageOrder: SortType.ASC.name,
+        size: 10,
+        page: pageKey);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SideBarWrapper(
       child: Scaffold(
           bottomNavigationBar: const CustomNavigatorBar(),
-          body: SingleChildScrollView(
-            child: SafeArea(
+          body: SafeArea(
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -89,90 +131,11 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            CategoryContainer(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(8, 20, 8, 12),
-                                child: Image.asset(
-                                  Images.logo4,
-                                  height: 43,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                                right: -14,
-                                top: -4,
-                                child: Image.asset(Images.roofImg, height: 38))
-                          ],
-                        ),
-                        Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            CategoryContainer(
-                                child: Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 20, 8, 12),
-                              child: Image.asset(
-                                Images.logo3,
-                                height: 40,
-                                fit: BoxFit.cover,
-                              ),
-                            )),
-                            Positioned(
-                                right: -14,
-                                top: -4,
-                                child: Image.asset(Images.roofImg, height: 38))
-                          ],
-                        ),
-                        Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            CategoryContainer(
-                                child: Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 20, 8, 12),
-                              child: Image.asset(
-                                Images.logo2,
-                                height: 40,
-                                fit: BoxFit.cover,
-                              ),
-                            )),
-                            Positioned(
-                                right: -14,
-                                top: -4,
-                                child: Image.asset(
-                                  Images.roofImg,
-                                  height: 38,
-                                ))
-                          ],
-                        ),
-                        Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            CategoryContainer(
-                                child: Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 20, 8, 12),
-                              child: Image.asset(
-                                Images.logo1,
-                                height: 40,
-                                fit: BoxFit.cover,
-                              ),
-                            )),
-                            Positioned(
-                                right: -14,
-                                top: -4,
-                                child: Image.asset(Images.roofImg, height: 38))
-                          ],
-                        )
-                      ],
-                    ),
+                  const SizedBox(
+                    height: 85,
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: ListOfShops()),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -182,58 +145,64 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                           size: 15,
                         )),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 12, right: 12, bottom: 34),
-                    child: Row(
-                      children: const [
-                        Expanded(
-                            child: AddEmptyProductContainer(
-                          title: 'מוצרים חדשים',
-                          desc:
-                              'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סלעציץ רוברט  סט 3 עציצים דגם24  ',
-                          price: '350',
-                          image: Images.butterfly,
-                        )),
-                        SizedBox(
-                          width: 37,
+                  BlocListener<BusinessCubit, BusinessState>(
+                    listener: (context, state) {
+                      state.whenOrNull(
+                        successPageItemResponse: (itemResponse) {
+                          if (itemResponse.empty == true) {
+                            _pageController.appendLastPage([]);
+                          } else {
+                            if (itemResponse.last == true) {
+                              _pageController
+                                  .appendLastPage(itemResponse.content);
+                            } else {
+                              _pageController.appendPage(itemResponse.content,
+                                  (itemResponse.pageable?.pageNumber ?? 0) + 1);
+                            }
+                          }
+                        },
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ).copyWith(bottom: 24),
+                      child: PagedGridView(
+                        pagingController: _pageController,
+                        primary: false,
+                        shrinkWrap: true,
+                        builderDelegate:
+                            PagedChildBuilderDelegate<ItemResponse>(
+                          itemBuilder: (context, item, index) =>
+                              AddEmptyProductContainer(
+                            title: item.name,
+                            desc: item.description.full,
+                            price: item.price?.toStringAsFixed(2),
+                            image: item.imageUrls?.isEmpty == true
+                                ? null
+                                : item.imageUrls?.first,
+                          ),
+                          firstPageErrorIndicatorBuilder: (context) =>
+                              const Center(
+                            child: Text('Error'),
+                          ),
+                          newPageProgressIndicatorBuilder: (context) =>
+                              const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          noItemsFoundIndicatorBuilder: (context) =>
+                              const Center(
+                            child: Text('No items found'),
+                          ),
                         ),
-                        Expanded(
-                            child: AddEmptyProductContainer(
-                          title: 'מוצרים ',
-                          image: Images.panda,
-                          price: '200',
-                          desc:
-                              'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סל קש  גובה 24 ',
-                        )),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 12, right: 12, bottom: 34),
-                    child: Row(
-                      children: const [
-                        Expanded(
-                            child: AddEmptyProductContainer(
-                          title: 'מוצרים חדשים',
-                          desc:
-                              'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סלעציץ רוברט  סט 3 עציצים דגם24  ',
-                          price: '350',
-                          image: Images.kelley,
-                        )),
-                        SizedBox(
-                          width: 37,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.8,
+                          crossAxisSpacing: 37,
+                          mainAxisSpacing: 34,
                         ),
-                        Expanded(
-                            child: AddEmptyProductContainer(
-                          title: 'מוצרים ',
-                          image: Images.chico,
-                          price: '200',
-                          desc:
-                              'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סל קש  גובה 24 ',
-                        )),
-                      ],
+                      ),
                     ),
                   ),
                 ],

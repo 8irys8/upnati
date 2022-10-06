@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
+import 'package:upnati/logic/models/user/change_user_role_payload.dart';
+import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 
@@ -19,7 +23,18 @@ class UserCubit extends Cubit<UserState> {
   Future<void> changeUserRole(String role) async {
     emit(const UserState.loadingUserState());
     try {
-      final response = await _userProvider.changeUserRole(role);
+      final response =
+          await _userProvider.changeUserRole(ChangeUserRolePayload(role: role));
+      emit(UserState.successUserStateResponse(response));
+    } catch (e) {
+      emit(UserState.errorUserState(e));
+    }
+  }
+
+  Future<void> updateUserDetails(FirebaseUserInfoPayload payload) async {
+    emit(const UserState.loadingUserState());
+    try {
+      final response = await _userProvider.updateUserDetail(payload: payload);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
       emit(UserState.errorUserState(e));
@@ -27,7 +42,7 @@ class UserCubit extends Cubit<UserState> {
   }
 
   Future<void> uploadUserImage(
-    String file,
+    File file,
   ) async {
     emit(const UserState.loadingUserState());
     try {
