@@ -14,6 +14,8 @@ class BusinessState with _$BusinessState {
       PageBusinessResponse pageBusinessResponse) = _SuccessPageBusinessResponse;
   const factory BusinessState.successBusinessMapInfo(
       Map<String, String> mapInfoResponse) = _SuccessBusinessMapInfo;
+  const factory BusinessState.successBusinessMap(
+      List<CategoryModel?> mapInfoResponse) = _SuccessBusinessMap;
   const factory BusinessState.successBusinessFilter(FilterForm filterForm) =
       _SuccessBusinessFilter;
   const factory BusinessState.successPageItemResponse(
@@ -34,4 +36,6 @@ class BusinessState with _$BusinessState {
       SearchResponse searchResponse) = _SuccessSearchResponse;
   const factory BusinessState.successBusinessList(List<String> list) =
       _SuccessBusinessList;
+  const factory BusinessState.successBusinessCity(List<String> list) =
+      _SuccessBusinessCity;
 }

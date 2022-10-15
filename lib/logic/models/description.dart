@@ -6,7 +6,7 @@ part 'description.freezed.dart';
 @freezed
 class Description with _$Description {
   const factory Description({
-    required String full,
+    final String? full,
   }) = _Description;
 
   factory Description.fromJson(Map<String, dynamic> json) =>

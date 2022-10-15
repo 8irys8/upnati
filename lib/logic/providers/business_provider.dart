@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:upnati/core/config/interceptors.dart';
 import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/models/business/basket_response.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
+import 'package:upnati/logic/models/business/category_model.dart';
 import 'package:upnati/logic/models/business/commit_order_payload.dart';
 import 'package:upnati/logic/models/business/commited_orders_response.dart';
 import 'package:upnati/logic/models/business/filter_form.dart';
@@ -51,8 +54,18 @@ class BusinessProvider {
 
   Future<BusinessResponse> uploadBusinessImage({
     required File file,
-  }) =>
-      _businessService.uploadBusinessImage(file: file);
+  }) async {
+    var tmpdir = await getTemporaryDirectory();
+    var targetPath =
+        '${tmpdir.path}/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 88,
+    );
+
+    return _businessService.uploadBusinessImage(file: result!);
+  }
 
   Future<BusinessResponse> deleteBusinessImage({
     required String url,
@@ -85,6 +98,21 @@ class BusinessProvider {
       _businessService.getBusinessRegion(
         locale,
         country,
+      );
+
+  Future<List<String>> getDeliveryType({String? locale}) =>
+      _businessService.getDeliveryType(
+        locale,
+      );
+
+  Future<List<String>> getDeliveryTime({String? locale}) =>
+      _businessService.getDeliveryTime(
+        locale,
+      );
+
+  Future<List<String>> getDeliveryScope({String? locale}) =>
+      _businessService.getDeliveryScope(
+        locale,
       );
 
 //???????
@@ -159,28 +187,42 @@ class BusinessProvider {
         locale,
       );
 
-  Future<List<String>> getBusinessCategory(
+  Future<List<CategoryModel>> getBusinessCategory({
     String? locale,
-  ) =>
+  }) =>
       _businessService.getBusinessCategory(
         locale,
       );
 
-  Future<Map<String, String>> getBusinessCategoryMap(
+  Future<Map<String, String>> getBusinessCategoryMap({
     String? locale,
-  ) =>
+  }) =>
       _businessService.getBusinessCategoryMap(
         locale,
       );
 
-  Future<Map<String, String>> getBusinessCategoryIdMap(
+  Future<Map<String, String>> getBusinessCategoryIdMap({
     String? locale,
-  ) =>
+  }) =>
       _businessService.getBusinessCategoryIdMap(
         locale,
       );
 
   //item schema controller
+  Future<PageItemResponse> getItemByCategory({
+    required String cat,
+    required String param,
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) =>
+      _businessService.getItemByCategory(
+        cat,
+        param,
+        pageOrder,
+        page,
+        size,
+      );
 
   Future<List<String>> getItemType(
     String? locale,
@@ -203,7 +245,7 @@ class BusinessProvider {
         locale,
       );
 
-  Future<List<String>> getItemCategory(
+  Future<List<CategoryModel>> getItemCategory(
     String? locale,
   ) =>
       _businessService.getItemCategory(

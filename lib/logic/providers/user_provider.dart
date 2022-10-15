@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:upnati/core/config/constants.dart';
 import 'package:upnati/core/config/interceptors.dart';
 import 'package:upnati/core/config/utils.dart';
@@ -25,13 +27,25 @@ class UserProvider {
     ]));
   }
 
+  Future<String> getAppLink() => _userService.getAppLink();
+
   Future<UserDetailResponse> changeUserRole(ChangeUserRolePayload role) =>
       _userService.changeUserRole(role);
 
   Future<UserDetailResponse> uploadUserImage(
     File file,
-  ) =>
-      _userService.uploadUserImage(file);
+  ) async {
+    var tmpdir = await getTemporaryDirectory();
+    var targetPath =
+        '${tmpdir.path}/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 88,
+    );
+
+    return _userService.uploadUserImage(result!);
+  }
 
   Future<UserDetailResponse> deleteUserImage(
     String url,

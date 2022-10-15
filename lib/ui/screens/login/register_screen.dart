@@ -119,6 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     CustomInput(
                       label: LocaleKeys.register_email.tr(),
                       controller: emailController,
+                      inputType: TextInputType.emailAddress,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(errorText: 'נדרש'),
                         FormBuilderValidators.email(
@@ -131,6 +132,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     CustomInput(
                       label: LocaleKeys.register_phone.tr(),
                       controller: phoneController,
+                      inputType: TextInputType.phone,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(errorText: 'נדרש'),
                         FormBuilderValidators.integer(

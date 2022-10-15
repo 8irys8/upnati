@@ -8,22 +8,22 @@ part of 'business_form.dart';
 
 _$_BusinessForm _$$_BusinessFormFromJson(Map<String, dynamic> json) =>
     _$_BusinessForm(
-      name: json['name'] as String,
-      location: json['location'] == null
-          ? null
-          : LocationResponse.fromJson(json['location'] as Map<String, dynamic>),
-      description: (json['description'] as List<dynamic>)
-          .map((e) => LocalDescription.fromJson(e as Map<String, dynamic>))
+      name: json['name'] as String?,
+      cityName: json['cityName'] as String?,
+      description: (json['description'] as List<dynamic>?)
+          ?.map((e) => LocalDescription.fromJson(e as Map<String, dynamic>))
           .toList(),
-      category: json['category'] as String,
-      defaultLocale: json['defaultLocale'] as String,
+      category: json['category'] as String?,
+      defaultLocale: json['defaultLocale'] as String?,
+      deliveryScope: json['deliveryScope'] as String?,
     );
 
 Map<String, dynamic> _$$_BusinessFormToJson(_$_BusinessForm instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'location': instance.location,
-      'description': instance.description,
+      'cityName': instance.cityName,
+      'description': instance.description?.map((e) => e.toJson()).toList(),
       'category': instance.category,
       'defaultLocale': instance.defaultLocale,
+      'deliveryScope': instance.deliveryScope,
     };

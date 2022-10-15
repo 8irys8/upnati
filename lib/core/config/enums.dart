@@ -9,7 +9,8 @@ enum RoleType {
   role_business_owner,
   role_business_admin,
   role_business_user,
-  role_app_admin
+  role_app_admin,
+  role_incomplete
 }
 
 enum IdentType { phone, email }

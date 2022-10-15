@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/logic/models/business/basket_response.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
+import 'package:upnati/logic/models/business/category_model.dart';
 import 'package:upnati/logic/models/business/commit_order_payload.dart';
 import 'package:upnati/logic/models/business/commited_orders_response.dart';
 import 'package:upnati/logic/models/business/filter_form.dart';
@@ -224,11 +225,12 @@ class BusinessCubit extends Cubit<BusinessState> {
     }
   }
 
-  Future<void> getBusinessCity(
+  Future<void> getBusinessCity({
     String? locale,
     String? country,
     String? region,
-  ) async {
+  }) async {
+    locale ??= LocaleType.he.name;
     emit(const BusinessState.loading());
     try {
       final response = await _businessProvider.getBusinessCity(
@@ -236,7 +238,7 @@ class BusinessCubit extends Cubit<BusinessState> {
         country,
         region,
       );
-      emit(BusinessState.successBusinessList(response));
+      emit(BusinessState.successBusinessCity(response));
     } catch (e) {
       emit(BusinessState.error(e));
     }
@@ -266,14 +268,70 @@ class BusinessCubit extends Cubit<BusinessState> {
     }
   }
 
+  Future<void> getDeliveryType({String? locale}) async {
+    locale ??= LocaleType.he.name;
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.getDeliveryType(locale: locale);
+      emit(BusinessState.successBusinessList(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> getDeliveryTime({String? locale}) async {
+    locale ??= LocaleType.he.name;
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.getDeliveryTime(locale: locale);
+      emit(BusinessState.successBusinessList(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> getDeliveryScope({String? locale}) async {
+    locale ??= LocaleType.he.name;
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.getDeliveryScope(locale: locale);
+      emit(BusinessState.successBusinessList(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
   Future<void> getBusinessCategory({
     String? locale,
   }) async {
     locale ??= LocaleType.he.name;
     emit(const BusinessState.loading());
     try {
-      final response = await _businessProvider.getBusinessCategory(locale);
-      emit(BusinessState.successBusinessList(response));
+      final response =
+          await _businessProvider.getBusinessCategory(locale: locale);
+      emit(BusinessState.successBusinessMap(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> getItemsByCategory({
+    required String cat,
+    required String param,
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) async {
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.getItemByCategory(
+        cat: cat,
+        param: param,
+        pageOrder: pageOrder,
+        page: page,
+        size: size,
+      );
+      emit(BusinessState.successPageItemResponse(response));
     } catch (e) {
       emit(BusinessState.error(e));
     }
@@ -285,7 +343,8 @@ class BusinessCubit extends Cubit<BusinessState> {
     locale ??= LocaleType.he.name;
     emit(const BusinessState.loading());
     try {
-      final response = await _businessProvider.getBusinessCategoryMap(locale);
+      final response =
+          await _businessProvider.getBusinessCategoryMap(locale: locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
       emit(BusinessState.error(e));
@@ -297,7 +356,8 @@ class BusinessCubit extends Cubit<BusinessState> {
   ) async {
     emit(const BusinessState.loading());
     try {
-      final response = await _businessProvider.getBusinessCategoryIdMap(locale);
+      final response =
+          await _businessProvider.getBusinessCategoryIdMap(locale: locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
       emit(BusinessState.error(e));
@@ -348,7 +408,7 @@ class BusinessCubit extends Cubit<BusinessState> {
     emit(const BusinessState.loading());
     try {
       final response = await _businessProvider.getItemCategory(locale);
-      emit(BusinessState.successBusinessList(response));
+      emit(BusinessState.successBusinessMap(response));
     } catch (e) {
       emit(BusinessState.error(e));
     }

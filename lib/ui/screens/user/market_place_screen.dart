@@ -176,7 +176,7 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                           itemBuilder: (context, item, index) =>
                               AddEmptyProductContainer(
                             title: item.name,
-                            desc: item.description.full,
+                            desc: item.description?.full,
                             price: item.price?.toStringAsFixed(2),
                             image: item.imageUrls?.isEmpty == true
                                 ? null

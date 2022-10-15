@@ -487,14 +487,14 @@ class _BusinessService implements BusinessService {
   }
 
   @override
-  Future<List<String>> getBusinessCategory(locale) async {
+  Future<List<CategoryModel>> getBusinessCategory(locale) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'locale': locale};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<CategoryModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -506,7 +506,9 @@ class _BusinessService implements BusinessService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data!.cast<String>();
+    var value = _result.data!
+        .map((dynamic i) => CategoryModel.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -631,14 +633,14 @@ class _BusinessService implements BusinessService {
   }
 
   @override
-  Future<List<String>> getItemCategory(locale) async {
+  Future<List<CategoryModel>> getItemCategory(locale) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'locale': locale};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<CategoryModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -650,7 +652,44 @@ class _BusinessService implements BusinessService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data!.cast<String>();
+    var value = _result.data!
+        .map((dynamic i) => CategoryModel.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<PageItemResponse> getItemByCategory(
+    cat,
+    param,
+    pageOrder,
+    page,
+    size,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'param': param,
+      r'pageOrder': pageOrder,
+      r'page': page,
+      r'size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PageItemResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/items/category/${cat}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = PageItemResponse.fromJson(_result.data!);
     return value;
   }
 
@@ -843,6 +882,78 @@ class _BusinessService implements BusinessService {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!.cast<String, String>();
+    return value;
+  }
+
+  @override
+  Future<List<String>> getDeliveryType(locale) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'locale': locale};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/business/schema/delivery/type',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<String>();
+    return value;
+  }
+
+  @override
+  Future<List<String>> getDeliveryTime(locale) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'locale': locale};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/business/schema/delivery/time',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<String>();
+    return value;
+  }
+
+  @override
+  Future<List<String>> getDeliveryScope(locale) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'locale': locale};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/business/schema/delivery/scope',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<String>();
     return value;
   }
 

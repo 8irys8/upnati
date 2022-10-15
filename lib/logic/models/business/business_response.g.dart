@@ -8,14 +8,17 @@ part of 'business_response.dart';
 
 _$_BusinessResponse _$$_BusinessResponseFromJson(Map<String, dynamic> json) =>
     _$_BusinessResponse(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      defaultLocale: json['defaultLocale'] as String,
-      description:
-          Description.fromJson(json['description'] as Map<String, dynamic>),
-      category: json['category'] as String,
-      location: LocationBusinessResponse.fromJson(
-          json['location'] as Map<String, dynamic>),
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      defaultLocale: json['defaultLocale'] as String?,
+      description: json['description'] == null
+          ? null
+          : Description.fromJson(json['description'] as Map<String, dynamic>),
+      category: json['category'] as String?,
+      location: json['location'] == null
+          ? null
+          : LocationBusinessResponse.fromJson(
+              json['location'] as Map<String, dynamic>),
       imageUrls: (json['imageUrls'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -26,18 +29,18 @@ Map<String, dynamic> _$$_BusinessResponseToJson(_$_BusinessResponse instance) =>
       'id': instance.id,
       'name': instance.name,
       'defaultLocale': instance.defaultLocale,
-      'description': instance.description,
+      'description': instance.description?.toJson(),
       'category': instance.category,
-      'location': instance.location,
+      'location': instance.location?.toJson(),
       'imageUrls': instance.imageUrls,
     };
 
 _$_LocationBusinessResponse _$$_LocationBusinessResponseFromJson(
         Map<String, dynamic> json) =>
     _$_LocationBusinessResponse(
-      country: json['country'] as String,
-      region: json['region'] as String,
-      city: json['city'] as String,
+      country: json['country'] as String?,
+      region: json['region'] as String?,
+      city: json['city'] as String?,
     );
 
 Map<String, dynamic> _$$_LocationBusinessResponseToJson(

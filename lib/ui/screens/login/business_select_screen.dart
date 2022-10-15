@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
@@ -32,7 +33,8 @@ class _BusinessSelectScreenState extends State<BusinessSelectScreen> {
               if (response.role == RoleType.role_user.name) {
                 context.router.push(const MarketPlaceScreen());
               } else {
-                context.router.push(const BusinessScreen());
+                context.router
+                    .push(BusinessScreen(userDetailResponse: response));
               }
             },
           );
@@ -71,101 +73,118 @@ class _BusinessSelectScreenState extends State<BusinessSelectScreen> {
                   const SizedBox(
                     height: 39,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => context.read<UserCubit>().changeUserRole(
-                              RoleType.role_business_owner.name),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: AppColors.rozeBright,
-                                width: 3,
+                  BlocBuilder<UserCubit, UserState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                          orElse: () => const SpinKitCircle(
+                                color: AppColors.darkBlue,
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.text.withOpacity(.16),
-                                  offset: const Offset(0, 3),
-                                  blurRadius: 6,
-                                  spreadRadius: 1,
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              children: [
-                                const SizedBox(
-                                  height: 19,
-                                ),
-                                Text(
-                                  'עסק',
-                                  style: AppTheme.regular(size: 16),
-                                ),
-                                const SizedBox(
-                                  height: 68,
-                                ),
-                                Image.asset(
-                                  Images.shopImg,
-                                  fit: BoxFit.scaleDown,
-                                  height: 58,
-                                ),
-                                const SizedBox(
-                                  height: 18,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 47,
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => context
-                              .read<UserCubit>()
-                              .changeUserRole(RoleType.role_user.name),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: AppColors.purple,
-                                width: 3,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.text.withOpacity(.16),
-                                  offset: const Offset(0, 3),
-                                  blurRadius: 6,
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              children: [
-                                const SizedBox(
-                                  height: 19,
-                                ),
-                                Text(
-                                  'לקוח',
-                                  style: AppTheme.regular(size: 16),
-                                ),
-                                const SizedBox(
-                                  height: 68,
-                                ),
-                                Image.asset(Images.packImg),
-                                const SizedBox(
-                                  height: 19,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                          successUserStateResponse: (response) => Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () => context.router.push(
+                                          BusinessScreen(
+                                              userDetailResponse: response)),
+                                      // onTap: () => context
+                                      //     .read<UserCubit>()
+                                      //     .changeUserRole(RoleType.role_incomplete.name),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: AppColors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          border: Border.all(
+                                            color: AppColors.rozeBright,
+                                            width: 3,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: AppColors.text
+                                                  .withOpacity(.16),
+                                              offset: const Offset(0, 3),
+                                              blurRadius: 6,
+                                              spreadRadius: 1,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 19,
+                                            ),
+                                            Text(
+                                              'עסק',
+                                              style: AppTheme.regular(size: 16),
+                                            ),
+                                            const SizedBox(
+                                              height: 68,
+                                            ),
+                                            Image.asset(
+                                              Images.shopImg,
+                                              fit: BoxFit.scaleDown,
+                                              height: 58,
+                                            ),
+                                            const SizedBox(
+                                              height: 18,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 47,
+                                  ),
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () => context
+                                          .read<UserCubit>()
+                                          .changeUserRole(
+                                              RoleType.role_user.name),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: AppColors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          border: Border.all(
+                                            color: AppColors.purple,
+                                            width: 3,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: AppColors.text
+                                                  .withOpacity(.16),
+                                              offset: const Offset(0, 3),
+                                              blurRadius: 6,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 19,
+                                            ),
+                                            Text(
+                                              'לקוח',
+                                              style: AppTheme.regular(size: 16),
+                                            ),
+                                            const SizedBox(
+                                              height: 68,
+                                            ),
+                                            Image.asset(Images.packImg),
+                                            const SizedBox(
+                                              height: 19,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ));
+                    },
                   ),
                 ],
               ),

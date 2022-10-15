@@ -20,11 +20,13 @@ BusinessForm _$BusinessFormFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BusinessForm {
-  String get name => throw _privateConstructorUsedError;
-  LocationResponse? get location => throw _privateConstructorUsedError;
-  List<LocalDescription> get description => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-  String get defaultLocale => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get cityName =>
+      throw _privateConstructorUsedError; // final LocationResponse? location,
+  List<LocalDescription>? get description => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
+  String? get defaultLocale => throw _privateConstructorUsedError;
+  String? get deliveryScope => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,13 +40,12 @@ abstract class $BusinessFormCopyWith<$Res> {
           BusinessForm value, $Res Function(BusinessForm) then) =
       _$BusinessFormCopyWithImpl<$Res>;
   $Res call(
-      {String name,
-      LocationResponse? location,
-      List<LocalDescription> description,
-      String category,
-      String defaultLocale});
-
-  $LocationResponseCopyWith<$Res>? get location;
+      {String? name,
+      String? cityName,
+      List<LocalDescription>? description,
+      String? category,
+      String? defaultLocale,
+      String? deliveryScope});
 }
 
 /// @nodoc
@@ -58,44 +59,38 @@ class _$BusinessFormCopyWithImpl<$Res> implements $BusinessFormCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? location = freezed,
+    Object? cityName = freezed,
     Object? description = freezed,
     Object? category = freezed,
     Object? defaultLocale = freezed,
+    Object? deliveryScope = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      location: location == freezed
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as LocationResponse?,
+              as String?,
+      cityName: cityName == freezed
+          ? _value.cityName
+          : cityName // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as List<LocalDescription>,
+              as List<LocalDescription>?,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       defaultLocale: defaultLocale == freezed
           ? _value.defaultLocale
           : defaultLocale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      deliveryScope: deliveryScope == freezed
+          ? _value.deliveryScope
+          : deliveryScope // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
-  }
-
-  @override
-  $LocationResponseCopyWith<$Res>? get location {
-    if (_value.location == null) {
-      return null;
-    }
-
-    return $LocationResponseCopyWith<$Res>(_value.location!, (value) {
-      return _then(_value.copyWith(location: value));
-    });
   }
 }
 
@@ -107,14 +102,12 @@ abstract class _$$_BusinessFormCopyWith<$Res>
       __$$_BusinessFormCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
-      LocationResponse? location,
-      List<LocalDescription> description,
-      String category,
-      String defaultLocale});
-
-  @override
-  $LocationResponseCopyWith<$Res>? get location;
+      {String? name,
+      String? cityName,
+      List<LocalDescription>? description,
+      String? category,
+      String? defaultLocale,
+      String? deliveryScope});
 }
 
 /// @nodoc
@@ -131,69 +124,82 @@ class __$$_BusinessFormCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? location = freezed,
+    Object? cityName = freezed,
     Object? description = freezed,
     Object? category = freezed,
     Object? defaultLocale = freezed,
+    Object? deliveryScope = freezed,
   }) {
     return _then(_$_BusinessForm(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      location: location == freezed
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as LocationResponse?,
+              as String?,
+      cityName: cityName == freezed
+          ? _value.cityName
+          : cityName // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: description == freezed
           ? _value._description
           : description // ignore: cast_nullable_to_non_nullable
-              as List<LocalDescription>,
+              as List<LocalDescription>?,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       defaultLocale: defaultLocale == freezed
           ? _value.defaultLocale
           : defaultLocale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      deliveryScope: deliveryScope == freezed
+          ? _value.deliveryScope
+          : deliveryScope // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_BusinessForm implements _BusinessForm {
   const _$_BusinessForm(
-      {required this.name,
-      this.location,
-      required final List<LocalDescription> description,
-      required this.category,
-      required this.defaultLocale})
+      {this.name,
+      this.cityName,
+      final List<LocalDescription>? description,
+      this.category,
+      this.defaultLocale,
+      this.deliveryScope})
       : _description = description;
 
   factory _$_BusinessForm.fromJson(Map<String, dynamic> json) =>
       _$$_BusinessFormFromJson(json);
 
   @override
-  final String name;
+  final String? name;
   @override
-  final LocationResponse? location;
-  final List<LocalDescription> _description;
+  final String? cityName;
+// final LocationResponse? location,
+  final List<LocalDescription>? _description;
+// final LocationResponse? location,
   @override
-  List<LocalDescription> get description {
+  List<LocalDescription>? get description {
+    final value = _description;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_description);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String category;
+  final String? category;
   @override
-  final String defaultLocale;
+  final String? defaultLocale;
+  @override
+  final String? deliveryScope;
 
   @override
   String toString() {
-    return 'BusinessForm(name: $name, location: $location, description: $description, category: $category, defaultLocale: $defaultLocale)';
+    return 'BusinessForm(name: $name, cityName: $cityName, description: $description, category: $category, defaultLocale: $defaultLocale, deliveryScope: $deliveryScope)';
   }
 
   @override
@@ -202,12 +208,14 @@ class _$_BusinessForm implements _BusinessForm {
         (other.runtimeType == runtimeType &&
             other is _$_BusinessForm &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.location, location) &&
+            const DeepCollectionEquality().equals(other.cityName, cityName) &&
             const DeepCollectionEquality()
                 .equals(other._description, _description) &&
             const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality()
-                .equals(other.defaultLocale, defaultLocale));
+                .equals(other.defaultLocale, defaultLocale) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryScope, deliveryScope));
   }
 
   @JsonKey(ignore: true)
@@ -215,10 +223,11 @@ class _$_BusinessForm implements _BusinessForm {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(location),
+      const DeepCollectionEquality().hash(cityName),
       const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(defaultLocale));
+      const DeepCollectionEquality().hash(defaultLocale),
+      const DeepCollectionEquality().hash(deliveryScope));
 
   @JsonKey(ignore: true)
   @override
@@ -235,25 +244,28 @@ class _$_BusinessForm implements _BusinessForm {
 
 abstract class _BusinessForm implements BusinessForm {
   const factory _BusinessForm(
-      {required final String name,
-      final LocationResponse? location,
-      required final List<LocalDescription> description,
-      required final String category,
-      required final String defaultLocale}) = _$_BusinessForm;
+      {final String? name,
+      final String? cityName,
+      final List<LocalDescription>? description,
+      final String? category,
+      final String? defaultLocale,
+      final String? deliveryScope}) = _$_BusinessForm;
 
   factory _BusinessForm.fromJson(Map<String, dynamic> json) =
       _$_BusinessForm.fromJson;
 
   @override
-  String get name;
+  String? get name;
   @override
-  LocationResponse? get location;
+  String? get cityName;
+  @override // final LocationResponse? location,
+  List<LocalDescription>? get description;
   @override
-  List<LocalDescription> get description;
+  String? get category;
   @override
-  String get category;
+  String? get defaultLocale;
   @override
-  String get defaultLocale;
+  String? get deliveryScope;
   @override
   @JsonKey(ignore: true)
   _$$_BusinessFormCopyWith<_$_BusinessForm> get copyWith =>

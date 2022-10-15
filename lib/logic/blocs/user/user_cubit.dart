@@ -41,6 +41,16 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
+  Future<void> getAppLink() async {
+    emit(const UserState.loadingUserState());
+    try {
+      final response = await _userProvider.getAppLink();
+      emit(UserState.successUserLinkState(response));
+    } catch (e) {
+      emit(UserState.errorUserState(e));
+    }
+  }
+
   Future<void> uploadUserImage(
     File file,
   ) async {

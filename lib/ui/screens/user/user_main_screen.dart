@@ -427,7 +427,7 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                   contentPadding: EdgeInsets.zero,
                                   suffixIconConstraints: const BoxConstraints(),
                                   filled: true,
-                                  hintText: 'mail@mail.com',
+                                  // hintText: 'mail@mail.com',
                                   fillColor: Colors.transparent,
                                 ),
                               ),
@@ -449,259 +449,259 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                   contentPadding: EdgeInsets.zero,
                                   suffixIconConstraints: const BoxConstraints(),
                                   filled: true,
-                                  hintText: '0520000000',
+                                  // hintText: '0520000000',
                                   fillColor: Colors.transparent,
                                 ),
                               ),
                             ),
-                            Text(LocaleKeys.user_info_address.tr(),
-                                style: AppTheme.regular(
-                                    size: 12, color: AppColors.textGray)),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 26),
-                              child: FormBuilderTextField(
-                                name: 'address',
-                                controller: _addressController,
-                                style: AppTheme.bold(
-                                    size: 20, color: AppColors.textGray),
-                                decoration: InputDecoration(
-                                  suffixIcon: SvgPicture.asset(
-                                    Svgs.icEditRect,
-                                  ),
-                                  contentPadding: EdgeInsets.zero,
-                                  suffixIconConstraints: const BoxConstraints(),
-                                  filled: true,
-                                  hintText: 'רחוב מספר 2',
-                                  fillColor: Colors.transparent,
-                                ),
-                              ),
-                            ),
-                            Text(LocaleKeys.user_info_credit_card.tr(),
-                                style: AppTheme.regular(
-                                    size: 12, color: AppColors.textGray)),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 26),
-                              child: FormBuilderTextField(
-                                name: 'creditCard',
-                                controller: _creditCardController,
-                                style: AppTheme.bold(
-                                    size: 20, color: AppColors.textGray),
-                                decoration: InputDecoration(
-                                  suffixIcon: GestureDetector(
-                                    onTap: () => showDialog(
-                                        context: context,
-                                        barrierColor:
-                                            Colors.black.withOpacity(0.76),
-                                        builder: (context) => AlertDialog(
-                                              contentPadding: EdgeInsets.zero,
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          21)),
-                                              scrollable: true,
-                                              content:
-                                                  Builder(builder: (context) {
-                                                return SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                      .size
-                                                      .width,
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () =>
-                                                            Navigator.pop(
-                                                                context),
-                                                        child: const Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  8.0),
-                                                          child: Align(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topRight,
-                                                              child: Icon(
-                                                                Icons
-                                                                    .close_outlined,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 30,
-                                                              )),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                right: 17,
-                                                                bottom: 8),
-                                                        child: Row(
-                                                          children: [
-                                                            SvgPicture.asset(Svgs
-                                                                .icPlusRounded),
-                                                            const SizedBox(
-                                                              width: 13,
-                                                            ),
-                                                            Text(
-                                                              LocaleKeys
-                                                                  .user_info_add_card
-                                                                  .tr(),
-                                                              style: AppTheme
-                                                                  .regular(
-                                                                size: 14,
-                                                              ).copyWith(
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .underline),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Center(
-                                                        child: Text(
-                                                          LocaleKeys
-                                                              .user_info_enter_card_number
-                                                              .tr(),
-                                                          style: AppTheme
-                                                              .regular(
-                                                            size: 14,
-                                                          ).copyWith(
-                                                              decoration:
-                                                                  TextDecoration
-                                                                      .underline),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                          height: 10),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 25),
-                                                        child: Column(
-                                                          children: [
-                                                            CustomInput(
-                                                                borderRadius:
-                                                                    10,
-                                                                controller:
-                                                                    _cardNumberController),
-                                                            const SizedBox(
-                                                                height: 17),
-                                                            Row(
-                                                              children: [
-                                                                Flexible(
-                                                                  child: CustomInput(
-                                                                      borderRadius:
-                                                                          10,
-                                                                      label: LocaleKeys
-                                                                          .user_info_expiration_date
-                                                                          .tr(),
-                                                                      controller:
-                                                                          _expYearController),
-                                                                ),
-                                                                Padding(
-                                                                  padding: const EdgeInsets
-                                                                              .symmetric(
-                                                                          horizontal:
-                                                                              8)
-                                                                      .copyWith(
-                                                                          top:
-                                                                              12),
-                                                                  child: Text(
-                                                                    '/',
-                                                                    style: AppTheme.semi(
-                                                                        size:
-                                                                            10,
-                                                                        color: AppColors
-                                                                            .textGray),
-                                                                  ),
-                                                                ),
-                                                                Flexible(
-                                                                  child: CustomInput(
-                                                                      borderRadius:
-                                                                          10,
-                                                                      label: '',
-                                                                      controller:
-                                                                          _expMonthController),
-                                                                ),
-                                                                const SizedBox(
-                                                                    width: 24),
-                                                                Flexible(
-                                                                  child: CustomInput(
-                                                                      borderRadius:
-                                                                          10,
-                                                                      label:
-                                                                          'CVV',
-                                                                      leftAlignment:
-                                                                          true,
-                                                                      controller:
-                                                                          _cvvController),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 22),
-                                                            GestureDetector(
-                                                              child: Container(
-                                                                padding: const EdgeInsets
-                                                                        .symmetric(
-                                                                    horizontal:
-                                                                        44,
-                                                                    vertical:
-                                                                        16),
-                                                                decoration: BoxDecoration(
-                                                                    color: AppColors
-                                                                        .darkBlueLight,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            25),
-                                                                    boxShadow: [
-                                                                      BoxShadow(
-                                                                        color: Colors
-                                                                            .black
-                                                                            .withOpacity(.16),
-                                                                        blurRadius:
-                                                                            3,
-                                                                        offset: const Offset(
-                                                                            0,
-                                                                            1),
-                                                                      ),
-                                                                    ]),
-                                                                child: Text(
-                                                                    LocaleKeys
-                                                                        .onboard_connect_btn
-                                                                        .tr(),
-                                                                    style: AppTheme.semi(
-                                                                        size:
-                                                                            16,
-                                                                        color: AppColors
-                                                                            .white)),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                          height: 30),
-                                                    ],
-                                                  ),
-                                                );
-                                              }),
-                                            )),
-                                    child: SvgPicture.asset(
-                                      Svgs.icEditRect,
-                                    ),
-                                  ),
-                                  contentPadding: EdgeInsets.zero,
-                                  suffixIconConstraints: const BoxConstraints(),
-                                  filled: true,
-                                  hintText: '********** 975',
-                                  fillColor: Colors.transparent,
-                                ),
-                              ),
-                            ),
+                            // Text(LocaleKeys.user_info_address.tr(),
+                            //     style: AppTheme.regular(
+                            //         size: 12, color: AppColors.textGray)),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(bottom: 26),
+                            //   child: FormBuilderTextField(
+                            //     name: 'address',
+                            //     controller: _addressController,
+                            //     style: AppTheme.bold(
+                            //         size: 20, color: AppColors.textGray),
+                            //     decoration: InputDecoration(
+                            //       suffixIcon: SvgPicture.asset(
+                            //         Svgs.icEditRect,
+                            //       ),
+                            //       contentPadding: EdgeInsets.zero,
+                            //       suffixIconConstraints: const BoxConstraints(),
+                            //       filled: true,
+                            //       hintText: 'רחוב מספר 2',
+                            //       fillColor: Colors.transparent,
+                            //     ),
+                            //   ),
+                            // ),
+                            // Text(LocaleKeys.user_info_credit_card.tr(),
+                            //     style: AppTheme.regular(
+                            // size: 12, color: AppColors.textGray)),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(bottom: 26),
+                            //   child: FormBuilderTextField(
+                            //     name: 'creditCard',
+                            //     controller: _creditCardController,
+                            //     style: AppTheme.bold(
+                            //         size: 20, color: AppColors.textGray),
+                            //     decoration: InputDecoration(
+                            //       suffixIcon: GestureDetector(
+                            //         onTap: () => showDialog(
+                            //             context: context,
+                            //             barrierColor:
+                            //                 Colors.black.withOpacity(0.76),
+                            //             builder: (context) => AlertDialog(
+                            //                   contentPadding: EdgeInsets.zero,
+                            //                   shape: RoundedRectangleBorder(
+                            //                       borderRadius:
+                            //                           BorderRadius.circular(
+                            //                               21)),
+                            //                   scrollable: true,
+                            //                   content:
+                            //                       Builder(builder: (context) {
+                            //                     return SizedBox(
+                            //                       width: MediaQuery.of(context)
+                            //                           .size
+                            //                           .width,
+                            //                       child: Column(
+                            //                         crossAxisAlignment:
+                            //                             CrossAxisAlignment
+                            //                                 .start,
+                            //                         children: [
+                            //                           GestureDetector(
+                            //                             onTap: () =>
+                            //                                 Navigator.pop(
+                            //                                     context),
+                            //                             child: const Padding(
+                            //                               padding:
+                            //                                   EdgeInsets.all(
+                            //                                       8.0),
+                            //                               child: Align(
+                            //                                   alignment:
+                            //                                       Alignment
+                            //                                           .topRight,
+                            //                                   child: Icon(
+                            //                                     Icons
+                            //                                         .close_outlined,
+                            //                                     color: Colors
+                            //                                         .black,
+                            //                                     size: 30,
+                            //                                   )),
+                            //                             ),
+                            //                           ),
+                            //                           Padding(
+                            //                             padding:
+                            //                                 const EdgeInsets
+                            //                                         .only(
+                            //                                     right: 17,
+                            //                                     bottom: 8),
+                            //                             child: Row(
+                            //                               children: [
+                            //                                 SvgPicture.asset(Svgs
+                            //                                     .icPlusRounded),
+                            //                                 const SizedBox(
+                            //                                   width: 13,
+                            //                                 ),
+                            //                                 Text(
+                            //                                   LocaleKeys
+                            //                                       .user_info_add_card
+                            //                                       .tr(),
+                            //                                   style: AppTheme
+                            //                                       .regular(
+                            //                                     size: 14,
+                            //                                   ).copyWith(
+                            //                                       decoration:
+                            //                                           TextDecoration
+                            //                                               .underline),
+                            //                                 ),
+                            //                               ],
+                            //                             ),
+                            //                           ),
+                            //                           Center(
+                            //                             child: Text(
+                            //                               LocaleKeys
+                            //                                   .user_info_enter_card_number
+                            //                                   .tr(),
+                            //                               style: AppTheme
+                            //                                   .regular(
+                            //                                 size: 14,
+                            //                               ).copyWith(
+                            //                                   decoration:
+                            //                                       TextDecoration
+                            //                                           .underline),
+                            //                             ),
+                            //                           ),
+                            //                           const SizedBox(
+                            //                               height: 10),
+                            //                           Padding(
+                            //                             padding:
+                            //                                 const EdgeInsets
+                            //                                         .symmetric(
+                            //                                     horizontal: 25),
+                            //                             child: Column(
+                            //                               children: [
+                            //                                 CustomInput(
+                            //                                     borderRadius:
+                            //                                         10,
+                            //                                     controller:
+                            //                                         _cardNumberController),
+                            //                                 const SizedBox(
+                            //                                     height: 17),
+                            //                                 Row(
+                            //                                   children: [
+                            //                                     Flexible(
+                            //                                       child: CustomInput(
+                            //                                           borderRadius:
+                            //                                               10,
+                            //                                           label: LocaleKeys
+                            //                                               .user_info_expiration_date
+                            //                                               .tr(),
+                            //                                           controller:
+                            //                                               _expYearController),
+                            //                                     ),
+                            //                                     Padding(
+                            //                                       padding: const EdgeInsets
+                            //                                                   .symmetric(
+                            //                                               horizontal:
+                            //                                                   8)
+                            //                                           .copyWith(
+                            //                                               top:
+                            //                                                   12),
+                            //                                       child: Text(
+                            //                                         '/',
+                            //                                         style: AppTheme.semi(
+                            //                                             size:
+                            //                                                 10,
+                            //                                             color: AppColors
+                            //                                                 .textGray),
+                            //                                       ),
+                            //                                     ),
+                            //                                     Flexible(
+                            //                                       child: CustomInput(
+                            //                                           borderRadius:
+                            //                                               10,
+                            //                                           label: '',
+                            //                                           controller:
+                            //                                               _expMonthController),
+                            //                                     ),
+                            //                                     const SizedBox(
+                            //                                         width: 24),
+                            //                                     Flexible(
+                            //                                       child: CustomInput(
+                            //                                           borderRadius:
+                            //                                               10,
+                            //                                           label:
+                            //                                               'CVV',
+                            //                                           leftAlignment:
+                            //                                               true,
+                            //                                           controller:
+                            //                                               _cvvController),
+                            //                                     ),
+                            //                                   ],
+                            //                                 ),
+                            //                                 const SizedBox(
+                            //                                     height: 22),
+                            //                                 GestureDetector(
+                            //                                   child: Container(
+                            //                                     padding: const EdgeInsets
+                            //                                             .symmetric(
+                            //                                         horizontal:
+                            //                                             44,
+                            //                                         vertical:
+                            //                                             16),
+                            //                                     decoration: BoxDecoration(
+                            //                                         color: AppColors
+                            //                                             .darkBlueLight,
+                            //                                         borderRadius:
+                            //                                             BorderRadius.circular(
+                            //                                                 25),
+                            //                                         boxShadow: [
+                            //                                           BoxShadow(
+                            //                                             color: Colors
+                            //                                                 .black
+                            //                                                 .withOpacity(.16),
+                            //                                             blurRadius:
+                            //                                                 3,
+                            //                                             offset: const Offset(
+                            //                                                 0,
+                            //                                                 1),
+                            //                                           ),
+                            //                                         ]),
+                            //                                     child: Text(
+                            //                                         LocaleKeys
+                            //                                             .onboard_connect_btn
+                            //                                             .tr(),
+                            //                                         style: AppTheme.semi(
+                            //                                             size:
+                            //                                                 16,
+                            //                                             color: AppColors
+                            //                                                 .white)),
+                            //                                   ),
+                            //                                 ),
+                            //                               ],
+                            //                             ),
+                            //                           ),
+                            //                           const SizedBox(
+                            //                               height: 30),
+                            //                         ],
+                            //                       ),
+                            //                     );
+                            //                   }),
+                            //                 )),
+                            //         child: SvgPicture.asset(
+                            //           Svgs.icEditRect,
+                            //         ),
+                            //       ),
+                            //       contentPadding: EdgeInsets.zero,
+                            //       suffixIconConstraints: const BoxConstraints(),
+                            //       filled: true,
+                            //       hintText: '********** 975',
+                            //       fillColor: Colors.transparent,
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

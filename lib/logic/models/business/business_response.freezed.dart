@@ -20,12 +20,12 @@ BusinessResponse _$BusinessResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BusinessResponse {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get defaultLocale => throw _privateConstructorUsedError;
-  Description get description => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-  LocationBusinessResponse get location => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get defaultLocale => throw _privateConstructorUsedError;
+  Description? get description => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
+  LocationBusinessResponse? get location => throw _privateConstructorUsedError;
   List<String>? get imageUrls => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,16 +40,16 @@ abstract class $BusinessResponseCopyWith<$Res> {
           BusinessResponse value, $Res Function(BusinessResponse) then) =
       _$BusinessResponseCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String name,
-      String defaultLocale,
-      Description description,
-      String category,
-      LocationBusinessResponse location,
+      {String? id,
+      String? name,
+      String? defaultLocale,
+      Description? description,
+      String? category,
+      LocationBusinessResponse? location,
       List<String>? imageUrls});
 
-  $DescriptionCopyWith<$Res> get description;
-  $LocationBusinessResponseCopyWith<$Res> get location;
+  $DescriptionCopyWith<$Res>? get description;
+  $LocationBusinessResponseCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -75,27 +75,27 @@ class _$BusinessResponseCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       defaultLocale: defaultLocale == freezed
           ? _value.defaultLocale
           : defaultLocale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as Description,
+              as Description?,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationBusinessResponse,
+              as LocationBusinessResponse?,
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -104,15 +104,23 @@ class _$BusinessResponseCopyWithImpl<$Res>
   }
 
   @override
-  $DescriptionCopyWith<$Res> get description {
-    return $DescriptionCopyWith<$Res>(_value.description, (value) {
+  $DescriptionCopyWith<$Res>? get description {
+    if (_value.description == null) {
+      return null;
+    }
+
+    return $DescriptionCopyWith<$Res>(_value.description!, (value) {
       return _then(_value.copyWith(description: value));
     });
   }
 
   @override
-  $LocationBusinessResponseCopyWith<$Res> get location {
-    return $LocationBusinessResponseCopyWith<$Res>(_value.location, (value) {
+  $LocationBusinessResponseCopyWith<$Res>? get location {
+    if (_value.location == null) {
+      return null;
+    }
+
+    return $LocationBusinessResponseCopyWith<$Res>(_value.location!, (value) {
       return _then(_value.copyWith(location: value));
     });
   }
@@ -126,18 +134,18 @@ abstract class _$$_BusinessResponseCopyWith<$Res>
       __$$_BusinessResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String name,
-      String defaultLocale,
-      Description description,
-      String category,
-      LocationBusinessResponse location,
+      {String? id,
+      String? name,
+      String? defaultLocale,
+      Description? description,
+      String? category,
+      LocationBusinessResponse? location,
       List<String>? imageUrls});
 
   @override
-  $DescriptionCopyWith<$Res> get description;
+  $DescriptionCopyWith<$Res>? get description;
   @override
-  $LocationBusinessResponseCopyWith<$Res> get location;
+  $LocationBusinessResponseCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -165,27 +173,27 @@ class __$$_BusinessResponseCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       defaultLocale: defaultLocale == freezed
           ? _value.defaultLocale
           : defaultLocale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as Description,
+              as Description?,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationBusinessResponse,
+              as LocationBusinessResponse?,
       imageUrls: imageUrls == freezed
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -195,15 +203,16 @@ class __$$_BusinessResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_BusinessResponse implements _BusinessResponse {
   const _$_BusinessResponse(
-      {required this.id,
-      required this.name,
-      required this.defaultLocale,
-      required this.description,
-      required this.category,
-      required this.location,
+      {this.id,
+      this.name,
+      this.defaultLocale,
+      this.description,
+      this.category,
+      this.location,
       final List<String>? imageUrls})
       : _imageUrls = imageUrls;
 
@@ -211,17 +220,17 @@ class _$_BusinessResponse implements _BusinessResponse {
       _$$_BusinessResponseFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String defaultLocale;
+  final String? defaultLocale;
   @override
-  final Description description;
+  final Description? description;
   @override
-  final String category;
+  final String? category;
   @override
-  final LocationBusinessResponse location;
+  final LocationBusinessResponse? location;
   final List<String>? _imageUrls;
   @override
   List<String>? get imageUrls {
@@ -280,29 +289,29 @@ class _$_BusinessResponse implements _BusinessResponse {
 
 abstract class _BusinessResponse implements BusinessResponse {
   const factory _BusinessResponse(
-      {required final String id,
-      required final String name,
-      required final String defaultLocale,
-      required final Description description,
-      required final String category,
-      required final LocationBusinessResponse location,
+      {final String? id,
+      final String? name,
+      final String? defaultLocale,
+      final Description? description,
+      final String? category,
+      final LocationBusinessResponse? location,
       final List<String>? imageUrls}) = _$_BusinessResponse;
 
   factory _BusinessResponse.fromJson(Map<String, dynamic> json) =
       _$_BusinessResponse.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get defaultLocale;
+  String? get defaultLocale;
   @override
-  Description get description;
+  Description? get description;
   @override
-  String get category;
+  String? get category;
   @override
-  LocationBusinessResponse get location;
+  LocationBusinessResponse? get location;
   @override
   List<String>? get imageUrls;
   @override
@@ -318,9 +327,9 @@ LocationBusinessResponse _$LocationBusinessResponseFromJson(
 
 /// @nodoc
 mixin _$LocationBusinessResponse {
-  String get country => throw _privateConstructorUsedError;
-  String get region => throw _privateConstructorUsedError;
-  String get city => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
+  String? get region => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -333,7 +342,7 @@ abstract class $LocationBusinessResponseCopyWith<$Res> {
   factory $LocationBusinessResponseCopyWith(LocationBusinessResponse value,
           $Res Function(LocationBusinessResponse) then) =
       _$LocationBusinessResponseCopyWithImpl<$Res>;
-  $Res call({String country, String region, String city});
+  $Res call({String? country, String? region, String? city});
 }
 
 /// @nodoc
@@ -355,15 +364,15 @@ class _$LocationBusinessResponseCopyWithImpl<$Res>
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       region: region == freezed
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -376,7 +385,7 @@ abstract class _$$_LocationBusinessResponseCopyWith<$Res>
           $Res Function(_$_LocationBusinessResponse) then) =
       __$$_LocationBusinessResponseCopyWithImpl<$Res>;
   @override
-  $Res call({String country, String region, String city});
+  $Res call({String? country, String? region, String? city});
 }
 
 /// @nodoc
@@ -401,15 +410,15 @@ class __$$_LocationBusinessResponseCopyWithImpl<$Res>
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       region: region == freezed
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -417,18 +426,17 @@ class __$$_LocationBusinessResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LocationBusinessResponse implements _LocationBusinessResponse {
-  const _$_LocationBusinessResponse(
-      {required this.country, required this.region, required this.city});
+  const _$_LocationBusinessResponse({this.country, this.region, this.city});
 
   factory _$_LocationBusinessResponse.fromJson(Map<String, dynamic> json) =>
       _$$_LocationBusinessResponseFromJson(json);
 
   @override
-  final String country;
+  final String? country;
   @override
-  final String region;
+  final String? region;
   @override
-  final String city;
+  final String? city;
 
   @override
   String toString() {
@@ -469,19 +477,19 @@ class _$_LocationBusinessResponse implements _LocationBusinessResponse {
 
 abstract class _LocationBusinessResponse implements LocationBusinessResponse {
   const factory _LocationBusinessResponse(
-      {required final String country,
-      required final String region,
-      required final String city}) = _$_LocationBusinessResponse;
+      {final String? country,
+      final String? region,
+      final String? city}) = _$_LocationBusinessResponse;
 
   factory _LocationBusinessResponse.fromJson(Map<String, dynamic> json) =
       _$_LocationBusinessResponse.fromJson;
 
   @override
-  String get country;
+  String? get country;
   @override
-  String get region;
+  String? get region;
   @override
-  String get city;
+  String? get city;
   @override
   @JsonKey(ignore: true)
   _$$_LocationBusinessResponseCopyWith<_$_LocationBusinessResponse>

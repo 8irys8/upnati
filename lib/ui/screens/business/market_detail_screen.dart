@@ -5,12 +5,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/models/business/business_response.dart';
+import 'package:upnati/logic/models/business_form.dart';
+import 'package:upnati/logic/models/description.dart';
+import 'package:upnati/logic/models/local_description.dart';
+import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/checked_steps_radio.dart';
@@ -20,7 +27,9 @@ import 'package:upnati/ui/widgets/custom_dropdown.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
 
 class MarketDetailScreen extends StatefulWidget with AutoRouteWrapper {
-  const MarketDetailScreen({Key? key}) : super(key: key);
+  final UserDetailResponse? userDetailResponse;
+  const MarketDetailScreen({Key? key, this.userDetailResponse})
+      : super(key: key);
 
   @override
   State<MarketDetailScreen> createState() => _MarketDetailScreenState();
@@ -34,12 +43,18 @@ class MarketDetailScreen extends StatefulWidget with AutoRouteWrapper {
 
 class _MarketDetailScreenState extends State<MarketDetailScreen> {
   final ValueNotifier<File?> _businessImage = ValueNotifier(null);
+  bool _uploadedImg = false;
   final nameController = TextEditingController();
   final detailController = TextEditingController();
   final agreementBox = ValueNotifier(true);
   final _formKey = GlobalKey<FormState>();
+  String? _businessCategory;
+  String? _businessScope;
+  String? _businessCity;
+  BusinessResponse? _marketDetail;
 
   void _putFile() async {
+    _uploadedImg = false;
     var result = await showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -74,18 +89,44 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                 ],
               ),
             ));
-    // if (result == true && _businessImage.value != null) {
-    //   context
-    //       .read<BusinessCubit>()
-    //       .uploadBusinessImage(file: _businessImage.value!);
-    // }
+  }
+
+  void createBusiness() {
+    if (_businessImage.value == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please upload a business image')));
+
+      return;
+    }
+    if (_formKey.currentState!.validate()) {
+      var businessForm = BusinessForm(
+          name: nameController.text,
+          description: [
+            LocalDescription(
+                locale: LocaleType.he.name,
+                description: Description(full: detailController.text))
+          ],
+          category: _businessCategory,
+          defaultLocale: LocaleType.he.name,
+          deliveryScope: _businessScope,
+          cityName: _businessCity);
+      if (widget.userDetailResponse?.businessId == null) {
+        context.read<BusinessCubit>().createNewBusiness(businessForm);
+      } else {
+        context.read<BusinessCubit>().updateBusinessInfo(
+              businessForm,
+            );
+      }
+    }
   }
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<BusinessCubit>().getBusinessCategoryMap();
+      context.read<BusinessCubit>().getBusinessCategory();
+      context.read<BusinessCubit>().getDeliveryScope();
+      context.read<BusinessCubit>().getBusinessCity();
     });
   }
 
@@ -106,13 +147,31 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
         body: BlocListener<BusinessCubit, BusinessState>(
           listener: (context, state) {
             state.whenOrNull(
-              // successBusinessResponse: (businessResponse) => ,
-
-              error: (err) => ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(err.message),
-                ),
-              ),
+              successBusinessResponse: (businessResponse) {
+                if (_uploadedImg) {
+                  context.router.push(BusinessRegistrationScreen(
+                      businessResponse: businessResponse));
+                } else {
+                  _marketDetail = businessResponse;
+                  context
+                      .read<BusinessCubit>()
+                      .uploadBusinessImage(file: _businessImage.value!);
+                  _uploadedImg = true;
+                }
+              },
+              error: (err) {
+                print(err);
+                if (_uploadedImg) {
+                  context.router.push(BusinessRegistrationScreen(
+                      businessResponse: _marketDetail!));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(err.toString()),
+                    ),
+                  );
+                }
+              },
             );
           },
           child: Column(
@@ -221,25 +280,28 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                             height: 11,
                           ),
                           BlocBuilder<BusinessCubit, BusinessState>(
+                            buildWhen: (previous, current) => current.maybeWhen(
+                                successBusinessCity: (_) => true,
+                                orElse: () => false),
                             builder: (context, state) {
                               return state.maybeWhen(
                                   error: (err) => Container(
-                                        child: Text('errorCategory'),
+                                        child: Text('errorCity'),
                                       ),
                                   orElse: () => const Center(
                                         child: CircularProgressIndicator(),
                                       ),
-                                  successBusinessMapInfo: (businessCategory) =>
+                                  successBusinessCity: (businessCity) =>
                                       CustomDropdown(
+                                        validator:
+                                            FormBuilderValidators.required(
+                                                errorText: 'נדרש'),
                                         onChanged: (value) {
-                                          // _businessCategory.value = value;
+                                          _businessCity = value;
                                         },
-                                        label: LocaleKeys.market_screen_category
-                                            .tr(),
-                                        items: businessCategory
-                                            .map((key, value) => MapEntry(key,
-                                                Item(name: key, value: value)))
-                                            .values
+                                        label: 'עִיר',
+                                        items: businessCity
+                                            .map((v) => Item(name: v, value: v))
                                             .toList(),
                                         hint: LocaleKeys
                                             .market_screen_dropdown_help
@@ -250,10 +312,73 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                           const SizedBox(
                             height: 27,
                           ),
-                          CustomDropdown(
-                            label: LocaleKeys.market_screen_place.tr(),
-                            items: [],
-                            hint: LocaleKeys.market_screen_dropdown_help.tr(),
+                          BlocBuilder<BusinessCubit, BusinessState>(
+                            buildWhen: (previous, current) => current.maybeWhen(
+                                successBusinessMap: (_) => true,
+                                orElse: () => false),
+                            builder: (context, state) {
+                              return state.maybeWhen(
+                                  error: (err) => Container(
+                                        child: Text('errorCategory'),
+                                      ),
+                                  orElse: () => const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                  successBusinessMap: (businessCategory) =>
+                                      CustomDropdown(
+                                        validator:
+                                            FormBuilderValidators.required(
+                                                errorText: 'נדרש'),
+                                        onChanged: (value) {
+                                          _businessCategory = value;
+                                        },
+                                        label: LocaleKeys.market_screen_category
+                                            .tr(),
+                                        items: businessCategory
+                                            .map((v) => Item(
+                                                name: v?.name ?? '',
+                                                value: v?.name ?? ''))
+                                            .toList(),
+                                        hint: LocaleKeys
+                                            .market_screen_dropdown_help
+                                            .tr(),
+                                      ));
+                            },
+                          ),
+                          const SizedBox(
+                            height: 27,
+                          ),
+                          BlocBuilder<BusinessCubit, BusinessState>(
+                            buildWhen: (previous, current) => current.maybeWhen(
+                                successBusinessList: (_) => true,
+                                // loading: () => true,
+                                orElse: () => false),
+                            builder: (context, state) {
+                              return state.maybeWhen(
+                                  error: (err) => Container(
+                                        child: Text('errorDelivery'),
+                                      ),
+                                  orElse: () => const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                  successBusinessList: (businessScope) =>
+                                      CustomDropdown(
+                                        validator:
+                                            FormBuilderValidators.required(
+                                                errorText: 'נדרש'),
+                                        onChanged: (value) {
+                                          _businessScope = value;
+                                        },
+                                        label:
+                                            LocaleKeys.market_screen_place.tr(),
+                                        hint: LocaleKeys
+                                            .market_screen_dropdown_help
+                                            .tr(),
+                                        items: businessScope
+                                            .map((v) => Item(name: v, value: v))
+                                            .toList(),
+                                      ));
+                            },
                           ),
                           const SizedBox(
                             height: 37,
@@ -296,12 +421,18 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 37.0)
                     .copyWith(top: 11, bottom: 24),
-                child: CustomButton(
-                  onPressed: () {
-                    context.router.push(const BusinessRegistrationScreen());
+                child: BlocBuilder<BusinessCubit, BusinessState>(
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                        loading: () => const SpinKitCircle(
+                              color: AppColors.darkBlue,
+                            ),
+                        orElse: () => CustomButton(
+                              onPressed: () => createBusiness(),
+                              title: LocaleKeys.market_screen_save_btn.tr(),
+                              color: AppColors.darkBlue,
+                            ));
                   },
-                  title: LocaleKeys.market_screen_save_btn.tr(),
-                  color: AppColors.darkBlue,
                 ),
               ),
             ],

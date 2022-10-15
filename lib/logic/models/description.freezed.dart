@@ -20,7 +20,7 @@ Description _$DescriptionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Description {
-  String get full => throw _privateConstructorUsedError;
+  String? get full => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $DescriptionCopyWith<$Res> {
   factory $DescriptionCopyWith(
           Description value, $Res Function(Description) then) =
       _$DescriptionCopyWithImpl<$Res>;
-  $Res call({String full});
+  $Res call({String? full});
 }
 
 /// @nodoc
@@ -52,7 +52,7 @@ class _$DescriptionCopyWithImpl<$Res> implements $DescriptionCopyWith<$Res> {
       full: full == freezed
           ? _value.full
           : full // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -64,7 +64,7 @@ abstract class _$$_DescriptionCopyWith<$Res>
           _$_Description value, $Res Function(_$_Description) then) =
       __$$_DescriptionCopyWithImpl<$Res>;
   @override
-  $Res call({String full});
+  $Res call({String? full});
 }
 
 /// @nodoc
@@ -85,7 +85,7 @@ class __$$_DescriptionCopyWithImpl<$Res> extends _$DescriptionCopyWithImpl<$Res>
       full: full == freezed
           ? _value.full
           : full // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -93,13 +93,13 @@ class __$$_DescriptionCopyWithImpl<$Res> extends _$DescriptionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Description implements _Description {
-  const _$_Description({required this.full});
+  const _$_Description({this.full});
 
   factory _$_Description.fromJson(Map<String, dynamic> json) =>
       _$$_DescriptionFromJson(json);
 
   @override
-  final String full;
+  final String? full;
 
   @override
   String toString() {
@@ -133,13 +133,13 @@ class _$_Description implements _Description {
 }
 
 abstract class _Description implements Description {
-  const factory _Description({required final String full}) = _$_Description;
+  const factory _Description({final String? full}) = _$_Description;
 
   factory _Description.fromJson(Map<String, dynamic> json) =
       _$_Description.fromJson;
 
   @override
-  String get full;
+  String? get full;
   @override
   @JsonKey(ignore: true)
   _$$_DescriptionCopyWith<_$_Description> get copyWith =>

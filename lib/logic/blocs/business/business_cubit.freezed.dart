@@ -30,6 +30,8 @@ mixin _$BusinessState {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -45,6 +47,7 @@ mixin _$BusinessState {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +64,7 @@ mixin _$BusinessState {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -74,6 +78,7 @@ mixin _$BusinessState {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +95,7 @@ mixin _$BusinessState {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -103,6 +109,7 @@ mixin _$BusinessState {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +127,7 @@ mixin _$BusinessState {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -136,6 +144,7 @@ mixin _$BusinessState {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -150,6 +159,7 @@ mixin _$BusinessState {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -161,6 +171,7 @@ mixin _$BusinessState {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -175,6 +186,7 @@ mixin _$BusinessState {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -186,6 +198,7 @@ mixin _$BusinessState {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -259,6 +272,8 @@ class _$_Initial implements _Initial {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -274,6 +289,7 @@ class _$_Initial implements _Initial {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return initial();
   }
@@ -293,6 +309,7 @@ class _$_Initial implements _Initial {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -306,6 +323,7 @@ class _$_Initial implements _Initial {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return initial?.call();
   }
@@ -325,6 +343,7 @@ class _$_Initial implements _Initial {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -338,6 +357,7 @@ class _$_Initial implements _Initial {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -361,6 +381,7 @@ class _$_Initial implements _Initial {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -377,6 +398,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return initial(this);
   }
@@ -394,6 +416,7 @@ class _$_Initial implements _Initial {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -405,6 +428,7 @@ class _$_Initial implements _Initial {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return initial?.call(this);
   }
@@ -422,6 +446,7 @@ class _$_Initial implements _Initial {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -433,6 +458,7 @@ class _$_Initial implements _Initial {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -497,6 +523,8 @@ class _$_Loading implements _Loading {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -512,6 +540,7 @@ class _$_Loading implements _Loading {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return loading();
   }
@@ -531,6 +560,7 @@ class _$_Loading implements _Loading {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -544,6 +574,7 @@ class _$_Loading implements _Loading {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return loading?.call();
   }
@@ -563,6 +594,7 @@ class _$_Loading implements _Loading {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -576,6 +608,7 @@ class _$_Loading implements _Loading {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -599,6 +632,7 @@ class _$_Loading implements _Loading {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -615,6 +649,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return loading(this);
   }
@@ -632,6 +667,7 @@ class _$_Loading implements _Loading {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -643,6 +679,7 @@ class _$_Loading implements _Loading {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return loading?.call(this);
   }
@@ -660,6 +697,7 @@ class _$_Loading implements _Loading {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -671,6 +709,7 @@ class _$_Loading implements _Loading {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -735,6 +774,8 @@ class _$_Success implements _Success {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -750,6 +791,7 @@ class _$_Success implements _Success {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return success();
   }
@@ -769,6 +811,7 @@ class _$_Success implements _Success {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -782,6 +825,7 @@ class _$_Success implements _Success {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return success?.call();
   }
@@ -801,6 +845,7 @@ class _$_Success implements _Success {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -814,6 +859,7 @@ class _$_Success implements _Success {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -837,6 +883,7 @@ class _$_Success implements _Success {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -853,6 +900,7 @@ class _$_Success implements _Success {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return success(this);
   }
@@ -870,6 +918,7 @@ class _$_Success implements _Success {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -881,6 +930,7 @@ class _$_Success implements _Success {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return success?.call(this);
   }
@@ -898,6 +948,7 @@ class _$_Success implements _Success {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -909,6 +960,7 @@ class _$_Success implements _Success {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -996,6 +1048,8 @@ class _$_Error implements _Error {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -1011,6 +1065,7 @@ class _$_Error implements _Error {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return error(err);
   }
@@ -1030,6 +1085,7 @@ class _$_Error implements _Error {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1043,6 +1099,7 @@ class _$_Error implements _Error {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return error?.call(err);
   }
@@ -1062,6 +1119,7 @@ class _$_Error implements _Error {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1075,6 +1133,7 @@ class _$_Error implements _Error {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1098,6 +1157,7 @@ class _$_Error implements _Error {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -1114,6 +1174,7 @@ class _$_Error implements _Error {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return error(this);
   }
@@ -1131,6 +1192,7 @@ class _$_Error implements _Error {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -1142,6 +1204,7 @@ class _$_Error implements _Error {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return error?.call(this);
   }
@@ -1159,6 +1222,7 @@ class _$_Error implements _Error {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -1170,6 +1234,7 @@ class _$_Error implements _Error {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1278,6 +1343,8 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -1293,6 +1360,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successBusinessResponse(businessResponse);
   }
@@ -1312,6 +1380,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1325,6 +1394,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successBusinessResponse?.call(businessResponse);
   }
@@ -1344,6 +1414,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1357,6 +1428,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessResponse != null) {
@@ -1380,6 +1452,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -1396,6 +1469,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successBusinessResponse(this);
   }
@@ -1413,6 +1487,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -1424,6 +1499,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successBusinessResponse?.call(this);
   }
@@ -1441,6 +1517,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -1452,6 +1529,7 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessResponse != null) {
@@ -1563,6 +1641,8 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -1578,6 +1658,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successUserDetailResponse(userDetailResponse);
   }
@@ -1597,6 +1678,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1610,6 +1692,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successUserDetailResponse?.call(userDetailResponse);
   }
@@ -1629,6 +1712,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1642,6 +1726,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successUserDetailResponse != null) {
@@ -1665,6 +1750,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -1681,6 +1767,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successUserDetailResponse(this);
   }
@@ -1698,6 +1785,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -1709,6 +1797,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successUserDetailResponse?.call(this);
   }
@@ -1726,6 +1815,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -1737,6 +1827,7 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successUserDetailResponse != null) {
@@ -1849,6 +1940,8 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -1864,6 +1957,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successPageBusinessResponse(pageBusinessResponse);
   }
@@ -1883,6 +1977,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1896,6 +1991,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successPageBusinessResponse?.call(pageBusinessResponse);
   }
@@ -1915,6 +2011,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -1928,6 +2025,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successPageBusinessResponse != null) {
@@ -1951,6 +2049,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -1967,6 +2066,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successPageBusinessResponse(this);
   }
@@ -1984,6 +2084,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -1995,6 +2096,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successPageBusinessResponse?.call(this);
   }
@@ -2012,6 +2114,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -2023,6 +2126,7 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successPageBusinessResponse != null) {
@@ -2128,6 +2232,8 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -2143,6 +2249,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successBusinessMapInfo(mapInfoResponse);
   }
@@ -2162,6 +2269,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -2175,6 +2283,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successBusinessMapInfo?.call(mapInfoResponse);
   }
@@ -2194,6 +2303,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -2207,6 +2317,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessMapInfo != null) {
@@ -2230,6 +2341,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -2246,6 +2358,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successBusinessMapInfo(this);
   }
@@ -2263,6 +2376,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -2274,6 +2388,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successBusinessMapInfo?.call(this);
   }
@@ -2291,6 +2406,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -2302,6 +2418,7 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessMapInfo != null) {
@@ -2318,6 +2435,296 @@ abstract class _SuccessBusinessMapInfo implements BusinessState {
   Map<String, String> get mapInfoResponse;
   @JsonKey(ignore: true)
   _$$_SuccessBusinessMapInfoCopyWith<_$_SuccessBusinessMapInfo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SuccessBusinessMapCopyWith<$Res> {
+  factory _$$_SuccessBusinessMapCopyWith(_$_SuccessBusinessMap value,
+          $Res Function(_$_SuccessBusinessMap) then) =
+      __$$_SuccessBusinessMapCopyWithImpl<$Res>;
+  $Res call({List<CategoryModel?> mapInfoResponse});
+}
+
+/// @nodoc
+class __$$_SuccessBusinessMapCopyWithImpl<$Res>
+    extends _$BusinessStateCopyWithImpl<$Res>
+    implements _$$_SuccessBusinessMapCopyWith<$Res> {
+  __$$_SuccessBusinessMapCopyWithImpl(
+      _$_SuccessBusinessMap _value, $Res Function(_$_SuccessBusinessMap) _then)
+      : super(_value, (v) => _then(v as _$_SuccessBusinessMap));
+
+  @override
+  _$_SuccessBusinessMap get _value => super._value as _$_SuccessBusinessMap;
+
+  @override
+  $Res call({
+    Object? mapInfoResponse = freezed,
+  }) {
+    return _then(_$_SuccessBusinessMap(
+      mapInfoResponse == freezed
+          ? _value._mapInfoResponse
+          : mapInfoResponse // ignore: cast_nullable_to_non_nullable
+              as List<CategoryModel?>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SuccessBusinessMap implements _SuccessBusinessMap {
+  const _$_SuccessBusinessMap(final List<CategoryModel?> mapInfoResponse)
+      : _mapInfoResponse = mapInfoResponse;
+
+  final List<CategoryModel?> _mapInfoResponse;
+  @override
+  List<CategoryModel?> get mapInfoResponse {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_mapInfoResponse);
+  }
+
+  @override
+  String toString() {
+    return 'BusinessState.successBusinessMap(mapInfoResponse: $mapInfoResponse)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccessBusinessMap &&
+            const DeepCollectionEquality()
+                .equals(other._mapInfoResponse, _mapInfoResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_mapInfoResponse));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessBusinessMapCopyWith<_$_SuccessBusinessMap> get copyWith =>
+      __$$_SuccessBusinessMapCopyWithImpl<_$_SuccessBusinessMap>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(dynamic err) error,
+    required TResult Function(BusinessResponse businessResponse)
+        successBusinessResponse,
+    required TResult Function(UserDetailResponse userDetailResponse)
+        successUserDetailResponse,
+    required TResult Function(PageBusinessResponse pageBusinessResponse)
+        successPageBusinessResponse,
+    required TResult Function(Map<String, String> mapInfoResponse)
+        successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
+    required TResult Function(FilterForm filterForm) successBusinessFilter,
+    required TResult Function(PageItemResponse pageItemResponse)
+        successPageItemResponse,
+    required TResult Function(ItemResponse itemResponse) successItemResponse,
+    required TResult Function(BasketResponse basketResponse)
+        successBasketResponse,
+    required TResult Function(List<OrderPreviewResponse> orderPreviewResponse)
+        successOrderPreviewResponse,
+    required TResult Function(CommitedOrdersResponse commitedOrdersResponse)
+        successCommitedOrdersResponse,
+    required TResult Function(PageOrderResponse pageOrderResponse)
+        successPageOrderResponse,
+    required TResult Function(SearchResponse searchResponse)
+        successSearchResponse,
+    required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
+  }) {
+    return successBusinessMap(mapInfoResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+  }) {
+    return successBusinessMap?.call(mapInfoResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    required TResult orElse(),
+  }) {
+    if (successBusinessMap != null) {
+      return successBusinessMap(mapInfoResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_SuccessBusinessResponse value)
+        successBusinessResponse,
+    required TResult Function(_SuccessUserDetailResponse value)
+        successUserDetailResponse,
+    required TResult Function(_SuccessPageBusinessResponse value)
+        successPageBusinessResponse,
+    required TResult Function(_SuccessBusinessMapInfo value)
+        successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
+    required TResult Function(_SuccessBusinessFilter value)
+        successBusinessFilter,
+    required TResult Function(_SuccessPageItemResponse value)
+        successPageItemResponse,
+    required TResult Function(_SuccessItemResponse value) successItemResponse,
+    required TResult Function(_SuccessBasketResponse value)
+        successBasketResponse,
+    required TResult Function(_SuccessOrderPreviewResponse value)
+        successOrderPreviewResponse,
+    required TResult Function(_SuccessCommitedOrdersResponse value)
+        successCommitedOrdersResponse,
+    required TResult Function(_SuccessPageOrderResponse value)
+        successPageOrderResponse,
+    required TResult Function(_SuccessSearchResponse value)
+        successSearchResponse,
+    required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+  }) {
+    return successBusinessMap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+  }) {
+    return successBusinessMap?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    required TResult orElse(),
+  }) {
+    if (successBusinessMap != null) {
+      return successBusinessMap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessBusinessMap implements BusinessState {
+  const factory _SuccessBusinessMap(
+      final List<CategoryModel?> mapInfoResponse) = _$_SuccessBusinessMap;
+
+  List<CategoryModel?> get mapInfoResponse;
+  @JsonKey(ignore: true)
+  _$$_SuccessBusinessMapCopyWith<_$_SuccessBusinessMap> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2410,6 +2817,8 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -2425,6 +2834,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successBusinessFilter(filterForm);
   }
@@ -2444,6 +2854,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -2457,6 +2868,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successBusinessFilter?.call(filterForm);
   }
@@ -2476,6 +2888,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -2489,6 +2902,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessFilter != null) {
@@ -2512,6 +2926,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -2528,6 +2943,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successBusinessFilter(this);
   }
@@ -2545,6 +2961,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -2556,6 +2973,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successBusinessFilter?.call(this);
   }
@@ -2573,6 +2991,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -2584,6 +3003,7 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessFilter != null) {
@@ -2693,6 +3113,8 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -2708,6 +3130,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successPageItemResponse(pageItemResponse);
   }
@@ -2727,6 +3150,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -2740,6 +3164,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successPageItemResponse?.call(pageItemResponse);
   }
@@ -2759,6 +3184,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -2772,6 +3198,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successPageItemResponse != null) {
@@ -2795,6 +3222,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -2811,6 +3239,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successPageItemResponse(this);
   }
@@ -2828,6 +3257,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -2839,6 +3269,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successPageItemResponse?.call(this);
   }
@@ -2856,6 +3287,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -2867,6 +3299,7 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successPageItemResponse != null) {
@@ -2974,6 +3407,8 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -2989,6 +3424,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successItemResponse(itemResponse);
   }
@@ -3008,6 +3444,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3021,6 +3458,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successItemResponse?.call(itemResponse);
   }
@@ -3040,6 +3478,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3053,6 +3492,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successItemResponse != null) {
@@ -3076,6 +3516,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -3092,6 +3533,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successItemResponse(this);
   }
@@ -3109,6 +3551,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3120,6 +3563,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successItemResponse?.call(this);
   }
@@ -3137,6 +3581,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3148,6 +3593,7 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successItemResponse != null) {
@@ -3256,6 +3702,8 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -3271,6 +3719,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successBasketResponse(basketResponse);
   }
@@ -3290,6 +3739,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3303,6 +3753,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successBasketResponse?.call(basketResponse);
   }
@@ -3322,6 +3773,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3335,6 +3787,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBasketResponse != null) {
@@ -3358,6 +3811,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -3374,6 +3828,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successBasketResponse(this);
   }
@@ -3391,6 +3846,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3402,6 +3858,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successBasketResponse?.call(this);
   }
@@ -3419,6 +3876,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3430,6 +3888,7 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBasketResponse != null) {
@@ -3537,6 +3996,8 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -3552,6 +4013,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successOrderPreviewResponse(orderPreviewResponse);
   }
@@ -3571,6 +4033,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3584,6 +4047,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successOrderPreviewResponse?.call(orderPreviewResponse);
   }
@@ -3603,6 +4067,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3616,6 +4081,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successOrderPreviewResponse != null) {
@@ -3639,6 +4105,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -3655,6 +4122,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successOrderPreviewResponse(this);
   }
@@ -3672,6 +4140,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3683,6 +4152,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successOrderPreviewResponse?.call(this);
   }
@@ -3700,6 +4170,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3711,6 +4182,7 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successOrderPreviewResponse != null) {
@@ -3824,6 +4296,8 @@ class _$_SuccessCommitedOrdersResponse
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -3839,6 +4313,7 @@ class _$_SuccessCommitedOrdersResponse
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successCommitedOrdersResponse(commitedOrdersResponse);
   }
@@ -3858,6 +4333,7 @@ class _$_SuccessCommitedOrdersResponse
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3871,6 +4347,7 @@ class _$_SuccessCommitedOrdersResponse
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successCommitedOrdersResponse?.call(commitedOrdersResponse);
   }
@@ -3890,6 +4367,7 @@ class _$_SuccessCommitedOrdersResponse
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -3903,6 +4381,7 @@ class _$_SuccessCommitedOrdersResponse
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successCommitedOrdersResponse != null) {
@@ -3926,6 +4405,7 @@ class _$_SuccessCommitedOrdersResponse
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -3942,6 +4422,7 @@ class _$_SuccessCommitedOrdersResponse
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successCommitedOrdersResponse(this);
   }
@@ -3959,6 +4440,7 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3970,6 +4452,7 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successCommitedOrdersResponse?.call(this);
   }
@@ -3987,6 +4470,7 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -3998,6 +4482,7 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successCommitedOrdersResponse != null) {
@@ -4108,6 +4593,8 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -4123,6 +4610,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successPageOrderResponse(pageOrderResponse);
   }
@@ -4142,6 +4630,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -4155,6 +4644,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successPageOrderResponse?.call(pageOrderResponse);
   }
@@ -4174,6 +4664,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -4187,6 +4678,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successPageOrderResponse != null) {
@@ -4210,6 +4702,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -4226,6 +4719,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successPageOrderResponse(this);
   }
@@ -4243,6 +4737,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -4254,6 +4749,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successPageOrderResponse?.call(this);
   }
@@ -4271,6 +4767,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -4282,6 +4779,7 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successPageOrderResponse != null) {
@@ -4390,6 +4888,8 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -4405,6 +4905,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successSearchResponse(searchResponse);
   }
@@ -4424,6 +4925,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -4437,6 +4939,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successSearchResponse?.call(searchResponse);
   }
@@ -4456,6 +4959,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -4469,6 +4973,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successSearchResponse != null) {
@@ -4492,6 +4997,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -4508,6 +5014,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successSearchResponse(this);
   }
@@ -4525,6 +5032,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -4536,6 +5044,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successSearchResponse?.call(this);
   }
@@ -4553,6 +5062,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -4564,6 +5074,7 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successSearchResponse != null) {
@@ -4665,6 +5176,8 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successPageBusinessResponse,
     required TResult Function(Map<String, String> mapInfoResponse)
         successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
     required TResult Function(FilterForm filterForm) successBusinessFilter,
     required TResult Function(PageItemResponse pageItemResponse)
         successPageItemResponse,
@@ -4680,6 +5193,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     required TResult Function(SearchResponse searchResponse)
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
   }) {
     return successBusinessList(list);
   }
@@ -4699,6 +5213,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -4712,6 +5227,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
   }) {
     return successBusinessList?.call(list);
   }
@@ -4731,6 +5247,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successPageBusinessResponse,
     TResult Function(Map<String, String> mapInfoResponse)?
         successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
     TResult Function(FilterForm filterForm)? successBusinessFilter,
     TResult Function(PageItemResponse pageItemResponse)?
         successPageItemResponse,
@@ -4744,6 +5261,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successPageOrderResponse,
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessList != null) {
@@ -4767,6 +5285,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successPageBusinessResponse,
     required TResult Function(_SuccessBusinessMapInfo value)
         successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
     required TResult Function(_SuccessBusinessFilter value)
         successBusinessFilter,
     required TResult Function(_SuccessPageItemResponse value)
@@ -4783,6 +5302,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     required TResult Function(_SuccessSearchResponse value)
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
   }) {
     return successBusinessList(this);
   }
@@ -4800,6 +5320,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -4811,6 +5332,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
   }) {
     return successBusinessList?.call(this);
   }
@@ -4828,6 +5350,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(_SuccessPageBusinessResponse value)?
         successPageBusinessResponse,
     TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
     TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
     TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
     TResult Function(_SuccessItemResponse value)? successItemResponse,
@@ -4839,6 +5362,7 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
     required TResult orElse(),
   }) {
     if (successBusinessList != null) {
@@ -4855,5 +5379,293 @@ abstract class _SuccessBusinessList implements BusinessState {
   List<String> get list;
   @JsonKey(ignore: true)
   _$$_SuccessBusinessListCopyWith<_$_SuccessBusinessList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SuccessBusinessCityCopyWith<$Res> {
+  factory _$$_SuccessBusinessCityCopyWith(_$_SuccessBusinessCity value,
+          $Res Function(_$_SuccessBusinessCity) then) =
+      __$$_SuccessBusinessCityCopyWithImpl<$Res>;
+  $Res call({List<String> list});
+}
+
+/// @nodoc
+class __$$_SuccessBusinessCityCopyWithImpl<$Res>
+    extends _$BusinessStateCopyWithImpl<$Res>
+    implements _$$_SuccessBusinessCityCopyWith<$Res> {
+  __$$_SuccessBusinessCityCopyWithImpl(_$_SuccessBusinessCity _value,
+      $Res Function(_$_SuccessBusinessCity) _then)
+      : super(_value, (v) => _then(v as _$_SuccessBusinessCity));
+
+  @override
+  _$_SuccessBusinessCity get _value => super._value as _$_SuccessBusinessCity;
+
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_$_SuccessBusinessCity(
+      list == freezed
+          ? _value._list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SuccessBusinessCity implements _SuccessBusinessCity {
+  const _$_SuccessBusinessCity(final List<String> list) : _list = list;
+
+  final List<String> _list;
+  @override
+  List<String> get list {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_list);
+  }
+
+  @override
+  String toString() {
+    return 'BusinessState.successBusinessCity(list: $list)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccessBusinessCity &&
+            const DeepCollectionEquality().equals(other._list, _list));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessBusinessCityCopyWith<_$_SuccessBusinessCity> get copyWith =>
+      __$$_SuccessBusinessCityCopyWithImpl<_$_SuccessBusinessCity>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(dynamic err) error,
+    required TResult Function(BusinessResponse businessResponse)
+        successBusinessResponse,
+    required TResult Function(UserDetailResponse userDetailResponse)
+        successUserDetailResponse,
+    required TResult Function(PageBusinessResponse pageBusinessResponse)
+        successPageBusinessResponse,
+    required TResult Function(Map<String, String> mapInfoResponse)
+        successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
+    required TResult Function(FilterForm filterForm) successBusinessFilter,
+    required TResult Function(PageItemResponse pageItemResponse)
+        successPageItemResponse,
+    required TResult Function(ItemResponse itemResponse) successItemResponse,
+    required TResult Function(BasketResponse basketResponse)
+        successBasketResponse,
+    required TResult Function(List<OrderPreviewResponse> orderPreviewResponse)
+        successOrderPreviewResponse,
+    required TResult Function(CommitedOrdersResponse commitedOrdersResponse)
+        successCommitedOrdersResponse,
+    required TResult Function(PageOrderResponse pageOrderResponse)
+        successPageOrderResponse,
+    required TResult Function(SearchResponse searchResponse)
+        successSearchResponse,
+    required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
+  }) {
+    return successBusinessCity(list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+  }) {
+    return successBusinessCity?.call(list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    required TResult orElse(),
+  }) {
+    if (successBusinessCity != null) {
+      return successBusinessCity(list);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_SuccessBusinessResponse value)
+        successBusinessResponse,
+    required TResult Function(_SuccessUserDetailResponse value)
+        successUserDetailResponse,
+    required TResult Function(_SuccessPageBusinessResponse value)
+        successPageBusinessResponse,
+    required TResult Function(_SuccessBusinessMapInfo value)
+        successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
+    required TResult Function(_SuccessBusinessFilter value)
+        successBusinessFilter,
+    required TResult Function(_SuccessPageItemResponse value)
+        successPageItemResponse,
+    required TResult Function(_SuccessItemResponse value) successItemResponse,
+    required TResult Function(_SuccessBasketResponse value)
+        successBasketResponse,
+    required TResult Function(_SuccessOrderPreviewResponse value)
+        successOrderPreviewResponse,
+    required TResult Function(_SuccessCommitedOrdersResponse value)
+        successCommitedOrdersResponse,
+    required TResult Function(_SuccessPageOrderResponse value)
+        successPageOrderResponse,
+    required TResult Function(_SuccessSearchResponse value)
+        successSearchResponse,
+    required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+  }) {
+    return successBusinessCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+  }) {
+    return successBusinessCity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    required TResult orElse(),
+  }) {
+    if (successBusinessCity != null) {
+      return successBusinessCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessBusinessCity implements BusinessState {
+  const factory _SuccessBusinessCity(final List<String> list) =
+      _$_SuccessBusinessCity;
+
+  List<String> get list;
+  @JsonKey(ignore: true)
+  _$$_SuccessBusinessCityCopyWith<_$_SuccessBusinessCity> get copyWith =>
       throw _privateConstructorUsedError;
 }

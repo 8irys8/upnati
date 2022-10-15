@@ -22,6 +22,7 @@ mixin _$UserState {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -37,6 +38,7 @@ mixin _$UserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -50,6 +52,7 @@ mixin _$UserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -64,6 +67,7 @@ mixin _$UserState {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -78,6 +82,7 @@ mixin _$UserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -90,6 +95,7 @@ mixin _$UserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -157,6 +163,7 @@ class _$_Initial implements _Initial {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -175,6 +182,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -191,6 +199,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -211,6 +220,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -228,6 +238,7 @@ class _$_Initial implements _Initial {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -243,6 +254,7 @@ class _$_Initial implements _Initial {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -305,6 +317,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -323,6 +336,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -339,6 +353,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -359,6 +374,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -376,6 +392,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -391,6 +408,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -477,6 +495,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -495,6 +514,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -511,6 +531,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -531,6 +552,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -548,6 +570,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -563,6 +586,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -630,6 +654,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -648,6 +673,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -664,6 +690,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -684,6 +711,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -701,6 +729,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -716,6 +745,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -731,6 +761,191 @@ class _$_SuccessUserState implements _SuccessUserState {
 
 abstract class _SuccessUserState implements UserState {
   const factory _SuccessUserState() = _$_SuccessUserState;
+}
+
+/// @nodoc
+abstract class _$$_SuccessUserLinkStateCopyWith<$Res> {
+  factory _$$_SuccessUserLinkStateCopyWith(_$_SuccessUserLinkState value,
+          $Res Function(_$_SuccessUserLinkState) then) =
+      __$$_SuccessUserLinkStateCopyWithImpl<$Res>;
+  $Res call({String link});
+}
+
+/// @nodoc
+class __$$_SuccessUserLinkStateCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res>
+    implements _$$_SuccessUserLinkStateCopyWith<$Res> {
+  __$$_SuccessUserLinkStateCopyWithImpl(_$_SuccessUserLinkState _value,
+      $Res Function(_$_SuccessUserLinkState) _then)
+      : super(_value, (v) => _then(v as _$_SuccessUserLinkState));
+
+  @override
+  _$_SuccessUserLinkState get _value => super._value as _$_SuccessUserLinkState;
+
+  @override
+  $Res call({
+    Object? link = freezed,
+  }) {
+    return _then(_$_SuccessUserLinkState(
+      link == freezed
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SuccessUserLinkState implements _SuccessUserLinkState {
+  const _$_SuccessUserLinkState(this.link);
+
+  @override
+  final String link;
+
+  @override
+  String toString() {
+    return 'UserState.successUserLinkState(link: $link)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccessUserLinkState &&
+            const DeepCollectionEquality().equals(other.link, link));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(link));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessUserLinkStateCopyWith<_$_SuccessUserLinkState> get copyWith =>
+      __$$_SuccessUserLinkStateCopyWithImpl<_$_SuccessUserLinkState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingUserState,
+    required TResult Function(dynamic err) errorUserState,
+    required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
+    required TResult Function(UserDetailResponse response)
+        successUserStateResponse,
+    required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
+        successUserPageDetails,
+    required TResult Function(
+            BusinessInvitationResponse businessInvitationResponse)
+        successBusinessInvitation,
+  }) {
+    return successUserLinkState(link);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingUserState,
+    TResult Function(dynamic err)? errorUserState,
+    TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
+    TResult Function(UserDetailResponse response)? successUserStateResponse,
+    TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
+        successUserPageDetails,
+    TResult Function(BusinessInvitationResponse businessInvitationResponse)?
+        successBusinessInvitation,
+  }) {
+    return successUserLinkState?.call(link);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingUserState,
+    TResult Function(dynamic err)? errorUserState,
+    TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
+    TResult Function(UserDetailResponse response)? successUserStateResponse,
+    TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
+        successUserPageDetails,
+    TResult Function(BusinessInvitationResponse businessInvitationResponse)?
+        successBusinessInvitation,
+    required TResult orElse(),
+  }) {
+    if (successUserLinkState != null) {
+      return successUserLinkState(link);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingUserState value) loadingUserState,
+    required TResult Function(_ErrorUserState value) errorUserState,
+    required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
+    required TResult Function(_SuccessUserStateResponse value)
+        successUserStateResponse,
+    required TResult Function(_SuccessUserPageDetails value)
+        successUserPageDetails,
+    required TResult Function(_SuccessBusinessInvitation value)
+        successBusinessInvitation,
+  }) {
+    return successUserLinkState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingUserState value)? loadingUserState,
+    TResult Function(_ErrorUserState value)? errorUserState,
+    TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
+    TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
+    TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
+    TResult Function(_SuccessBusinessInvitation value)?
+        successBusinessInvitation,
+  }) {
+    return successUserLinkState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingUserState value)? loadingUserState,
+    TResult Function(_ErrorUserState value)? errorUserState,
+    TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
+    TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
+    TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
+    TResult Function(_SuccessBusinessInvitation value)?
+        successBusinessInvitation,
+    required TResult orElse(),
+  }) {
+    if (successUserLinkState != null) {
+      return successUserLinkState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessUserLinkState implements UserState {
+  const factory _SuccessUserLinkState(final String link) =
+      _$_SuccessUserLinkState;
+
+  String get link;
+  @JsonKey(ignore: true)
+  _$$_SuccessUserLinkStateCopyWith<_$_SuccessUserLinkState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -814,6 +1029,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -832,6 +1048,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -848,6 +1065,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -868,6 +1086,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -885,6 +1104,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -900,6 +1120,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -1005,6 +1226,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -1023,6 +1245,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -1039,6 +1262,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -1059,6 +1283,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -1076,6 +1301,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -1091,6 +1317,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -1199,6 +1426,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     required TResult Function() loadingUserState,
     required TResult Function(dynamic err) errorUserState,
     required TResult Function() successUserState,
+    required TResult Function(String link) successUserLinkState,
     required TResult Function(UserDetailResponse response)
         successUserStateResponse,
     required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
@@ -1217,6 +1445,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -1233,6 +1462,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function()? loadingUserState,
     TResult Function(dynamic err)? errorUserState,
     TResult Function()? successUserState,
+    TResult Function(String link)? successUserLinkState,
     TResult Function(UserDetailResponse response)? successUserStateResponse,
     TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
         successUserPageDetails,
@@ -1253,6 +1483,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     required TResult Function(_LoadingUserState value) loadingUserState,
     required TResult Function(_ErrorUserState value) errorUserState,
     required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
     required TResult Function(_SuccessUserStateResponse value)
         successUserStateResponse,
     required TResult Function(_SuccessUserPageDetails value)
@@ -1270,6 +1501,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?
@@ -1285,6 +1517,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function(_LoadingUserState value)? loadingUserState,
     TResult Function(_ErrorUserState value)? errorUserState,
     TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
     TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
     TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
     TResult Function(_SuccessBusinessInvitation value)?

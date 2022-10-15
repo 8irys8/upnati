@@ -5,6 +5,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:upnati/core/config/constants.dart';
 import 'package:upnati/logic/models/business/basket_response.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
+import 'package:upnati/logic/models/business/category_model.dart';
 import 'package:upnati/logic/models/business/commit_order_payload.dart';
 import 'package:upnati/logic/models/business/commited_orders_response.dart';
 import 'package:upnati/logic/models/business/filter_form.dart';
@@ -122,7 +123,7 @@ abstract class BusinessService {
   );
 
   @GET('/business/schema/category')
-  Future<List<String>> getBusinessCategory(
+  Future<List<CategoryModel>> getBusinessCategory(
     @Query('locale') String? locale,
   );
 
@@ -153,8 +154,17 @@ abstract class BusinessService {
   );
 
   @GET('/items/schema/category')
-  Future<List<String>> getItemCategory(
+  Future<List<CategoryModel>> getItemCategory(
     @Query('locale') String? locale,
+  );
+
+  @GET('/items/category/{cat}')
+  Future<PageItemResponse> getItemByCategory(
+    @Path('cat') String? cat,
+    @Query('param') String? param,
+    @Query('pageOrder') String? pageOrder,
+    @Query('page') int? page,
+    @Query('size') int? size,
   );
 
   @GET('/items/schema/category/service')
@@ -194,6 +204,21 @@ abstract class BusinessService {
 
   @GET('/items/schema/category/goods/map/id')
   Future<Map<String, String>> getItemGoodsCategoryIdMap(
+    @Query('locale') String? locale,
+  );
+
+  @GET('/business/schema/delivery/type')
+  Future<List<String>> getDeliveryType(
+    @Query('locale') String? locale,
+  );
+
+  @GET('/business/schema/delivery/time')
+  Future<List<String>> getDeliveryTime(
+    @Query('locale') String? locale,
+  );
+
+  @GET('/business/schema/delivery/scope')
+  Future<List<String>> getDeliveryScope(
     @Query('locale') String? locale,
   );
 

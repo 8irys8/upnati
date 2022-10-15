@@ -1,7 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/models/business/business_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
@@ -12,17 +16,27 @@ import 'package:upnati/ui/widgets/main_container.dart';
 
 import '../../../core/config/router.gr.dart';
 
-class BusinessRegistrationScreen extends StatefulWidget {
-  const BusinessRegistrationScreen({Key? key}) : super(key: key);
+class BusinessRegistrationScreen extends StatefulWidget with AutoRouteWrapper {
+  final BusinessResponse businessResponse;
+  const BusinessRegistrationScreen({Key? key, required this.businessResponse})
+      : super(key: key);
 
   @override
   State<BusinessRegistrationScreen> createState() =>
       _BusinessRegistrationScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (context) => GetIt.I<BusinessCubit>()),
+    ], child: this);
+  }
 }
 
 class _BusinessRegistrationScreenState
     extends State<BusinessRegistrationScreen> {
   bool finalStep = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +51,26 @@ class _BusinessRegistrationScreenState
                   children: [
                     Row(
                       children: [
-                        Image.asset(Images.shushuLogoImg),
+                        widget.businessResponse.imageUrls?.isNotEmpty == true
+                            ? Image.network(
+                                widget.businessResponse.imageUrls!.first,
+                                height: 50,
+                                width: 50,
+                              )
+                            : Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xffC7C7C7),
+                                    border: Border.all(
+                                        color:
+                                            AppColors.white.withOpacity(.86)),
+                                    borderRadius: BorderRadius.circular(150)),
+                                child: SvgPicture.asset(
+                                  Svgs.icBusinessEmpty,
+                                  height: 30,
+                                  fit: BoxFit.scaleDown,
+                                )),
                         const SizedBox(
                           width: 32,
                         ),
@@ -49,23 +82,23 @@ class _BusinessRegistrationScreenState
                               style: AppTheme.regular(size: 16),
                             ),
                             Text(
-                              'shushu market',
+                              widget.businessResponse.name ?? '',
                               style: AppTheme.bold(size: 18),
                             ),
-                            Text(
-                              'עיצוב הבית',
-                              style: AppTheme.regular(
-                                size: 16,
-                                color: AppColors.textGray,
-                              ),
-                            ),
-                            Text(
-                              'בכל הארץ',
-                              style: AppTheme.regular(
-                                size: 16,
-                                color: AppColors.textGray,
-                              ),
-                            ),
+                            // Text(
+                            //   'עיצוב הבית',
+                            //   style: AppTheme.regular(
+                            //     size: 16,
+                            //     color: AppColors.textGray,
+                            //   ),
+                            // ),
+                            // Text(
+                            //   'בכל הארץ',
+                            //   style: AppTheme.regular(
+                            //     size: 16,
+                            //     color: AppColors.textGray,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ],
@@ -74,7 +107,7 @@ class _BusinessRegistrationScreenState
                       height: 14,
                     ),
                     Text(
-                      'חנות כיפית עם פרטים לעיצוב הבית \nמוצרים שחייבים בכל בית וגם מוצרים מיותרים שמקשטים את הבית \nמתוך אהבה גדולה לאומנות ועיצוב.',
+                      widget.businessResponse.description?.full ?? '',
                       style: AppTheme.regular(
                         size: 14,
                         color: AppColors.textGray,

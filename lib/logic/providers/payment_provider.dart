@@ -1,4 +1,6 @@
 import 'package:injectable/injectable.dart';
+import 'package:upnati/core/config/interceptors.dart';
+import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/models/payment/bank_response.dart';
 import 'package:upnati/logic/models/payment/create_bank_payload.dart';
 import 'package:upnati/logic/models/payment/order_purchase_payload.dart';
@@ -9,9 +11,15 @@ import 'package:upnati/logic/services/payment_service.dart';
 
 @lazySingleton
 class PaymentProvider {
-  final PaymentService _paymentService;
+  late final PaymentService _paymentService;
+  final AppInterceptors _interceptors;
 
-  PaymentProvider(this._paymentService);
+  PaymentProvider(this._interceptors) {
+    _paymentService = PaymentService(Utils.build(interceptors: [
+      _interceptors.errorInterceptor,
+      _interceptors.tokenInterceptor,
+    ]));
+  }
 
   Future<PageBankResponse> getUserBankAccounts({
     required String param,

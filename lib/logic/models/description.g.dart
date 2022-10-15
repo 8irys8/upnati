@@ -8,7 +8,7 @@ part of 'description.dart';
 
 _$_Description _$$_DescriptionFromJson(Map<String, dynamic> json) =>
     _$_Description(
-      full: json['full'] as String,
+      full: json['full'] as String?,
     );
 
 Map<String, dynamic> _$$_DescriptionToJson(_$_Description instance) =>

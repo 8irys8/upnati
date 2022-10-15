@@ -6,14 +6,15 @@ part 'business_response.freezed.dart';
 
 @freezed
 class BusinessResponse with _$BusinessResponse {
+  @JsonSerializable(explicitToJson: true)
   const factory BusinessResponse({
-    required String id,
-    required String name,
-    required String defaultLocale,
-    required Description description,
-    required String category,
-    required LocationBusinessResponse location,
-    List<String>? imageUrls,
+    final String? id,
+    final String? name,
+    final String? defaultLocale,
+    final Description? description,
+    final String? category,
+    final LocationBusinessResponse? location,
+    final List<String>? imageUrls,
   }) = _BusinessResponse;
 
   factory BusinessResponse.fromJson(Map<String, dynamic> json) =>
@@ -23,9 +24,9 @@ class BusinessResponse with _$BusinessResponse {
 @freezed
 class LocationBusinessResponse with _$LocationBusinessResponse {
   const factory LocationBusinessResponse({
-    required String country,
-    required String region,
-    required String city,
+    final String? country,
+    final String? region,
+    final String? city,
   }) = _LocationBusinessResponse;
 
   factory LocationBusinessResponse.fromJson(Map<String, dynamic> json) =>

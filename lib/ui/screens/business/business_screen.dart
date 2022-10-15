@@ -6,12 +6,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
+import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 
 class BusinessScreen extends StatefulWidget {
-  const BusinessScreen({Key? key}) : super(key: key);
+  final UserDetailResponse? userDetailResponse;
+  const BusinessScreen({Key? key, this.userDetailResponse}) : super(key: key);
 
   @override
   State<BusinessScreen> createState() => _BusinessScreenState();
@@ -81,8 +83,9 @@ class _BusinessScreenState extends State<BusinessScreen> {
                   textStyle:
                       AppTheme.semiLight(size: 16, color: AppColors.white),
                   color: AppColors.darkBlueLight,
-                  onPressed: () =>
-                      context.router.push(const MarketDetailScreen()),
+                  onPressed: () => context.router.push(MarketDetailScreen(
+                    userDetailResponse: widget.userDetailResponse,
+                  )),
                 ),
               ),
             ],

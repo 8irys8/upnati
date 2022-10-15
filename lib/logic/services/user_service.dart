@@ -83,4 +83,7 @@ abstract class UserService {
   Future<UserDetailResponse> acceptBusinessInvitation({
     @Path() required String id,
   });
+
+  @GET('/user/app/link')
+  Future<String> getAppLink();
 }

@@ -181,7 +181,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                   right: 36,
                                 ),
                                 child: Text(
-                                  widget.item?.description.full ?? '',
+                                  widget.item?.description?.full ?? '',
                                   maxLines: 5,
                                   overflow: TextOverflow.ellipsis,
                                   style: AppTheme.regular(

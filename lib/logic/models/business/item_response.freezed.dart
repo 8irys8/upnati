@@ -20,16 +20,18 @@ ItemResponse _$ItemResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ItemResponse {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get businessId => throw _privateConstructorUsedError;
-  String get businessName => throw _privateConstructorUsedError;
-  String get itemCategory => throw _privateConstructorUsedError;
-  String get itemType => throw _privateConstructorUsedError;
-  String get currency => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get businessId => throw _privateConstructorUsedError;
+  String? get businessName => throw _privateConstructorUsedError;
+  String? get businessImageUrl => throw _privateConstructorUsedError;
+  String? get itemCategory => throw _privateConstructorUsedError;
+  String? get itemType => throw _privateConstructorUsedError;
+  String? get currency => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
-  Description get description => throw _privateConstructorUsedError;
+  Description? get description => throw _privateConstructorUsedError;
   List<String>? get imageUrls => throw _privateConstructorUsedError;
+  List<String>? get videoUrls => throw _privateConstructorUsedError;
   Map<dynamic, String>? get characteristicsMap =>
       throw _privateConstructorUsedError;
   double? get purchasePrice => throw _privateConstructorUsedError;
@@ -51,16 +53,18 @@ abstract class $ItemResponseCopyWith<$Res> {
           ItemResponse value, $Res Function(ItemResponse) then) =
       _$ItemResponseCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String name,
-      String businessId,
-      String businessName,
-      String itemCategory,
-      String itemType,
-      String currency,
+      {String? id,
+      String? name,
+      String? businessId,
+      String? businessName,
+      String? businessImageUrl,
+      String? itemCategory,
+      String? itemType,
+      String? currency,
       double? price,
-      Description description,
+      Description? description,
       List<String>? imageUrls,
+      List<String>? videoUrls,
       Map<dynamic, String>? characteristicsMap,
       double? purchasePrice,
       int? discountPercents,
@@ -68,7 +72,7 @@ abstract class $ItemResponseCopyWith<$Res> {
       List<SingleValuePriceModifier>? singleValuePriceModifiers,
       bool? stockConfigured});
 
-  $DescriptionCopyWith<$Res> get description;
+  $DescriptionCopyWith<$Res>? get description;
 }
 
 /// @nodoc
@@ -85,12 +89,14 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
     Object? name = freezed,
     Object? businessId = freezed,
     Object? businessName = freezed,
+    Object? businessImageUrl = freezed,
     Object? itemCategory = freezed,
     Object? itemType = freezed,
     Object? currency = freezed,
     Object? price = freezed,
     Object? description = freezed,
     Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
     Object? characteristicsMap = freezed,
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
@@ -102,31 +108,35 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       businessId: businessId == freezed
           ? _value.businessId
           : businessId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       businessName: businessName == freezed
           ? _value.businessName
           : businessName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      businessImageUrl: businessImageUrl == freezed
+          ? _value.businessImageUrl
+          : businessImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       itemCategory: itemCategory == freezed
           ? _value.itemCategory
           : itemCategory // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       itemType: itemType == freezed
           ? _value.itemType
           : itemType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -134,10 +144,14 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as Description,
+              as Description?,
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value.videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       characteristicsMap: characteristicsMap == freezed
           ? _value.characteristicsMap
@@ -167,8 +181,12 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
   }
 
   @override
-  $DescriptionCopyWith<$Res> get description {
-    return $DescriptionCopyWith<$Res>(_value.description, (value) {
+  $DescriptionCopyWith<$Res>? get description {
+    if (_value.description == null) {
+      return null;
+    }
+
+    return $DescriptionCopyWith<$Res>(_value.description!, (value) {
       return _then(_value.copyWith(description: value));
     });
   }
@@ -182,16 +200,18 @@ abstract class _$$_ItemResponseCopyWith<$Res>
       __$$_ItemResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String name,
-      String businessId,
-      String businessName,
-      String itemCategory,
-      String itemType,
-      String currency,
+      {String? id,
+      String? name,
+      String? businessId,
+      String? businessName,
+      String? businessImageUrl,
+      String? itemCategory,
+      String? itemType,
+      String? currency,
       double? price,
-      Description description,
+      Description? description,
       List<String>? imageUrls,
+      List<String>? videoUrls,
       Map<dynamic, String>? characteristicsMap,
       double? purchasePrice,
       int? discountPercents,
@@ -200,7 +220,7 @@ abstract class _$$_ItemResponseCopyWith<$Res>
       bool? stockConfigured});
 
   @override
-  $DescriptionCopyWith<$Res> get description;
+  $DescriptionCopyWith<$Res>? get description;
 }
 
 /// @nodoc
@@ -220,12 +240,14 @@ class __$$_ItemResponseCopyWithImpl<$Res>
     Object? name = freezed,
     Object? businessId = freezed,
     Object? businessName = freezed,
+    Object? businessImageUrl = freezed,
     Object? itemCategory = freezed,
     Object? itemType = freezed,
     Object? currency = freezed,
     Object? price = freezed,
     Object? description = freezed,
     Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
     Object? characteristicsMap = freezed,
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
@@ -237,31 +259,35 @@ class __$$_ItemResponseCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       businessId: businessId == freezed
           ? _value.businessId
           : businessId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       businessName: businessName == freezed
           ? _value.businessName
           : businessName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      businessImageUrl: businessImageUrl == freezed
+          ? _value.businessImageUrl
+          : businessImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       itemCategory: itemCategory == freezed
           ? _value.itemCategory
           : itemCategory // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       itemType: itemType == freezed
           ? _value.itemType
           : itemType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -269,10 +295,14 @@ class __$$_ItemResponseCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as Description,
+              as Description?,
       imageUrls: imageUrls == freezed
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value._videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       characteristicsMap: characteristicsMap == freezed
           ? _value._characteristicsMap
@@ -306,16 +336,18 @@ class __$$_ItemResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ItemResponse implements _ItemResponse {
   const _$_ItemResponse(
-      {required this.id,
-      required this.name,
-      required this.businessId,
-      required this.businessName,
-      required this.itemCategory,
-      required this.itemType,
-      required this.currency,
+      {this.id,
+      this.name,
+      this.businessId,
+      this.businessName,
+      this.businessImageUrl,
+      this.itemCategory,
+      this.itemType,
+      this.currency,
       this.price,
-      required this.description,
+      this.description,
       final List<String>? imageUrls,
+      final List<String>? videoUrls,
       final Map<dynamic, String>? characteristicsMap,
       this.purchasePrice,
       this.discountPercents,
@@ -323,6 +355,7 @@ class _$_ItemResponse implements _ItemResponse {
       final List<SingleValuePriceModifier>? singleValuePriceModifiers,
       this.stockConfigured})
       : _imageUrls = imageUrls,
+        _videoUrls = videoUrls,
         _characteristicsMap = characteristicsMap,
         _singleValuePriceModifiers = singleValuePriceModifiers;
 
@@ -330,27 +363,38 @@ class _$_ItemResponse implements _ItemResponse {
       _$$_ItemResponseFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String businessId;
+  final String? businessId;
   @override
-  final String businessName;
+  final String? businessName;
   @override
-  final String itemCategory;
+  final String? businessImageUrl;
   @override
-  final String itemType;
+  final String? itemCategory;
   @override
-  final String currency;
+  final String? itemType;
+  @override
+  final String? currency;
   @override
   final double? price;
   @override
-  final Description description;
+  final Description? description;
   final List<String>? _imageUrls;
   @override
   List<String>? get imageUrls {
     final value = _imageUrls;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _videoUrls;
+  @override
+  List<String>? get videoUrls {
+    final value = _videoUrls;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -385,7 +429,7 @@ class _$_ItemResponse implements _ItemResponse {
 
   @override
   String toString() {
-    return 'ItemResponse(id: $id, name: $name, businessId: $businessId, businessName: $businessName, itemCategory: $itemCategory, itemType: $itemType, currency: $currency, price: $price, description: $description, imageUrls: $imageUrls, characteristicsMap: $characteristicsMap, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, stockConfigured: $stockConfigured)';
+    return 'ItemResponse(id: $id, name: $name, businessId: $businessId, businessName: $businessName, businessImageUrl: $businessImageUrl, itemCategory: $itemCategory, itemType: $itemType, currency: $currency, price: $price, description: $description, imageUrls: $imageUrls, videoUrls: $videoUrls, characteristicsMap: $characteristicsMap, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, stockConfigured: $stockConfigured)';
   }
 
   @override
@@ -400,6 +444,8 @@ class _$_ItemResponse implements _ItemResponse {
             const DeepCollectionEquality()
                 .equals(other.businessName, businessName) &&
             const DeepCollectionEquality()
+                .equals(other.businessImageUrl, businessImageUrl) &&
+            const DeepCollectionEquality()
                 .equals(other.itemCategory, itemCategory) &&
             const DeepCollectionEquality().equals(other.itemType, itemType) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
@@ -408,6 +454,8 @@ class _$_ItemResponse implements _ItemResponse {
                 .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other._imageUrls, _imageUrls) &&
+            const DeepCollectionEquality()
+                .equals(other._videoUrls, _videoUrls) &&
             const DeepCollectionEquality()
                 .equals(other._characteristicsMap, _characteristicsMap) &&
             const DeepCollectionEquality()
@@ -429,12 +477,14 @@ class _$_ItemResponse implements _ItemResponse {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(businessId),
       const DeepCollectionEquality().hash(businessName),
+      const DeepCollectionEquality().hash(businessImageUrl),
       const DeepCollectionEquality().hash(itemCategory),
       const DeepCollectionEquality().hash(itemType),
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(_imageUrls),
+      const DeepCollectionEquality().hash(_videoUrls),
       const DeepCollectionEquality().hash(_characteristicsMap),
       const DeepCollectionEquality().hash(purchasePrice),
       const DeepCollectionEquality().hash(discountPercents),
@@ -457,16 +507,18 @@ class _$_ItemResponse implements _ItemResponse {
 
 abstract class _ItemResponse implements ItemResponse {
   const factory _ItemResponse(
-      {required final String id,
-      required final String name,
-      required final String businessId,
-      required final String businessName,
-      required final String itemCategory,
-      required final String itemType,
-      required final String currency,
+      {final String? id,
+      final String? name,
+      final String? businessId,
+      final String? businessName,
+      final String? businessImageUrl,
+      final String? itemCategory,
+      final String? itemType,
+      final String? currency,
       final double? price,
-      required final Description description,
+      final Description? description,
       final List<String>? imageUrls,
+      final List<String>? videoUrls,
       final Map<dynamic, String>? characteristicsMap,
       final double? purchasePrice,
       final int? discountPercents,
@@ -478,25 +530,29 @@ abstract class _ItemResponse implements ItemResponse {
       _$_ItemResponse.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get businessId;
+  String? get businessId;
   @override
-  String get businessName;
+  String? get businessName;
   @override
-  String get itemCategory;
+  String? get businessImageUrl;
   @override
-  String get itemType;
+  String? get itemCategory;
   @override
-  String get currency;
+  String? get itemType;
+  @override
+  String? get currency;
   @override
   double? get price;
   @override
-  Description get description;
+  Description? get description;
   @override
   List<String>? get imageUrls;
+  @override
+  List<String>? get videoUrls;
   @override
   Map<dynamic, String>? get characteristicsMap;
   @override

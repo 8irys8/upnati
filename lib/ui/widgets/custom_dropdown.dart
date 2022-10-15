@@ -9,6 +9,7 @@ class CustomDropdown extends StatelessWidget {
   final Color? color;
   final List<Item> items;
   final ValueChanged<String?>? onChanged;
+  final FormFieldValidator<String?>? validator;
 
   const CustomDropdown({
     Key? key,
@@ -17,6 +18,7 @@ class CustomDropdown extends StatelessWidget {
     required this.items,
     this.color,
     this.onChanged,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -64,6 +66,7 @@ class CustomDropdown extends StatelessWidget {
             name: key.toString(),
             // icon: const Icon(Icons.check_rounded, color: AppColors.text),
             icon: const SizedBox(),
+            validator: validator,
             // iconSize: 18,
             // alignment: Alignment.centerLeft,
             style: AppTheme.regular(

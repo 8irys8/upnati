@@ -1,6 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/add_empty_product_container.dart';
@@ -8,14 +12,25 @@ import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/search_field.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
-class CategoryDetailScreen extends StatefulWidget {
+class CategoryDetailScreen extends StatefulWidget with AutoRouteWrapper {
   const CategoryDetailScreen({Key? key}) : super(key: key);
 
   @override
   State<CategoryDetailScreen> createState() => _CategoryDetailScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+        create: (context) => GetIt.I<BusinessCubit>(), child: this);
+  }
 }
 
 class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SideBarWrapper(

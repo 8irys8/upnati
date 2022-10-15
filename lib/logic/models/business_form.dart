@@ -7,12 +7,15 @@ part 'business_form.freezed.dart';
 
 @freezed
 class BusinessForm with _$BusinessForm {
+  @JsonSerializable(explicitToJson: true)
   const factory BusinessForm({
-    required String name,
-    LocationResponse? location,
-    required List<LocalDescription> description,
-    required String category,
-    required String defaultLocale,
+    final String? name,
+    final String? cityName,
+    // final LocationResponse? location,
+    final List<LocalDescription>? description,
+    final String? category,
+    final String? defaultLocale,
+    final String? deliveryScope,
   }) = _BusinessForm;
 
   factory BusinessForm.fromJson(Map<String, dynamic> json) =>
