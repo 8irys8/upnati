@@ -52,6 +52,7 @@ class AppInterceptors {
         print('onRequest');
         try {
           var token = await _authProvider.getToken();
+          print(token);
           if (token != null) {
             options.headers['Authorization'] = 'Bearer $token';
           }

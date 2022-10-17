@@ -13,8 +13,10 @@ class BusinessResponse with _$BusinessResponse {
     final String? defaultLocale,
     final Description? description,
     final String? category,
-    final LocationBusinessResponse? location,
+    final String? location,
     final List<String>? imageUrls,
+    final List<String>? videoUrl,
+    final String? deliveryScope,
   }) = _BusinessResponse;
 
   factory BusinessResponse.fromJson(Map<String, dynamic> json) =>

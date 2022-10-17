@@ -16,6 +16,7 @@ class CustomInput extends StatelessWidget {
   final double? borderRadius;
   final FormFieldValidator<String?>? validator;
   final TextInputType? inputType;
+  final bool enabled;
   const CustomInput({
     Key? key,
     this.label,
@@ -30,6 +31,7 @@ class CustomInput extends StatelessWidget {
     this.borderRadius,
     this.validator,
     this.inputType,
+    this.enabled = true,
   }) : super(key: key);
 
   @override
@@ -94,6 +96,7 @@ class CustomInput extends StatelessWidget {
           child: FormBuilderTextField(
             name: key.toString(),
             validator: validator,
+            enabled: enabled,
             keyboardType: inputType,
             textDirection: TextDirection.ltr,
             minLines: isMultiline == true ? 4 : 1,

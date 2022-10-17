@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_svg/svg.dart';
+import 'package:upnati/logic/models/business/item_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:upnati/resources/resources.dart';
@@ -8,7 +9,10 @@ import 'package:upnati/ui/widgets/main_container.dart';
 
 class AddProductContainer extends StatelessWidget {
   final bool? isAdded;
-  const AddProductContainer({Key? key, this.isAdded}) : super(key: key);
+  final ItemResponse? item;
+  final VoidCallback? onDelete;
+  const AddProductContainer({Key? key, this.isAdded, this.item, this.onDelete})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +26,45 @@ class AddProductContainer extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SvgPicture.asset(Svgs.icDeleteItem),
+                        GestureDetector(
+                            onTap: onDelete,
+                            child: SvgPicture.asset(Svgs.icDeleteItem)),
                         Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.only(
-                                top: 14, right: 2, left: 20),
-                            // decoration: BoxDecoration(
-                            //   borderRadius: BorderRadius.circular(5),
-                            // ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5),
-                              child: Image.asset(
-                                Images.butterfly,
-                                height: 77,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
+                          child: item?.imageUrls?.isNotEmpty == true
+                              ? Container(
+                                  margin: const EdgeInsets.only(
+                                      top: 14, right: 2, left: 20),
+                                  // decoration: BoxDecoration(
+                                  //   borderRadius: BorderRadius.circular(5),
+                                  // ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: Image.network(
+                                      item!.imageUrls!.first,
+                                      height: 77,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  color: AppColors.grayLight,
+                                  margin: const EdgeInsets.only(
+                                      top: 14, right: 2, left: 20),
+                                  // decoration: BoxDecoration(
+                                  //   borderRadius: BorderRadius.circular(5),
+                                  // ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5),
+                                      child: Image.asset(
+                                        Images.icEmptyBag,
+                                        height: 72,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                         ),
                       ],
                     ),
@@ -46,16 +72,19 @@ class AddProductContainer extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      'מגהץ קיטור',
+                      item?.name ?? '',
+                      maxLines: 1,
                       style: AppTheme.bold(size: 11),
                     ),
                     Text(
-                      'מגהץ קיטור מקצועי\nבמיוחד',
+                      item?.description?.full ?? '',
+                      maxLines: 2,
                       style: AppTheme.regular(size: 11),
                       textAlign: TextAlign.center,
                     ),
                     Text(
-                      LocaleKeys.basket_info_nis.tr(args: ['350']),
+                      LocaleKeys.basket_info_nis
+                          .tr(args: ['${item?.price?.toStringAsFixed(2)}']),
                       style: AppTheme.bold(size: 15),
                     ),
                   ],

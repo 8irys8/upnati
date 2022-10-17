@@ -36,7 +36,7 @@ class MarketPlaceScreen extends StatefulWidget with AutoRouteWrapper {
 
 class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
   final PagingController<int, ItemResponse> _pageController =
-      PagingController<int, ItemResponse>(firstPageKey: 1);
+      PagingController<int, ItemResponse>(firstPageKey: 0);
 
   void _fetchPage(int pageKey) async {
     await context.read<BusinessCubit>().getAllItems(
@@ -132,7 +132,7 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                     height: 16,
                   ),
                   const SizedBox(
-                    height: 85,
+                    height: 100,
                     child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: ListOfShops()),

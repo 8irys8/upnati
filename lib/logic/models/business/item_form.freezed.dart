@@ -21,11 +21,12 @@ ItemForm _$ItemFormFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ItemForm {
   String? get id => throw _privateConstructorUsedError;
-  List<LocalName> get name => throw _privateConstructorUsedError;
-  String get itemCategory => throw _privateConstructorUsedError;
+  List<LocalName>? get name => throw _privateConstructorUsedError;
+  String? get itemCategory => throw _privateConstructorUsedError;
   String? get currency => throw _privateConstructorUsedError;
-  List<LocalDescription> get description => throw _privateConstructorUsedError;
-  double get itemPrice => throw _privateConstructorUsedError;
+  List<LocalDescription>? get description => throw _privateConstructorUsedError;
+  double? get itemPrice => throw _privateConstructorUsedError;
+  double? get deliveryPrice => throw _privateConstructorUsedError;
   int? get inStock => throw _privateConstructorUsedError;
   List<SingleValuePriceModifierForm>? get singleValuePriceModifiers =>
       throw _privateConstructorUsedError;
@@ -42,11 +43,12 @@ abstract class $ItemFormCopyWith<$Res> {
       _$ItemFormCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-      List<LocalName> name,
-      String itemCategory,
+      List<LocalName>? name,
+      String? itemCategory,
       String? currency,
-      List<LocalDescription> description,
-      double itemPrice,
+      List<LocalDescription>? description,
+      double? itemPrice,
+      double? deliveryPrice,
       int? inStock,
       List<SingleValuePriceModifierForm>? singleValuePriceModifiers});
 }
@@ -67,6 +69,7 @@ class _$ItemFormCopyWithImpl<$Res> implements $ItemFormCopyWith<$Res> {
     Object? currency = freezed,
     Object? description = freezed,
     Object? itemPrice = freezed,
+    Object? deliveryPrice = freezed,
     Object? inStock = freezed,
     Object? singleValuePriceModifiers = freezed,
   }) {
@@ -78,11 +81,11 @@ class _$ItemFormCopyWithImpl<$Res> implements $ItemFormCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as List<LocalName>,
+              as List<LocalName>?,
       itemCategory: itemCategory == freezed
           ? _value.itemCategory
           : itemCategory // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -90,11 +93,15 @@ class _$ItemFormCopyWithImpl<$Res> implements $ItemFormCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as List<LocalDescription>,
+              as List<LocalDescription>?,
       itemPrice: itemPrice == freezed
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      deliveryPrice: deliveryPrice == freezed
+          ? _value.deliveryPrice
+          : deliveryPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       inStock: inStock == freezed
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
@@ -115,11 +122,12 @@ abstract class _$$_ItemFormCopyWith<$Res> implements $ItemFormCopyWith<$Res> {
   @override
   $Res call(
       {String? id,
-      List<LocalName> name,
-      String itemCategory,
+      List<LocalName>? name,
+      String? itemCategory,
       String? currency,
-      List<LocalDescription> description,
-      double itemPrice,
+      List<LocalDescription>? description,
+      double? itemPrice,
+      double? deliveryPrice,
       int? inStock,
       List<SingleValuePriceModifierForm>? singleValuePriceModifiers});
 }
@@ -142,6 +150,7 @@ class __$$_ItemFormCopyWithImpl<$Res> extends _$ItemFormCopyWithImpl<$Res>
     Object? currency = freezed,
     Object? description = freezed,
     Object? itemPrice = freezed,
+    Object? deliveryPrice = freezed,
     Object? inStock = freezed,
     Object? singleValuePriceModifiers = freezed,
   }) {
@@ -153,11 +162,11 @@ class __$$_ItemFormCopyWithImpl<$Res> extends _$ItemFormCopyWithImpl<$Res>
       name: name == freezed
           ? _value._name
           : name // ignore: cast_nullable_to_non_nullable
-              as List<LocalName>,
+              as List<LocalName>?,
       itemCategory: itemCategory == freezed
           ? _value.itemCategory
           : itemCategory // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -165,11 +174,15 @@ class __$$_ItemFormCopyWithImpl<$Res> extends _$ItemFormCopyWithImpl<$Res>
       description: description == freezed
           ? _value._description
           : description // ignore: cast_nullable_to_non_nullable
-              as List<LocalDescription>,
+              as List<LocalDescription>?,
       itemPrice: itemPrice == freezed
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      deliveryPrice: deliveryPrice == freezed
+          ? _value.deliveryPrice
+          : deliveryPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       inStock: inStock == freezed
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
@@ -187,11 +200,12 @@ class __$$_ItemFormCopyWithImpl<$Res> extends _$ItemFormCopyWithImpl<$Res>
 class _$_ItemForm implements _ItemForm {
   const _$_ItemForm(
       {this.id,
-      required final List<LocalName> name,
-      required this.itemCategory,
+      final List<LocalName>? name,
+      this.itemCategory,
       this.currency,
-      required final List<LocalDescription> description,
-      required this.itemPrice,
+      final List<LocalDescription>? description,
+      this.itemPrice,
+      this.deliveryPrice,
       this.inStock,
       final List<SingleValuePriceModifierForm>? singleValuePriceModifiers})
       : _name = name,
@@ -203,26 +217,32 @@ class _$_ItemForm implements _ItemForm {
 
   @override
   final String? id;
-  final List<LocalName> _name;
+  final List<LocalName>? _name;
   @override
-  List<LocalName> get name {
+  List<LocalName>? get name {
+    final value = _name;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_name);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String itemCategory;
+  final String? itemCategory;
   @override
   final String? currency;
-  final List<LocalDescription> _description;
+  final List<LocalDescription>? _description;
   @override
-  List<LocalDescription> get description {
+  List<LocalDescription>? get description {
+    final value = _description;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_description);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final double itemPrice;
+  final double? itemPrice;
+  @override
+  final double? deliveryPrice;
   @override
   final int? inStock;
   final List<SingleValuePriceModifierForm>? _singleValuePriceModifiers;
@@ -236,7 +256,7 @@ class _$_ItemForm implements _ItemForm {
 
   @override
   String toString() {
-    return 'ItemForm(id: $id, name: $name, itemCategory: $itemCategory, currency: $currency, description: $description, itemPrice: $itemPrice, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers)';
+    return 'ItemForm(id: $id, name: $name, itemCategory: $itemCategory, currency: $currency, description: $description, itemPrice: $itemPrice, deliveryPrice: $deliveryPrice, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers)';
   }
 
   @override
@@ -252,6 +272,8 @@ class _$_ItemForm implements _ItemForm {
             const DeepCollectionEquality()
                 .equals(other._description, _description) &&
             const DeepCollectionEquality().equals(other.itemPrice, itemPrice) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryPrice, deliveryPrice) &&
             const DeepCollectionEquality().equals(other.inStock, inStock) &&
             const DeepCollectionEquality().equals(
                 other._singleValuePriceModifiers, _singleValuePriceModifiers));
@@ -267,6 +289,7 @@ class _$_ItemForm implements _ItemForm {
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(itemPrice),
+      const DeepCollectionEquality().hash(deliveryPrice),
       const DeepCollectionEquality().hash(inStock),
       const DeepCollectionEquality().hash(_singleValuePriceModifiers));
 
@@ -286,11 +309,12 @@ class _$_ItemForm implements _ItemForm {
 abstract class _ItemForm implements ItemForm {
   const factory _ItemForm(
       {final String? id,
-      required final List<LocalName> name,
-      required final String itemCategory,
+      final List<LocalName>? name,
+      final String? itemCategory,
       final String? currency,
-      required final List<LocalDescription> description,
-      required final double itemPrice,
+      final List<LocalDescription>? description,
+      final double? itemPrice,
+      final double? deliveryPrice,
       final int? inStock,
       final List<SingleValuePriceModifierForm>?
           singleValuePriceModifiers}) = _$_ItemForm;
@@ -300,15 +324,17 @@ abstract class _ItemForm implements ItemForm {
   @override
   String? get id;
   @override
-  List<LocalName> get name;
+  List<LocalName>? get name;
   @override
-  String get itemCategory;
+  String? get itemCategory;
   @override
   String? get currency;
   @override
-  List<LocalDescription> get description;
+  List<LocalDescription>? get description;
   @override
-  double get itemPrice;
+  double? get itemPrice;
+  @override
+  double? get deliveryPrice;
   @override
   int? get inStock;
   @override

@@ -19,7 +19,7 @@ class ListOfShops extends StatefulWidget {
 
 class _ListOfShopsState extends State<ListOfShops> {
   final PagingController<int, BusinessResponse> _pageController =
-      PagingController<int, BusinessResponse>(firstPageKey: 1);
+      PagingController<int, BusinessResponse>(firstPageKey: 0);
 
   void _fetchPage(int pageKey) async {
     await context.read<BusinessCubit>().getAllBusinesses(
@@ -68,39 +68,43 @@ class _ListOfShopsState extends State<ListOfShops> {
           ),
           itemBuilder: (context, item, index) => Padding(
             padding: const EdgeInsets.only(left: 24),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                CategoryContainer(
-                    child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 20, 8, 12),
-                  child: item.imageUrls?.isEmpty == true
-                      ? const SizedBox(
-                          height: 40,
-                        )
-                      : Container(
-                          width: 60,
-                          height: 54,
-                          padding: const EdgeInsets.only(
-                            top: 12,
-                            left: 8,
-                            right: 8,
+            child: GestureDetector(
+              onTap: () => context.router.push(ShopHomeScreen(business: item)),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  CategoryContainer(
+                      child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 20, 8, 12),
+                    child: item.imageUrls?.isEmpty == true
+                        ? const SizedBox(
+                            width: 60,
+                            height: 54,
+                          )
+                        : Container(
+                            width: 60,
+                            height: 54,
+                            padding: const EdgeInsets.only(
+                              top: 12,
+                              left: 8,
+                              right: 8,
+                            ),
+                            child: Image.network(
+                              item.imageUrls?.first ?? '',
+                              // height: 40,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          child: Image.network(
-                            item.imageUrls?.first ?? '',
-                            // height: 40,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                )),
-                Positioned(
-                    right: -14,
-                    top: -4,
-                    child: Image.asset(
-                      Images.roofImg,
-                      height: 38,
-                    ))
-              ],
+                  )),
+                  Positioned(
+                      right: -14,
+                      top: -4,
+                      child: Image.asset(
+                        Images.roofImg,
+                        height: 38,
+                      ))
+                ],
+              ),
             ),
           ),
         ),
@@ -118,7 +122,7 @@ class GridOfShops extends StatefulWidget {
 
 class _GridOfShopsState extends State<GridOfShops> {
   final PagingController<int, BusinessResponse> _pageController =
-      PagingController<int, BusinessResponse>(firstPageKey: 1);
+      PagingController<int, BusinessResponse>(firstPageKey: 0);
 
   void _fetchPage(int pageKey) async {
     await context.read<BusinessCubit>().getAllBusinesses(
@@ -164,7 +168,7 @@ class _GridOfShopsState extends State<GridOfShops> {
         shrinkWrap: true,
         builderDelegate: PagedChildBuilderDelegate<BusinessResponse>(
           itemBuilder: (context, item, index) => GestureDetector(
-            onTap: () => context.router.push(const ShopHomeScreen()),
+            onTap: () => context.router.push(ShopHomeScreen(business: item)),
             child: CategoryContainer(
                 withRoof: true,
                 child: Padding(
@@ -172,6 +176,7 @@ class _GridOfShopsState extends State<GridOfShops> {
                   child: item.imageUrls?.isEmpty == true
                       ? const SizedBox(
                           height: 40,
+                          width: 40,
                         )
                       : Image.network(
                           item.imageUrls?.first ?? '',

@@ -45,7 +45,7 @@ abstract class BusinessService {
 
   @POST('/business/image')
   Future<BusinessResponse> uploadBusinessImage({
-    @Part() required File file,
+    @Part(name: 'file') required File file,
   });
 
   @DELETE('/business/image')

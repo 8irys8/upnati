@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
+import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
@@ -36,8 +37,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
               bloc: cubit,
               listener: (context, state) {
                 state.whenOrNull(
-                  successUserLinkState: (String link) {
-                    Share.share(link);
+                  successUserLinkState: (AppLinkResponse link) {
+                    Share.share(link.url ?? '');
                   },
                 );
               },

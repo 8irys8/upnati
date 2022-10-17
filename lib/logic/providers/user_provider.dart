@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:upnati/core/config/constants.dart';
 import 'package:upnati/core/config/interceptors.dart';
 import 'package:upnati/core/config/utils.dart';
+import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
@@ -27,7 +28,7 @@ class UserProvider {
     ]));
   }
 
-  Future<String> getAppLink() => _userService.getAppLink();
+  Future<AppLinkResponse> getAppLink() => _userService.getAppLink();
 
   Future<UserDetailResponse> changeUserRole(ChangeUserRolePayload role) =>
       _userService.changeUserRole(role);

@@ -40,19 +40,29 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
           children: [
             CarouselSlider(
                 carouselController: _controller,
-                items: [
-                  Container(
-                      width: double.infinity,
-                      // height: MediaQuery.of(context).size.height,
-                      // height: 300,
-                      alignment: Alignment.topCenter,
-                      child: Image.asset(
-                        Images.panda,
-                        fit: BoxFit.cover,
-                        // width: double.infinity,
-                        height: 325,
-                      )),
-                ],
+                items: widget.item?.imageUrls?.isEmpty == true
+                    ? [
+                        Container(
+                            width: double.infinity,
+                            alignment: Alignment.topCenter,
+                            color: AppColors.grayLight,
+                            child: Image.asset(
+                              Images.icEmptyBag,
+                              fit: BoxFit.cover,
+                              height: 325,
+                            )),
+                      ]
+                    : widget.item?.imageUrls
+                        ?.map((e) => Container(
+                              width: double.infinity,
+                              alignment: Alignment.topCenter,
+                              child: Image.network(
+                                e,
+                                fit: BoxFit.cover,
+                                height: 325,
+                              ),
+                            ))
+                        .toList(),
                 options: CarouselOptions(
                   onPageChanged: (index, reason) {
                     _indexNotifier.value = index;
@@ -65,7 +75,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
               top: 285,
               left: 0,
               right: 0,
-              // bottom: 0,
+              bottom: 0,
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
@@ -106,9 +116,8 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                       padding: const EdgeInsets.only(right: 28),
                       child: Row(
                         children: [
-                          Image.asset(
-                            //need to change
-                            Images.shushuLogoImg,
+                          Image.network(
+                            widget.item?.businessImageUrl ?? '',
                             width: 53,
                           ),
                           const SizedBox(

@@ -76,17 +76,16 @@ class _BusinessSelectScreenState extends State<BusinessSelectScreen> {
                   BlocBuilder<UserCubit, UserState>(
                     builder: (context, state) {
                       return state.maybeWhen(
-                          orElse: () => const SpinKitCircle(
+                          loadingUserState: () => const SpinKitCircle(
                                 color: AppColors.darkBlue,
                               ),
-                          successUserStateResponse: (response) => Row(
+                          orElse: () => Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Expanded(
                                     child: GestureDetector(
-                                      onTap: () => context.router.push(
-                                          BusinessScreen(
-                                              userDetailResponse: response)),
+                                      onTap: () =>
+                                          context.router.push(BusinessScreen()),
                                       // onTap: () => context
                                       //     .read<UserCubit>()
                                       //     .changeUserRole(RoleType.role_incomplete.name),

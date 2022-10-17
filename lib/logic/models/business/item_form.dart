@@ -7,14 +7,15 @@ part 'item_form.freezed.dart';
 @freezed
 class ItemForm with _$ItemForm {
   const factory ItemForm({
-    String? id,
-    required List<LocalName> name,
-    required String itemCategory,
-    String? currency,
-    required List<LocalDescription> description,
-    required double itemPrice,
-    int? inStock,
-    List<SingleValuePriceModifierForm>? singleValuePriceModifiers,
+    final String? id,
+    final List<LocalName>? name,
+    final String? itemCategory,
+    final String? currency,
+    final List<LocalDescription>? description,
+    final double? itemPrice,
+    final double? deliveryPrice,
+    final int? inStock,
+    final List<SingleValuePriceModifierForm>? singleValuePriceModifiers,
   }) = _ItemForm;
 
   factory ItemForm.fromJson(Map<String, dynamic> json) =>

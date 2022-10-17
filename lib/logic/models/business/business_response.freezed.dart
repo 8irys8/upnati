@@ -25,8 +25,10 @@ mixin _$BusinessResponse {
   String? get defaultLocale => throw _privateConstructorUsedError;
   Description? get description => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
-  LocationBusinessResponse? get location => throw _privateConstructorUsedError;
+  String? get location => throw _privateConstructorUsedError;
   List<String>? get imageUrls => throw _privateConstructorUsedError;
+  List<String>? get videoUrl => throw _privateConstructorUsedError;
+  String? get deliveryScope => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,11 +47,12 @@ abstract class $BusinessResponseCopyWith<$Res> {
       String? defaultLocale,
       Description? description,
       String? category,
-      LocationBusinessResponse? location,
-      List<String>? imageUrls});
+      String? location,
+      List<String>? imageUrls,
+      List<String>? videoUrl,
+      String? deliveryScope});
 
   $DescriptionCopyWith<$Res>? get description;
-  $LocationBusinessResponseCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -70,6 +73,8 @@ class _$BusinessResponseCopyWithImpl<$Res>
     Object? category = freezed,
     Object? location = freezed,
     Object? imageUrls = freezed,
+    Object? videoUrl = freezed,
+    Object? deliveryScope = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -95,11 +100,19 @@ class _$BusinessResponseCopyWithImpl<$Res>
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationBusinessResponse?,
+              as String?,
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      videoUrl: videoUrl == freezed
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      deliveryScope: deliveryScope == freezed
+          ? _value.deliveryScope
+          : deliveryScope // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -111,17 +124,6 @@ class _$BusinessResponseCopyWithImpl<$Res>
 
     return $DescriptionCopyWith<$Res>(_value.description!, (value) {
       return _then(_value.copyWith(description: value));
-    });
-  }
-
-  @override
-  $LocationBusinessResponseCopyWith<$Res>? get location {
-    if (_value.location == null) {
-      return null;
-    }
-
-    return $LocationBusinessResponseCopyWith<$Res>(_value.location!, (value) {
-      return _then(_value.copyWith(location: value));
     });
   }
 }
@@ -139,13 +141,13 @@ abstract class _$$_BusinessResponseCopyWith<$Res>
       String? defaultLocale,
       Description? description,
       String? category,
-      LocationBusinessResponse? location,
-      List<String>? imageUrls});
+      String? location,
+      List<String>? imageUrls,
+      List<String>? videoUrl,
+      String? deliveryScope});
 
   @override
   $DescriptionCopyWith<$Res>? get description;
-  @override
-  $LocationBusinessResponseCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -168,6 +170,8 @@ class __$$_BusinessResponseCopyWithImpl<$Res>
     Object? category = freezed,
     Object? location = freezed,
     Object? imageUrls = freezed,
+    Object? videoUrl = freezed,
+    Object? deliveryScope = freezed,
   }) {
     return _then(_$_BusinessResponse(
       id: id == freezed
@@ -193,11 +197,19 @@ class __$$_BusinessResponseCopyWithImpl<$Res>
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationBusinessResponse?,
+              as String?,
       imageUrls: imageUrls == freezed
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      videoUrl: videoUrl == freezed
+          ? _value._videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      deliveryScope: deliveryScope == freezed
+          ? _value.deliveryScope
+          : deliveryScope // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -213,8 +225,11 @@ class _$_BusinessResponse implements _BusinessResponse {
       this.description,
       this.category,
       this.location,
-      final List<String>? imageUrls})
-      : _imageUrls = imageUrls;
+      final List<String>? imageUrls,
+      final List<String>? videoUrl,
+      this.deliveryScope})
+      : _imageUrls = imageUrls,
+        _videoUrl = videoUrl;
 
   factory _$_BusinessResponse.fromJson(Map<String, dynamic> json) =>
       _$$_BusinessResponseFromJson(json);
@@ -230,7 +245,7 @@ class _$_BusinessResponse implements _BusinessResponse {
   @override
   final String? category;
   @override
-  final LocationBusinessResponse? location;
+  final String? location;
   final List<String>? _imageUrls;
   @override
   List<String>? get imageUrls {
@@ -240,9 +255,21 @@ class _$_BusinessResponse implements _BusinessResponse {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _videoUrl;
+  @override
+  List<String>? get videoUrl {
+    final value = _videoUrl;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? deliveryScope;
+
   @override
   String toString() {
-    return 'BusinessResponse(id: $id, name: $name, defaultLocale: $defaultLocale, description: $description, category: $category, location: $location, imageUrls: $imageUrls)';
+    return 'BusinessResponse(id: $id, name: $name, defaultLocale: $defaultLocale, description: $description, category: $category, location: $location, imageUrls: $imageUrls, videoUrl: $videoUrl, deliveryScope: $deliveryScope)';
   }
 
   @override
@@ -259,7 +286,10 @@ class _$_BusinessResponse implements _BusinessResponse {
             const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.location, location) &&
             const DeepCollectionEquality()
-                .equals(other._imageUrls, _imageUrls));
+                .equals(other._imageUrls, _imageUrls) &&
+            const DeepCollectionEquality().equals(other._videoUrl, _videoUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryScope, deliveryScope));
   }
 
   @JsonKey(ignore: true)
@@ -272,7 +302,9 @@ class _$_BusinessResponse implements _BusinessResponse {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(location),
-      const DeepCollectionEquality().hash(_imageUrls));
+      const DeepCollectionEquality().hash(_imageUrls),
+      const DeepCollectionEquality().hash(_videoUrl),
+      const DeepCollectionEquality().hash(deliveryScope));
 
   @JsonKey(ignore: true)
   @override
@@ -294,8 +326,10 @@ abstract class _BusinessResponse implements BusinessResponse {
       final String? defaultLocale,
       final Description? description,
       final String? category,
-      final LocationBusinessResponse? location,
-      final List<String>? imageUrls}) = _$_BusinessResponse;
+      final String? location,
+      final List<String>? imageUrls,
+      final List<String>? videoUrl,
+      final String? deliveryScope}) = _$_BusinessResponse;
 
   factory _BusinessResponse.fromJson(Map<String, dynamic> json) =
       _$_BusinessResponse.fromJson;
@@ -311,9 +345,13 @@ abstract class _BusinessResponse implements BusinessResponse {
   @override
   String? get category;
   @override
-  LocationBusinessResponse? get location;
+  String? get location;
   @override
   List<String>? get imageUrls;
+  @override
+  List<String>? get videoUrl;
+  @override
+  String? get deliveryScope;
   @override
   @JsonKey(ignore: true)
   _$$_BusinessResponseCopyWith<_$_BusinessResponse> get copyWith =>

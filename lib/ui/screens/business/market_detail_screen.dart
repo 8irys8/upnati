@@ -27,9 +27,8 @@ import 'package:upnati/ui/widgets/custom_dropdown.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
 
 class MarketDetailScreen extends StatefulWidget with AutoRouteWrapper {
-  final UserDetailResponse? userDetailResponse;
-  const MarketDetailScreen({Key? key, this.userDetailResponse})
-      : super(key: key);
+  final BusinessResponse? businessResponse;
+  const MarketDetailScreen({Key? key, this.businessResponse}) : super(key: key);
 
   @override
   State<MarketDetailScreen> createState() => _MarketDetailScreenState();
@@ -92,7 +91,8 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
   }
 
   void createBusiness() {
-    if (_businessImage.value == null) {
+    if (_businessImage.value == null &&
+        widget.businessResponse?.imageUrls?.isEmpty == true) {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Please upload a business image')));
 
@@ -110,7 +110,7 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
           defaultLocale: LocaleType.he.name,
           deliveryScope: _businessScope,
           cityName: _businessCity);
-      if (widget.userDetailResponse?.businessId == null) {
+      if (widget.businessResponse == null) {
         context.read<BusinessCubit>().createNewBusiness(businessForm);
       } else {
         context.read<BusinessCubit>().updateBusinessInfo(
@@ -123,6 +123,14 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
   @override
   void initState() {
     super.initState();
+    if (widget.businessResponse != null) {
+      nameController.text = widget.businessResponse?.name ?? '';
+      detailController.text = widget.businessResponse?.description?.full ?? '';
+      // _businessCategory = widget.businessResponse?.category;
+      _businessScope = null;
+      _uploadedImg = widget.businessResponse?.imageUrls?.isNotEmpty == true;
+      _businessCity = widget.businessResponse?.location;
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       context.read<BusinessCubit>().getBusinessCategory();
       context.read<BusinessCubit>().getDeliveryScope();
@@ -167,7 +175,7 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(err.toString()),
+                      content: Text('something went wrong'),
                     ),
                   );
                 }
@@ -261,10 +269,19 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                                       valueListenable: _businessImage,
                                       builder: (context, value, child) {
                                         return value == null
-                                            ? SvgPicture.asset(
-                                                Svgs.icPlus,
-                                                color: AppColors.textGray,
-                                              )
+                                            ? widget.businessResponse?.imageUrls
+                                                        ?.isNotEmpty ==
+                                                    true
+                                                ? Image.network(
+                                                    widget.businessResponse!
+                                                        .imageUrls!.first,
+                                                    width: 110,
+                                                    height: 110,
+                                                  )
+                                                : SvgPicture.asset(
+                                                    Svgs.icPlus,
+                                                    color: AppColors.textGray,
+                                                  )
                                             : Image.file(
                                                 value,
                                                 fit: BoxFit.cover,
@@ -293,6 +310,7 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                                       ),
                                   successBusinessCity: (businessCity) =>
                                       CustomDropdown(
+                                        initialValue: _businessCity,
                                         validator:
                                             FormBuilderValidators.required(
                                                 errorText: 'נדרש'),
@@ -326,6 +344,7 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                                       ),
                                   successBusinessMap: (businessCategory) =>
                                       CustomDropdown(
+                                        initialValue: _businessCategory,
                                         validator:
                                             FormBuilderValidators.required(
                                                 errorText: 'נדרש'),
@@ -363,6 +382,7 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                                       ),
                                   successBusinessList: (businessScope) =>
                                       CustomDropdown(
+                                        initialValue: _businessScope,
                                         validator:
                                             FormBuilderValidators.required(
                                                 errorText: 'נדרש'),

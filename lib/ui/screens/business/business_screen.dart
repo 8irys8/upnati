@@ -83,9 +83,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
                   textStyle:
                       AppTheme.semiLight(size: 16, color: AppColors.white),
                   color: AppColors.darkBlueLight,
-                  onPressed: () => context.router.push(MarketDetailScreen(
-                    userDetailResponse: widget.userDetailResponse,
-                  )),
+                  onPressed: () => context.router.push(MarketDetailScreen()),
                 ),
               ),
             ],

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/models/business/item_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/main_container.dart';
@@ -13,15 +14,22 @@ class AddEmptyProductContainer extends StatelessWidget {
   final String? desc;
   final String? price;
   final String? type;
+  final ItemResponse? item;
 
   const AddEmptyProductContainer(
-      {Key? key, this.image, this.title, this.desc, this.price, this.type})
+      {Key? key,
+      this.image,
+      this.title,
+      this.desc,
+      this.price,
+      this.type,
+      this.item})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => context.router.push(ProductMainScreen()),
+        onTap: () => context.router.push(ProductMainScreen(item: item)),
         child: AspectRatio(
           aspectRatio: 0.8,
           child: MainContainer(

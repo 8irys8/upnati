@@ -30,7 +30,7 @@ class LoginScreen extends StatefulWidget with AutoRouteWrapper {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _phoneController = MaskedTextController(mask: '+000-00-000-0000');
-  final termsChecked = ValueNotifier<bool>(false);
+  final termsChecked = ValueNotifier<bool>(true);
   final _formKey = GlobalKey<FormState>();
 
   void _doLogin(BuildContext context, String phone) {

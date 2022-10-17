@@ -8,15 +8,16 @@ part of 'item_form.dart';
 
 _$_ItemForm _$$_ItemFormFromJson(Map<String, dynamic> json) => _$_ItemForm(
       id: json['id'] as String?,
-      name: (json['name'] as List<dynamic>)
-          .map((e) => LocalName.fromJson(e as Map<String, dynamic>))
+      name: (json['name'] as List<dynamic>?)
+          ?.map((e) => LocalName.fromJson(e as Map<String, dynamic>))
           .toList(),
-      itemCategory: json['itemCategory'] as String,
+      itemCategory: json['itemCategory'] as String?,
       currency: json['currency'] as String?,
-      description: (json['description'] as List<dynamic>)
-          .map((e) => LocalDescription.fromJson(e as Map<String, dynamic>))
+      description: (json['description'] as List<dynamic>?)
+          ?.map((e) => LocalDescription.fromJson(e as Map<String, dynamic>))
           .toList(),
-      itemPrice: (json['itemPrice'] as num).toDouble(),
+      itemPrice: (json['itemPrice'] as num?)?.toDouble(),
+      deliveryPrice: (json['deliveryPrice'] as num?)?.toDouble(),
       inStock: json['inStock'] as int?,
       singleValuePriceModifiers: (json['singleValuePriceModifiers']
               as List<dynamic>?)
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$_ItemFormToJson(_$_ItemForm instance) =>
       'currency': instance.currency,
       'description': instance.description,
       'itemPrice': instance.itemPrice,
+      'deliveryPrice': instance.deliveryPrice,
       'inStock': instance.inStock,
       'singleValuePriceModifiers': instance.singleValuePriceModifiers,
     };

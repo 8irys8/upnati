@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:upnati/core/config/constants.dart';
+import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
@@ -85,5 +86,5 @@ abstract class UserService {
   });
 
   @GET('/user/app/link')
-  Future<String> getAppLink();
+  Future<AppLinkResponse> getAppLink();
 }

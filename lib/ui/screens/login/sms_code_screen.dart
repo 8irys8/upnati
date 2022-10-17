@@ -59,12 +59,8 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
           BlocListener<UserCubit, UserState>(
             listener: (context, state) {
               state.whenOrNull(successUserStateResponse: (data) {
-                if (data.businessId == null &&
-                    data.role == RoleType.role_business_owner.name) {
+                if (data.role == RoleType.role_incomplete.name) {
                   context.router.replace(const BusinessSelectScreen());
-                } else if (data.role == RoleType.role_incomplete.name) {
-                  context.router
-                      .replace(MarketDetailScreen(userDetailResponse: data));
                 } else {
                   context.router.replace(const MarketPlaceScreen());
                 }

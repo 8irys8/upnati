@@ -15,13 +15,14 @@ _$_BusinessResponse _$$_BusinessResponseFromJson(Map<String, dynamic> json) =>
           ? null
           : Description.fromJson(json['description'] as Map<String, dynamic>),
       category: json['category'] as String?,
-      location: json['location'] == null
-          ? null
-          : LocationBusinessResponse.fromJson(
-              json['location'] as Map<String, dynamic>),
+      location: json['location'] as String?,
       imageUrls: (json['imageUrls'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      videoUrl: (json['videoUrl'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      deliveryScope: json['deliveryScope'] as String?,
     );
 
 Map<String, dynamic> _$$_BusinessResponseToJson(_$_BusinessResponse instance) =>
@@ -31,8 +32,10 @@ Map<String, dynamic> _$$_BusinessResponseToJson(_$_BusinessResponse instance) =>
       'defaultLocale': instance.defaultLocale,
       'description': instance.description?.toJson(),
       'category': instance.category,
-      'location': instance.location?.toJson(),
+      'location': instance.location,
       'imageUrls': instance.imageUrls,
+      'videoUrl': instance.videoUrl,
+      'deliveryScope': instance.deliveryScope,
     };
 
 _$_LocationBusinessResponse _$$_LocationBusinessResponseFromJson(

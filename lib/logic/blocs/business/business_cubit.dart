@@ -402,9 +402,10 @@ class BusinessCubit extends Cubit<BusinessState> {
     }
   }
 
-  Future<void> getItemCategory(
+  Future<void> getItemCategory({
     String? locale,
-  ) async {
+  }) async {
+    locale ??= LocaleType.he.name;
     emit(const BusinessState.loading());
     try {
       final response = await _businessProvider.getItemCategory(locale);
@@ -516,7 +517,7 @@ class BusinessCubit extends Cubit<BusinessState> {
 //   // items controller
   Future<void> getMyItems({
     required String param,
-    required String pageOrder,
+    String? pageOrder,
     int? page,
     required int size,
   }) async {
@@ -524,7 +525,7 @@ class BusinessCubit extends Cubit<BusinessState> {
     try {
       final response = await _businessProvider.getMyItems(
         param: param,
-        pageOrder: pageOrder,
+        pageOrder: pageOrder ?? SortType.ASC.name,
         page: page,
         size: size,
       );
