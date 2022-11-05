@@ -22,26 +22,36 @@ ItemImpl _$ItemImplFromJson(Map<String, dynamic> json) {
 mixin _$ItemImpl {
   String? get id => throw _privateConstructorUsedError;
   String? get creationDate => throw _privateConstructorUsedError;
-  Map<dynamic, NameLocalData> get name => throw _privateConstructorUsedError;
-  Map<dynamic, DescriptionLocalData> get description =>
+  Map<dynamic, NameLocalData>? get name => throw _privateConstructorUsedError;
+  Map<dynamic, DescriptionLocalData>? get description =>
       throw _privateConstructorUsedError;
   List<DeliveryOption>? get deliveryOptions =>
       throw _privateConstructorUsedError;
   List<String>? get imageUrls => throw _privateConstructorUsedError;
+  List<String>? get videoUrls => throw _privateConstructorUsedError;
   Map<dynamic, String>? get characteristicsMap =>
       throw _privateConstructorUsedError;
-  String get itemCategory => throw _privateConstructorUsedError;
-  String get currency => throw _privateConstructorUsedError;
+  String? get itemCategory => throw _privateConstructorUsedError;
+  String? get refCode => throw _privateConstructorUsedError;
+  String? get currency => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
-  double get purchasePrice => throw _privateConstructorUsedError;
-  int get discountPercents => throw _privateConstructorUsedError;
+  double? get deliveryPrice => throw _privateConstructorUsedError;
+  double? get purchasePrice => throw _privateConstructorUsedError;
+  int? get discountPercents => throw _privateConstructorUsedError;
   int? get inStock => throw _privateConstructorUsedError;
   List<SingleValuePriceModifier>? get singleValuePriceModifiers =>
       throw _privateConstructorUsedError;
+  Map<dynamic, String>? get dynamicValues => throw _privateConstructorUsedError;
   String? get itemType => throw _privateConstructorUsedError;
   int? get stock => throw _privateConstructorUsedError;
+  List<String>? get allImages => throw _privateConstructorUsedError;
+  List<String>? get allVideo => throw _privateConstructorUsedError;
+  String? get deliveryTime => throw _privateConstructorUsedError;
+  String? get deliveryPreparationTime => throw _privateConstructorUsedError;
   bool? get stockConfigured => throw _privateConstructorUsedError;
-  double get oldTotal => throw _privateConstructorUsedError;
+  double? get oldTotal => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get video => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,22 +66,32 @@ abstract class $ItemImplCopyWith<$Res> {
   $Res call(
       {String? id,
       String? creationDate,
-      Map<dynamic, NameLocalData> name,
-      Map<dynamic, DescriptionLocalData> description,
+      Map<dynamic, NameLocalData>? name,
+      Map<dynamic, DescriptionLocalData>? description,
       List<DeliveryOption>? deliveryOptions,
       List<String>? imageUrls,
+      List<String>? videoUrls,
       Map<dynamic, String>? characteristicsMap,
-      String itemCategory,
-      String currency,
+      String? itemCategory,
+      String? refCode,
+      String? currency,
       double? price,
-      double purchasePrice,
-      int discountPercents,
+      double? deliveryPrice,
+      double? purchasePrice,
+      int? discountPercents,
       int? inStock,
       List<SingleValuePriceModifier>? singleValuePriceModifiers,
+      Map<dynamic, String>? dynamicValues,
       String? itemType,
       int? stock,
+      List<String>? allImages,
+      List<String>? allVideo,
+      String? deliveryTime,
+      String? deliveryPreparationTime,
       bool? stockConfigured,
-      double oldTotal});
+      double? oldTotal,
+      String? image,
+      String? video});
 }
 
 /// @nodoc
@@ -90,18 +110,28 @@ class _$ItemImplCopyWithImpl<$Res> implements $ItemImplCopyWith<$Res> {
     Object? description = freezed,
     Object? deliveryOptions = freezed,
     Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
     Object? characteristicsMap = freezed,
     Object? itemCategory = freezed,
+    Object? refCode = freezed,
     Object? currency = freezed,
     Object? price = freezed,
+    Object? deliveryPrice = freezed,
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
     Object? inStock = freezed,
     Object? singleValuePriceModifiers = freezed,
+    Object? dynamicValues = freezed,
     Object? itemType = freezed,
     Object? stock = freezed,
+    Object? allImages = freezed,
+    Object? allVideo = freezed,
+    Object? deliveryTime = freezed,
+    Object? deliveryPreparationTime = freezed,
     Object? stockConfigured = freezed,
     Object? oldTotal = freezed,
+    Object? image = freezed,
+    Object? video = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -115,11 +145,11 @@ class _$ItemImplCopyWithImpl<$Res> implements $ItemImplCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, NameLocalData>,
+              as Map<dynamic, NameLocalData>?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, DescriptionLocalData>,
+              as Map<dynamic, DescriptionLocalData>?,
       deliveryOptions: deliveryOptions == freezed
           ? _value.deliveryOptions
           : deliveryOptions // ignore: cast_nullable_to_non_nullable
@@ -128,6 +158,10 @@ class _$ItemImplCopyWithImpl<$Res> implements $ItemImplCopyWith<$Res> {
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value.videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       characteristicsMap: characteristicsMap == freezed
           ? _value.characteristicsMap
           : characteristicsMap // ignore: cast_nullable_to_non_nullable
@@ -135,23 +169,31 @@ class _$ItemImplCopyWithImpl<$Res> implements $ItemImplCopyWith<$Res> {
       itemCategory: itemCategory == freezed
           ? _value.itemCategory
           : itemCategory // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      refCode: refCode == freezed
+          ? _value.refCode
+          : refCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
+      deliveryPrice: deliveryPrice == freezed
+          ? _value.deliveryPrice
+          : deliveryPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       purchasePrice: purchasePrice == freezed
           ? _value.purchasePrice
           : purchasePrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       discountPercents: discountPercents == freezed
           ? _value.discountPercents
           : discountPercents // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       inStock: inStock == freezed
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
@@ -160,6 +202,10 @@ class _$ItemImplCopyWithImpl<$Res> implements $ItemImplCopyWith<$Res> {
           ? _value.singleValuePriceModifiers
           : singleValuePriceModifiers // ignore: cast_nullable_to_non_nullable
               as List<SingleValuePriceModifier>?,
+      dynamicValues: dynamicValues == freezed
+          ? _value.dynamicValues
+          : dynamicValues // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, String>?,
       itemType: itemType == freezed
           ? _value.itemType
           : itemType // ignore: cast_nullable_to_non_nullable
@@ -168,6 +214,22 @@ class _$ItemImplCopyWithImpl<$Res> implements $ItemImplCopyWith<$Res> {
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as int?,
+      allImages: allImages == freezed
+          ? _value.allImages
+          : allImages // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      allVideo: allVideo == freezed
+          ? _value.allVideo
+          : allVideo // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      deliveryTime: deliveryTime == freezed
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryPreparationTime: deliveryPreparationTime == freezed
+          ? _value.deliveryPreparationTime
+          : deliveryPreparationTime // ignore: cast_nullable_to_non_nullable
+              as String?,
       stockConfigured: stockConfigured == freezed
           ? _value.stockConfigured
           : stockConfigured // ignore: cast_nullable_to_non_nullable
@@ -175,7 +237,15 @@ class _$ItemImplCopyWithImpl<$Res> implements $ItemImplCopyWith<$Res> {
       oldTotal: oldTotal == freezed
           ? _value.oldTotal
           : oldTotal // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      video: video == freezed
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -189,22 +259,32 @@ abstract class _$$_ItemImplCopyWith<$Res> implements $ItemImplCopyWith<$Res> {
   $Res call(
       {String? id,
       String? creationDate,
-      Map<dynamic, NameLocalData> name,
-      Map<dynamic, DescriptionLocalData> description,
+      Map<dynamic, NameLocalData>? name,
+      Map<dynamic, DescriptionLocalData>? description,
       List<DeliveryOption>? deliveryOptions,
       List<String>? imageUrls,
+      List<String>? videoUrls,
       Map<dynamic, String>? characteristicsMap,
-      String itemCategory,
-      String currency,
+      String? itemCategory,
+      String? refCode,
+      String? currency,
       double? price,
-      double purchasePrice,
-      int discountPercents,
+      double? deliveryPrice,
+      double? purchasePrice,
+      int? discountPercents,
       int? inStock,
       List<SingleValuePriceModifier>? singleValuePriceModifiers,
+      Map<dynamic, String>? dynamicValues,
       String? itemType,
       int? stock,
+      List<String>? allImages,
+      List<String>? allVideo,
+      String? deliveryTime,
+      String? deliveryPreparationTime,
       bool? stockConfigured,
-      double oldTotal});
+      double? oldTotal,
+      String? image,
+      String? video});
 }
 
 /// @nodoc
@@ -225,18 +305,28 @@ class __$$_ItemImplCopyWithImpl<$Res> extends _$ItemImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? deliveryOptions = freezed,
     Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
     Object? characteristicsMap = freezed,
     Object? itemCategory = freezed,
+    Object? refCode = freezed,
     Object? currency = freezed,
     Object? price = freezed,
+    Object? deliveryPrice = freezed,
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
     Object? inStock = freezed,
     Object? singleValuePriceModifiers = freezed,
+    Object? dynamicValues = freezed,
     Object? itemType = freezed,
     Object? stock = freezed,
+    Object? allImages = freezed,
+    Object? allVideo = freezed,
+    Object? deliveryTime = freezed,
+    Object? deliveryPreparationTime = freezed,
     Object? stockConfigured = freezed,
     Object? oldTotal = freezed,
+    Object? image = freezed,
+    Object? video = freezed,
   }) {
     return _then(_$_ItemImpl(
       id: id == freezed
@@ -250,11 +340,11 @@ class __$$_ItemImplCopyWithImpl<$Res> extends _$ItemImplCopyWithImpl<$Res>
       name: name == freezed
           ? _value._name
           : name // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, NameLocalData>,
+              as Map<dynamic, NameLocalData>?,
       description: description == freezed
           ? _value._description
           : description // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, DescriptionLocalData>,
+              as Map<dynamic, DescriptionLocalData>?,
       deliveryOptions: deliveryOptions == freezed
           ? _value._deliveryOptions
           : deliveryOptions // ignore: cast_nullable_to_non_nullable
@@ -263,6 +353,10 @@ class __$$_ItemImplCopyWithImpl<$Res> extends _$ItemImplCopyWithImpl<$Res>
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value._videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       characteristicsMap: characteristicsMap == freezed
           ? _value._characteristicsMap
           : characteristicsMap // ignore: cast_nullable_to_non_nullable
@@ -270,23 +364,31 @@ class __$$_ItemImplCopyWithImpl<$Res> extends _$ItemImplCopyWithImpl<$Res>
       itemCategory: itemCategory == freezed
           ? _value.itemCategory
           : itemCategory // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      refCode: refCode == freezed
+          ? _value.refCode
+          : refCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
+      deliveryPrice: deliveryPrice == freezed
+          ? _value.deliveryPrice
+          : deliveryPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       purchasePrice: purchasePrice == freezed
           ? _value.purchasePrice
           : purchasePrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       discountPercents: discountPercents == freezed
           ? _value.discountPercents
           : discountPercents // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       inStock: inStock == freezed
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
@@ -295,6 +397,10 @@ class __$$_ItemImplCopyWithImpl<$Res> extends _$ItemImplCopyWithImpl<$Res>
           ? _value._singleValuePriceModifiers
           : singleValuePriceModifiers // ignore: cast_nullable_to_non_nullable
               as List<SingleValuePriceModifier>?,
+      dynamicValues: dynamicValues == freezed
+          ? _value._dynamicValues
+          : dynamicValues // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, String>?,
       itemType: itemType == freezed
           ? _value.itemType
           : itemType // ignore: cast_nullable_to_non_nullable
@@ -303,6 +409,22 @@ class __$$_ItemImplCopyWithImpl<$Res> extends _$ItemImplCopyWithImpl<$Res>
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as int?,
+      allImages: allImages == freezed
+          ? _value._allImages
+          : allImages // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      allVideo: allVideo == freezed
+          ? _value._allVideo
+          : allVideo // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      deliveryTime: deliveryTime == freezed
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryPreparationTime: deliveryPreparationTime == freezed
+          ? _value.deliveryPreparationTime
+          : deliveryPreparationTime // ignore: cast_nullable_to_non_nullable
+              as String?,
       stockConfigured: stockConfigured == freezed
           ? _value.stockConfigured
           : stockConfigured // ignore: cast_nullable_to_non_nullable
@@ -310,39 +432,62 @@ class __$$_ItemImplCopyWithImpl<$Res> extends _$ItemImplCopyWithImpl<$Res>
       oldTotal: oldTotal == freezed
           ? _value.oldTotal
           : oldTotal // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      video: video == freezed
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_ItemImpl implements _ItemImpl {
   const _$_ItemImpl(
       {this.id,
       this.creationDate,
-      required final Map<dynamic, NameLocalData> name,
-      required final Map<dynamic, DescriptionLocalData> description,
+      final Map<dynamic, NameLocalData>? name,
+      final Map<dynamic, DescriptionLocalData>? description,
       final List<DeliveryOption>? deliveryOptions,
       final List<String>? imageUrls,
+      final List<String>? videoUrls,
       final Map<dynamic, String>? characteristicsMap,
-      required this.itemCategory,
-      required this.currency,
+      this.itemCategory,
+      this.refCode,
+      this.currency,
       this.price,
-      required this.purchasePrice,
-      required this.discountPercents,
+      this.deliveryPrice,
+      this.purchasePrice,
+      this.discountPercents,
       this.inStock,
       final List<SingleValuePriceModifier>? singleValuePriceModifiers,
+      final Map<dynamic, String>? dynamicValues,
       this.itemType,
       this.stock,
+      final List<String>? allImages,
+      final List<String>? allVideo,
+      this.deliveryTime,
+      this.deliveryPreparationTime,
       this.stockConfigured,
-      required this.oldTotal})
+      this.oldTotal,
+      this.image,
+      this.video})
       : _name = name,
         _description = description,
         _deliveryOptions = deliveryOptions,
         _imageUrls = imageUrls,
+        _videoUrls = videoUrls,
         _characteristicsMap = characteristicsMap,
-        _singleValuePriceModifiers = singleValuePriceModifiers;
+        _singleValuePriceModifiers = singleValuePriceModifiers,
+        _dynamicValues = dynamicValues,
+        _allImages = allImages,
+        _allVideo = allVideo;
 
   factory _$_ItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$_ItemImplFromJson(json);
@@ -351,18 +496,22 @@ class _$_ItemImpl implements _ItemImpl {
   final String? id;
   @override
   final String? creationDate;
-  final Map<dynamic, NameLocalData> _name;
+  final Map<dynamic, NameLocalData>? _name;
   @override
-  Map<dynamic, NameLocalData> get name {
+  Map<dynamic, NameLocalData>? get name {
+    final value = _name;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_name);
+    return EqualUnmodifiableMapView(value);
   }
 
-  final Map<dynamic, DescriptionLocalData> _description;
+  final Map<dynamic, DescriptionLocalData>? _description;
   @override
-  Map<dynamic, DescriptionLocalData> get description {
+  Map<dynamic, DescriptionLocalData>? get description {
+    final value = _description;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_description);
+    return EqualUnmodifiableMapView(value);
   }
 
   final List<DeliveryOption>? _deliveryOptions;
@@ -383,6 +532,15 @@ class _$_ItemImpl implements _ItemImpl {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _videoUrls;
+  @override
+  List<String>? get videoUrls {
+    final value = _videoUrls;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final Map<dynamic, String>? _characteristicsMap;
   @override
   Map<dynamic, String>? get characteristicsMap {
@@ -393,15 +551,19 @@ class _$_ItemImpl implements _ItemImpl {
   }
 
   @override
-  final String itemCategory;
+  final String? itemCategory;
   @override
-  final String currency;
+  final String? refCode;
+  @override
+  final String? currency;
   @override
   final double? price;
   @override
-  final double purchasePrice;
+  final double? deliveryPrice;
   @override
-  final int discountPercents;
+  final double? purchasePrice;
+  @override
+  final int? discountPercents;
   @override
   final int? inStock;
   final List<SingleValuePriceModifier>? _singleValuePriceModifiers;
@@ -413,18 +575,53 @@ class _$_ItemImpl implements _ItemImpl {
     return EqualUnmodifiableListView(value);
   }
 
+  final Map<dynamic, String>? _dynamicValues;
+  @override
+  Map<dynamic, String>? get dynamicValues {
+    final value = _dynamicValues;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   final String? itemType;
   @override
   final int? stock;
+  final List<String>? _allImages;
+  @override
+  List<String>? get allImages {
+    final value = _allImages;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _allVideo;
+  @override
+  List<String>? get allVideo {
+    final value = _allVideo;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? deliveryTime;
+  @override
+  final String? deliveryPreparationTime;
   @override
   final bool? stockConfigured;
   @override
-  final double oldTotal;
+  final double? oldTotal;
+  @override
+  final String? image;
+  @override
+  final String? video;
 
   @override
   String toString() {
-    return 'ItemImpl(id: $id, creationDate: $creationDate, name: $name, description: $description, deliveryOptions: $deliveryOptions, imageUrls: $imageUrls, characteristicsMap: $characteristicsMap, itemCategory: $itemCategory, currency: $currency, price: $price, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, itemType: $itemType, stock: $stock, stockConfigured: $stockConfigured, oldTotal: $oldTotal)';
+    return 'ItemImpl(id: $id, creationDate: $creationDate, name: $name, description: $description, deliveryOptions: $deliveryOptions, imageUrls: $imageUrls, videoUrls: $videoUrls, characteristicsMap: $characteristicsMap, itemCategory: $itemCategory, refCode: $refCode, currency: $currency, price: $price, deliveryPrice: $deliveryPrice, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, dynamicValues: $dynamicValues, itemType: $itemType, stock: $stock, allImages: $allImages, allVideo: $allVideo, deliveryTime: $deliveryTime, deliveryPreparationTime: $deliveryPreparationTime, stockConfigured: $stockConfigured, oldTotal: $oldTotal, image: $image, video: $video)';
   }
 
   @override
@@ -443,11 +640,16 @@ class _$_ItemImpl implements _ItemImpl {
             const DeepCollectionEquality()
                 .equals(other._imageUrls, _imageUrls) &&
             const DeepCollectionEquality()
+                .equals(other._videoUrls, _videoUrls) &&
+            const DeepCollectionEquality()
                 .equals(other._characteristicsMap, _characteristicsMap) &&
             const DeepCollectionEquality()
                 .equals(other.itemCategory, itemCategory) &&
+            const DeepCollectionEquality().equals(other.refCode, refCode) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryPrice, deliveryPrice) &&
             const DeepCollectionEquality()
                 .equals(other.purchasePrice, purchasePrice) &&
             const DeepCollectionEquality()
@@ -455,35 +657,57 @@ class _$_ItemImpl implements _ItemImpl {
             const DeepCollectionEquality().equals(other.inStock, inStock) &&
             const DeepCollectionEquality().equals(
                 other._singleValuePriceModifiers, _singleValuePriceModifiers) &&
+            const DeepCollectionEquality()
+                .equals(other._dynamicValues, _dynamicValues) &&
             const DeepCollectionEquality().equals(other.itemType, itemType) &&
             const DeepCollectionEquality().equals(other.stock, stock) &&
             const DeepCollectionEquality()
+                .equals(other._allImages, _allImages) &&
+            const DeepCollectionEquality().equals(other._allVideo, _allVideo) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryTime, deliveryTime) &&
+            const DeepCollectionEquality().equals(
+                other.deliveryPreparationTime, deliveryPreparationTime) &&
+            const DeepCollectionEquality()
                 .equals(other.stockConfigured, stockConfigured) &&
-            const DeepCollectionEquality().equals(other.oldTotal, oldTotal));
+            const DeepCollectionEquality().equals(other.oldTotal, oldTotal) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality().equals(other.video, video));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(creationDate),
-      const DeepCollectionEquality().hash(_name),
-      const DeepCollectionEquality().hash(_description),
-      const DeepCollectionEquality().hash(_deliveryOptions),
-      const DeepCollectionEquality().hash(_imageUrls),
-      const DeepCollectionEquality().hash(_characteristicsMap),
-      const DeepCollectionEquality().hash(itemCategory),
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(purchasePrice),
-      const DeepCollectionEquality().hash(discountPercents),
-      const DeepCollectionEquality().hash(inStock),
-      const DeepCollectionEquality().hash(_singleValuePriceModifiers),
-      const DeepCollectionEquality().hash(itemType),
-      const DeepCollectionEquality().hash(stock),
-      const DeepCollectionEquality().hash(stockConfigured),
-      const DeepCollectionEquality().hash(oldTotal));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(creationDate),
+        const DeepCollectionEquality().hash(_name),
+        const DeepCollectionEquality().hash(_description),
+        const DeepCollectionEquality().hash(_deliveryOptions),
+        const DeepCollectionEquality().hash(_imageUrls),
+        const DeepCollectionEquality().hash(_videoUrls),
+        const DeepCollectionEquality().hash(_characteristicsMap),
+        const DeepCollectionEquality().hash(itemCategory),
+        const DeepCollectionEquality().hash(refCode),
+        const DeepCollectionEquality().hash(currency),
+        const DeepCollectionEquality().hash(price),
+        const DeepCollectionEquality().hash(deliveryPrice),
+        const DeepCollectionEquality().hash(purchasePrice),
+        const DeepCollectionEquality().hash(discountPercents),
+        const DeepCollectionEquality().hash(inStock),
+        const DeepCollectionEquality().hash(_singleValuePriceModifiers),
+        const DeepCollectionEquality().hash(_dynamicValues),
+        const DeepCollectionEquality().hash(itemType),
+        const DeepCollectionEquality().hash(stock),
+        const DeepCollectionEquality().hash(_allImages),
+        const DeepCollectionEquality().hash(_allVideo),
+        const DeepCollectionEquality().hash(deliveryTime),
+        const DeepCollectionEquality().hash(deliveryPreparationTime),
+        const DeepCollectionEquality().hash(stockConfigured),
+        const DeepCollectionEquality().hash(oldTotal),
+        const DeepCollectionEquality().hash(image),
+        const DeepCollectionEquality().hash(video)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -502,22 +726,32 @@ abstract class _ItemImpl implements ItemImpl {
   const factory _ItemImpl(
       {final String? id,
       final String? creationDate,
-      required final Map<dynamic, NameLocalData> name,
-      required final Map<dynamic, DescriptionLocalData> description,
+      final Map<dynamic, NameLocalData>? name,
+      final Map<dynamic, DescriptionLocalData>? description,
       final List<DeliveryOption>? deliveryOptions,
       final List<String>? imageUrls,
+      final List<String>? videoUrls,
       final Map<dynamic, String>? characteristicsMap,
-      required final String itemCategory,
-      required final String currency,
+      final String? itemCategory,
+      final String? refCode,
+      final String? currency,
       final double? price,
-      required final double purchasePrice,
-      required final int discountPercents,
+      final double? deliveryPrice,
+      final double? purchasePrice,
+      final int? discountPercents,
       final int? inStock,
       final List<SingleValuePriceModifier>? singleValuePriceModifiers,
+      final Map<dynamic, String>? dynamicValues,
       final String? itemType,
       final int? stock,
+      final List<String>? allImages,
+      final List<String>? allVideo,
+      final String? deliveryTime,
+      final String? deliveryPreparationTime,
       final bool? stockConfigured,
-      required final double oldTotal}) = _$_ItemImpl;
+      final double? oldTotal,
+      final String? image,
+      final String? video}) = _$_ItemImpl;
 
   factory _ItemImpl.fromJson(Map<String, dynamic> json) = _$_ItemImpl.fromJson;
 
@@ -526,37 +760,57 @@ abstract class _ItemImpl implements ItemImpl {
   @override
   String? get creationDate;
   @override
-  Map<dynamic, NameLocalData> get name;
+  Map<dynamic, NameLocalData>? get name;
   @override
-  Map<dynamic, DescriptionLocalData> get description;
+  Map<dynamic, DescriptionLocalData>? get description;
   @override
   List<DeliveryOption>? get deliveryOptions;
   @override
   List<String>? get imageUrls;
   @override
+  List<String>? get videoUrls;
+  @override
   Map<dynamic, String>? get characteristicsMap;
   @override
-  String get itemCategory;
+  String? get itemCategory;
   @override
-  String get currency;
+  String? get refCode;
+  @override
+  String? get currency;
   @override
   double? get price;
   @override
-  double get purchasePrice;
+  double? get deliveryPrice;
   @override
-  int get discountPercents;
+  double? get purchasePrice;
+  @override
+  int? get discountPercents;
   @override
   int? get inStock;
   @override
   List<SingleValuePriceModifier>? get singleValuePriceModifiers;
   @override
+  Map<dynamic, String>? get dynamicValues;
+  @override
   String? get itemType;
   @override
   int? get stock;
   @override
+  List<String>? get allImages;
+  @override
+  List<String>? get allVideo;
+  @override
+  String? get deliveryTime;
+  @override
+  String? get deliveryPreparationTime;
+  @override
   bool? get stockConfigured;
   @override
-  double get oldTotal;
+  double? get oldTotal;
+  @override
+  String? get image;
+  @override
+  String? get video;
   @override
   @JsonKey(ignore: true)
   _$$_ItemImplCopyWith<_$_ItemImpl> get copyWith =>
@@ -914,10 +1168,15 @@ DeliveryOption _$DeliveryOptionFromJson(Map<String, dynamic> json) {
 mixin _$DeliveryOption {
   String? get id => throw _privateConstructorUsedError;
   String? get creationDate => throw _privateConstructorUsedError;
-  List<ItemImpl>? get items => throw _privateConstructorUsedError;
-  DeliveryCompany? get company => throw _privateConstructorUsedError;
-  String get deliveryType => throw _privateConstructorUsedError;
-  String get deliverySpeed => throw _privateConstructorUsedError;
+  NameLocalData? get name => throw _privateConstructorUsedError;
+  BusinessResponse? get business => throw _privateConstructorUsedError;
+  double? get price =>
+      throw _privateConstructorUsedError; // final DeliveryCompany? company,
+  String? get deliveryType => throw _privateConstructorUsedError;
+  String? get deliveryScope => throw _privateConstructorUsedError;
+  int? get deliveryTimeMin => throw _privateConstructorUsedError;
+  int? get deliveryTimeMax => throw _privateConstructorUsedError;
+  String? get timeUnit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -933,12 +1192,17 @@ abstract class $DeliveryOptionCopyWith<$Res> {
   $Res call(
       {String? id,
       String? creationDate,
-      List<ItemImpl>? items,
-      DeliveryCompany? company,
-      String deliveryType,
-      String deliverySpeed});
+      NameLocalData? name,
+      BusinessResponse? business,
+      double? price,
+      String? deliveryType,
+      String? deliveryScope,
+      int? deliveryTimeMin,
+      int? deliveryTimeMax,
+      String? timeUnit});
 
-  $DeliveryCompanyCopyWith<$Res>? get company;
+  $NameLocalDataCopyWith<$Res>? get name;
+  $BusinessResponseCopyWith<$Res>? get business;
 }
 
 /// @nodoc
@@ -954,10 +1218,14 @@ class _$DeliveryOptionCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? creationDate = freezed,
-    Object? items = freezed,
-    Object? company = freezed,
+    Object? name = freezed,
+    Object? business = freezed,
+    Object? price = freezed,
     Object? deliveryType = freezed,
-    Object? deliverySpeed = freezed,
+    Object? deliveryScope = freezed,
+    Object? deliveryTimeMin = freezed,
+    Object? deliveryTimeMax = freezed,
+    Object? timeUnit = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -968,33 +1236,60 @@ class _$DeliveryOptionCopyWithImpl<$Res>
           ? _value.creationDate
           : creationDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      items: items == freezed
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemImpl>?,
-      company: company == freezed
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as DeliveryCompany?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as NameLocalData?,
+      business: business == freezed
+          ? _value.business
+          : business // ignore: cast_nullable_to_non_nullable
+              as BusinessResponse?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       deliveryType: deliveryType == freezed
           ? _value.deliveryType
           : deliveryType // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliverySpeed: deliverySpeed == freezed
-          ? _value.deliverySpeed
-          : deliverySpeed // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      deliveryScope: deliveryScope == freezed
+          ? _value.deliveryScope
+          : deliveryScope // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryTimeMin: deliveryTimeMin == freezed
+          ? _value.deliveryTimeMin
+          : deliveryTimeMin // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deliveryTimeMax: deliveryTimeMax == freezed
+          ? _value.deliveryTimeMax
+          : deliveryTimeMax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      timeUnit: timeUnit == freezed
+          ? _value.timeUnit
+          : timeUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
   @override
-  $DeliveryCompanyCopyWith<$Res>? get company {
-    if (_value.company == null) {
+  $NameLocalDataCopyWith<$Res>? get name {
+    if (_value.name == null) {
       return null;
     }
 
-    return $DeliveryCompanyCopyWith<$Res>(_value.company!, (value) {
-      return _then(_value.copyWith(company: value));
+    return $NameLocalDataCopyWith<$Res>(_value.name!, (value) {
+      return _then(_value.copyWith(name: value));
+    });
+  }
+
+  @override
+  $BusinessResponseCopyWith<$Res>? get business {
+    if (_value.business == null) {
+      return null;
+    }
+
+    return $BusinessResponseCopyWith<$Res>(_value.business!, (value) {
+      return _then(_value.copyWith(business: value));
     });
   }
 }
@@ -1009,13 +1304,19 @@ abstract class _$$_DeliveryOptionCopyWith<$Res>
   $Res call(
       {String? id,
       String? creationDate,
-      List<ItemImpl>? items,
-      DeliveryCompany? company,
-      String deliveryType,
-      String deliverySpeed});
+      NameLocalData? name,
+      BusinessResponse? business,
+      double? price,
+      String? deliveryType,
+      String? deliveryScope,
+      int? deliveryTimeMin,
+      int? deliveryTimeMax,
+      String? timeUnit});
 
   @override
-  $DeliveryCompanyCopyWith<$Res>? get company;
+  $NameLocalDataCopyWith<$Res>? get name;
+  @override
+  $BusinessResponseCopyWith<$Res>? get business;
 }
 
 /// @nodoc
@@ -1033,10 +1334,14 @@ class __$$_DeliveryOptionCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? creationDate = freezed,
-    Object? items = freezed,
-    Object? company = freezed,
+    Object? name = freezed,
+    Object? business = freezed,
+    Object? price = freezed,
     Object? deliveryType = freezed,
-    Object? deliverySpeed = freezed,
+    Object? deliveryScope = freezed,
+    Object? deliveryTimeMin = freezed,
+    Object? deliveryTimeMax = freezed,
+    Object? timeUnit = freezed,
   }) {
     return _then(_$_DeliveryOption(
       id: id == freezed
@@ -1047,22 +1352,38 @@ class __$$_DeliveryOptionCopyWithImpl<$Res>
           ? _value.creationDate
           : creationDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      items: items == freezed
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemImpl>?,
-      company: company == freezed
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as DeliveryCompany?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as NameLocalData?,
+      business: business == freezed
+          ? _value.business
+          : business // ignore: cast_nullable_to_non_nullable
+              as BusinessResponse?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       deliveryType: deliveryType == freezed
           ? _value.deliveryType
           : deliveryType // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliverySpeed: deliverySpeed == freezed
-          ? _value.deliverySpeed
-          : deliverySpeed // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      deliveryScope: deliveryScope == freezed
+          ? _value.deliveryScope
+          : deliveryScope // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryTimeMin: deliveryTimeMin == freezed
+          ? _value.deliveryTimeMin
+          : deliveryTimeMin // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deliveryTimeMax: deliveryTimeMax == freezed
+          ? _value.deliveryTimeMax
+          : deliveryTimeMax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      timeUnit: timeUnit == freezed
+          ? _value.timeUnit
+          : timeUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1073,11 +1394,14 @@ class _$_DeliveryOption implements _DeliveryOption {
   const _$_DeliveryOption(
       {this.id,
       this.creationDate,
-      final List<ItemImpl>? items,
-      this.company,
-      required this.deliveryType,
-      required this.deliverySpeed})
-      : _items = items;
+      this.name,
+      this.business,
+      this.price,
+      this.deliveryType,
+      this.deliveryScope,
+      this.deliveryTimeMin,
+      this.deliveryTimeMax,
+      this.timeUnit});
 
   factory _$_DeliveryOption.fromJson(Map<String, dynamic> json) =>
       _$$_DeliveryOptionFromJson(json);
@@ -1086,25 +1410,27 @@ class _$_DeliveryOption implements _DeliveryOption {
   final String? id;
   @override
   final String? creationDate;
-  final List<ItemImpl>? _items;
   @override
-  List<ItemImpl>? get items {
-    final value = _items;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final NameLocalData? name;
   @override
-  final DeliveryCompany? company;
+  final BusinessResponse? business;
   @override
-  final String deliveryType;
+  final double? price;
+// final DeliveryCompany? company,
   @override
-  final String deliverySpeed;
+  final String? deliveryType;
+  @override
+  final String? deliveryScope;
+  @override
+  final int? deliveryTimeMin;
+  @override
+  final int? deliveryTimeMax;
+  @override
+  final String? timeUnit;
 
   @override
   String toString() {
-    return 'DeliveryOption(id: $id, creationDate: $creationDate, items: $items, company: $company, deliveryType: $deliveryType, deliverySpeed: $deliverySpeed)';
+    return 'DeliveryOption(id: $id, creationDate: $creationDate, name: $name, business: $business, price: $price, deliveryType: $deliveryType, deliveryScope: $deliveryScope, deliveryTimeMin: $deliveryTimeMin, deliveryTimeMax: $deliveryTimeMax, timeUnit: $timeUnit)';
   }
 
   @override
@@ -1115,12 +1441,18 @@ class _$_DeliveryOption implements _DeliveryOption {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.creationDate, creationDate) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            const DeepCollectionEquality().equals(other.company, company) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.business, business) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryType, deliveryType) &&
             const DeepCollectionEquality()
-                .equals(other.deliverySpeed, deliverySpeed));
+                .equals(other.deliveryScope, deliveryScope) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryTimeMin, deliveryTimeMin) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryTimeMax, deliveryTimeMax) &&
+            const DeepCollectionEquality().equals(other.timeUnit, timeUnit));
   }
 
   @JsonKey(ignore: true)
@@ -1129,10 +1461,14 @@ class _$_DeliveryOption implements _DeliveryOption {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(creationDate),
-      const DeepCollectionEquality().hash(_items),
-      const DeepCollectionEquality().hash(company),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(business),
+      const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(deliveryType),
-      const DeepCollectionEquality().hash(deliverySpeed));
+      const DeepCollectionEquality().hash(deliveryScope),
+      const DeepCollectionEquality().hash(deliveryTimeMin),
+      const DeepCollectionEquality().hash(deliveryTimeMax),
+      const DeepCollectionEquality().hash(timeUnit));
 
   @JsonKey(ignore: true)
   @override
@@ -1151,10 +1487,14 @@ abstract class _DeliveryOption implements DeliveryOption {
   const factory _DeliveryOption(
       {final String? id,
       final String? creationDate,
-      final List<ItemImpl>? items,
-      final DeliveryCompany? company,
-      required final String deliveryType,
-      required final String deliverySpeed}) = _$_DeliveryOption;
+      final NameLocalData? name,
+      final BusinessResponse? business,
+      final double? price,
+      final String? deliveryType,
+      final String? deliveryScope,
+      final int? deliveryTimeMin,
+      final int? deliveryTimeMax,
+      final String? timeUnit}) = _$_DeliveryOption;
 
   factory _DeliveryOption.fromJson(Map<String, dynamic> json) =
       _$_DeliveryOption.fromJson;
@@ -1164,13 +1504,21 @@ abstract class _DeliveryOption implements DeliveryOption {
   @override
   String? get creationDate;
   @override
-  List<ItemImpl>? get items;
+  NameLocalData? get name;
   @override
-  DeliveryCompany? get company;
+  BusinessResponse? get business;
   @override
-  String get deliveryType;
+  double? get price;
+  @override // final DeliveryCompany? company,
+  String? get deliveryType;
   @override
-  String get deliverySpeed;
+  String? get deliveryScope;
+  @override
+  int? get deliveryTimeMin;
+  @override
+  int? get deliveryTimeMax;
+  @override
+  String? get timeUnit;
   @override
   @JsonKey(ignore: true)
   _$$_DeliveryOptionCopyWith<_$_DeliveryOption> get copyWith =>

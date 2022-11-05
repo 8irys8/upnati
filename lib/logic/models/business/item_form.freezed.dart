@@ -26,10 +26,12 @@ mixin _$ItemForm {
   String? get currency => throw _privateConstructorUsedError;
   List<LocalDescription>? get description => throw _privateConstructorUsedError;
   double? get itemPrice => throw _privateConstructorUsedError;
-  double? get deliveryPrice => throw _privateConstructorUsedError;
+  DeliveryReq? get delivery => throw _privateConstructorUsedError;
   int? get inStock => throw _privateConstructorUsedError;
   List<SingleValuePriceModifierForm>? get singleValuePriceModifiers =>
       throw _privateConstructorUsedError;
+  List<String>? get imageUrls => throw _privateConstructorUsedError;
+  List<String>? get videoUrls => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,9 +50,13 @@ abstract class $ItemFormCopyWith<$Res> {
       String? currency,
       List<LocalDescription>? description,
       double? itemPrice,
-      double? deliveryPrice,
+      DeliveryReq? delivery,
       int? inStock,
-      List<SingleValuePriceModifierForm>? singleValuePriceModifiers});
+      List<SingleValuePriceModifierForm>? singleValuePriceModifiers,
+      List<String>? imageUrls,
+      List<String>? videoUrls});
+
+  $DeliveryReqCopyWith<$Res>? get delivery;
 }
 
 /// @nodoc
@@ -69,9 +75,11 @@ class _$ItemFormCopyWithImpl<$Res> implements $ItemFormCopyWith<$Res> {
     Object? currency = freezed,
     Object? description = freezed,
     Object? itemPrice = freezed,
-    Object? deliveryPrice = freezed,
+    Object? delivery = freezed,
     Object? inStock = freezed,
     Object? singleValuePriceModifiers = freezed,
+    Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -98,10 +106,10 @@ class _$ItemFormCopyWithImpl<$Res> implements $ItemFormCopyWith<$Res> {
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
               as double?,
-      deliveryPrice: deliveryPrice == freezed
-          ? _value.deliveryPrice
-          : deliveryPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
+      delivery: delivery == freezed
+          ? _value.delivery
+          : delivery // ignore: cast_nullable_to_non_nullable
+              as DeliveryReq?,
       inStock: inStock == freezed
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
@@ -110,7 +118,26 @@ class _$ItemFormCopyWithImpl<$Res> implements $ItemFormCopyWith<$Res> {
           ? _value.singleValuePriceModifiers
           : singleValuePriceModifiers // ignore: cast_nullable_to_non_nullable
               as List<SingleValuePriceModifierForm>?,
+      imageUrls: imageUrls == freezed
+          ? _value.imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value.videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
+  }
+
+  @override
+  $DeliveryReqCopyWith<$Res>? get delivery {
+    if (_value.delivery == null) {
+      return null;
+    }
+
+    return $DeliveryReqCopyWith<$Res>(_value.delivery!, (value) {
+      return _then(_value.copyWith(delivery: value));
+    });
   }
 }
 
@@ -127,9 +154,14 @@ abstract class _$$_ItemFormCopyWith<$Res> implements $ItemFormCopyWith<$Res> {
       String? currency,
       List<LocalDescription>? description,
       double? itemPrice,
-      double? deliveryPrice,
+      DeliveryReq? delivery,
       int? inStock,
-      List<SingleValuePriceModifierForm>? singleValuePriceModifiers});
+      List<SingleValuePriceModifierForm>? singleValuePriceModifiers,
+      List<String>? imageUrls,
+      List<String>? videoUrls});
+
+  @override
+  $DeliveryReqCopyWith<$Res>? get delivery;
 }
 
 /// @nodoc
@@ -150,9 +182,11 @@ class __$$_ItemFormCopyWithImpl<$Res> extends _$ItemFormCopyWithImpl<$Res>
     Object? currency = freezed,
     Object? description = freezed,
     Object? itemPrice = freezed,
-    Object? deliveryPrice = freezed,
+    Object? delivery = freezed,
     Object? inStock = freezed,
     Object? singleValuePriceModifiers = freezed,
+    Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
   }) {
     return _then(_$_ItemForm(
       id: id == freezed
@@ -179,10 +213,10 @@ class __$$_ItemFormCopyWithImpl<$Res> extends _$ItemFormCopyWithImpl<$Res>
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
               as double?,
-      deliveryPrice: deliveryPrice == freezed
-          ? _value.deliveryPrice
-          : deliveryPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
+      delivery: delivery == freezed
+          ? _value.delivery
+          : delivery // ignore: cast_nullable_to_non_nullable
+              as DeliveryReq?,
       inStock: inStock == freezed
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
@@ -191,6 +225,14 @@ class __$$_ItemFormCopyWithImpl<$Res> extends _$ItemFormCopyWithImpl<$Res>
           ? _value._singleValuePriceModifiers
           : singleValuePriceModifiers // ignore: cast_nullable_to_non_nullable
               as List<SingleValuePriceModifierForm>?,
+      imageUrls: imageUrls == freezed
+          ? _value._imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value._videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -205,12 +247,16 @@ class _$_ItemForm implements _ItemForm {
       this.currency,
       final List<LocalDescription>? description,
       this.itemPrice,
-      this.deliveryPrice,
+      this.delivery,
       this.inStock,
-      final List<SingleValuePriceModifierForm>? singleValuePriceModifiers})
+      final List<SingleValuePriceModifierForm>? singleValuePriceModifiers,
+      final List<String>? imageUrls,
+      final List<String>? videoUrls})
       : _name = name,
         _description = description,
-        _singleValuePriceModifiers = singleValuePriceModifiers;
+        _singleValuePriceModifiers = singleValuePriceModifiers,
+        _imageUrls = imageUrls,
+        _videoUrls = videoUrls;
 
   factory _$_ItemForm.fromJson(Map<String, dynamic> json) =>
       _$$_ItemFormFromJson(json);
@@ -242,7 +288,7 @@ class _$_ItemForm implements _ItemForm {
   @override
   final double? itemPrice;
   @override
-  final double? deliveryPrice;
+  final DeliveryReq? delivery;
   @override
   final int? inStock;
   final List<SingleValuePriceModifierForm>? _singleValuePriceModifiers;
@@ -254,9 +300,27 @@ class _$_ItemForm implements _ItemForm {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _imageUrls;
+  @override
+  List<String>? get imageUrls {
+    final value = _imageUrls;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _videoUrls;
+  @override
+  List<String>? get videoUrls {
+    final value = _videoUrls;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'ItemForm(id: $id, name: $name, itemCategory: $itemCategory, currency: $currency, description: $description, itemPrice: $itemPrice, deliveryPrice: $deliveryPrice, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers)';
+    return 'ItemForm(id: $id, name: $name, itemCategory: $itemCategory, currency: $currency, description: $description, itemPrice: $itemPrice, delivery: $delivery, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, imageUrls: $imageUrls, videoUrls: $videoUrls)';
   }
 
   @override
@@ -272,11 +336,14 @@ class _$_ItemForm implements _ItemForm {
             const DeepCollectionEquality()
                 .equals(other._description, _description) &&
             const DeepCollectionEquality().equals(other.itemPrice, itemPrice) &&
-            const DeepCollectionEquality()
-                .equals(other.deliveryPrice, deliveryPrice) &&
+            const DeepCollectionEquality().equals(other.delivery, delivery) &&
             const DeepCollectionEquality().equals(other.inStock, inStock) &&
             const DeepCollectionEquality().equals(
-                other._singleValuePriceModifiers, _singleValuePriceModifiers));
+                other._singleValuePriceModifiers, _singleValuePriceModifiers) &&
+            const DeepCollectionEquality()
+                .equals(other._imageUrls, _imageUrls) &&
+            const DeepCollectionEquality()
+                .equals(other._videoUrls, _videoUrls));
   }
 
   @JsonKey(ignore: true)
@@ -289,9 +356,11 @@ class _$_ItemForm implements _ItemForm {
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(itemPrice),
-      const DeepCollectionEquality().hash(deliveryPrice),
+      const DeepCollectionEquality().hash(delivery),
       const DeepCollectionEquality().hash(inStock),
-      const DeepCollectionEquality().hash(_singleValuePriceModifiers));
+      const DeepCollectionEquality().hash(_singleValuePriceModifiers),
+      const DeepCollectionEquality().hash(_imageUrls),
+      const DeepCollectionEquality().hash(_videoUrls));
 
   @JsonKey(ignore: true)
   @override
@@ -314,10 +383,11 @@ abstract class _ItemForm implements ItemForm {
       final String? currency,
       final List<LocalDescription>? description,
       final double? itemPrice,
-      final double? deliveryPrice,
+      final DeliveryReq? delivery,
       final int? inStock,
-      final List<SingleValuePriceModifierForm>?
-          singleValuePriceModifiers}) = _$_ItemForm;
+      final List<SingleValuePriceModifierForm>? singleValuePriceModifiers,
+      final List<String>? imageUrls,
+      final List<String>? videoUrls}) = _$_ItemForm;
 
   factory _ItemForm.fromJson(Map<String, dynamic> json) = _$_ItemForm.fromJson;
 
@@ -334,11 +404,15 @@ abstract class _ItemForm implements ItemForm {
   @override
   double? get itemPrice;
   @override
-  double? get deliveryPrice;
+  DeliveryReq? get delivery;
   @override
   int? get inStock;
   @override
   List<SingleValuePriceModifierForm>? get singleValuePriceModifiers;
+  @override
+  List<String>? get imageUrls;
+  @override
+  List<String>? get videoUrls;
   @override
   @JsonKey(ignore: true)
   _$$_ItemFormCopyWith<_$_ItemForm> get copyWith =>
@@ -654,4 +728,176 @@ abstract class _SingleValuePriceModifierForm
   @JsonKey(ignore: true)
   _$$_SingleValuePriceModifierFormCopyWith<_$_SingleValuePriceModifierForm>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+DeliveryReq _$DeliveryReqFromJson(Map<String, dynamic> json) {
+  return _DeliveryReq.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeliveryReq {
+  double? get price => throw _privateConstructorUsedError;
+  String? get preparationTime => throw _privateConstructorUsedError;
+  String? get deliveryTime => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DeliveryReqCopyWith<DeliveryReq> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeliveryReqCopyWith<$Res> {
+  factory $DeliveryReqCopyWith(
+          DeliveryReq value, $Res Function(DeliveryReq) then) =
+      _$DeliveryReqCopyWithImpl<$Res>;
+  $Res call({double? price, String? preparationTime, String? deliveryTime});
+}
+
+/// @nodoc
+class _$DeliveryReqCopyWithImpl<$Res> implements $DeliveryReqCopyWith<$Res> {
+  _$DeliveryReqCopyWithImpl(this._value, this._then);
+
+  final DeliveryReq _value;
+  // ignore: unused_field
+  final $Res Function(DeliveryReq) _then;
+
+  @override
+  $Res call({
+    Object? price = freezed,
+    Object? preparationTime = freezed,
+    Object? deliveryTime = freezed,
+  }) {
+    return _then(_value.copyWith(
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      preparationTime: preparationTime == freezed
+          ? _value.preparationTime
+          : preparationTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryTime: deliveryTime == freezed
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_DeliveryReqCopyWith<$Res>
+    implements $DeliveryReqCopyWith<$Res> {
+  factory _$$_DeliveryReqCopyWith(
+          _$_DeliveryReq value, $Res Function(_$_DeliveryReq) then) =
+      __$$_DeliveryReqCopyWithImpl<$Res>;
+  @override
+  $Res call({double? price, String? preparationTime, String? deliveryTime});
+}
+
+/// @nodoc
+class __$$_DeliveryReqCopyWithImpl<$Res> extends _$DeliveryReqCopyWithImpl<$Res>
+    implements _$$_DeliveryReqCopyWith<$Res> {
+  __$$_DeliveryReqCopyWithImpl(
+      _$_DeliveryReq _value, $Res Function(_$_DeliveryReq) _then)
+      : super(_value, (v) => _then(v as _$_DeliveryReq));
+
+  @override
+  _$_DeliveryReq get _value => super._value as _$_DeliveryReq;
+
+  @override
+  $Res call({
+    Object? price = freezed,
+    Object? preparationTime = freezed,
+    Object? deliveryTime = freezed,
+  }) {
+    return _then(_$_DeliveryReq(
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      preparationTime: preparationTime == freezed
+          ? _value.preparationTime
+          : preparationTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryTime: deliveryTime == freezed
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_DeliveryReq implements _DeliveryReq {
+  const _$_DeliveryReq({this.price, this.preparationTime, this.deliveryTime});
+
+  factory _$_DeliveryReq.fromJson(Map<String, dynamic> json) =>
+      _$$_DeliveryReqFromJson(json);
+
+  @override
+  final double? price;
+  @override
+  final String? preparationTime;
+  @override
+  final String? deliveryTime;
+
+  @override
+  String toString() {
+    return 'DeliveryReq(price: $price, preparationTime: $preparationTime, deliveryTime: $deliveryTime)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeliveryReq &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality()
+                .equals(other.preparationTime, preparationTime) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryTime, deliveryTime));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(preparationTime),
+      const DeepCollectionEquality().hash(deliveryTime));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DeliveryReqCopyWith<_$_DeliveryReq> get copyWith =>
+      __$$_DeliveryReqCopyWithImpl<_$_DeliveryReq>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DeliveryReqToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeliveryReq implements DeliveryReq {
+  const factory _DeliveryReq(
+      {final double? price,
+      final String? preparationTime,
+      final String? deliveryTime}) = _$_DeliveryReq;
+
+  factory _DeliveryReq.fromJson(Map<String, dynamic> json) =
+      _$_DeliveryReq.fromJson;
+
+  @override
+  double? get price;
+  @override
+  String? get preparationTime;
+  @override
+  String? get deliveryTime;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DeliveryReqCopyWith<_$_DeliveryReq> get copyWith =>
+      throw _privateConstructorUsedError;
 }

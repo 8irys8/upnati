@@ -18,7 +18,9 @@ import 'package:upnati/logic/models/business/page_business_response.dart';
 import 'package:upnati/logic/models/business/page_item_response.dart';
 import 'package:upnati/logic/models/business/page_order_response.dart';
 import 'package:upnati/logic/models/business/search_response.dart';
+import 'package:upnati/logic/models/business/upload_response.dart';
 import 'package:upnati/logic/models/business_form.dart';
+import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 
 part 'business_service.g.dart';
@@ -138,6 +140,16 @@ abstract class BusinessService {
   );
 
   //item schema controller
+  @POST('/upload/image')
+  Future<UploadResponse> getUploadImages({
+    @Part(name: 'files') required List<File> files,
+  });
+
+  @POST('/upload/video')
+  Future<UploadResponse> getUploadVideos({
+    @Part(name: 'files') required List<File> files,
+  });
+
   @GET('/items/schema/type')
   Future<List<String>> getItemType(
     @Query('locale') String? locale,
@@ -247,6 +259,11 @@ abstract class BusinessService {
     @Body() required String file,
   });
 
+  @GET('/items/{id}/link')
+  Future<AppLinkResponse> shareItemLink({
+    @Path() required String id,
+  });
+
   @DELETE('/items/{id}/image')
   Future<ItemResponse> deleteItemImage({
     @Path() required String id,
@@ -283,12 +300,22 @@ abstract class BusinessService {
 
   //basket controller
   @GET('/basket')
-  Future<BasketResponse> getUserBasket();
+  Future<BasketResponse> getUserBasket({
+    @Query('pageOrder') required String pageOrder,
+    @Query('page') int? page,
+    @Query('size') required int size,
+  });
 
   @POST('/basket')
   Future<BasketResponse> modifyBasket({
+    @Query('pageOrder') required String pageOrder,
+    @Query('page') int? page,
+    @Query('size') required int size,
     @Body() required ItemCollection itemCollection,
   });
+
+  @DELETE('/basket')
+  Future<BasketResponse> clearBasket();
 
   //order controller
   @POST('/orders/preview')
@@ -322,5 +349,23 @@ abstract class BusinessService {
   Future<SearchResponse> search({
     @Query('query') required String query,
     @Query('size') required int size,
+  });
+
+  //favorite controller
+  @GET('/favorites')
+  Future<PageItemResponse> getFavoriteItems({
+    @Query('pageOrder') required String pageOrder,
+    @Query('page') int? page,
+    @Query('size') required int size,
+  });
+
+  @POST('/favorites')
+  Future<ItemResponse> addToFavorites({
+    @Query('itemId') required String itemId,
+  });
+
+  @DELETE('/favorites')
+  Future<ItemResponse> deleteFromFavorites({
+    @Query('itemId') String? itemId,
   });
 }

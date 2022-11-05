@@ -7,26 +7,29 @@ part 'item_response.freezed.dart';
 
 @freezed
 class ItemResponse with _$ItemResponse {
-  const factory ItemResponse({
-    String? id,
-    String? name,
-    String? businessId,
-    String? businessName,
-    String? businessImageUrl,
-    String? itemCategory,
-    String? itemType,
-    String? currency,
-    double? price,
-    Description? description,
-    List<String>? imageUrls,
-    List<String>? videoUrls,
-    Map<dynamic, String>? characteristicsMap,
-    double? purchasePrice,
-    int? discountPercents,
-    int? inStock,
-    List<SingleValuePriceModifier>? singleValuePriceModifiers,
-    bool? stockConfigured,
-  }) = _ItemResponse;
+  const factory ItemResponse(
+      {String? id,
+      String? name,
+      String? businessId,
+      String? businessName,
+      String? businessImageUrl,
+      String? itemCategory,
+      String? itemType,
+      String? currency,
+      double? price,
+      Description? description,
+      List<String>? imageUrls,
+      List<String>? videoUrls,
+      Map<dynamic, String>? characteristicsMap,
+      double? purchasePrice,
+      int? discountPercents,
+      int? inStock,
+      List<SingleValuePriceModifier>? singleValuePriceModifiers,
+      bool? stockConfigured,
+      final double? deliveryPrice,
+      final String? deliveryPreparationTime,
+      final bool? favorite,
+      final String? deliveryTime}) = _ItemResponse;
 
   factory ItemResponse.fromJson(Map<String, dynamic> json) =>
       _$ItemResponseFromJson(json);

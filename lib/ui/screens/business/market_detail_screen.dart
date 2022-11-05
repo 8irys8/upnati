@@ -126,8 +126,8 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
     if (widget.businessResponse != null) {
       nameController.text = widget.businessResponse?.name ?? '';
       detailController.text = widget.businessResponse?.description?.full ?? '';
-      // _businessCategory = widget.businessResponse?.category;
-      _businessScope = null;
+      _businessCategory = widget.businessResponse?.category;
+      _businessScope = widget.businessResponse?.deliveryScope;
       _uploadedImg = widget.businessResponse?.imageUrls?.isNotEmpty == true;
       _businessCity = widget.businessResponse?.location;
     }

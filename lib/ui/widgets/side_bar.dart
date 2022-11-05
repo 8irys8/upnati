@@ -1,185 +1,330 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
-class SideBar extends StatelessWidget {
+class SideBar extends StatefulWidget {
   const SideBar({Key? key, this.onBarrierPressed}) : super(key: key);
 
   final VoidCallback? onBarrierPressed;
 
   @override
+  State<SideBar> createState() => _SideBarState();
+}
+
+class _SideBarState extends State<SideBar> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<UserCubit>().getUserDetails();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Flexible(
-          child: GestureDetector(
-            onTap: onBarrierPressed,
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: Color(0xff707070).withOpacity(.49),
-            ),
-          ),
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<UserCubit, UserState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              successUserStateResponse: (response) {
+                if (response.businessId != null) {
+                  context.read<BusinessCubit>().getBusinessInfo();
+                }
+              },
+            );
+          },
         ),
-        Flexible(
-          flex: 2,
-          child: SafeArea(
-            bottom: false,
-            child: Container(
-              height: double.infinity,
-              color: AppColors.white,
-              padding: const EdgeInsets.only(left: 35, right: 25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30, bottom: 22),
-                    child: Image.asset(Images.shushuLogoImg),
-                  ),
-                  Divider(
-                    color: Color(0xff707070).withOpacity(.49),
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.router.push(const AllShopsScreen());
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.business_register_myShop.tr(),
-                          style: AppTheme.regular(size: 16),
-                        ),
-                        const SizedBox(width: 10),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: Image.asset(Images.icStoreRoze),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    color: Color(0xff707070).withOpacity(.49),
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.router.push(const MessageScreen());
-                      SideBarControllerWidget.of(context)
-                          ?.controller
-                          ?.toggleSideBar
-                          ?.call();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.user_info_messages.tr(),
-                          style: AppTheme.regular(size: 16),
-                        ),
-                        const SizedBox(width: 10),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: Image.asset(Images.icBellBlue),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    color: Color(0xff707070).withOpacity(.49),
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.router.push(const PurchaseHistoryScreen());
-                      SideBarControllerWidget.of(context)
-                          ?.controller
-                          ?.toggleSideBar
-                          ?.call();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.basket_info_previous_purchases.tr(),
-                          style: AppTheme.regular(size: 16),
-                        ),
-                        const SizedBox(width: 10),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: Image.asset(Images.icBasketPurple),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    color: Color(0xff707070).withOpacity(.49),
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.router.push(const UserMainScreen());
-                      SideBarControllerWidget.of(context)
-                          ?.controller
-                          ?.toggleSideBar
-                          ?.call();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.product_info_personal_info.tr(),
-                          style: AppTheme.regular(size: 16),
-                        ),
-                        const SizedBox(width: 10),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: Image.asset(Images.icContactBlue),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    color: Color(0xff707070).withOpacity(.49),
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.router.push(const OnboardScreen());
-                      SideBarControllerWidget.of(context)
-                          ?.controller
-                          ?.toggleSideBar
-                          ?.call();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.product_info_affiliate_program.tr(),
-                          style: AppTheme.regular(size: 16),
-                        ),
-                        const SizedBox(width: 10),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: Image.asset(Images.icMoneyCard),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    color: Color(0xff707070).withOpacity(.49),
-                    height: 5,
-                  ),
-                ],
+      ],
+      child: Row(
+        children: [
+          Flexible(
+            child: GestureDetector(
+              onTap: widget.onBarrierPressed,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Color(0xff707070).withOpacity(.49),
               ),
             ),
           ),
-        ),
-      ],
+          Flexible(
+            flex: 2,
+            child: SafeArea(
+              bottom: false,
+              child: Container(
+                height: double.infinity,
+                color: AppColors.white,
+                padding: const EdgeInsets.only(left: 35, right: 25),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    BlocBuilder<UserCubit, UserState>(
+                      builder: (context, state) {
+                        return state.maybeWhen(
+                            successUserStateResponse: (response) {
+                              return response.businessId == null
+                                  ? Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 30, bottom: 22),
+                                      child: response.images?.isEmpty == true
+                                          ? Container(
+                                              width: 100,
+                                              height: 100,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppColors.darkBlueLight,
+                                              ),
+                                              child: Image.asset(
+                                                Images.emptyAvatar,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            )
+                                          : ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(150),
+                                              child: Image.network(
+                                                response.images?.first ?? '',
+                                                height: 100,
+                                                width: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ))
+                                  : BlocBuilder<BusinessCubit, BusinessState>(
+                                      builder: (context, state) {
+                                      return state.maybeWhen(
+                                        successBusinessResponse:
+                                            (businessResponse) => Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 30, bottom: 22),
+                                                child: businessResponse
+                                                            .imageUrls
+                                                            ?.isEmpty ==
+                                                        true
+                                                    ? const SizedBox()
+                                                    : ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(150),
+                                                        child: Image.network(
+                                                          businessResponse
+                                                                  .imageUrls
+                                                                  ?.first ??
+                                                              '',
+                                                          height: 100,
+                                                          width: 100,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      )),
+                                        orElse: () => const SizedBox(),
+                                      );
+                                    });
+                            },
+                            orElse: () => const SizedBox());
+                      },
+                    ),
+                    Divider(
+                      color: Color(0xff707070).withOpacity(.49),
+                      height: 5,
+                    ),
+                    BlocBuilder<UserCubit, UserState>(
+                      builder: (context, state) {
+                        return state.maybeWhen(
+                            loadingUserState: () => const Center(
+                                  child:
+                                      SpinKitCircle(color: AppColors.darkBlue),
+                                ),
+                            successUserStateResponse: (user) {
+                              return user.businessId == null
+                                  ? GestureDetector(
+                                      onTap: () {
+                                        context.router.push(BusinessScreen());
+                                      },
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                                LocaleKeys
+                                                    .business_register_myShop
+                                                    .tr(),
+                                                style:
+                                                    AppTheme.regular(size: 16)),
+                                            const SizedBox(width: 10),
+                                            Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 16),
+                                                child: Image.asset(
+                                                    Images.icStoreRoze))
+                                          ]))
+                                  : BlocBuilder<BusinessCubit, BusinessState>(
+                                      builder: (context, state) {
+                                      return state.maybeWhen(
+                                          successBusinessResponse:
+                                              (businessResponse) =>
+                                                  GestureDetector(
+                                                      onTap: () {
+                                                        context.router.push(
+                                                            ShopHomeScreen(
+                                                                business:
+                                                                    businessResponse));
+                                                      },
+                                                      child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
+                                                                LocaleKeys
+                                                                    .business_register_myShop
+                                                                    .tr(),
+                                                                style: AppTheme
+                                                                    .regular(
+                                                                        size:
+                                                                            16)),
+                                                            const SizedBox(
+                                                                width: 10),
+                                                            Padding(
+                                                                padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                    vertical:
+                                                                        16),
+                                                                child: Image
+                                                                    .asset(Images
+                                                                        .icStoreRoze))
+                                                          ])),
+                                          orElse: () => const SizedBox());
+                                    });
+                            },
+                            orElse: () => const SizedBox());
+                      },
+                    ),
+                    Divider(
+                      color: Color(0xff707070).withOpacity(.49),
+                      height: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(const MessageScreen());
+                        SideBarControllerWidget.of(context)
+                            ?.controller
+                            ?.toggleSideBar
+                            ?.call();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            LocaleKeys.user_info_messages.tr(),
+                            style: AppTheme.regular(size: 16),
+                          ),
+                          const SizedBox(width: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: Image.asset(Images.icBellBlue),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: Color(0xff707070).withOpacity(.49),
+                      height: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(const PurchaseHistoryScreen());
+                        SideBarControllerWidget.of(context)
+                            ?.controller
+                            ?.toggleSideBar
+                            ?.call();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            LocaleKeys.basket_info_previous_purchases.tr(),
+                            style: AppTheme.regular(size: 16),
+                          ),
+                          const SizedBox(width: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: Image.asset(Images.icBasketPurple),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: Color(0xff707070).withOpacity(.49),
+                      height: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(const UserMainScreen());
+                        SideBarControllerWidget.of(context)
+                            ?.controller
+                            ?.toggleSideBar
+                            ?.call();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            LocaleKeys.product_info_personal_info.tr(),
+                            style: AppTheme.regular(size: 16),
+                          ),
+                          const SizedBox(width: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: Image.asset(Images.icContactBlue),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: Color(0xff707070).withOpacity(.49),
+                      height: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(const OnboardScreen());
+                        SideBarControllerWidget.of(context)
+                            ?.controller
+                            ?.toggleSideBar
+                            ?.call();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            LocaleKeys.product_info_affiliate_program.tr(),
+                            style: AppTheme.regular(size: 16),
+                          ),
+                          const SizedBox(width: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: Image.asset(Images.icMoneyCard),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: Color(0xff707070).withOpacity(.49),
+                      height: 5,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -221,8 +366,14 @@ class _SideBarWrapperState extends State<SideBarWrapper> {
             widget.child,
             if (_isSideBarOpen)
               Positioned.fill(
-                child: SideBar(
-                  onBarrierPressed: () => _toggleSideBar(),
+                child: MultiBlocProvider(
+                  providers: [
+                    BlocProvider(create: (context) => GetIt.I<UserCubit>()),
+                    BlocProvider(create: (context) => GetIt.I<BusinessCubit>()),
+                  ],
+                  child: SideBar(
+                    onBarrierPressed: () => _toggleSideBar(),
+                  ),
                 ),
               ),
           ],

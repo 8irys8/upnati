@@ -11,6 +11,7 @@ import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/models/business/image_url_payload.dart';
 import 'package:upnati/logic/models/business/item_form.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
 import 'package:upnati/logic/models/description.dart';
@@ -24,6 +25,8 @@ import 'package:upnati/ui/widgets/custom_dropdown.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
 import 'package:upnati/ui/widgets/custom_radio.dart';
 import 'package:upnati/ui/widgets/icon_box.dart';
+import 'package:video_player/video_player.dart';
+import 'package:video_thumbnail/video_thumbnail.dart';
 
 class ProduceDetailScreen extends StatefulWidget with AutoRouteWrapper {
   final ItemResponse? item;
@@ -52,7 +55,15 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
   final ValueNotifier<String?> _selectedDeliveryType = ValueNotifier(null);
   final ValueNotifier<String?> _discountType = ValueNotifier(null);
   final ValueNotifier<bool> _freeDelivery = ValueNotifier(false);
-  // List<String?> _itemImage;
+  List<File> _itemImage = [];
+  List<File> _itemVideo = [];
+  VideoPlayerController? _controller;
+  List<String> _uploadedImages = [];
+  List<String> _uploadedVideo = [];
+  bool _isUploadingImage = true;
+  bool _isUploadingVideo = true;
+  List<String> _remoteImage = [];
+  List<String> _remoteVideo = [];
 
   @override
   void initState() {
@@ -64,13 +75,36 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
       priceController.text = widget.item?.price?.toStringAsFixed(2) ?? '';
       quantityController.text = widget.item?.inStock?.toString() ?? '';
       _selectedCategory = widget.item?.itemCategory;
+      _remoteImage = [...widget.item?.imageUrls ?? []];
+      _remoteVideo = [...widget.item?.videoUrls ?? []];
+    }
+  }
+
+  void _uploadImage() {
+    _isUploadingImage = true;
+    _isUploadingVideo = true;
+    if (_itemImage.isNotEmpty) {
+      _isUploadingImage = false;
+      context.read<BusinessCubit>().getUploadImages(files: _itemImage);
+    }
+
+    if (_itemVideo.isNotEmpty) {
+      _isUploadingVideo = false;
+      context.read<BusinessCubit>().getUploadVideos(files: _itemVideo);
     }
   }
 
   void _createItem() {
+    if (!_isUploadingImage || !_isUploadingVideo) return;
     var newItem = ItemForm(
       currency: BankCurrency.NIS.name,
-      deliveryPrice: double.tryParse(deliveryPrice.text),
+      imageUrls: _uploadedImages,
+      videoUrls: _uploadedVideo,
+      delivery: DeliveryReq(
+        price: _freeDelivery.value ? 0 : double.parse(deliveryPrice.text),
+        // preparationTime: null,
+        // deliveryTime: '1',
+      ),
       inStock: int.tryParse(quantityController.text),
       singleValuePriceModifiers: [
         SingleValuePriceModifierForm(
@@ -102,43 +136,104 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
     }
   }
 
-  // void _putFile() async {
-  //   _uploadedImg = false;
-  //   var result = await showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //             title: const Text('Choose Image'),
-  //             content: Row(
-  //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //               children: [
-  //                 TextButton(
-  //                     onPressed: () async {
-  //                       var image = await ImagePicker()
-  //                           .pickImage(source: ImageSource.camera);
-  //                       if (image != null) {
-  //                         _businessImage.value = File(image.path);
-  //                         Navigator.of(context).pop(true);
-  //                       } else {
-  //                         Navigator.of(context).pop(false);
-  //                       }
-  //                     },
-  //                     child: const Text('Camera')),
-  //                 TextButton(
-  //                     onPressed: () async {
-  //                       var image = await ImagePicker()
-  //                           .pickImage(source: ImageSource.gallery);
-  //                       if (image != null) {
-  //                         _businessImage.value = File(image.path);
-  //                         Navigator.of(context).pop(true);
-  //                       } else {
-  //                         Navigator.of(context).pop(false);
-  //                       }
-  //                     },
-  //                     child: const Text('Gallery')),
-  //               ],
-  //             ),
-  //           ));
-  // }
+  void _putFile() async {
+    // _uploadedImg = false;
+    var result = await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text('Choose Image'),
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                      onPressed: () async {
+                        var image = await ImagePicker()
+                            .pickImage(source: ImageSource.camera);
+                        if (image != null) {
+                          setState(() {
+                            _itemImage.add(File(image.path));
+                          });
+                          Navigator.of(context).pop(true);
+                        } else {
+                          Navigator.of(context).pop(false);
+                        }
+                      },
+                      child: const Text('Camera')),
+                  TextButton(
+                      onPressed: () async {
+                        var image = await ImagePicker().pickMultiImage();
+                        if (image.isNotEmpty) {
+                          setState(() {
+                            _itemImage.addAll(image.map((e) => File(e.path)));
+                          });
+                          Navigator.of(context).pop(true);
+                        } else {
+                          Navigator.of(context).pop(false);
+                        }
+                      },
+                      child: const Text('Gallery')),
+                ],
+              ),
+            ));
+  }
+
+  void _putVideo() async {
+    // _uploadedImg = false;
+    var result = await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text('Choose Video'),
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                      onPressed: () async {
+                        var image = await ImagePicker()
+                            .pickVideo(source: ImageSource.camera);
+                        if (image != null) {
+                          setState(() {
+                            _itemVideo = [File(image.path)];
+                            _controller = VideoPlayerController.file(
+                              _itemVideo[0],
+                              // ignore: prefer-async-await
+                            )..initialize().then((_) {
+                                if (!mounted) return;
+                                // ignore: no-empty-block
+                                setState(() {});
+                              });
+                          });
+                          Navigator.of(context).pop(true);
+                        } else {
+                          Navigator.of(context).pop(false);
+                        }
+                      },
+                      child: const Text('Camera')),
+                  TextButton(
+                      onPressed: () async {
+                        var image = await ImagePicker()
+                            .pickVideo(source: ImageSource.gallery);
+                        if (image != null) {
+                          setState(() {
+                            _itemVideo = [File(image.path)];
+                            _controller = VideoPlayerController.file(
+                              _itemVideo[0],
+                              // ignore: prefer-async-await
+                            )..initialize().then((_) {
+                                if (!mounted) return;
+                                // ignore: no-empty-block
+                                setState(() {});
+                              });
+                          });
+                          Navigator.of(context).pop(true);
+                        } else {
+                          Navigator.of(context).pop(false);
+                        }
+                      },
+                      child: const Text('Gallery')),
+                ],
+              ),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -168,10 +263,20 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
               },
               error: (error) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('error.'),
                   ),
                 );
+              },
+              successFiles: (files) {
+                _isUploadingImage = true;
+                _uploadedImages = files.urls ?? [];
+                _createItem();
+              },
+              successVideo: (video) {
+                _isUploadingVideo = true;
+                _uploadedVideo = video.urls ?? [];
+                _createItem();
               },
             );
           },
@@ -367,17 +472,149 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
                                           mainAxisSpacing: 17,
                                           childAspectRatio: 0.9),
                                   itemBuilder: (context, index) {
-                                    return IconBox(
-                                      icon: SvgPicture.asset(
-                                        Svgs.icCamera,
-                                        color: index == 0
-                                            ? AppColors.text
-                                            : AppColors.text.withOpacity(0.14),
-                                      ),
-                                      color: index == 0 ? AppColors.text : null,
-                                      text: LocaleKeys.add_product_camera_desc
-                                          .tr(),
-                                    );
+                                    return _remoteImage.length > index
+                                        ? GestureDetector(
+                                            onTap: () {
+                                              var cubit =
+                                                  context.read<BusinessCubit>();
+                                              showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                      'האם אתה בטוח שברצונך למחוק את התמונה?',
+                                                    ),
+                                                    content: const Text(
+                                                      'לחץ על "כן" כדי למחוק את התמונה',
+                                                    ),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        child: const Text(
+                                                          'לא',
+                                                        ),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          cubit.deleteItemImage(
+                                                              id: widget.item
+                                                                      ?.id ??
+                                                                  '',
+                                                              payload: ImageUrlPayload(
+                                                                  url: _remoteImage[
+                                                                      index]));
+                                                          setState(() {
+                                                            _remoteImage
+                                                                .removeAt(
+                                                                    index);
+                                                          });
+                                                          // Navigator.of(context)
+                                                          //     .pop();
+                                                        },
+                                                        child: const Text(
+                                                          'כן',
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              child: Image.network(
+                                                _remoteImage[index],
+                                                fit: BoxFit.cover,
+                                                // height: 60,
+                                              ),
+                                            ),
+                                          )
+                                        : _itemImage.length >
+                                                index - _remoteImage.length
+                                            ? GestureDetector(
+                                                onTap: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return AlertDialog(
+                                                        title: const Text(
+                                                          'האם אתה בטוח שברצונך למחוק את התמונה?',
+                                                        ),
+                                                        content: const Text(
+                                                          'לחץ על "כן" כדי למחוק את התמונה',
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
+                                                            child: const Text(
+                                                              'לא',
+                                                            ),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              setState(() {
+                                                                _itemImage.removeAt(_itemImage
+                                                                        .length -
+                                                                    (index -
+                                                                        (_remoteImage.length -
+                                                                            1)));
+                                                              });
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
+                                                            child: const Text(
+                                                              'כן',
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  child: Image.file(
+                                                    _itemImage[_itemImage
+                                                            .length -
+                                                        (index -
+                                                            (_remoteImage
+                                                                    .length -
+                                                                1))],
+                                                    fit: BoxFit.cover,
+                                                    // height: 60,
+                                                  ),
+                                                ),
+                                              )
+                                            : GestureDetector(
+                                                onTap: () => _putFile(),
+                                                child: IconBox(
+                                                  icon: SvgPicture.asset(
+                                                    Svgs.icCamera,
+                                                    color: index == 0
+                                                        ? AppColors.text
+                                                        : AppColors.text
+                                                            .withOpacity(0.14),
+                                                  ),
+                                                  color: index == 0
+                                                      ? AppColors.text
+                                                      : null,
+                                                  text: LocaleKeys
+                                                      .add_product_camera_desc
+                                                      .tr(),
+                                                ),
+                                              );
                                   },
                                 ),
                               ),
@@ -421,15 +658,69 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
                                   child: SizedBox(
                                     width: 161,
                                     height: 131,
-                                    child: IconBox(
-                                      // color: AppColors.text,
-                                      icon: SvgPicture.asset(
-                                        Svgs.icVideo,
-                                      ),
-                                      text: LocaleKeys
-                                          .add_product_video_camera_desc
-                                          .tr(),
-                                    ),
+                                    child: _itemVideo.isEmpty
+                                        ? GestureDetector(
+                                            onTap: () => _putVideo(),
+                                            child: IconBox(
+                                              // color: AppColors.text,
+                                              icon: SvgPicture.asset(
+                                                Svgs.icVideo,
+                                              ),
+                                              text: LocaleKeys
+                                                  .add_product_video_camera_desc
+                                                  .tr(),
+                                            ),
+                                          )
+                                        : GestureDetector(
+                                            onTap: () {
+                                              showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                      'האם אתה בטוח שברצונך למחוק את הסרטון?',
+                                                    ),
+                                                    content: const Text(
+                                                      'לחץ על "כן" כדי למחוק את הסרטון',
+                                                    ),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        child: const Text(
+                                                          'לא',
+                                                        ),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            _itemVideo.clear();
+                                                          });
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        child: const Text(
+                                                          'כן',
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              child: _controller == null
+                                                  ? const SpinKitCircle(
+                                                      color: AppColors.darkBlue,
+                                                    )
+                                                  : VideoPlayer(_controller!),
+                                            ),
+                                          ),
                                   ),
                                 ),
                               ],
@@ -740,7 +1031,7 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 37.0)
                             .copyWith(top: 11, bottom: 24),
                         child: CustomButton(
-                          onPressed: () => _createItem(),
+                          onPressed: () => _uploadImage(),
                           title: LocaleKeys.market_screen_save_btn.tr(),
                           color: AppColors.darkBlue,
                         ),

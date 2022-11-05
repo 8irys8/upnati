@@ -1,28 +1,42 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/models/item_basket_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
+import 'package:upnati/ui/widgets/basket_list.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
-import 'package:upnati/ui/widgets/expandable_page_view.dart';
-import 'package:upnati/ui/widgets/main_container.dart';
+import 'package:upnati/ui/widgets/custom_selector.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
-class PurchaseHistoryScreen extends StatefulWidget {
+class PurchaseHistoryScreen extends StatefulWidget with AutoRouteWrapper {
   const PurchaseHistoryScreen({Key? key}) : super(key: key);
 
   @override
   State<PurchaseHistoryScreen> createState() => _PurchaseHistoryScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+        create: (context) => GetIt.I<BusinessCubit>(), child: this);
+  }
 }
 
 class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   late PageController _pageController;
   bool selectedItem = true;
+  List<ItemBasketResponse> _items = <ItemBasketResponse>[];
+  ValueNotifier<double> _amountNotifier = ValueNotifier(0);
+  ValueNotifier<double> _deliveryNotifier = ValueNotifier(0);
+  ValueNotifier<double> _totalSumNotifier = ValueNotifier(0);
+  PagingController? _pagingController;
 
   void _changeIndex(int index) {
     setState(() {
@@ -36,7 +50,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    _pageController = PageController(initialPage: _selectedIndex);
   }
 
   @override
@@ -77,10 +91,11 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                 children: [
                   Expanded(
                     child: TabButton(
-                      title: LocaleKeys.basket_info_my_basket_btn.tr(),
-                      selectedIndex: 1,
+                      title: LocaleKeys.basket_info_shop_history.tr(),
+                      selectedIndex: 0,
+                      isLeft: false,
                       selectedPage: _selectedIndex,
-                      onPressed: () => _changeIndex(1),
+                      onPressed: () => _changeIndex(0),
                     ),
                   ),
                   const SizedBox(
@@ -88,13 +103,13 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                   ),
                   Expanded(
                     child: TabButton(
-                      title: LocaleKeys.basket_info_shop_history.tr(),
-                      selectedIndex: 0,
+                      title: LocaleKeys.basket_info_my_basket_btn.tr(),
+                      selectedIndex: 1,
                       isLeft: true,
                       selectedPage: _selectedIndex,
-                      onPressed: () => _changeIndex(0),
+                      onPressed: () => _changeIndex(1),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -110,350 +125,200 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                 },
                 controller: _pageController,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 26),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: MainContainer(
-                            opacity: .36,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 22),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 85,
-                                    width: 85,
-                                    decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: AppColors.gray),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: Image.asset(
-                                        Images.panda,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                              LocaleKeys.basket_info_acquired
-                                                  .tr(),
-                                              style: AppTheme.bold(size: 12)),
-                                          Text(' 10 בדצמבר 2021 - 12:30',
-                                              style:
-                                                  AppTheme.semiLight(size: 10)),
-                                        ],
-                                      ),
-                                      Text('צעצועי פנדה לילדים שלך',
-                                          style: AppTheme.semiLight(size: 14)),
-                                      Text(
-                                          'קבקבים שוודים קבקבי עץ לנשים אדום עם נקודות',
-                                          style: AppTheme.regular(size: 10)),
-                                      Text('נעלי מורן',
-                                          style: AppTheme.semiLight(size: 10)
-                                              .copyWith(
-                                                  decoration: TextDecoration
-                                                      .underline)),
-                                      Text.rich(
-                                        TextSpan(
-                                          text: '350 ',
-                                          style: AppTheme.bold(size: 16),
-                                          children: [
-                                            TextSpan(
-                                              text: LocaleKeys.basket_info_nis
-                                                  .tr(args: ['']),
-                                              style: AppTheme.bold(size: 12),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          child: MainContainer(
-                            opacity: .36,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 22),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 85,
-                                    width: 85,
-                                    decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: AppColors.gray),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: Image.asset(
-                                        Images.cat,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                              LocaleKeys.basket_info_acquired
-                                                  .tr(),
-                                              style: AppTheme.bold(size: 12)),
-                                          Text(' 10 בדצמבר 2021 - 12:30',
-                                              style:
-                                                  AppTheme.semiLight(size: 10)),
-                                        ],
-                                      ),
-                                      Text('צעצועי פנדה לילדים שלך',
-                                          style: AppTheme.semiLight(size: 14)),
-                                      Text(
-                                          'קבקבים שוודים קבקבי עץ לנשים אדום עם נקודות',
-                                          style: AppTheme.regular(size: 10)),
-                                      Text('נעלי מורן',
-                                          style: AppTheme.semiLight(size: 10)
-                                              .copyWith(
-                                                  decoration: TextDecoration
-                                                      .underline)),
-                                      Text.rich(
-                                        TextSpan(
-                                          text: '350 ',
-                                          style: AppTheme.bold(size: 16),
-                                          children: [
-                                            TextSpan(
-                                              text: LocaleKeys.basket_info_nis
-                                                  .tr(args: ['']),
-                                              style: AppTheme.bold(size: 12),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          child: MainContainer(
-                            opacity: .36,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 22),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                      height: 85,
-                                      width: 85,
-                                      decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: AppColors.gray),
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: Container(
-                                        color: AppColors.text.withOpacity(.14),
-                                        child: Center(
-                                          child: Image.asset(
-                                            Images.icEmptyBag,
-                                            height: 65,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      )),
-                                  const SizedBox(width: 12),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                              LocaleKeys.basket_info_acquired
-                                                  .tr(),
-                                              style: AppTheme.bold(size: 12)),
-                                          Text(' 10 בדצמבר 2021 - 12:30',
-                                              style:
-                                                  AppTheme.semiLight(size: 10)),
-                                        ],
-                                      ),
-                                      Text('צעצועי פנדה לילדים שלך',
-                                          style: AppTheme.semiLight(size: 14)),
-                                      Text(
-                                          'קבקבים שוודים קבקבי עץ לנשים אדום עם נקודות',
-                                          style: AppTheme.regular(size: 10)),
-                                      Text('נעלי מורן',
-                                          style: AppTheme.semiLight(size: 10)
-                                              .copyWith(
-                                                  decoration: TextDecoration
-                                                      .underline)),
-                                      Text.rich(
-                                        TextSpan(
-                                          text: '350 ',
-                                          style: AppTheme.bold(size: 16),
-                                          children: [
-                                            TextSpan(
-                                              text: LocaleKeys.basket_info_nis
-                                                  .tr(args: ['']),
-                                              style: AppTheme.bold(size: 12),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 26),
+                      child: BasketHistoryList()),
                   //second page
-                  SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 26),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 6,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              _CustomSelector(
-                                  value: selectedItem,
-                                  onTap: () => setState(() {
-                                        selectedItem = !selectedItem;
-                                      })),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              Text(
-                                LocaleKeys.basket_info_all.tr(),
-                                style: AppTheme.semiLight(size: 12),
-                              ),
-                            ],
-                          ),
-                          ListView.builder(
-                              itemCount: 3,
-                              primary: false,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) => _BasketItem()),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 100)
-                                .copyWith(bottom: 10, top: 20),
-                            child: Column(
+                  BlocListener<BusinessCubit, BusinessState>(
+                    listener: (context, state) {
+                      state.whenOrNull(
+                        successBasketResponse: (basketResponse) {
+                          _amountNotifier.value = 0;
+                          _deliveryNotifier.value = 0;
+                          _totalSumNotifier.value = 0;
+                          setState(() {
+                            _items = basketResponse.items?.content ?? [];
+                          });
+                        },
+                      );
+                    },
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 26),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      LocaleKeys.basket_info_for_payment.tr(),
-                                      style: AppTheme.semiLight(size: 12),
-                                    ),
-                                    Text.rich(TextSpan(
-                                      text: '450 ',
-                                      style: AppTheme.bold(size: 18),
-                                      children: [
-                                        TextSpan(
-                                          text: LocaleKeys.basket_info_nis
-                                              .tr(args: ['']),
-                                          style: AppTheme.bold(size: 10),
-                                        ),
-                                      ],
-                                    )),
-                                  ],
+                                CustomSelector(
+                                    value: selectedItem,
+                                    onTap: () {
+                                      setState(() {
+                                        selectedItem = !selectedItem;
+                                      });
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((_) {
+                                        _amountNotifier.value = 0;
+                                        _deliveryNotifier.value = 0;
+                                        _totalSumNotifier.value = 0;
+                                        _pagingController?.refresh();
+                                      });
+                                    }),
+                                const SizedBox(
+                                  width: 6,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      LocaleKeys.buy_details_shipping.tr(),
-                                      style: AppTheme.semiLight(size: 12),
-                                    ),
-                                    Text.rich(TextSpan(
-                                      text: '30 ',
-                                      style: AppTheme.bold(size: 18),
-                                      children: [
-                                        TextSpan(
-                                          text: LocaleKeys.basket_info_nis
-                                              .tr(args: ['']),
-                                          style: AppTheme.bold(size: 10),
-                                        ),
-                                      ],
-                                    )),
-                                  ],
+                                Text(
+                                  LocaleKeys.basket_info_all.tr(),
+                                  style: AppTheme.semiLight(size: 12),
                                 ),
-                                const Divider(
-                                  height: 5,
-                                  color: AppColors.text,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      LocaleKeys.buy_details_total.tr(),
-                                      style: AppTheme.semiLight(size: 12),
-                                    ),
-                                    Text.rich(TextSpan(
-                                      text: '480 ',
-                                      style: AppTheme.bold(size: 18),
-                                      children: [
-                                        TextSpan(
-                                          text: LocaleKeys.basket_info_nis
-                                              .tr(args: ['']),
-                                          style: AppTheme.bold(size: 10),
-                                        ),
-                                      ],
-                                    )),
-                                  ],
-                                )
                               ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: CustomButton(
-                              title: LocaleKeys.basket_info_for_payment.tr(),
-                              borderRadius: 25,
-                              color: AppColors.darkBlueLight,
-                              innerShadow: true,
-                              onPressed: () =>
-                                  context.router.push(const BuyDetailsScreen()),
+                            BasketList(
+                              isAllSelected: selectedItem,
+                              onInit: (value) => _pagingController = value,
+                              onAmountChange: (value) {
+                                WidgetsBinding.instance
+                                    .addPostFrameCallback((_) {
+                                  _amountNotifier.value =
+                                      _amountNotifier.value + value;
+                                  _totalSumNotifier.value =
+                                      _amountNotifier.value +
+                                          _deliveryNotifier.value;
+                                });
+                              },
+                              onDeliveryChange: (value) {
+                                WidgetsBinding.instance
+                                    .addPostFrameCallback((_) {
+                                  _deliveryNotifier.value =
+                                      _deliveryNotifier.value + value;
+                                  _totalSumNotifier.value =
+                                      _amountNotifier.value +
+                                          _deliveryNotifier.value;
+                                });
+                              },
                             ),
-                          )
-                        ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 100)
+                                      .copyWith(bottom: 10, top: 20),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        LocaleKeys.basket_info_for_payment.tr(),
+                                        style: AppTheme.semiLight(size: 12),
+                                      ),
+                                      ValueListenableBuilder<double>(
+                                          valueListenable: _amountNotifier,
+                                          builder: (context, value, child) {
+                                            return Text.rich(TextSpan(
+                                              text: _items.isEmpty
+                                                  ? '0'
+                                                  : value.toStringAsFixed(2),
+                                              // '${_items.map((e) => (e.amount ?? 0) * (e.price ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
+                                              style: AppTheme.bold(size: 18),
+                                              children: [
+                                                TextSpan(
+                                                  text: LocaleKeys
+                                                      .basket_info_nis
+                                                      .tr(args: ['']),
+                                                  style:
+                                                      AppTheme.bold(size: 10),
+                                                ),
+                                              ],
+                                            ));
+                                          }),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        LocaleKeys.buy_details_shipping.tr(),
+                                        style: AppTheme.semiLight(size: 12),
+                                      ),
+                                      ValueListenableBuilder<double>(
+                                          valueListenable: _deliveryNotifier,
+                                          builder: (context, value, child) {
+                                            return Text.rich(TextSpan(
+                                              text: _items.isEmpty
+                                                  ? '0'
+                                                  : value.toStringAsFixed(2),
+                                              // '${_items.map((e) => (e.deliveryPrice ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
+                                              style: AppTheme.bold(size: 18),
+                                              children: [
+                                                TextSpan(
+                                                  text: LocaleKeys
+                                                      .basket_info_nis
+                                                      .tr(args: ['']),
+                                                  style:
+                                                      AppTheme.bold(size: 10),
+                                                ),
+                                              ],
+                                            ));
+                                          }),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    height: 5,
+                                    color: AppColors.text,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        LocaleKeys.buy_details_total.tr(),
+                                        style: AppTheme.semiLight(size: 12),
+                                      ),
+                                      ValueListenableBuilder<double>(
+                                          valueListenable: _totalSumNotifier,
+                                          builder: (context, value, child) {
+                                            return Text.rich(TextSpan(
+                                              text: _items.isEmpty
+                                                  ? '0'
+                                                  : value.toStringAsFixed(2),
+                                              // '${_items.map((e) => (e.amount ?? 0) * (e.price ?? 0) + (e.deliveryPrice ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
+                                              style: AppTheme.bold(size: 18),
+                                              children: [
+                                                TextSpan(
+                                                  text: LocaleKeys
+                                                      .basket_info_nis
+                                                      .tr(args: ['']),
+                                                  style:
+                                                      AppTheme.bold(size: 10),
+                                                ),
+                                              ],
+                                            ));
+                                          }),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: CustomButton(
+                                title: LocaleKeys.basket_info_for_payment.tr(),
+                                borderRadius: 25,
+                                color: AppColors.darkBlueLight,
+                                innerShadow: true,
+                                onPressed: () => context.router
+                                    .push(const BuyDetailsScreen()),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -522,199 +387,6 @@ class TabButton extends StatelessWidget {
                   color: selectedPage == selectedIndex
                       ? AppColors.white
                       : AppColors.text)),
-        ),
-      ),
-    );
-  }
-}
-
-class _CustomSelector extends StatelessWidget {
-  final bool value;
-  final VoidCallback onTap;
-
-  const _CustomSelector({
-    Key? key,
-    required this.value,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-          width: 24,
-          height: 24,
-          decoration: BoxDecoration(
-              color: AppColors.white,
-              shape: BoxShape.circle,
-              border: Border.all(color: const Color(0xff3A9A04), width: 2)),
-          child: value
-              ? SvgPicture.asset(
-                  Svgs.icCheckedWhite,
-                  color: const Color(0xff3A9A04),
-                  height: 24,
-                  fit: BoxFit.scaleDown,
-                )
-              : const SizedBox()),
-    );
-  }
-}
-
-class _BasketItem extends StatefulWidget {
-  const _BasketItem({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<_BasketItem> createState() => _BasketItemState();
-}
-
-class _BasketItemState extends State<_BasketItem> {
-  bool isSelected = false;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: MainContainer(
-        opacity: .36,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 22),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    _CustomSelector(
-                        value: isSelected,
-                        onTap: () => setState(() {
-                              isSelected = !isSelected;
-                            })),
-                    Container(
-                      height: 100,
-                      width: 110,
-                      padding: const EdgeInsets.only(right: 8),
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(5)),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: Image.asset(
-                          Images.panda,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('מדף דקורטיבי',
-                              style: AppTheme.semiLight(size: 12)),
-                          SizedBox(
-                            height: 26,
-                            child: Text(' צעצועי פנדה לילדים שלך',
-                                textAlign: TextAlign.start,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: AppTheme.regular(size: 8)),
-                          ),
-                          Text('נרכש', style: AppTheme.bold(size: 10)),
-                          Text('10/11/2022 25/11/2022 ',
-                              style: AppTheme.semiLight(size: 10)),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text.rich(
-                                TextSpan(
-                                  text: '350 ',
-                                  style: AppTheme.bold(size: 16),
-                                  children: [
-                                    TextSpan(
-                                      text: LocaleKeys.basket_info_nis
-                                          .tr(args: ['']),
-                                      style: AppTheme.bold(size: 12),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Column(
-                                children: [
-                                  Text(LocaleKeys.product_info_quantity.tr(),
-                                      style: AppTheme.bold(
-                                        size: 8,
-                                      )),
-                                  Container(
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xffF3F3F3),
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                          border: Border.all(
-                                              color: const Color(0xff707070),
-                                              width: .5)),
-                                      child: Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 4),
-                                            child: Image.asset(
-                                              Images.icMinusAdd,
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 6, vertical: 4),
-                                            decoration: const BoxDecoration(
-                                                color: AppColors.white,
-                                                border: Border(
-                                                  right: BorderSide(
-                                                      color: Color(0xff707070),
-                                                      width: .5),
-                                                  left: BorderSide(
-                                                      color: Color(0xff707070),
-                                                      width: .5),
-                                                )),
-                                            child: Text(
-                                              '1',
-                                              style: AppTheme.bold(size: 11),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 4),
-                                            child: Image.asset(
-                                              Images.icPlusAdd,
-                                            ),
-                                          ),
-                                        ],
-                                      ))
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: 14,
-                height: 14,
-                padding: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: AppColors.text)),
-                child: SvgPicture.asset(
-                  Svgs.icCloseThin,
-                  color: AppColors.text,
-                  fit: BoxFit.contain,
-                  height: 4,
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

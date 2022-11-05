@@ -24,7 +24,7 @@ mixin _$Order {
   String? get creationDate => throw _privateConstructorUsedError;
   Business get business => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
-  List<ItemImpl> get items => throw _privateConstructorUsedError;
+  List<ItemResponse> get items => throw _privateConstructorUsedError;
   Map<dynamic, int> get amount => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $OrderCopyWith<$Res> {
       String? creationDate,
       Business business,
       String userId,
-      List<ItemImpl> items,
+      List<ItemResponse> items,
       Map<dynamic, int> amount,
       String status,
       double? price,
@@ -99,7 +99,7 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
       items: items == freezed
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemImpl>,
+              as List<ItemResponse>,
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       String? creationDate,
       Business business,
       String userId,
-      List<ItemImpl> items,
+      List<ItemResponse> items,
       Map<dynamic, int> amount,
       String status,
       double? price,
@@ -200,7 +200,7 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
       items: items == freezed
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemImpl>,
+              as List<ItemResponse>,
       amount: amount == freezed
           ? _value._amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -237,7 +237,7 @@ class _$_Order implements _Order {
       this.creationDate,
       required this.business,
       required this.userId,
-      required final List<ItemImpl> items,
+      required final List<ItemResponse> items,
       required final Map<dynamic, int> amount,
       required this.status,
       this.price,
@@ -258,9 +258,9 @@ class _$_Order implements _Order {
   final Business business;
   @override
   final String userId;
-  final List<ItemImpl> _items;
+  final List<ItemResponse> _items;
   @override
-  List<ItemImpl> get items {
+  List<ItemResponse> get items {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
   }
@@ -344,7 +344,7 @@ abstract class _Order implements Order {
       final String? creationDate,
       required final Business business,
       required final String userId,
-      required final List<ItemImpl> items,
+      required final List<ItemResponse> items,
       required final Map<dynamic, int> amount,
       required final String status,
       final double? price,
@@ -363,7 +363,7 @@ abstract class _Order implements Order {
   @override
   String get userId;
   @override
-  List<ItemImpl> get items;
+  List<ItemResponse> get items;
   @override
   Map<dynamic, int> get amount;
   @override

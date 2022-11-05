@@ -28,7 +28,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<BusinessCubit>().getBusinessCategory();
+    context.read<BusinessCubit>().getItemCategory();
   }
 
   @override
@@ -71,36 +71,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
                               return GestureDetector(
                                 onTap: () => context.router
-                                    .push(const CategoryDetailScreen()),
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(19),
-                                            topRight: Radius.circular(19),
-                                            bottomLeft: Radius.circular(19)),
-                                        color: AppColors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.black.withOpacity(.16),
-                                            blurRadius: 6,
-                                            offset: const Offset(0, 3),
-                                          )
-                                        ]),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Image.network(
-                                          'https://klike.net/uploads/posts/2019-05/1556708032_1.jpg',
-                                          height: 70,
-                                        ),
-                                        // Image.network(cat?.link ?? ''),
-                                        const SizedBox(height: 6),
-                                        Text(cat?.name ?? '',
-                                            style: AppTheme.semiLight(size: 17))
-                                      ],
-                                    )),
+                                    .push(CategoryDetailScreen(category: cat)),
+                                child: Image.network(cat?.imageUrl ?? ''),
                               );
                             },
                             itemCount: mapInfoResponse.length,

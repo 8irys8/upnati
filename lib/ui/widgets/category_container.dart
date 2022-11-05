@@ -36,8 +36,8 @@ class CategoryContainer extends StatelessWidget {
                   child: child),
               Positioned(
                 top: -10,
-                right: -6,
-                child: Image.asset(Images.roofImg),
+                right: -3,
+                child: Image.asset(Images.roofImg, height: 60),
               )
             ],
           )

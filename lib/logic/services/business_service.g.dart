@@ -561,6 +561,64 @@ class _BusinessService implements BusinessService {
   }
 
   @override
+  Future<UploadResponse> getUploadImages({required files}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.addAll(files.map((i) => MapEntry(
+        'files',
+        MultipartFile.fromFileSync(
+          i.path,
+          filename: i.path.split(Platform.pathSeparator).last,
+        ))));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<UploadResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/upload/image',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = UploadResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<UploadResponse> getUploadVideos({required files}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.addAll(files.map((i) => MapEntry(
+        'files',
+        MultipartFile.fromFileSync(
+          i.path,
+          filename: i.path.split(Platform.pathSeparator).last,
+        ))));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<UploadResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/upload/video',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = UploadResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<List<String>> getItemType(locale) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'locale': locale};
@@ -1066,6 +1124,29 @@ class _BusinessService implements BusinessService {
   }
 
   @override
+  Future<AppLinkResponse> shareItemLink({required id}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<AppLinkResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/items/${id}/link',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AppLinkResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<ItemResponse> deleteItemImage({
     required id,
     required payload,
@@ -1210,9 +1291,18 @@ class _BusinessService implements BusinessService {
   }
 
   @override
-  Future<BasketResponse> getUserBasket() async {
+  Future<BasketResponse> getUserBasket({
+    required pageOrder,
+    page,
+    required size,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'pageOrder': pageOrder,
+      r'page': page,
+      r'size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -1233,15 +1323,48 @@ class _BusinessService implements BusinessService {
   }
 
   @override
-  Future<BasketResponse> modifyBasket({required itemCollection}) async {
+  Future<BasketResponse> modifyBasket({
+    required pageOrder,
+    page,
+    required size,
+    required itemCollection,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'pageOrder': pageOrder,
+      r'page': page,
+      r'size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(itemCollection.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BasketResponse>(Options(
       method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/basket',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BasketResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BasketResponse> clearBasket() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BasketResponse>(Options(
+      method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
@@ -1401,6 +1524,85 @@ class _BusinessService implements BusinessService {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SearchResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<PageItemResponse> getFavoriteItems({
+    required pageOrder,
+    page,
+    required size,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'pageOrder': pageOrder,
+      r'page': page,
+      r'size': size,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PageItemResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/favorites',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = PageItemResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ItemResponse> addToFavorites({required itemId}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'itemId': itemId};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ItemResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/favorites',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ItemResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ItemResponse> deleteFromFavorites({itemId}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'itemId': itemId};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ItemResponse>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/favorites',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ItemResponse.fromJson(_result.data!);
     return value;
   }
 

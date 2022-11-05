@@ -12,7 +12,7 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       business: Business.fromJson(json['business'] as Map<String, dynamic>),
       userId: json['userId'] as String,
       items: (json['items'] as List<dynamic>)
-          .map((e) => ItemImpl.fromJson(e as Map<String, dynamic>))
+          .map((e) => ItemResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       amount: Map<String, int>.from(json['amount'] as Map),
       status: json['status'] as String,

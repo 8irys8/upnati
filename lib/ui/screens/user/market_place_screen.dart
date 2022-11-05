@@ -175,6 +175,7 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                             PagedChildBuilderDelegate<ItemResponse>(
                           itemBuilder: (context, item, index) =>
                               AddEmptyProductContainer(
+                            item: item,
                             title: item.name,
                             desc: item.description?.full,
                             price: item.price?.toStringAsFixed(2),

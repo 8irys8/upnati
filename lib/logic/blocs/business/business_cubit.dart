@@ -19,7 +19,9 @@ import 'package:upnati/logic/models/business/page_business_response.dart';
 import 'package:upnati/logic/models/business/page_item_response.dart';
 import 'package:upnati/logic/models/business/page_order_response.dart';
 import 'package:upnati/logic/models/business/search_response.dart';
+import 'package:upnati/logic/models/business/upload_response.dart';
 import 'package:upnati/logic/models/business_form.dart';
+import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/logic/providers/business_provider.dart';
 
@@ -656,10 +658,18 @@ class BusinessCubit extends Cubit<BusinessState> {
   }
 
 //   //basket controller
-  Future<void> getUserBasket() async {
+  Future<void> getUserBasket({
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) async {
     emit(const BusinessState.loading());
     try {
-      final response = await _businessProvider.getUserBasket();
+      final response = await _businessProvider.getUserBasket(
+        pageOrder: pageOrder,
+        page: page,
+        size: size,
+      );
       emit(BusinessState.successBasketResponse(response));
     } catch (e) {
       emit(BusinessState.error(e));
@@ -667,15 +677,31 @@ class BusinessCubit extends Cubit<BusinessState> {
   }
 
   Future<void> modifyBasket({
+    required String pageOrder,
+    int? page,
+    required int size,
     required ItemCollection itemCollection,
   }) async {
     emit(const BusinessState.loading());
     try {
-      final response =
-          await _businessProvider.modifyBasket(itemCollection: itemCollection);
-      emit(BusinessState.successBasketResponse(response));
+      await _businessProvider.modifyBasket(
+          pageOrder: pageOrder,
+          page: page,
+          size: size,
+          itemCollection: itemCollection);
+      emit(const BusinessState.success());
     } catch (e) {
       emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> clearBasket() async {
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.clearBasket();
+      emit(BusinessState.successBasketResponse(response));
+    } catch (err) {
+      emit(BusinessState.error(err));
     }
   }
 
@@ -757,6 +783,84 @@ class BusinessCubit extends Cubit<BusinessState> {
         size: size,
       );
       emit(BusinessState.successSearchResponse(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> getUploadImages({
+    required List<File> files,
+  }) async {
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.getUploadImages(files: files);
+      emit(BusinessState.successFiles(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> getUploadVideos({
+    required List<File> files,
+  }) async {
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.getUploadVideos(files: files);
+      emit(BusinessState.successVideo(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  //favorites controller
+  Future<void> getFavoriteItems({
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) async {
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.getFavoriteItems(
+        pageOrder: pageOrder,
+        page: page,
+        size: size,
+      );
+      emit(BusinessState.successPageItemResponse(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> addToFavorites({
+    required String itemId,
+  }) async {
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.addToFavorites(itemId: itemId);
+      emit(BusinessState.successItemResponse(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> deleteFromFavorites({
+    String? itemId,
+  }) async {
+    emit(const BusinessState.loading());
+    try {
+      final response =
+          await _businessProvider.deleteFromFavorites(itemId: itemId);
+      emit(BusinessState.successItemResponse(response));
+    } catch (e) {
+      emit(BusinessState.error(e));
+    }
+  }
+
+  Future<void> shareItemLink({required String id}) async {
+    emit(const BusinessState.loading());
+    try {
+      final response = await _businessProvider.shareItemLink(id: id);
+      emit(BusinessState.successLink(response));
     } catch (e) {
       emit(BusinessState.error(e));
     }

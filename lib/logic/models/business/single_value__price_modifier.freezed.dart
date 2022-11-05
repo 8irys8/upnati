@@ -22,7 +22,7 @@ SingleValuePriceModifier _$SingleValuePriceModifierFromJson(
 /// @nodoc
 mixin _$SingleValuePriceModifier {
   double? get value => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $SingleValuePriceModifierCopyWith<$Res> {
   factory $SingleValuePriceModifierCopyWith(SingleValuePriceModifier value,
           $Res Function(SingleValuePriceModifier) then) =
       _$SingleValuePriceModifierCopyWithImpl<$Res>;
-  $Res call({double? value, String type});
+  $Res call({double? value, String? type});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$SingleValuePriceModifierCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -73,7 +73,7 @@ abstract class _$$_SingleValuePriceModifierCopyWith<$Res>
           $Res Function(_$_SingleValuePriceModifier) then) =
       __$$_SingleValuePriceModifierCopyWithImpl<$Res>;
   @override
-  $Res call({double? value, String type});
+  $Res call({double? value, String? type});
 }
 
 /// @nodoc
@@ -101,7 +101,7 @@ class __$$_SingleValuePriceModifierCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -109,7 +109,7 @@ class __$$_SingleValuePriceModifierCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SingleValuePriceModifier implements _SingleValuePriceModifier {
-  const _$_SingleValuePriceModifier({this.value, required this.type});
+  const _$_SingleValuePriceModifier({this.value, this.type});
 
   factory _$_SingleValuePriceModifier.fromJson(Map<String, dynamic> json) =>
       _$$_SingleValuePriceModifierFromJson(json);
@@ -117,7 +117,7 @@ class _$_SingleValuePriceModifier implements _SingleValuePriceModifier {
   @override
   final double? value;
   @override
-  final String type;
+  final String? type;
 
   @override
   String toString() {
@@ -156,8 +156,7 @@ class _$_SingleValuePriceModifier implements _SingleValuePriceModifier {
 
 abstract class _SingleValuePriceModifier implements SingleValuePriceModifier {
   const factory _SingleValuePriceModifier(
-      {final double? value,
-      required final String type}) = _$_SingleValuePriceModifier;
+      {final double? value, final String? type}) = _$_SingleValuePriceModifier;
 
   factory _SingleValuePriceModifier.fromJson(Map<String, dynamic> json) =
       _$_SingleValuePriceModifier.fromJson;
@@ -165,7 +164,7 @@ abstract class _SingleValuePriceModifier implements SingleValuePriceModifier {
   @override
   double? get value;
   @override
-  String get type;
+  String? get type;
   @override
   @JsonKey(ignore: true)
   _$$_SingleValuePriceModifierCopyWith<_$_SingleValuePriceModifier>

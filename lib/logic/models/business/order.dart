@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:upnati/logic/models/business/item_impl.dart';
+import 'package:upnati/logic/models/business/item_response.dart';
 import 'package:upnati/logic/models/user/location_response.dart';
 
 part 'order.g.dart';
@@ -13,7 +14,7 @@ class Order with _$Order {
     String? creationDate,
     required Business business,
     required String userId,
-    required List<ItemImpl> items,
+    required List<ItemResponse> items,
     required Map<dynamic, int> amount,
     required String status,
     double? price,

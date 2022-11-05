@@ -78,7 +78,7 @@ class AddEmptyProductContainer extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(5),
                                   child: image != null
-                                      ? Image.asset(
+                                      ? Image.network(
                                           image!,
                                           height: 100,
                                           fit: BoxFit.cover,
@@ -105,7 +105,7 @@ class AddEmptyProductContainer extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 18),
                       child: Text(
                         desc ?? '',
-                        maxLines: 3,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style:
                             AppTheme.bold(size: 9, color: AppColors.textGray),

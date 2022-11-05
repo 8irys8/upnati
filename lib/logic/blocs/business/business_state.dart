@@ -38,4 +38,10 @@ class BusinessState with _$BusinessState {
       _SuccessBusinessList;
   const factory BusinessState.successBusinessCity(List<String> list) =
       _SuccessBusinessCity;
+
+  const factory BusinessState.successFiles(UploadResponse files) =
+      _SuccessFiles;
+  const factory BusinessState.successVideo(UploadResponse files) =
+      _SuccessVideo;
+  const factory BusinessState.successLink(AppLinkResponse link) = _SuccessLink;
 }

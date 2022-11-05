@@ -20,7 +20,9 @@ import 'package:upnati/logic/models/business/page_business_response.dart';
 import 'package:upnati/logic/models/business/page_item_response.dart';
 import 'package:upnati/logic/models/business/page_order_response.dart';
 import 'package:upnati/logic/models/business/search_response.dart';
+import 'package:upnati/logic/models/business/upload_response.dart';
 import 'package:upnati/logic/models/business_form.dart';
+import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/logic/services/business_service.dart';
 
@@ -309,6 +311,20 @@ class BusinessProvider {
       );
 
   // items controller
+  Future<UploadResponse> getUploadImages({
+    required List<File> files,
+  }) =>
+      _businessService.getUploadImages(
+        files: files,
+      );
+
+  Future<UploadResponse> getUploadVideos({
+    required List<File> files,
+  }) =>
+      _businessService.getUploadVideos(
+        files: files,
+      );
+
   Future<PageItemResponse> getMyItems({
     required String param,
     required String pageOrder,
@@ -394,15 +410,37 @@ class BusinessProvider {
         size: size,
       );
 
+  Future<AppLinkResponse> shareItemLink({
+    required String id,
+  }) =>
+      _businessService.shareItemLink(id: id);
+
   //basket controller
-  Future<BasketResponse> getUserBasket() => _businessService.getUserBasket();
+  Future<BasketResponse> getUserBasket({
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) =>
+      _businessService.getUserBasket(
+        pageOrder: pageOrder,
+        page: page,
+        size: size,
+      );
 
   Future<BasketResponse> modifyBasket({
+    required String pageOrder,
+    int? page,
+    required int size,
     required ItemCollection itemCollection,
   }) =>
       _businessService.modifyBasket(
+        pageOrder: pageOrder,
+        page: page,
+        size: size,
         itemCollection: itemCollection,
       );
+
+  Future<BasketResponse> clearBasket() => _businessService.clearBasket();
 
   //order controller
 
@@ -455,4 +493,23 @@ class BusinessProvider {
         query: query,
         size: size,
       );
+
+  //favorite controller
+  Future<PageItemResponse> getFavoriteItems({
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) =>
+      _businessService.getFavoriteItems(
+          pageOrder: pageOrder, size: size, page: page);
+
+  Future<ItemResponse> addToFavorites({
+    required String itemId,
+  }) =>
+      _businessService.addToFavorites(itemId: itemId);
+
+  Future<ItemResponse> deleteFromFavorites({
+    String? itemId,
+  }) =>
+      _businessService.deleteFromFavorites(itemId: itemId);
 }

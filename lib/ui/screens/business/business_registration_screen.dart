@@ -49,6 +49,11 @@ class _BusinessRegistrationScreenState
     context.read<BusinessCubit>().getMyItems(param: 'price', size: 10000);
   }
 
+  void _refreshItems() {
+    _items = [];
+    context.read<BusinessCubit>().getMyItems(param: 'price', size: 10000);
+  }
+
   @override
   Widget build(BuildContext context) {
     var empty = _items.length % 4;

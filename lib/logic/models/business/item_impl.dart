@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:upnati/logic/models/business/business_response.dart';
 import 'package:upnati/logic/models/business/single_value__price_modifier.dart';
 import 'package:upnati/logic/models/description.dart';
 
@@ -7,26 +8,36 @@ part 'item_impl.freezed.dart';
 
 @freezed
 class ItemImpl with _$ItemImpl {
-  const factory ItemImpl({
-    String? id,
-    String? creationDate,
-    required Map<dynamic, NameLocalData> name,
-    required Map<dynamic, DescriptionLocalData> description,
-    List<DeliveryOption>? deliveryOptions,
-    List<String>? imageUrls,
-    Map<dynamic, String>? characteristicsMap,
-    required String itemCategory,
-    required String currency,
-    double? price,
-    required double purchasePrice,
-    required int discountPercents,
-    int? inStock,
-    List<SingleValuePriceModifier>? singleValuePriceModifiers,
-    String? itemType,
-    int? stock,
-    bool? stockConfigured,
-    required double oldTotal,
-  }) = _ItemImpl;
+  @JsonSerializable(explicitToJson: true)
+  const factory ItemImpl(
+      {String? id,
+      String? creationDate,
+      Map<dynamic, NameLocalData>? name,
+      Map<dynamic, DescriptionLocalData>? description,
+      List<DeliveryOption>? deliveryOptions,
+      List<String>? imageUrls,
+      List<String>? videoUrls,
+      Map<dynamic, String>? characteristicsMap,
+      String? itemCategory,
+      String? refCode,
+      String? currency,
+      double? price,
+      double? deliveryPrice,
+      double? purchasePrice,
+      int? discountPercents,
+      int? inStock,
+      List<SingleValuePriceModifier>? singleValuePriceModifiers,
+      Map<dynamic, String>? dynamicValues,
+      String? itemType,
+      int? stock,
+      List<String>? allImages,
+      List<String>? allVideo,
+      String? deliveryTime,
+      String? deliveryPreparationTime,
+      bool? stockConfigured,
+      double? oldTotal,
+      String? image,
+      String? video}) = _ItemImpl;
 
   factory ItemImpl.fromJson(Map<String, dynamic> json) =>
       _$ItemImplFromJson(json);
@@ -57,14 +68,18 @@ class DescriptionLocalData with _$DescriptionLocalData {
 
 @freezed
 class DeliveryOption with _$DeliveryOption {
-  const factory DeliveryOption({
-    String? id,
-    String? creationDate,
-    List<ItemImpl>? items,
-    DeliveryCompany? company,
-    required String deliveryType,
-    required String deliverySpeed,
-  }) = _DeliveryOption;
+  const factory DeliveryOption(
+      {final String? id,
+      final String? creationDate,
+      final NameLocalData? name,
+      final BusinessResponse? business,
+      final double? price,
+      // final DeliveryCompany? company,
+      final String? deliveryType,
+      final String? deliveryScope,
+      final int? deliveryTimeMin,
+      final int? deliveryTimeMax,
+      final String? timeUnit}) = _DeliveryOption;
 
   factory DeliveryOption.fromJson(Map<String, dynamic> json) =>
       _$DeliveryOptionFromJson(json);

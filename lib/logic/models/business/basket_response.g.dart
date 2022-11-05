@@ -9,29 +9,20 @@ part of 'basket_response.dart';
 _$_BasketResponse _$$_BasketResponseFromJson(Map<String, dynamic> json) =>
     _$_BasketResponse(
       id: json['id'] as String?,
-      creationDate: json['creationDate'] as String?,
-      userId: json['userId'] as String,
-      items: (json['items'] as List<dynamic>)
-          .map((e) => ItemImpl.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      amount: Map<String, int>.from(json['amount'] as Map),
+      items: json['items'] == null
+          ? null
+          : PageItemBasketResponse.fromJson(
+              json['items'] as Map<String, dynamic>),
       price: (json['price'] as num?)?.toDouble(),
-      purchasePrice: (json['purchasePrice'] as num).toDouble(),
-      discountPercents: json['discountPercents'] as int,
-      oldTotal: (json['oldTotal'] as num).toDouble(),
-      empty: json['empty'] as bool?,
+      purchasePrice: (json['purchasePrice'] as num?)?.toDouble(),
+      discountPercents: json['discountPercents'] as int?,
     );
 
 Map<String, dynamic> _$$_BasketResponseToJson(_$_BasketResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'creationDate': instance.creationDate,
-      'userId': instance.userId,
-      'items': instance.items,
-      'amount': instance.amount,
+      'items': instance.items?.toJson(),
       'price': instance.price,
       'purchasePrice': instance.purchasePrice,
       'discountPercents': instance.discountPercents,
-      'oldTotal': instance.oldTotal,
-      'empty': instance.empty,
     };

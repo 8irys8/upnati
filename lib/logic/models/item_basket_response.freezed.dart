@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'item_response.dart';
+part of 'item_basket_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ItemResponse _$ItemResponseFromJson(Map<String, dynamic> json) {
-  return _ItemResponse.fromJson(json);
+ItemBasketResponse _$ItemBasketResponseFromJson(Map<String, dynamic> json) {
+  return _ItemBasketResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ItemResponse {
+mixin _$ItemBasketResponse {
+  @JsonKey(ignore: true, defaultValue: false)
+  bool? get isSelected => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get businessId => throw _privateConstructorUsedError;
@@ -37,27 +39,29 @@ mixin _$ItemResponse {
   double? get purchasePrice => throw _privateConstructorUsedError;
   int? get discountPercents => throw _privateConstructorUsedError;
   int? get inStock => throw _privateConstructorUsedError;
-  List<SingleValuePriceModifier>? get singleValuePriceModifiers =>
+  SingleValuePriceModifier? get priceModifier =>
       throw _privateConstructorUsedError;
-  bool? get stockConfigured => throw _privateConstructorUsedError;
   double? get deliveryPrice => throw _privateConstructorUsedError;
   String? get deliveryPreparationTime => throw _privateConstructorUsedError;
-  bool? get favorite => throw _privateConstructorUsedError;
   String? get deliveryTime => throw _privateConstructorUsedError;
+  int? get amount => throw _privateConstructorUsedError;
+  bool? get favorite => throw _privateConstructorUsedError;
+  bool? get stockConfigured => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemResponseCopyWith<ItemResponse> get copyWith =>
+  $ItemBasketResponseCopyWith<ItemBasketResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemResponseCopyWith<$Res> {
-  factory $ItemResponseCopyWith(
-          ItemResponse value, $Res Function(ItemResponse) then) =
-      _$ItemResponseCopyWithImpl<$Res>;
+abstract class $ItemBasketResponseCopyWith<$Res> {
+  factory $ItemBasketResponseCopyWith(
+          ItemBasketResponse value, $Res Function(ItemBasketResponse) then) =
+      _$ItemBasketResponseCopyWithImpl<$Res>;
   $Res call(
-      {String? id,
+      {@JsonKey(ignore: true, defaultValue: false) bool? isSelected,
+      String? id,
       String? name,
       String? businessId,
       String? businessName,
@@ -73,26 +77,30 @@ abstract class $ItemResponseCopyWith<$Res> {
       double? purchasePrice,
       int? discountPercents,
       int? inStock,
-      List<SingleValuePriceModifier>? singleValuePriceModifiers,
-      bool? stockConfigured,
+      SingleValuePriceModifier? priceModifier,
       double? deliveryPrice,
       String? deliveryPreparationTime,
+      String? deliveryTime,
+      int? amount,
       bool? favorite,
-      String? deliveryTime});
+      bool? stockConfigured});
 
   $DescriptionCopyWith<$Res>? get description;
+  $SingleValuePriceModifierCopyWith<$Res>? get priceModifier;
 }
 
 /// @nodoc
-class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
-  _$ItemResponseCopyWithImpl(this._value, this._then);
+class _$ItemBasketResponseCopyWithImpl<$Res>
+    implements $ItemBasketResponseCopyWith<$Res> {
+  _$ItemBasketResponseCopyWithImpl(this._value, this._then);
 
-  final ItemResponse _value;
+  final ItemBasketResponse _value;
   // ignore: unused_field
-  final $Res Function(ItemResponse) _then;
+  final $Res Function(ItemBasketResponse) _then;
 
   @override
   $Res call({
+    Object? isSelected = freezed,
     Object? id = freezed,
     Object? name = freezed,
     Object? businessId = freezed,
@@ -109,14 +117,19 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
     Object? inStock = freezed,
-    Object? singleValuePriceModifiers = freezed,
-    Object? stockConfigured = freezed,
+    Object? priceModifier = freezed,
     Object? deliveryPrice = freezed,
     Object? deliveryPreparationTime = freezed,
-    Object? favorite = freezed,
     Object? deliveryTime = freezed,
+    Object? amount = freezed,
+    Object? favorite = freezed,
+    Object? stockConfigured = freezed,
   }) {
     return _then(_value.copyWith(
+      isSelected: isSelected == freezed
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -181,14 +194,10 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
               as int?,
-      singleValuePriceModifiers: singleValuePriceModifiers == freezed
-          ? _value.singleValuePriceModifiers
-          : singleValuePriceModifiers // ignore: cast_nullable_to_non_nullable
-              as List<SingleValuePriceModifier>?,
-      stockConfigured: stockConfigured == freezed
-          ? _value.stockConfigured
-          : stockConfigured // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      priceModifier: priceModifier == freezed
+          ? _value.priceModifier
+          : priceModifier // ignore: cast_nullable_to_non_nullable
+              as SingleValuePriceModifier?,
       deliveryPrice: deliveryPrice == freezed
           ? _value.deliveryPrice
           : deliveryPrice // ignore: cast_nullable_to_non_nullable
@@ -197,14 +206,22 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
           ? _value.deliveryPreparationTime
           : deliveryPreparationTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      favorite: favorite == freezed
-          ? _value.favorite
-          : favorite // ignore: cast_nullable_to_non_nullable
-              as bool?,
       deliveryTime: deliveryTime == freezed
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
               as String?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      favorite: favorite == freezed
+          ? _value.favorite
+          : favorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      stockConfigured: stockConfigured == freezed
+          ? _value.stockConfigured
+          : stockConfigured // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -218,17 +235,30 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
       return _then(_value.copyWith(description: value));
     });
   }
+
+  @override
+  $SingleValuePriceModifierCopyWith<$Res>? get priceModifier {
+    if (_value.priceModifier == null) {
+      return null;
+    }
+
+    return $SingleValuePriceModifierCopyWith<$Res>(_value.priceModifier!,
+        (value) {
+      return _then(_value.copyWith(priceModifier: value));
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_ItemResponseCopyWith<$Res>
-    implements $ItemResponseCopyWith<$Res> {
-  factory _$$_ItemResponseCopyWith(
-          _$_ItemResponse value, $Res Function(_$_ItemResponse) then) =
-      __$$_ItemResponseCopyWithImpl<$Res>;
+abstract class _$$_ItemBasketResponseCopyWith<$Res>
+    implements $ItemBasketResponseCopyWith<$Res> {
+  factory _$$_ItemBasketResponseCopyWith(_$_ItemBasketResponse value,
+          $Res Function(_$_ItemBasketResponse) then) =
+      __$$_ItemBasketResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id,
+      {@JsonKey(ignore: true, defaultValue: false) bool? isSelected,
+      String? id,
       String? name,
       String? businessId,
       String? businessName,
@@ -244,30 +274,34 @@ abstract class _$$_ItemResponseCopyWith<$Res>
       double? purchasePrice,
       int? discountPercents,
       int? inStock,
-      List<SingleValuePriceModifier>? singleValuePriceModifiers,
-      bool? stockConfigured,
+      SingleValuePriceModifier? priceModifier,
       double? deliveryPrice,
       String? deliveryPreparationTime,
+      String? deliveryTime,
+      int? amount,
       bool? favorite,
-      String? deliveryTime});
+      bool? stockConfigured});
 
   @override
   $DescriptionCopyWith<$Res>? get description;
+  @override
+  $SingleValuePriceModifierCopyWith<$Res>? get priceModifier;
 }
 
 /// @nodoc
-class __$$_ItemResponseCopyWithImpl<$Res>
-    extends _$ItemResponseCopyWithImpl<$Res>
-    implements _$$_ItemResponseCopyWith<$Res> {
-  __$$_ItemResponseCopyWithImpl(
-      _$_ItemResponse _value, $Res Function(_$_ItemResponse) _then)
-      : super(_value, (v) => _then(v as _$_ItemResponse));
+class __$$_ItemBasketResponseCopyWithImpl<$Res>
+    extends _$ItemBasketResponseCopyWithImpl<$Res>
+    implements _$$_ItemBasketResponseCopyWith<$Res> {
+  __$$_ItemBasketResponseCopyWithImpl(
+      _$_ItemBasketResponse _value, $Res Function(_$_ItemBasketResponse) _then)
+      : super(_value, (v) => _then(v as _$_ItemBasketResponse));
 
   @override
-  _$_ItemResponse get _value => super._value as _$_ItemResponse;
+  _$_ItemBasketResponse get _value => super._value as _$_ItemBasketResponse;
 
   @override
   $Res call({
+    Object? isSelected = freezed,
     Object? id = freezed,
     Object? name = freezed,
     Object? businessId = freezed,
@@ -284,14 +318,19 @@ class __$$_ItemResponseCopyWithImpl<$Res>
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
     Object? inStock = freezed,
-    Object? singleValuePriceModifiers = freezed,
-    Object? stockConfigured = freezed,
+    Object? priceModifier = freezed,
     Object? deliveryPrice = freezed,
     Object? deliveryPreparationTime = freezed,
-    Object? favorite = freezed,
     Object? deliveryTime = freezed,
+    Object? amount = freezed,
+    Object? favorite = freezed,
+    Object? stockConfigured = freezed,
   }) {
-    return _then(_$_ItemResponse(
+    return _then(_$_ItemBasketResponse(
+      isSelected: isSelected == freezed
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -356,14 +395,10 @@ class __$$_ItemResponseCopyWithImpl<$Res>
           ? _value.inStock
           : inStock // ignore: cast_nullable_to_non_nullable
               as int?,
-      singleValuePriceModifiers: singleValuePriceModifiers == freezed
-          ? _value._singleValuePriceModifiers
-          : singleValuePriceModifiers // ignore: cast_nullable_to_non_nullable
-              as List<SingleValuePriceModifier>?,
-      stockConfigured: stockConfigured == freezed
-          ? _value.stockConfigured
-          : stockConfigured // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      priceModifier: priceModifier == freezed
+          ? _value.priceModifier
+          : priceModifier // ignore: cast_nullable_to_non_nullable
+              as SingleValuePriceModifier?,
       deliveryPrice: deliveryPrice == freezed
           ? _value.deliveryPrice
           : deliveryPrice // ignore: cast_nullable_to_non_nullable
@@ -372,23 +407,33 @@ class __$$_ItemResponseCopyWithImpl<$Res>
           ? _value.deliveryPreparationTime
           : deliveryPreparationTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      favorite: favorite == freezed
-          ? _value.favorite
-          : favorite // ignore: cast_nullable_to_non_nullable
-              as bool?,
       deliveryTime: deliveryTime == freezed
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
               as String?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      favorite: favorite == freezed
+          ? _value.favorite
+          : favorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      stockConfigured: stockConfigured == freezed
+          ? _value.stockConfigured
+          : stockConfigured // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_ItemResponse implements _ItemResponse {
-  const _$_ItemResponse(
-      {this.id,
+
+@JsonSerializable(explicitToJson: true)
+class _$_ItemBasketResponse implements _ItemBasketResponse {
+  const _$_ItemBasketResponse(
+      {@JsonKey(ignore: true, defaultValue: false) this.isSelected,
+      this.id,
       this.name,
       this.businessId,
       this.businessName,
@@ -404,20 +449,23 @@ class _$_ItemResponse implements _ItemResponse {
       this.purchasePrice,
       this.discountPercents,
       this.inStock,
-      final List<SingleValuePriceModifier>? singleValuePriceModifiers,
-      this.stockConfigured,
+      this.priceModifier,
       this.deliveryPrice,
       this.deliveryPreparationTime,
+      this.deliveryTime,
+      this.amount,
       this.favorite,
-      this.deliveryTime})
+      this.stockConfigured})
       : _imageUrls = imageUrls,
         _videoUrls = videoUrls,
-        _characteristicsMap = characteristicsMap,
-        _singleValuePriceModifiers = singleValuePriceModifiers;
+        _characteristicsMap = characteristicsMap;
 
-  factory _$_ItemResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ItemResponseFromJson(json);
+  factory _$_ItemBasketResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_ItemBasketResponseFromJson(json);
 
+  @override
+  @JsonKey(ignore: true, defaultValue: false)
+  final bool? isSelected;
   @override
   final String? id;
   @override
@@ -471,36 +519,33 @@ class _$_ItemResponse implements _ItemResponse {
   final int? discountPercents;
   @override
   final int? inStock;
-  final List<SingleValuePriceModifier>? _singleValuePriceModifiers;
   @override
-  List<SingleValuePriceModifier>? get singleValuePriceModifiers {
-    final value = _singleValuePriceModifiers;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  final bool? stockConfigured;
+  final SingleValuePriceModifier? priceModifier;
   @override
   final double? deliveryPrice;
   @override
   final String? deliveryPreparationTime;
   @override
+  final String? deliveryTime;
+  @override
+  final int? amount;
+  @override
   final bool? favorite;
   @override
-  final String? deliveryTime;
+  final bool? stockConfigured;
 
   @override
   String toString() {
-    return 'ItemResponse(id: $id, name: $name, businessId: $businessId, businessName: $businessName, businessImageUrl: $businessImageUrl, itemCategory: $itemCategory, itemType: $itemType, currency: $currency, price: $price, description: $description, imageUrls: $imageUrls, videoUrls: $videoUrls, characteristicsMap: $characteristicsMap, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, stockConfigured: $stockConfigured, deliveryPrice: $deliveryPrice, deliveryPreparationTime: $deliveryPreparationTime, favorite: $favorite, deliveryTime: $deliveryTime)';
+    return 'ItemBasketResponse(isSelected: $isSelected, id: $id, name: $name, businessId: $businessId, businessName: $businessName, businessImageUrl: $businessImageUrl, itemCategory: $itemCategory, itemType: $itemType, currency: $currency, price: $price, description: $description, imageUrls: $imageUrls, videoUrls: $videoUrls, characteristicsMap: $characteristicsMap, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, priceModifier: $priceModifier, deliveryPrice: $deliveryPrice, deliveryPreparationTime: $deliveryPreparationTime, deliveryTime: $deliveryTime, amount: $amount, favorite: $favorite, stockConfigured: $stockConfigured)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemResponse &&
+            other is _$_ItemBasketResponse &&
+            const DeepCollectionEquality()
+                .equals(other.isSelected, isSelected) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
@@ -527,23 +572,25 @@ class _$_ItemResponse implements _ItemResponse {
             const DeepCollectionEquality()
                 .equals(other.discountPercents, discountPercents) &&
             const DeepCollectionEquality().equals(other.inStock, inStock) &&
-            const DeepCollectionEquality().equals(
-                other._singleValuePriceModifiers, _singleValuePriceModifiers) &&
             const DeepCollectionEquality()
-                .equals(other.stockConfigured, stockConfigured) &&
+                .equals(other.priceModifier, priceModifier) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryPrice, deliveryPrice) &&
             const DeepCollectionEquality().equals(
                 other.deliveryPreparationTime, deliveryPreparationTime) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryTime, deliveryTime) &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.favorite, favorite) &&
             const DeepCollectionEquality()
-                .equals(other.deliveryTime, deliveryTime));
+                .equals(other.stockConfigured, stockConfigured));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
+        const DeepCollectionEquality().hash(isSelected),
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(name),
         const DeepCollectionEquality().hash(businessId),
@@ -560,30 +607,33 @@ class _$_ItemResponse implements _ItemResponse {
         const DeepCollectionEquality().hash(purchasePrice),
         const DeepCollectionEquality().hash(discountPercents),
         const DeepCollectionEquality().hash(inStock),
-        const DeepCollectionEquality().hash(_singleValuePriceModifiers),
-        const DeepCollectionEquality().hash(stockConfigured),
+        const DeepCollectionEquality().hash(priceModifier),
         const DeepCollectionEquality().hash(deliveryPrice),
         const DeepCollectionEquality().hash(deliveryPreparationTime),
+        const DeepCollectionEquality().hash(deliveryTime),
+        const DeepCollectionEquality().hash(amount),
         const DeepCollectionEquality().hash(favorite),
-        const DeepCollectionEquality().hash(deliveryTime)
+        const DeepCollectionEquality().hash(stockConfigured)
       ]);
 
   @JsonKey(ignore: true)
   @override
-  _$$_ItemResponseCopyWith<_$_ItemResponse> get copyWith =>
-      __$$_ItemResponseCopyWithImpl<_$_ItemResponse>(this, _$identity);
+  _$$_ItemBasketResponseCopyWith<_$_ItemBasketResponse> get copyWith =>
+      __$$_ItemBasketResponseCopyWithImpl<_$_ItemBasketResponse>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ItemResponseToJson(
+    return _$$_ItemBasketResponseToJson(
       this,
     );
   }
 }
 
-abstract class _ItemResponse implements ItemResponse {
-  const factory _ItemResponse(
-      {final String? id,
+abstract class _ItemBasketResponse implements ItemBasketResponse {
+  const factory _ItemBasketResponse(
+      {@JsonKey(ignore: true, defaultValue: false) final bool? isSelected,
+      final String? id,
       final String? name,
       final String? businessId,
       final String? businessName,
@@ -599,16 +649,20 @@ abstract class _ItemResponse implements ItemResponse {
       final double? purchasePrice,
       final int? discountPercents,
       final int? inStock,
-      final List<SingleValuePriceModifier>? singleValuePriceModifiers,
-      final bool? stockConfigured,
+      final SingleValuePriceModifier? priceModifier,
       final double? deliveryPrice,
       final String? deliveryPreparationTime,
+      final String? deliveryTime,
+      final int? amount,
       final bool? favorite,
-      final String? deliveryTime}) = _$_ItemResponse;
+      final bool? stockConfigured}) = _$_ItemBasketResponse;
 
-  factory _ItemResponse.fromJson(Map<String, dynamic> json) =
-      _$_ItemResponse.fromJson;
+  factory _ItemBasketResponse.fromJson(Map<String, dynamic> json) =
+      _$_ItemBasketResponse.fromJson;
 
+  @override
+  @JsonKey(ignore: true, defaultValue: false)
+  bool? get isSelected;
   @override
   String? get id;
   @override
@@ -642,19 +696,21 @@ abstract class _ItemResponse implements ItemResponse {
   @override
   int? get inStock;
   @override
-  List<SingleValuePriceModifier>? get singleValuePriceModifiers;
-  @override
-  bool? get stockConfigured;
+  SingleValuePriceModifier? get priceModifier;
   @override
   double? get deliveryPrice;
   @override
   String? get deliveryPreparationTime;
   @override
-  bool? get favorite;
-  @override
   String? get deliveryTime;
   @override
+  int? get amount;
+  @override
+  bool? get favorite;
+  @override
+  bool? get stockConfigured;
+  @override
   @JsonKey(ignore: true)
-  _$$_ItemResponseCopyWith<_$_ItemResponse> get copyWith =>
+  _$$_ItemBasketResponseCopyWith<_$_ItemBasketResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

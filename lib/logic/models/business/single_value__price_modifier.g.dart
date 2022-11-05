@@ -10,7 +10,7 @@ _$_SingleValuePriceModifier _$$_SingleValuePriceModifierFromJson(
         Map<String, dynamic> json) =>
     _$_SingleValuePriceModifier(
       value: (json['value'] as num?)?.toDouble(),
-      type: json['type'] as String,
+      type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$_SingleValuePriceModifierToJson(

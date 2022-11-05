@@ -7,7 +7,7 @@ part 'single_value__price_modifier.freezed.dart';
 class SingleValuePriceModifier with _$SingleValuePriceModifier {
   const factory SingleValuePriceModifier({
     double? value,
-    required String type,
+    String? type,
   }) = _SingleValuePriceModifier;
 
   factory SingleValuePriceModifier.fromJson(Map<String, dynamic> json) =>

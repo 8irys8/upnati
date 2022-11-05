@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/models/business/category_model.dart';
+import 'package:upnati/logic/models/business/item_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/add_empty_product_container.dart';
@@ -13,7 +17,8 @@ import 'package:upnati/ui/widgets/search_field.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
 class CategoryDetailScreen extends StatefulWidget with AutoRouteWrapper {
-  const CategoryDetailScreen({Key? key}) : super(key: key);
+  final CategoryModel? category;
+  const CategoryDetailScreen({Key? key, this.category}) : super(key: key);
 
   @override
   State<CategoryDetailScreen> createState() => _CategoryDetailScreenState();
@@ -26,9 +31,30 @@ class CategoryDetailScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
+  final PagingController<int, ItemResponse> _pageController =
+      PagingController<int, ItemResponse>(firstPageKey: 0);
+
+  void _fetchPage(int pageKey) async {
+    await context.read<BusinessCubit>().getItemsByCategory(
+        cat: widget.category?.id ?? '',
+        param: 'creationDate',
+        pageOrder: SortType.ASC.name,
+        size: 10,
+        page: pageKey);
+  }
+
   @override
   void initState() {
     super.initState();
+    _pageController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,103 +65,83 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
         bottomNavigationBar: CustomNavigatorBar(
             // initialIndex: 0,
             ),
-        body: SingleChildScrollView(
-          child: SafeArea(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 16,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 7, left: 37, right: 37),
-                  child: SearchField(),
-                ),
-                Text('מוצרי חשמל', style: AppTheme.bold(size: 25)),
-                const SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 9, right: 9, bottom: 36),
-                  child: Row(
-                    children: const [
-                      Expanded(
-                          child: AddEmptyProductContainer(
-                        title: 'מוצרים חדשים',
-                        desc:
-                            'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סלעציץ רוברט  סט 3 עציצים דגם24  ',
-                        price: '350',
-                        image:
-                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
-                      )),
-                      SizedBox(
-                        width: 45,
+        body: SafeArea(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 16,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 7, left: 37, right: 37),
+                child: SearchField(),
+              ),
+              Text('מוצרי חשמל', style: AppTheme.bold(size: 25)),
+              const SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: BlocListener<BusinessCubit, BusinessState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      error: (err) => _pageController.appendLastPage([]),
+                      successPageItemResponse: (itemResponse) {
+                        if (itemResponse.empty == true) {
+                          _pageController.appendLastPage([]);
+                        } else {
+                          if (itemResponse.last == true) {
+                            _pageController
+                                .appendLastPage(itemResponse.content);
+                          } else {
+                            _pageController.appendPage(itemResponse.content,
+                                (itemResponse.pageable?.pageNumber ?? 0) + 1);
+                          }
+                        }
+                      },
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                    ).copyWith(bottom: 24),
+                    child: PagedGridView(
+                      pagingController: _pageController,
+                      primary: false,
+                      shrinkWrap: true,
+                      builderDelegate: PagedChildBuilderDelegate<ItemResponse>(
+                        itemBuilder: (context, item, index) =>
+                            AddEmptyProductContainer(
+                          item: item,
+                          title: item.name,
+                          desc: item.description?.full,
+                          price: item.price?.toStringAsFixed(2),
+                          image: item.imageUrls?.isEmpty == true
+                              ? null
+                              : item.imageUrls?.first,
+                        ),
+                        firstPageErrorIndicatorBuilder: (context) =>
+                            const Center(
+                          child: Text('Error'),
+                        ),
+                        newPageProgressIndicatorBuilder: (context) =>
+                            const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        noItemsFoundIndicatorBuilder: (context) => const Center(
+                          child: Text('No items found'),
+                        ),
                       ),
-                      Expanded(
-                          child: AddEmptyProductContainer(
-                        title: 'מוצרים ',
-                        image:
-                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
-                        price: '200',
-                        desc:
-                            'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סל קש  גובה 24 ',
-                      )),
-                    ],
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.8,
+                        crossAxisSpacing: 37,
+                        mainAxisSpacing: 34,
+                      ),
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 9, right: 9, bottom: 36),
-                  child: Row(
-                    children: const [
-                      Expanded(
-                          child: AddEmptyProductContainer(
-                        title: 'מוצרים',
-                        image:
-                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
-                        desc: 'עציץ רוברט  סט 24',
-                        price: '1000',
-                      )),
-                      SizedBox(
-                        width: 45,
-                      ),
-                      Expanded(
-                          child: AddEmptyProductContainer(
-                        title: 'אייפון 13',
-                        desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                        price: '120',
-                      )),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 9, right: 9, bottom: 36),
-                  child: Row(
-                    children: const [
-                      Expanded(
-                          child: AddEmptyProductContainer(
-                        image:
-                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
-                        title: 'מוצרים ',
-                        price: '10',
-                        desc:
-                            'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סל קש  גובה 24 ',
-                      )),
-                      SizedBox(
-                        width: 45,
-                      ),
-                      Expanded(
-                          child: AddEmptyProductContainer(
-                        title: 'מוצרים חדשים',
-                        price: '15',
-                        image:
-                            'https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg',
-                        desc:
-                            'עציץ רוברט  סט 3 עציצים דגם רוברט  עציץ סינטטי סלעציץ רוברט  סט 3 עציצים דגם24  ',
-                      )),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

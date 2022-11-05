@@ -17,12 +17,20 @@ _$_ItemForm _$$_ItemFormFromJson(Map<String, dynamic> json) => _$_ItemForm(
           ?.map((e) => LocalDescription.fromJson(e as Map<String, dynamic>))
           .toList(),
       itemPrice: (json['itemPrice'] as num?)?.toDouble(),
-      deliveryPrice: (json['deliveryPrice'] as num?)?.toDouble(),
+      delivery: json['delivery'] == null
+          ? null
+          : DeliveryReq.fromJson(json['delivery'] as Map<String, dynamic>),
       inStock: json['inStock'] as int?,
       singleValuePriceModifiers: (json['singleValuePriceModifiers']
               as List<dynamic>?)
           ?.map((e) =>
               SingleValuePriceModifierForm.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      videoUrls: (json['videoUrls'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
     );
 
@@ -34,9 +42,11 @@ Map<String, dynamic> _$$_ItemFormToJson(_$_ItemForm instance) =>
       'currency': instance.currency,
       'description': instance.description,
       'itemPrice': instance.itemPrice,
-      'deliveryPrice': instance.deliveryPrice,
+      'delivery': instance.delivery,
       'inStock': instance.inStock,
       'singleValuePriceModifiers': instance.singleValuePriceModifiers,
+      'imageUrls': instance.imageUrls,
+      'videoUrls': instance.videoUrls,
     };
 
 _$_LocalName _$$_LocalNameFromJson(Map<String, dynamic> json) => _$_LocalName(
@@ -62,4 +72,18 @@ Map<String, dynamic> _$$_SingleValuePriceModifierFormToJson(
     <String, dynamic>{
       'value': instance.value,
       'type': instance.type,
+    };
+
+_$_DeliveryReq _$$_DeliveryReqFromJson(Map<String, dynamic> json) =>
+    _$_DeliveryReq(
+      price: (json['price'] as num?)?.toDouble(),
+      preparationTime: json['preparationTime'] as String?,
+      deliveryTime: json['deliveryTime'] as String?,
+    );
+
+Map<String, dynamic> _$$_DeliveryReqToJson(_$_DeliveryReq instance) =>
+    <String, dynamic>{
+      'price': instance.price,
+      'preparationTime': instance.preparationTime,
+      'deliveryTime': instance.deliveryTime,
     };

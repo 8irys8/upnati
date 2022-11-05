@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'item_response.dart';
+part of 'item_basket_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ItemResponse _$$_ItemResponseFromJson(Map<String, dynamic> json) =>
-    _$_ItemResponse(
+_$_ItemBasketResponse _$$_ItemBasketResponseFromJson(
+        Map<String, dynamic> json) =>
+    _$_ItemBasketResponse(
       id: json['id'] as String?,
       name: json['name'] as String?,
       businessId: json['businessId'] as String?,
@@ -33,19 +34,20 @@ _$_ItemResponse _$$_ItemResponseFromJson(Map<String, dynamic> json) =>
       purchasePrice: (json['purchasePrice'] as num?)?.toDouble(),
       discountPercents: json['discountPercents'] as int?,
       inStock: json['inStock'] as int?,
-      singleValuePriceModifiers:
-          (json['singleValuePriceModifiers'] as List<dynamic>?)
-              ?.map((e) =>
-                  SingleValuePriceModifier.fromJson(e as Map<String, dynamic>))
-              .toList(),
-      stockConfigured: json['stockConfigured'] as bool?,
+      priceModifier: json['priceModifier'] == null
+          ? null
+          : SingleValuePriceModifier.fromJson(
+              json['priceModifier'] as Map<String, dynamic>),
       deliveryPrice: (json['deliveryPrice'] as num?)?.toDouble(),
       deliveryPreparationTime: json['deliveryPreparationTime'] as String?,
-      favorite: json['favorite'] as bool?,
       deliveryTime: json['deliveryTime'] as String?,
+      amount: json['amount'] as int?,
+      favorite: json['favorite'] as bool?,
+      stockConfigured: json['stockConfigured'] as bool?,
     );
 
-Map<String, dynamic> _$$_ItemResponseToJson(_$_ItemResponse instance) =>
+Map<String, dynamic> _$$_ItemBasketResponseToJson(
+        _$_ItemBasketResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -56,17 +58,18 @@ Map<String, dynamic> _$$_ItemResponseToJson(_$_ItemResponse instance) =>
       'itemType': instance.itemType,
       'currency': instance.currency,
       'price': instance.price,
-      'description': instance.description,
+      'description': instance.description?.toJson(),
       'imageUrls': instance.imageUrls,
       'videoUrls': instance.videoUrls,
       'characteristicsMap': instance.characteristicsMap,
       'purchasePrice': instance.purchasePrice,
       'discountPercents': instance.discountPercents,
       'inStock': instance.inStock,
-      'singleValuePriceModifiers': instance.singleValuePriceModifiers,
-      'stockConfigured': instance.stockConfigured,
+      'priceModifier': instance.priceModifier?.toJson(),
       'deliveryPrice': instance.deliveryPrice,
       'deliveryPreparationTime': instance.deliveryPreparationTime,
-      'favorite': instance.favorite,
       'deliveryTime': instance.deliveryTime,
+      'amount': instance.amount,
+      'favorite': instance.favorite,
+      'stockConfigured': instance.stockConfigured,
     };

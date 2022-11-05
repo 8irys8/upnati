@@ -48,6 +48,9 @@ mixin _$BusinessState {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +82,9 @@ mixin _$BusinessState {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,6 +116,9 @@ mixin _$BusinessState {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +154,9 @@ mixin _$BusinessState {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -172,6 +184,9 @@ mixin _$BusinessState {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -199,6 +214,9 @@ mixin _$BusinessState {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -290,6 +308,9 @@ class _$_Initial implements _Initial {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return initial();
   }
@@ -324,6 +345,9 @@ class _$_Initial implements _Initial {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return initial?.call();
   }
@@ -358,6 +382,9 @@ class _$_Initial implements _Initial {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -399,6 +426,9 @@ class _$_Initial implements _Initial {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return initial(this);
   }
@@ -429,6 +459,9 @@ class _$_Initial implements _Initial {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return initial?.call(this);
   }
@@ -459,6 +492,9 @@ class _$_Initial implements _Initial {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -541,6 +577,9 @@ class _$_Loading implements _Loading {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return loading();
   }
@@ -575,6 +614,9 @@ class _$_Loading implements _Loading {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return loading?.call();
   }
@@ -609,6 +651,9 @@ class _$_Loading implements _Loading {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -650,6 +695,9 @@ class _$_Loading implements _Loading {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return loading(this);
   }
@@ -680,6 +728,9 @@ class _$_Loading implements _Loading {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return loading?.call(this);
   }
@@ -710,6 +761,9 @@ class _$_Loading implements _Loading {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -792,6 +846,9 @@ class _$_Success implements _Success {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return success();
   }
@@ -826,6 +883,9 @@ class _$_Success implements _Success {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return success?.call();
   }
@@ -860,6 +920,9 @@ class _$_Success implements _Success {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -901,6 +964,9 @@ class _$_Success implements _Success {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return success(this);
   }
@@ -931,6 +997,9 @@ class _$_Success implements _Success {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return success?.call(this);
   }
@@ -961,6 +1030,9 @@ class _$_Success implements _Success {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1066,6 +1138,9 @@ class _$_Error implements _Error {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return error(err);
   }
@@ -1100,6 +1175,9 @@ class _$_Error implements _Error {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return error?.call(err);
   }
@@ -1134,6 +1212,9 @@ class _$_Error implements _Error {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1175,6 +1256,9 @@ class _$_Error implements _Error {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return error(this);
   }
@@ -1205,6 +1289,9 @@ class _$_Error implements _Error {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return error?.call(this);
   }
@@ -1235,6 +1322,9 @@ class _$_Error implements _Error {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1361,6 +1451,9 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successBusinessResponse(businessResponse);
   }
@@ -1395,6 +1488,9 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successBusinessResponse?.call(businessResponse);
   }
@@ -1429,6 +1525,9 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessResponse != null) {
@@ -1470,6 +1569,9 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successBusinessResponse(this);
   }
@@ -1500,6 +1602,9 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successBusinessResponse?.call(this);
   }
@@ -1530,6 +1635,9 @@ class _$_SuccessBusinessResponse implements _SuccessBusinessResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessResponse != null) {
@@ -1659,6 +1767,9 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successUserDetailResponse(userDetailResponse);
   }
@@ -1693,6 +1804,9 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successUserDetailResponse?.call(userDetailResponse);
   }
@@ -1727,6 +1841,9 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successUserDetailResponse != null) {
@@ -1768,6 +1885,9 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successUserDetailResponse(this);
   }
@@ -1798,6 +1918,9 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successUserDetailResponse?.call(this);
   }
@@ -1828,6 +1951,9 @@ class _$_SuccessUserDetailResponse implements _SuccessUserDetailResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successUserDetailResponse != null) {
@@ -1958,6 +2084,9 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successPageBusinessResponse(pageBusinessResponse);
   }
@@ -1992,6 +2121,9 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successPageBusinessResponse?.call(pageBusinessResponse);
   }
@@ -2026,6 +2158,9 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successPageBusinessResponse != null) {
@@ -2067,6 +2202,9 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successPageBusinessResponse(this);
   }
@@ -2097,6 +2235,9 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successPageBusinessResponse?.call(this);
   }
@@ -2127,6 +2268,9 @@ class _$_SuccessPageBusinessResponse implements _SuccessPageBusinessResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successPageBusinessResponse != null) {
@@ -2250,6 +2394,9 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successBusinessMapInfo(mapInfoResponse);
   }
@@ -2284,6 +2431,9 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successBusinessMapInfo?.call(mapInfoResponse);
   }
@@ -2318,6 +2468,9 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessMapInfo != null) {
@@ -2359,6 +2512,9 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successBusinessMapInfo(this);
   }
@@ -2389,6 +2545,9 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successBusinessMapInfo?.call(this);
   }
@@ -2419,6 +2578,9 @@ class _$_SuccessBusinessMapInfo implements _SuccessBusinessMapInfo {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessMapInfo != null) {
@@ -2540,6 +2702,9 @@ class _$_SuccessBusinessMap implements _SuccessBusinessMap {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successBusinessMap(mapInfoResponse);
   }
@@ -2574,6 +2739,9 @@ class _$_SuccessBusinessMap implements _SuccessBusinessMap {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successBusinessMap?.call(mapInfoResponse);
   }
@@ -2608,6 +2776,9 @@ class _$_SuccessBusinessMap implements _SuccessBusinessMap {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessMap != null) {
@@ -2649,6 +2820,9 @@ class _$_SuccessBusinessMap implements _SuccessBusinessMap {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successBusinessMap(this);
   }
@@ -2679,6 +2853,9 @@ class _$_SuccessBusinessMap implements _SuccessBusinessMap {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successBusinessMap?.call(this);
   }
@@ -2709,6 +2886,9 @@ class _$_SuccessBusinessMap implements _SuccessBusinessMap {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessMap != null) {
@@ -2835,6 +3015,9 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successBusinessFilter(filterForm);
   }
@@ -2869,6 +3052,9 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successBusinessFilter?.call(filterForm);
   }
@@ -2903,6 +3089,9 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessFilter != null) {
@@ -2944,6 +3133,9 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successBusinessFilter(this);
   }
@@ -2974,6 +3166,9 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successBusinessFilter?.call(this);
   }
@@ -3004,6 +3199,9 @@ class _$_SuccessBusinessFilter implements _SuccessBusinessFilter {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessFilter != null) {
@@ -3131,6 +3329,9 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successPageItemResponse(pageItemResponse);
   }
@@ -3165,6 +3366,9 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successPageItemResponse?.call(pageItemResponse);
   }
@@ -3199,6 +3403,9 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successPageItemResponse != null) {
@@ -3240,6 +3447,9 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successPageItemResponse(this);
   }
@@ -3270,6 +3480,9 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successPageItemResponse?.call(this);
   }
@@ -3300,6 +3513,9 @@ class _$_SuccessPageItemResponse implements _SuccessPageItemResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successPageItemResponse != null) {
@@ -3425,6 +3641,9 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successItemResponse(itemResponse);
   }
@@ -3459,6 +3678,9 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successItemResponse?.call(itemResponse);
   }
@@ -3493,6 +3715,9 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successItemResponse != null) {
@@ -3534,6 +3759,9 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successItemResponse(this);
   }
@@ -3564,6 +3792,9 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successItemResponse?.call(this);
   }
@@ -3594,6 +3825,9 @@ class _$_SuccessItemResponse implements _SuccessItemResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successItemResponse != null) {
@@ -3720,6 +3954,9 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successBasketResponse(basketResponse);
   }
@@ -3754,6 +3991,9 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successBasketResponse?.call(basketResponse);
   }
@@ -3788,6 +4028,9 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successBasketResponse != null) {
@@ -3829,6 +4072,9 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successBasketResponse(this);
   }
@@ -3859,6 +4105,9 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successBasketResponse?.call(this);
   }
@@ -3889,6 +4138,9 @@ class _$_SuccessBasketResponse implements _SuccessBasketResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successBasketResponse != null) {
@@ -4014,6 +4266,9 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successOrderPreviewResponse(orderPreviewResponse);
   }
@@ -4048,6 +4303,9 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successOrderPreviewResponse?.call(orderPreviewResponse);
   }
@@ -4082,6 +4340,9 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successOrderPreviewResponse != null) {
@@ -4123,6 +4384,9 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successOrderPreviewResponse(this);
   }
@@ -4153,6 +4417,9 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successOrderPreviewResponse?.call(this);
   }
@@ -4183,6 +4450,9 @@ class _$_SuccessOrderPreviewResponse implements _SuccessOrderPreviewResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successOrderPreviewResponse != null) {
@@ -4314,6 +4584,9 @@ class _$_SuccessCommitedOrdersResponse
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successCommitedOrdersResponse(commitedOrdersResponse);
   }
@@ -4348,6 +4621,9 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successCommitedOrdersResponse?.call(commitedOrdersResponse);
   }
@@ -4382,6 +4658,9 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successCommitedOrdersResponse != null) {
@@ -4423,6 +4702,9 @@ class _$_SuccessCommitedOrdersResponse
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successCommitedOrdersResponse(this);
   }
@@ -4453,6 +4735,9 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successCommitedOrdersResponse?.call(this);
   }
@@ -4483,6 +4768,9 @@ class _$_SuccessCommitedOrdersResponse
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successCommitedOrdersResponse != null) {
@@ -4611,6 +4899,9 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successPageOrderResponse(pageOrderResponse);
   }
@@ -4645,6 +4936,9 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successPageOrderResponse?.call(pageOrderResponse);
   }
@@ -4679,6 +4973,9 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successPageOrderResponse != null) {
@@ -4720,6 +5017,9 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successPageOrderResponse(this);
   }
@@ -4750,6 +5050,9 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successPageOrderResponse?.call(this);
   }
@@ -4780,6 +5083,9 @@ class _$_SuccessPageOrderResponse implements _SuccessPageOrderResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successPageOrderResponse != null) {
@@ -4906,6 +5212,9 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successSearchResponse(searchResponse);
   }
@@ -4940,6 +5249,9 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successSearchResponse?.call(searchResponse);
   }
@@ -4974,6 +5286,9 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successSearchResponse != null) {
@@ -5015,6 +5330,9 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successSearchResponse(this);
   }
@@ -5045,6 +5363,9 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successSearchResponse?.call(this);
   }
@@ -5075,6 +5396,9 @@ class _$_SuccessSearchResponse implements _SuccessSearchResponse {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successSearchResponse != null) {
@@ -5194,6 +5518,9 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successBusinessList(list);
   }
@@ -5228,6 +5555,9 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successBusinessList?.call(list);
   }
@@ -5262,6 +5592,9 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessList != null) {
@@ -5303,6 +5636,9 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successBusinessList(this);
   }
@@ -5333,6 +5669,9 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successBusinessList?.call(this);
   }
@@ -5363,6 +5702,9 @@ class _$_SuccessBusinessList implements _SuccessBusinessList {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessList != null) {
@@ -5482,6 +5824,9 @@ class _$_SuccessBusinessCity implements _SuccessBusinessCity {
         successSearchResponse,
     required TResult Function(List<String> list) successBusinessList,
     required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
   }) {
     return successBusinessCity(list);
   }
@@ -5516,6 +5861,9 @@ class _$_SuccessBusinessCity implements _SuccessBusinessCity {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
   }) {
     return successBusinessCity?.call(list);
   }
@@ -5550,6 +5898,9 @@ class _$_SuccessBusinessCity implements _SuccessBusinessCity {
     TResult Function(SearchResponse searchResponse)? successSearchResponse,
     TResult Function(List<String> list)? successBusinessList,
     TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessCity != null) {
@@ -5591,6 +5942,9 @@ class _$_SuccessBusinessCity implements _SuccessBusinessCity {
         successSearchResponse,
     required TResult Function(_SuccessBusinessList value) successBusinessList,
     required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
   }) {
     return successBusinessCity(this);
   }
@@ -5621,6 +5975,9 @@ class _$_SuccessBusinessCity implements _SuccessBusinessCity {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
   }) {
     return successBusinessCity?.call(this);
   }
@@ -5651,6 +6008,9 @@ class _$_SuccessBusinessCity implements _SuccessBusinessCity {
     TResult Function(_SuccessSearchResponse value)? successSearchResponse,
     TResult Function(_SuccessBusinessList value)? successBusinessList,
     TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
     required TResult orElse(),
   }) {
     if (successBusinessCity != null) {
@@ -5667,5 +6027,932 @@ abstract class _SuccessBusinessCity implements BusinessState {
   List<String> get list;
   @JsonKey(ignore: true)
   _$$_SuccessBusinessCityCopyWith<_$_SuccessBusinessCity> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SuccessFilesCopyWith<$Res> {
+  factory _$$_SuccessFilesCopyWith(
+          _$_SuccessFiles value, $Res Function(_$_SuccessFiles) then) =
+      __$$_SuccessFilesCopyWithImpl<$Res>;
+  $Res call({UploadResponse files});
+
+  $UploadResponseCopyWith<$Res> get files;
+}
+
+/// @nodoc
+class __$$_SuccessFilesCopyWithImpl<$Res>
+    extends _$BusinessStateCopyWithImpl<$Res>
+    implements _$$_SuccessFilesCopyWith<$Res> {
+  __$$_SuccessFilesCopyWithImpl(
+      _$_SuccessFiles _value, $Res Function(_$_SuccessFiles) _then)
+      : super(_value, (v) => _then(v as _$_SuccessFiles));
+
+  @override
+  _$_SuccessFiles get _value => super._value as _$_SuccessFiles;
+
+  @override
+  $Res call({
+    Object? files = freezed,
+  }) {
+    return _then(_$_SuccessFiles(
+      files == freezed
+          ? _value.files
+          : files // ignore: cast_nullable_to_non_nullable
+              as UploadResponse,
+    ));
+  }
+
+  @override
+  $UploadResponseCopyWith<$Res> get files {
+    return $UploadResponseCopyWith<$Res>(_value.files, (value) {
+      return _then(_value.copyWith(files: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SuccessFiles implements _SuccessFiles {
+  const _$_SuccessFiles(this.files);
+
+  @override
+  final UploadResponse files;
+
+  @override
+  String toString() {
+    return 'BusinessState.successFiles(files: $files)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccessFiles &&
+            const DeepCollectionEquality().equals(other.files, files));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(files));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessFilesCopyWith<_$_SuccessFiles> get copyWith =>
+      __$$_SuccessFilesCopyWithImpl<_$_SuccessFiles>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(dynamic err) error,
+    required TResult Function(BusinessResponse businessResponse)
+        successBusinessResponse,
+    required TResult Function(UserDetailResponse userDetailResponse)
+        successUserDetailResponse,
+    required TResult Function(PageBusinessResponse pageBusinessResponse)
+        successPageBusinessResponse,
+    required TResult Function(Map<String, String> mapInfoResponse)
+        successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
+    required TResult Function(FilterForm filterForm) successBusinessFilter,
+    required TResult Function(PageItemResponse pageItemResponse)
+        successPageItemResponse,
+    required TResult Function(ItemResponse itemResponse) successItemResponse,
+    required TResult Function(BasketResponse basketResponse)
+        successBasketResponse,
+    required TResult Function(List<OrderPreviewResponse> orderPreviewResponse)
+        successOrderPreviewResponse,
+    required TResult Function(CommitedOrdersResponse commitedOrdersResponse)
+        successCommitedOrdersResponse,
+    required TResult Function(PageOrderResponse pageOrderResponse)
+        successPageOrderResponse,
+    required TResult Function(SearchResponse searchResponse)
+        successSearchResponse,
+    required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
+  }) {
+    return successFiles(files);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
+  }) {
+    return successFiles?.call(files);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
+    required TResult orElse(),
+  }) {
+    if (successFiles != null) {
+      return successFiles(files);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_SuccessBusinessResponse value)
+        successBusinessResponse,
+    required TResult Function(_SuccessUserDetailResponse value)
+        successUserDetailResponse,
+    required TResult Function(_SuccessPageBusinessResponse value)
+        successPageBusinessResponse,
+    required TResult Function(_SuccessBusinessMapInfo value)
+        successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
+    required TResult Function(_SuccessBusinessFilter value)
+        successBusinessFilter,
+    required TResult Function(_SuccessPageItemResponse value)
+        successPageItemResponse,
+    required TResult Function(_SuccessItemResponse value) successItemResponse,
+    required TResult Function(_SuccessBasketResponse value)
+        successBasketResponse,
+    required TResult Function(_SuccessOrderPreviewResponse value)
+        successOrderPreviewResponse,
+    required TResult Function(_SuccessCommitedOrdersResponse value)
+        successCommitedOrdersResponse,
+    required TResult Function(_SuccessPageOrderResponse value)
+        successPageOrderResponse,
+    required TResult Function(_SuccessSearchResponse value)
+        successSearchResponse,
+    required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
+  }) {
+    return successFiles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
+  }) {
+    return successFiles?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
+    required TResult orElse(),
+  }) {
+    if (successFiles != null) {
+      return successFiles(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessFiles implements BusinessState {
+  const factory _SuccessFiles(final UploadResponse files) = _$_SuccessFiles;
+
+  UploadResponse get files;
+  @JsonKey(ignore: true)
+  _$$_SuccessFilesCopyWith<_$_SuccessFiles> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SuccessVideoCopyWith<$Res> {
+  factory _$$_SuccessVideoCopyWith(
+          _$_SuccessVideo value, $Res Function(_$_SuccessVideo) then) =
+      __$$_SuccessVideoCopyWithImpl<$Res>;
+  $Res call({UploadResponse files});
+
+  $UploadResponseCopyWith<$Res> get files;
+}
+
+/// @nodoc
+class __$$_SuccessVideoCopyWithImpl<$Res>
+    extends _$BusinessStateCopyWithImpl<$Res>
+    implements _$$_SuccessVideoCopyWith<$Res> {
+  __$$_SuccessVideoCopyWithImpl(
+      _$_SuccessVideo _value, $Res Function(_$_SuccessVideo) _then)
+      : super(_value, (v) => _then(v as _$_SuccessVideo));
+
+  @override
+  _$_SuccessVideo get _value => super._value as _$_SuccessVideo;
+
+  @override
+  $Res call({
+    Object? files = freezed,
+  }) {
+    return _then(_$_SuccessVideo(
+      files == freezed
+          ? _value.files
+          : files // ignore: cast_nullable_to_non_nullable
+              as UploadResponse,
+    ));
+  }
+
+  @override
+  $UploadResponseCopyWith<$Res> get files {
+    return $UploadResponseCopyWith<$Res>(_value.files, (value) {
+      return _then(_value.copyWith(files: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SuccessVideo implements _SuccessVideo {
+  const _$_SuccessVideo(this.files);
+
+  @override
+  final UploadResponse files;
+
+  @override
+  String toString() {
+    return 'BusinessState.successVideo(files: $files)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccessVideo &&
+            const DeepCollectionEquality().equals(other.files, files));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(files));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessVideoCopyWith<_$_SuccessVideo> get copyWith =>
+      __$$_SuccessVideoCopyWithImpl<_$_SuccessVideo>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(dynamic err) error,
+    required TResult Function(BusinessResponse businessResponse)
+        successBusinessResponse,
+    required TResult Function(UserDetailResponse userDetailResponse)
+        successUserDetailResponse,
+    required TResult Function(PageBusinessResponse pageBusinessResponse)
+        successPageBusinessResponse,
+    required TResult Function(Map<String, String> mapInfoResponse)
+        successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
+    required TResult Function(FilterForm filterForm) successBusinessFilter,
+    required TResult Function(PageItemResponse pageItemResponse)
+        successPageItemResponse,
+    required TResult Function(ItemResponse itemResponse) successItemResponse,
+    required TResult Function(BasketResponse basketResponse)
+        successBasketResponse,
+    required TResult Function(List<OrderPreviewResponse> orderPreviewResponse)
+        successOrderPreviewResponse,
+    required TResult Function(CommitedOrdersResponse commitedOrdersResponse)
+        successCommitedOrdersResponse,
+    required TResult Function(PageOrderResponse pageOrderResponse)
+        successPageOrderResponse,
+    required TResult Function(SearchResponse searchResponse)
+        successSearchResponse,
+    required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
+  }) {
+    return successVideo(files);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
+  }) {
+    return successVideo?.call(files);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
+    required TResult orElse(),
+  }) {
+    if (successVideo != null) {
+      return successVideo(files);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_SuccessBusinessResponse value)
+        successBusinessResponse,
+    required TResult Function(_SuccessUserDetailResponse value)
+        successUserDetailResponse,
+    required TResult Function(_SuccessPageBusinessResponse value)
+        successPageBusinessResponse,
+    required TResult Function(_SuccessBusinessMapInfo value)
+        successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
+    required TResult Function(_SuccessBusinessFilter value)
+        successBusinessFilter,
+    required TResult Function(_SuccessPageItemResponse value)
+        successPageItemResponse,
+    required TResult Function(_SuccessItemResponse value) successItemResponse,
+    required TResult Function(_SuccessBasketResponse value)
+        successBasketResponse,
+    required TResult Function(_SuccessOrderPreviewResponse value)
+        successOrderPreviewResponse,
+    required TResult Function(_SuccessCommitedOrdersResponse value)
+        successCommitedOrdersResponse,
+    required TResult Function(_SuccessPageOrderResponse value)
+        successPageOrderResponse,
+    required TResult Function(_SuccessSearchResponse value)
+        successSearchResponse,
+    required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
+  }) {
+    return successVideo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
+  }) {
+    return successVideo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
+    required TResult orElse(),
+  }) {
+    if (successVideo != null) {
+      return successVideo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessVideo implements BusinessState {
+  const factory _SuccessVideo(final UploadResponse files) = _$_SuccessVideo;
+
+  UploadResponse get files;
+  @JsonKey(ignore: true)
+  _$$_SuccessVideoCopyWith<_$_SuccessVideo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SuccessLinkCopyWith<$Res> {
+  factory _$$_SuccessLinkCopyWith(
+          _$_SuccessLink value, $Res Function(_$_SuccessLink) then) =
+      __$$_SuccessLinkCopyWithImpl<$Res>;
+  $Res call({AppLinkResponse link});
+
+  $AppLinkResponseCopyWith<$Res> get link;
+}
+
+/// @nodoc
+class __$$_SuccessLinkCopyWithImpl<$Res>
+    extends _$BusinessStateCopyWithImpl<$Res>
+    implements _$$_SuccessLinkCopyWith<$Res> {
+  __$$_SuccessLinkCopyWithImpl(
+      _$_SuccessLink _value, $Res Function(_$_SuccessLink) _then)
+      : super(_value, (v) => _then(v as _$_SuccessLink));
+
+  @override
+  _$_SuccessLink get _value => super._value as _$_SuccessLink;
+
+  @override
+  $Res call({
+    Object? link = freezed,
+  }) {
+    return _then(_$_SuccessLink(
+      link == freezed
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
+              as AppLinkResponse,
+    ));
+  }
+
+  @override
+  $AppLinkResponseCopyWith<$Res> get link {
+    return $AppLinkResponseCopyWith<$Res>(_value.link, (value) {
+      return _then(_value.copyWith(link: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SuccessLink implements _SuccessLink {
+  const _$_SuccessLink(this.link);
+
+  @override
+  final AppLinkResponse link;
+
+  @override
+  String toString() {
+    return 'BusinessState.successLink(link: $link)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccessLink &&
+            const DeepCollectionEquality().equals(other.link, link));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(link));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessLinkCopyWith<_$_SuccessLink> get copyWith =>
+      __$$_SuccessLinkCopyWithImpl<_$_SuccessLink>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(dynamic err) error,
+    required TResult Function(BusinessResponse businessResponse)
+        successBusinessResponse,
+    required TResult Function(UserDetailResponse userDetailResponse)
+        successUserDetailResponse,
+    required TResult Function(PageBusinessResponse pageBusinessResponse)
+        successPageBusinessResponse,
+    required TResult Function(Map<String, String> mapInfoResponse)
+        successBusinessMapInfo,
+    required TResult Function(List<CategoryModel?> mapInfoResponse)
+        successBusinessMap,
+    required TResult Function(FilterForm filterForm) successBusinessFilter,
+    required TResult Function(PageItemResponse pageItemResponse)
+        successPageItemResponse,
+    required TResult Function(ItemResponse itemResponse) successItemResponse,
+    required TResult Function(BasketResponse basketResponse)
+        successBasketResponse,
+    required TResult Function(List<OrderPreviewResponse> orderPreviewResponse)
+        successOrderPreviewResponse,
+    required TResult Function(CommitedOrdersResponse commitedOrdersResponse)
+        successCommitedOrdersResponse,
+    required TResult Function(PageOrderResponse pageOrderResponse)
+        successPageOrderResponse,
+    required TResult Function(SearchResponse searchResponse)
+        successSearchResponse,
+    required TResult Function(List<String> list) successBusinessList,
+    required TResult Function(List<String> list) successBusinessCity,
+    required TResult Function(UploadResponse files) successFiles,
+    required TResult Function(UploadResponse files) successVideo,
+    required TResult Function(AppLinkResponse link) successLink,
+  }) {
+    return successLink(link);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
+  }) {
+    return successLink?.call(link);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(dynamic err)? error,
+    TResult Function(BusinessResponse businessResponse)?
+        successBusinessResponse,
+    TResult Function(UserDetailResponse userDetailResponse)?
+        successUserDetailResponse,
+    TResult Function(PageBusinessResponse pageBusinessResponse)?
+        successPageBusinessResponse,
+    TResult Function(Map<String, String> mapInfoResponse)?
+        successBusinessMapInfo,
+    TResult Function(List<CategoryModel?> mapInfoResponse)? successBusinessMap,
+    TResult Function(FilterForm filterForm)? successBusinessFilter,
+    TResult Function(PageItemResponse pageItemResponse)?
+        successPageItemResponse,
+    TResult Function(ItemResponse itemResponse)? successItemResponse,
+    TResult Function(BasketResponse basketResponse)? successBasketResponse,
+    TResult Function(List<OrderPreviewResponse> orderPreviewResponse)?
+        successOrderPreviewResponse,
+    TResult Function(CommitedOrdersResponse commitedOrdersResponse)?
+        successCommitedOrdersResponse,
+    TResult Function(PageOrderResponse pageOrderResponse)?
+        successPageOrderResponse,
+    TResult Function(SearchResponse searchResponse)? successSearchResponse,
+    TResult Function(List<String> list)? successBusinessList,
+    TResult Function(List<String> list)? successBusinessCity,
+    TResult Function(UploadResponse files)? successFiles,
+    TResult Function(UploadResponse files)? successVideo,
+    TResult Function(AppLinkResponse link)? successLink,
+    required TResult orElse(),
+  }) {
+    if (successLink != null) {
+      return successLink(link);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_SuccessBusinessResponse value)
+        successBusinessResponse,
+    required TResult Function(_SuccessUserDetailResponse value)
+        successUserDetailResponse,
+    required TResult Function(_SuccessPageBusinessResponse value)
+        successPageBusinessResponse,
+    required TResult Function(_SuccessBusinessMapInfo value)
+        successBusinessMapInfo,
+    required TResult Function(_SuccessBusinessMap value) successBusinessMap,
+    required TResult Function(_SuccessBusinessFilter value)
+        successBusinessFilter,
+    required TResult Function(_SuccessPageItemResponse value)
+        successPageItemResponse,
+    required TResult Function(_SuccessItemResponse value) successItemResponse,
+    required TResult Function(_SuccessBasketResponse value)
+        successBasketResponse,
+    required TResult Function(_SuccessOrderPreviewResponse value)
+        successOrderPreviewResponse,
+    required TResult Function(_SuccessCommitedOrdersResponse value)
+        successCommitedOrdersResponse,
+    required TResult Function(_SuccessPageOrderResponse value)
+        successPageOrderResponse,
+    required TResult Function(_SuccessSearchResponse value)
+        successSearchResponse,
+    required TResult Function(_SuccessBusinessList value) successBusinessList,
+    required TResult Function(_SuccessBusinessCity value) successBusinessCity,
+    required TResult Function(_SuccessFiles value) successFiles,
+    required TResult Function(_SuccessVideo value) successVideo,
+    required TResult Function(_SuccessLink value) successLink,
+  }) {
+    return successLink(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
+  }) {
+    return successLink?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_SuccessBusinessResponse value)? successBusinessResponse,
+    TResult Function(_SuccessUserDetailResponse value)?
+        successUserDetailResponse,
+    TResult Function(_SuccessPageBusinessResponse value)?
+        successPageBusinessResponse,
+    TResult Function(_SuccessBusinessMapInfo value)? successBusinessMapInfo,
+    TResult Function(_SuccessBusinessMap value)? successBusinessMap,
+    TResult Function(_SuccessBusinessFilter value)? successBusinessFilter,
+    TResult Function(_SuccessPageItemResponse value)? successPageItemResponse,
+    TResult Function(_SuccessItemResponse value)? successItemResponse,
+    TResult Function(_SuccessBasketResponse value)? successBasketResponse,
+    TResult Function(_SuccessOrderPreviewResponse value)?
+        successOrderPreviewResponse,
+    TResult Function(_SuccessCommitedOrdersResponse value)?
+        successCommitedOrdersResponse,
+    TResult Function(_SuccessPageOrderResponse value)? successPageOrderResponse,
+    TResult Function(_SuccessSearchResponse value)? successSearchResponse,
+    TResult Function(_SuccessBusinessList value)? successBusinessList,
+    TResult Function(_SuccessBusinessCity value)? successBusinessCity,
+    TResult Function(_SuccessFiles value)? successFiles,
+    TResult Function(_SuccessVideo value)? successVideo,
+    TResult Function(_SuccessLink value)? successLink,
+    required TResult orElse(),
+  }) {
+    if (successLink != null) {
+      return successLink(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessLink implements BusinessState {
+  const factory _SuccessLink(final AppLinkResponse link) = _$_SuccessLink;
+
+  AppLinkResponse get link;
+  @JsonKey(ignore: true)
+  _$$_SuccessLinkCopyWith<_$_SuccessLink> get copyWith =>
       throw _privateConstructorUsedError;
 }

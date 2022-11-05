@@ -6,16 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
+import 'package:upnati/logic/models/business/item_response.dart';
+import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/add_empty_product_container.dart';
-import 'package:upnati/ui/widgets/custom_input.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/expandable_page_view.dart';
-import 'package:upnati/ui/widgets/main_container.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
 class UserMainScreen extends StatefulWidget with AutoRouteWrapper {
@@ -26,8 +30,11 @@ class UserMainScreen extends StatefulWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<UserCubit>(
-        create: (context) => GetIt.I<UserCubit>(), child: this);
+    return MultiBlocProvider(providers: [
+      BlocProvider<UserCubit>(create: (context) => GetIt.I<UserCubit>()),
+      BlocProvider<BusinessCubit>(
+          create: (context) => GetIt.I<BusinessCubit>()),
+    ], child: this);
   }
 }
 
@@ -44,6 +51,7 @@ class _ProductMainScreenState extends State<UserMainScreen> {
   final _expMonthController = TextEditingController();
   final _expYearController = TextEditingController();
   final ValueNotifier<File?> _userImage = ValueNotifier(null);
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void _changeIndex(int index) {
     if (!mounted) return;
@@ -107,13 +115,17 @@ class _ProductMainScreenState extends State<UserMainScreen> {
     }
   }
 
+  void _updateUserInfo(FirebaseUserInfoPayload user) {
+    if (!_formKey.currentState!.validate()) return;
+    context.read<UserCubit>().updateUserDetails(user);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SideBarWrapper(
       child: BlocListener<UserCubit, UserState>(
         listener: (context, state) {
           state.whenOrNull(errorUserState: (err) {
-            print(err);
             return ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(err.toString())));
           }, successUserStateResponse: (response) {
@@ -259,450 +271,374 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                     controller: _pageController,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12)
-                            .copyWith(top: 15, bottom: 15),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Expanded(
-                                    child: AddEmptyProductContainer(
-                                  type: '1',
-                                  title: 'אייפון 13',
-                                  desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                                  price: '120',
-                                  image: Images.butterfly,
-                                )),
-                                SizedBox(
-                                  width: 44,
-                                ),
-                                Expanded(
-                                    child: AddEmptyProductContainer(
-                                  title: 'אייפון 13',
-                                  desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                                  price: '120',
-                                  image: Images.panda,
-                                  type: '1',
-                                )),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 12,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Expanded(
-                                    child: AddEmptyProductContainer(
-                                  type: '1',
-                                  title: 'אייפון 13',
-                                  desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                                  price: '120',
-                                  image: Images.butterfly,
-                                )),
-                                SizedBox(
-                                  width: 44,
-                                ),
-                                Expanded(
-                                    child: AddEmptyProductContainer(
-                                  title: 'אייפון 13',
-                                  desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                                  price: '120',
-                                  image: Images.panda,
-                                  type: '1',
-                                )),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 12,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Expanded(
-                                    child: AddEmptyProductContainer(
-                                  type: '1',
-                                  title: 'אייפון 13',
-                                  desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                                  price: '120',
-                                  image: Images.butterfly,
-                                )),
-                                SizedBox(
-                                  width: 44,
-                                ),
-                                Expanded(
-                                    child: AddEmptyProductContainer(
-                                  title: 'אייפון 13',
-                                  desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                                  price: '120',
-                                  image: Images.panda,
-                                  type: '1',
-                                )),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                          padding: const EdgeInsets.symmetric(horizontal: 12)
+                              .copyWith(top: 15, bottom: 15),
+                          child: const FavoritesGrid()),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12)
                             .copyWith(top: 15, bottom: 15),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Expanded(
-                                child: AddEmptyProductContainer(
-                              type: '2',
-                              title: 'אייפון 13',
-                              desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                              price: '120',
-                              image: Images.chico,
-                            )),
-                            SizedBox(
-                              width: 44,
-                            ),
-                            Expanded(
-                                child: AddEmptyProductContainer(
-                              title: 'אייפון 13',
-                              desc: 'מגהץ דור 3 4 מצבים \nיכולות  חדשניות',
-                              price: '120',
-                              image: Images.cubik,
-                              type: '2',
-                            )),
-                          ],
-                        ),
+                        child: const BasketHistoryGrid(),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 35),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 42,
-                            ),
-                            Text(LocaleKeys.user_info_name.tr(),
-                                style: AppTheme.regular(
-                                    size: 12, color: AppColors.textGray)),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 26),
-                              child: FormBuilderTextField(
-                                name: 'name',
-                                controller: _nameController,
-                                style: AppTheme.bold(
-                                    size: 20, color: AppColors.textGray),
-                                decoration: InputDecoration(
-                                  suffixIcon: SvgPicture.asset(
-                                    Svgs.icEditRect,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 42,
+                              ),
+                              Text(LocaleKeys.user_info_name.tr(),
+                                  style: AppTheme.regular(
+                                      size: 12, color: AppColors.textGray)),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 26),
+                                child: FormBuilderTextField(
+                                  name: 'name',
+                                  validator: FormBuilderValidators.compose([
+                                    FormBuilderValidators.required(
+                                        errorText: 'נדרש'),
+                                  ]),
+                                  controller: _nameController,
+                                  style: AppTheme.bold(
+                                      size: 20, color: AppColors.textGray),
+                                  decoration: InputDecoration(
+                                    suffixIcon: GestureDetector(
+                                      onTap: () => _updateUserInfo(
+                                          FirebaseUserInfoPayload(
+                                              displayName:
+                                                  _nameController.text)),
+                                      child: SvgPicture.asset(
+                                        Svgs.icEditRect,
+                                      ),
+                                    ),
+                                    contentPadding: EdgeInsets.zero,
+                                    suffixIconConstraints:
+                                        const BoxConstraints(),
+                                    filled: true,
+                                    hintText: 'אדל מזרחי',
+                                    fillColor: Colors.transparent,
                                   ),
-                                  contentPadding: EdgeInsets.zero,
-                                  suffixIconConstraints: const BoxConstraints(),
-                                  filled: true,
-                                  hintText: 'אדל מזרחי',
-                                  fillColor: Colors.transparent,
                                 ),
                               ),
-                            ),
-                            Text(LocaleKeys.user_info_email.tr(),
-                                style: AppTheme.regular(
-                                    size: 12, color: AppColors.textGray)),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 26),
-                              child: FormBuilderTextField(
-                                name: 'email',
-                                controller: _emailController,
-                                style: AppTheme.bold(
-                                    size: 20, color: AppColors.textGray),
-                                decoration: InputDecoration(
-                                  suffixIcon: SvgPicture.asset(
-                                    Svgs.icEditRect,
+                              Text(LocaleKeys.user_info_email.tr(),
+                                  style: AppTheme.regular(
+                                      size: 12, color: AppColors.textGray)),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 26),
+                                child: FormBuilderTextField(
+                                  name: 'email',
+                                  controller: _emailController,
+                                  validator: FormBuilderValidators.compose([
+                                    FormBuilderValidators.required(
+                                        errorText: 'נדרש'),
+                                    FormBuilderValidators.email(
+                                        errorText: 'לא תקין')
+                                  ]),
+                                  style: AppTheme.bold(
+                                      size: 20, color: AppColors.textGray),
+                                  decoration: InputDecoration(
+                                    suffixIcon: GestureDetector(
+                                      onTap: () => _updateUserInfo(
+                                          FirebaseUserInfoPayload(
+                                              email: _emailController.text)),
+                                      child: SvgPicture.asset(
+                                        Svgs.icEditRect,
+                                      ),
+                                    ),
+                                    contentPadding: EdgeInsets.zero,
+                                    suffixIconConstraints:
+                                        const BoxConstraints(),
+                                    filled: true,
+                                    // hintText: 'mail@mail.com',
+                                    fillColor: Colors.transparent,
                                   ),
-                                  contentPadding: EdgeInsets.zero,
-                                  suffixIconConstraints: const BoxConstraints(),
-                                  filled: true,
-                                  // hintText: 'mail@mail.com',
-                                  fillColor: Colors.transparent,
                                 ),
                               ),
-                            ),
-                            Text(LocaleKeys.user_info_phone.tr(),
-                                style: AppTheme.regular(
-                                    size: 12, color: AppColors.textGray)),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 26),
-                              child: FormBuilderTextField(
-                                name: 'phone',
-                                controller: _phoneController,
-                                style: AppTheme.bold(
-                                    size: 20, color: AppColors.textGray),
-                                decoration: InputDecoration(
-                                  suffixIcon: SvgPicture.asset(
-                                    Svgs.icEditRect,
+                              Text(LocaleKeys.user_info_phone.tr(),
+                                  style: AppTheme.regular(
+                                      size: 12, color: AppColors.textGray)),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 26),
+                                child: FormBuilderTextField(
+                                  name: 'phone',
+                                  controller: _phoneController,
+                                  validator: FormBuilderValidators.compose([
+                                    FormBuilderValidators.required(
+                                        errorText: 'נדרש'),
+                                  ]),
+                                  style: AppTheme.bold(
+                                      size: 20, color: AppColors.textGray),
+                                  decoration: InputDecoration(
+                                    suffixIcon: GestureDetector(
+                                      onTap: () => _updateUserInfo(
+                                          FirebaseUserInfoPayload(
+                                              phoneNumber:
+                                                  _phoneController.text)),
+                                      child: SvgPicture.asset(
+                                        Svgs.icEditRect,
+                                      ),
+                                    ),
+                                    contentPadding: EdgeInsets.zero,
+                                    suffixIconConstraints:
+                                        const BoxConstraints(),
+                                    filled: true,
+                                    // hintText: '0520000000',
+                                    fillColor: Colors.transparent,
                                   ),
-                                  contentPadding: EdgeInsets.zero,
-                                  suffixIconConstraints: const BoxConstraints(),
-                                  filled: true,
-                                  // hintText: '0520000000',
-                                  fillColor: Colors.transparent,
                                 ),
                               ),
-                            ),
-                            // Text(LocaleKeys.user_info_address.tr(),
-                            //     style: AppTheme.regular(
-                            //         size: 12, color: AppColors.textGray)),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(bottom: 26),
-                            //   child: FormBuilderTextField(
-                            //     name: 'address',
-                            //     controller: _addressController,
-                            //     style: AppTheme.bold(
-                            //         size: 20, color: AppColors.textGray),
-                            //     decoration: InputDecoration(
-                            //       suffixIcon: SvgPicture.asset(
-                            //         Svgs.icEditRect,
-                            //       ),
-                            //       contentPadding: EdgeInsets.zero,
-                            //       suffixIconConstraints: const BoxConstraints(),
-                            //       filled: true,
-                            //       hintText: 'רחוב מספר 2',
-                            //       fillColor: Colors.transparent,
-                            //     ),
-                            //   ),
-                            // ),
-                            // Text(LocaleKeys.user_info_credit_card.tr(),
-                            //     style: AppTheme.regular(
-                            // size: 12, color: AppColors.textGray)),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(bottom: 26),
-                            //   child: FormBuilderTextField(
-                            //     name: 'creditCard',
-                            //     controller: _creditCardController,
-                            //     style: AppTheme.bold(
-                            //         size: 20, color: AppColors.textGray),
-                            //     decoration: InputDecoration(
-                            //       suffixIcon: GestureDetector(
-                            //         onTap: () => showDialog(
-                            //             context: context,
-                            //             barrierColor:
-                            //                 Colors.black.withOpacity(0.76),
-                            //             builder: (context) => AlertDialog(
-                            //                   contentPadding: EdgeInsets.zero,
-                            //                   shape: RoundedRectangleBorder(
-                            //                       borderRadius:
-                            //                           BorderRadius.circular(
-                            //                               21)),
-                            //                   scrollable: true,
-                            //                   content:
-                            //                       Builder(builder: (context) {
-                            //                     return SizedBox(
-                            //                       width: MediaQuery.of(context)
-                            //                           .size
-                            //                           .width,
-                            //                       child: Column(
-                            //                         crossAxisAlignment:
-                            //                             CrossAxisAlignment
-                            //                                 .start,
-                            //                         children: [
-                            //                           GestureDetector(
-                            //                             onTap: () =>
-                            //                                 Navigator.pop(
-                            //                                     context),
-                            //                             child: const Padding(
-                            //                               padding:
-                            //                                   EdgeInsets.all(
-                            //                                       8.0),
-                            //                               child: Align(
-                            //                                   alignment:
-                            //                                       Alignment
-                            //                                           .topRight,
-                            //                                   child: Icon(
-                            //                                     Icons
-                            //                                         .close_outlined,
-                            //                                     color: Colors
-                            //                                         .black,
-                            //                                     size: 30,
-                            //                                   )),
-                            //                             ),
-                            //                           ),
-                            //                           Padding(
-                            //                             padding:
-                            //                                 const EdgeInsets
-                            //                                         .only(
-                            //                                     right: 17,
-                            //                                     bottom: 8),
-                            //                             child: Row(
-                            //                               children: [
-                            //                                 SvgPicture.asset(Svgs
-                            //                                     .icPlusRounded),
-                            //                                 const SizedBox(
-                            //                                   width: 13,
-                            //                                 ),
-                            //                                 Text(
-                            //                                   LocaleKeys
-                            //                                       .user_info_add_card
-                            //                                       .tr(),
-                            //                                   style: AppTheme
-                            //                                       .regular(
-                            //                                     size: 14,
-                            //                                   ).copyWith(
-                            //                                       decoration:
-                            //                                           TextDecoration
-                            //                                               .underline),
-                            //                                 ),
-                            //                               ],
-                            //                             ),
-                            //                           ),
-                            //                           Center(
-                            //                             child: Text(
-                            //                               LocaleKeys
-                            //                                   .user_info_enter_card_number
-                            //                                   .tr(),
-                            //                               style: AppTheme
-                            //                                   .regular(
-                            //                                 size: 14,
-                            //                               ).copyWith(
-                            //                                   decoration:
-                            //                                       TextDecoration
-                            //                                           .underline),
-                            //                             ),
-                            //                           ),
-                            //                           const SizedBox(
-                            //                               height: 10),
-                            //                           Padding(
-                            //                             padding:
-                            //                                 const EdgeInsets
-                            //                                         .symmetric(
-                            //                                     horizontal: 25),
-                            //                             child: Column(
-                            //                               children: [
-                            //                                 CustomInput(
-                            //                                     borderRadius:
-                            //                                         10,
-                            //                                     controller:
-                            //                                         _cardNumberController),
-                            //                                 const SizedBox(
-                            //                                     height: 17),
-                            //                                 Row(
-                            //                                   children: [
-                            //                                     Flexible(
-                            //                                       child: CustomInput(
-                            //                                           borderRadius:
-                            //                                               10,
-                            //                                           label: LocaleKeys
-                            //                                               .user_info_expiration_date
-                            //                                               .tr(),
-                            //                                           controller:
-                            //                                               _expYearController),
-                            //                                     ),
-                            //                                     Padding(
-                            //                                       padding: const EdgeInsets
-                            //                                                   .symmetric(
-                            //                                               horizontal:
-                            //                                                   8)
-                            //                                           .copyWith(
-                            //                                               top:
-                            //                                                   12),
-                            //                                       child: Text(
-                            //                                         '/',
-                            //                                         style: AppTheme.semi(
-                            //                                             size:
-                            //                                                 10,
-                            //                                             color: AppColors
-                            //                                                 .textGray),
-                            //                                       ),
-                            //                                     ),
-                            //                                     Flexible(
-                            //                                       child: CustomInput(
-                            //                                           borderRadius:
-                            //                                               10,
-                            //                                           label: '',
-                            //                                           controller:
-                            //                                               _expMonthController),
-                            //                                     ),
-                            //                                     const SizedBox(
-                            //                                         width: 24),
-                            //                                     Flexible(
-                            //                                       child: CustomInput(
-                            //                                           borderRadius:
-                            //                                               10,
-                            //                                           label:
-                            //                                               'CVV',
-                            //                                           leftAlignment:
-                            //                                               true,
-                            //                                           controller:
-                            //                                               _cvvController),
-                            //                                     ),
-                            //                                   ],
-                            //                                 ),
-                            //                                 const SizedBox(
-                            //                                     height: 22),
-                            //                                 GestureDetector(
-                            //                                   child: Container(
-                            //                                     padding: const EdgeInsets
-                            //                                             .symmetric(
-                            //                                         horizontal:
-                            //                                             44,
-                            //                                         vertical:
-                            //                                             16),
-                            //                                     decoration: BoxDecoration(
-                            //                                         color: AppColors
-                            //                                             .darkBlueLight,
-                            //                                         borderRadius:
-                            //                                             BorderRadius.circular(
-                            //                                                 25),
-                            //                                         boxShadow: [
-                            //                                           BoxShadow(
-                            //                                             color: Colors
-                            //                                                 .black
-                            //                                                 .withOpacity(.16),
-                            //                                             blurRadius:
-                            //                                                 3,
-                            //                                             offset: const Offset(
-                            //                                                 0,
-                            //                                                 1),
-                            //                                           ),
-                            //                                         ]),
-                            //                                     child: Text(
-                            //                                         LocaleKeys
-                            //                                             .onboard_connect_btn
-                            //                                             .tr(),
-                            //                                         style: AppTheme.semi(
-                            //                                             size:
-                            //                                                 16,
-                            //                                             color: AppColors
-                            //                                                 .white)),
-                            //                                   ),
-                            //                                 ),
-                            //                               ],
-                            //                             ),
-                            //                           ),
-                            //                           const SizedBox(
-                            //                               height: 30),
-                            //                         ],
-                            //                       ),
-                            //                     );
-                            //                   }),
-                            //                 )),
-                            //         child: SvgPicture.asset(
-                            //           Svgs.icEditRect,
-                            //         ),
-                            //       ),
-                            //       contentPadding: EdgeInsets.zero,
-                            //       suffixIconConstraints: const BoxConstraints(),
-                            //       filled: true,
-                            //       hintText: '********** 975',
-                            //       fillColor: Colors.transparent,
-                            //     ),
-                            //   ),
-                            // ),
-                          ],
+                              // Text(LocaleKeys.user_info_address.tr(),
+                              //     style: AppTheme.regular(
+                              //         size: 12, color: AppColors.textGray)),
+                              // Padding(
+                              //   padding: const EdgeInsets.only(bottom: 26),
+                              //   child: FormBuilderTextField(
+                              //     name: 'address',
+                              //     controller: _addressController,
+                              //     style: AppTheme.bold(
+                              //         size: 20, color: AppColors.textGray),
+                              //     decoration: InputDecoration(
+                              //       suffixIcon: SvgPicture.asset(
+                              //         Svgs.icEditRect,
+                              //       ),
+                              //       contentPadding: EdgeInsets.zero,
+                              //       suffixIconConstraints: const BoxConstraints(),
+                              //       filled: true,
+                              //       hintText: 'רחוב מספר 2',
+                              //       fillColor: Colors.transparent,
+                              //     ),
+                              //   ),
+                              // ),
+                              // Text(LocaleKeys.user_info_credit_card.tr(),
+                              //     style: AppTheme.regular(
+                              // size: 12, color: AppColors.textGray)),
+                              // Padding(
+                              //   padding: const EdgeInsets.only(bottom: 26),
+                              //   child: FormBuilderTextField(
+                              //     name: 'creditCard',
+                              //     controller: _creditCardController,
+                              //     style: AppTheme.bold(
+                              //         size: 20, color: AppColors.textGray),
+                              //     decoration: InputDecoration(
+                              //       suffixIcon: GestureDetector(
+                              //         onTap: () => showDialog(
+                              //             context: context,
+                              //             barrierColor:
+                              //                 Colors.black.withOpacity(0.76),
+                              //             builder: (context) => AlertDialog(
+                              //                   contentPadding: EdgeInsets.zero,
+                              //                   shape: RoundedRectangleBorder(
+                              //                       borderRadius:
+                              //                           BorderRadius.circular(
+                              //                               21)),
+                              //                   scrollable: true,
+                              //                   content:
+                              //                       Builder(builder: (context) {
+                              //                     return SizedBox(
+                              //                       width: MediaQuery.of(context)
+                              //                           .size
+                              //                           .width,
+                              //                       child: Column(
+                              //                         crossAxisAlignment:
+                              //                             CrossAxisAlignment
+                              //                                 .start,
+                              //                         children: [
+                              //                           GestureDetector(
+                              //                             onTap: () =>
+                              //                                 Navigator.pop(
+                              //                                     context),
+                              //                             child: const Padding(
+                              //                               padding:
+                              //                                   EdgeInsets.all(
+                              //                                       8.0),
+                              //                               child: Align(
+                              //                                   alignment:
+                              //                                       Alignment
+                              //                                           .topRight,
+                              //                                   child: Icon(
+                              //                                     Icons
+                              //                                         .close_outlined,
+                              //                                     color: Colors
+                              //                                         .black,
+                              //                                     size: 30,
+                              //                                   )),
+                              //                             ),
+                              //                           ),
+                              //                           Padding(
+                              //                             padding:
+                              //                                 const EdgeInsets
+                              //                                         .only(
+                              //                                     right: 17,
+                              //                                     bottom: 8),
+                              //                             child: Row(
+                              //                               children: [
+                              //                                 SvgPicture.asset(Svgs
+                              //                                     .icPlusRounded),
+                              //                                 const SizedBox(
+                              //                                   width: 13,
+                              //                                 ),
+                              //                                 Text(
+                              //                                   LocaleKeys
+                              //                                       .user_info_add_card
+                              //                                       .tr(),
+                              //                                   style: AppTheme
+                              //                                       .regular(
+                              //                                     size: 14,
+                              //                                   ).copyWith(
+                              //                                       decoration:
+                              //                                           TextDecoration
+                              //                                               .underline),
+                              //                                 ),
+                              //                               ],
+                              //                             ),
+                              //                           ),
+                              //                           Center(
+                              //                             child: Text(
+                              //                               LocaleKeys
+                              //                                   .user_info_enter_card_number
+                              //                                   .tr(),
+                              //                               style: AppTheme
+                              //                                   .regular(
+                              //                                 size: 14,
+                              //                               ).copyWith(
+                              //                                   decoration:
+                              //                                       TextDecoration
+                              //                                           .underline),
+                              //                             ),
+                              //                           ),
+                              //                           const SizedBox(
+                              //                               height: 10),
+                              //                           Padding(
+                              //                             padding:
+                              //                                 const EdgeInsets
+                              //                                         .symmetric(
+                              //                                     horizontal: 25),
+                              //                             child: Column(
+                              //                               children: [
+                              //                                 CustomInput(
+                              //                                     borderRadius:
+                              //                                         10,
+                              //                                     controller:
+                              //                                         _cardNumberController),
+                              //                                 const SizedBox(
+                              //                                     height: 17),
+                              //                                 Row(
+                              //                                   children: [
+                              //                                     Flexible(
+                              //                                       child: CustomInput(
+                              //                                           borderRadius:
+                              //                                               10,
+                              //                                           label: LocaleKeys
+                              //                                               .user_info_expiration_date
+                              //                                               .tr(),
+                              //                                           controller:
+                              //                                               _expYearController),
+                              //                                     ),
+                              //                                     Padding(
+                              //                                       padding: const EdgeInsets
+                              //                                                   .symmetric(
+                              //                                               horizontal:
+                              //                                                   8)
+                              //                                           .copyWith(
+                              //                                               top:
+                              //                                                   12),
+                              //                                       child: Text(
+                              //                                         '/',
+                              //                                         style: AppTheme.semi(
+                              //                                             size:
+                              //                                                 10,
+                              //                                             color: AppColors
+                              //                                                 .textGray),
+                              //                                       ),
+                              //                                     ),
+                              //                                     Flexible(
+                              //                                       child: CustomInput(
+                              //                                           borderRadius:
+                              //                                               10,
+                              //                                           label: '',
+                              //                                           controller:
+                              //                                               _expMonthController),
+                              //                                     ),
+                              //                                     const SizedBox(
+                              //                                         width: 24),
+                              //                                     Flexible(
+                              //                                       child: CustomInput(
+                              //                                           borderRadius:
+                              //                                               10,
+                              //                                           label:
+                              //                                               'CVV',
+                              //                                           leftAlignment:
+                              //                                               true,
+                              //                                           controller:
+                              //                                               _cvvController),
+                              //                                     ),
+                              //                                   ],
+                              //                                 ),
+                              //                                 const SizedBox(
+                              //                                     height: 22),
+                              //                                 GestureDetector(
+                              //                                   child: Container(
+                              //                                     padding: const EdgeInsets
+                              //                                             .symmetric(
+                              //                                         horizontal:
+                              //                                             44,
+                              //                                         vertical:
+                              //                                             16),
+                              //                                     decoration: BoxDecoration(
+                              //                                         color: AppColors
+                              //                                             .darkBlueLight,
+                              //                                         borderRadius:
+                              //                                             BorderRadius.circular(
+                              //                                                 25),
+                              //                                         boxShadow: [
+                              //                                           BoxShadow(
+                              //                                             color: Colors
+                              //                                                 .black
+                              //                                                 .withOpacity(.16),
+                              //                                             blurRadius:
+                              //                                                 3,
+                              //                                             offset: const Offset(
+                              //                                                 0,
+                              //                                                 1),
+                              //                                           ),
+                              //                                         ]),
+                              //                                     child: Text(
+                              //                                         LocaleKeys
+                              //                                             .onboard_connect_btn
+                              //                                             .tr(),
+                              //                                         style: AppTheme.semi(
+                              //                                             size:
+                              //                                                 16,
+                              //                                             color: AppColors
+                              //                                                 .white)),
+                              //                                   ),
+                              //                                 ),
+                              //                               ],
+                              //                             ),
+                              //                           ),
+                              //                           const SizedBox(
+                              //                               height: 30),
+                              //                         ],
+                              //                       ),
+                              //                     );
+                              //                   }),
+                              //                 )),
+                              //         child: SvgPicture.asset(
+                              //           Svgs.icEditRect,
+                              //         ),
+                              //       ),
+                              //       contentPadding: EdgeInsets.zero,
+                              //       suffixIconConstraints: const BoxConstraints(),
+                              //       filled: true,
+                              //       hintText: '********** 975',
+                              //       fillColor: Colors.transparent,
+                              //     ),
+                              //   ),
+                              // ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -777,6 +713,181 @@ class TabButton extends StatelessWidget {
                         ? AppColors.white
                         : AppColors.roze)),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class FavoritesGrid extends StatefulWidget {
+  const FavoritesGrid({Key? key}) : super(key: key);
+
+  @override
+  State<FavoritesGrid> createState() => _FavoritesGridState();
+}
+
+class _FavoritesGridState extends State<FavoritesGrid> {
+  final PagingController<int, ItemResponse> _pageController =
+      PagingController<int, ItemResponse>(firstPageKey: 0);
+
+  void _fetchPage(int pageKey) async {
+    await context.read<BusinessCubit>().getFavoriteItems(
+        pageOrder: SortType.ASC.name, size: 10, page: pageKey);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<BusinessCubit, BusinessState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          successPageItemResponse: (pageBusinessResponse) {
+            if (pageBusinessResponse.empty == true) {
+              _pageController.appendLastPage([]);
+            } else {
+              if (pageBusinessResponse.last == true) {
+                _pageController.appendLastPage(pageBusinessResponse.content);
+              } else {
+                _pageController.appendPage(pageBusinessResponse.content,
+                    (pageBusinessResponse.pageable?.pageNumber ?? 0) + 1);
+              }
+            }
+          },
+        );
+      },
+      child: PagedGridView(
+        pagingController: _pageController,
+        primary: false,
+        shrinkWrap: true,
+        builderDelegate: PagedChildBuilderDelegate<ItemResponse>(
+          itemBuilder: (context, item, index) => AddEmptyProductContainer(
+            item: item,
+            type: '1',
+            title: item.name ?? '',
+            desc: item.description?.full ?? '',
+            price: item.price?.toStringAsFixed(2) ?? '',
+            image:
+                item.imageUrls?.isEmpty == true ? null : item.imageUrls?.first,
+          ),
+          firstPageErrorIndicatorBuilder: (context) => const Center(
+            child: Text('Error'),
+          ),
+          newPageProgressIndicatorBuilder: (context) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          noItemsFoundIndicatorBuilder: (context) => const Center(
+            child: Text('No items found'),
+          ),
+        ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.8,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 34,
+        ),
+      ),
+    );
+  }
+}
+
+class BasketHistoryGrid extends StatefulWidget {
+  const BasketHistoryGrid({Key? key}) : super(key: key);
+
+  @override
+  State<BasketHistoryGrid> createState() => _BasketHistoryGridState();
+}
+
+class _BasketHistoryGridState extends State<BasketHistoryGrid> {
+  final PagingController<int, ItemResponse> _pageController =
+      PagingController<int, ItemResponse>(firstPageKey: 0);
+
+  void _fetchPage(int pageKey) async {
+    await context.read<BusinessCubit>().getAllUserOrders(
+        pageOrder: SortType.ASC.name,
+        size: 10,
+        page: pageKey,
+        param: 'creationDate');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<BusinessCubit, BusinessState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          successPageOrderResponse: (pageBusinessResponse) {
+            if (pageBusinessResponse.empty == true) {
+              _pageController.appendLastPage([]);
+            } else {
+              var items = <ItemResponse>[];
+              pageBusinessResponse.content?.forEach((element) {
+                items.addAll(element.items);
+              });
+              if (pageBusinessResponse.last == true) {
+                _pageController.appendLastPage(items);
+              } else {
+                _pageController.appendPage(items,
+                    (pageBusinessResponse.pageable?.pageNumber ?? 0) + 1);
+              }
+            }
+          },
+        );
+      },
+      child: PagedGridView(
+        pagingController: _pageController,
+        primary: false,
+        shrinkWrap: true,
+        builderDelegate: PagedChildBuilderDelegate<ItemResponse>(
+          itemBuilder: (context, item, index) => AddEmptyProductContainer(
+            item: item,
+            type: '2',
+            title: item.name ?? '',
+            desc: item.description?.full ?? '',
+            price: item.price?.toStringAsFixed(2) ?? '',
+            image:
+                item.imageUrls?.isEmpty == true ? null : item.imageUrls?.first,
+          ),
+          firstPageErrorIndicatorBuilder: (context) => const Center(
+            child: Text('Error'),
+          ),
+          newPageProgressIndicatorBuilder: (context) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          noItemsFoundIndicatorBuilder: (context) => const Center(
+            child: Text('No items found'),
+          ),
+        ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.8,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 34,
         ),
       ),
     );

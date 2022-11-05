@@ -21,15 +21,10 @@ BasketResponse _$BasketResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BasketResponse {
   String? get id => throw _privateConstructorUsedError;
-  String? get creationDate => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  List<ItemImpl> get items => throw _privateConstructorUsedError;
-  Map<dynamic, int> get amount => throw _privateConstructorUsedError;
+  PageItemBasketResponse? get items => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
-  double get purchasePrice => throw _privateConstructorUsedError;
-  int get discountPercents => throw _privateConstructorUsedError;
-  double get oldTotal => throw _privateConstructorUsedError;
-  bool? get empty => throw _privateConstructorUsedError;
+  double? get purchasePrice => throw _privateConstructorUsedError;
+  int? get discountPercents => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,15 +39,12 @@ abstract class $BasketResponseCopyWith<$Res> {
       _$BasketResponseCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-      String? creationDate,
-      String userId,
-      List<ItemImpl> items,
-      Map<dynamic, int> amount,
+      PageItemBasketResponse? items,
       double? price,
-      double purchasePrice,
-      int discountPercents,
-      double oldTotal,
-      bool? empty});
+      double? purchasePrice,
+      int? discountPercents});
+
+  $PageItemBasketResponseCopyWith<$Res>? get items;
 }
 
 /// @nodoc
@@ -67,37 +59,20 @@ class _$BasketResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? creationDate = freezed,
-    Object? userId = freezed,
     Object? items = freezed,
-    Object? amount = freezed,
     Object? price = freezed,
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
-    Object? oldTotal = freezed,
-    Object? empty = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      creationDate: creationDate == freezed
-          ? _value.creationDate
-          : creationDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
       items: items == freezed
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemImpl>,
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, int>,
+              as PageItemBasketResponse?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -105,20 +80,23 @@ class _$BasketResponseCopyWithImpl<$Res>
       purchasePrice: purchasePrice == freezed
           ? _value.purchasePrice
           : purchasePrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       discountPercents: discountPercents == freezed
           ? _value.discountPercents
           : discountPercents // ignore: cast_nullable_to_non_nullable
-              as int,
-      oldTotal: oldTotal == freezed
-          ? _value.oldTotal
-          : oldTotal // ignore: cast_nullable_to_non_nullable
-              as double,
-      empty: empty == freezed
-          ? _value.empty
-          : empty // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as int?,
     ));
+  }
+
+  @override
+  $PageItemBasketResponseCopyWith<$Res>? get items {
+    if (_value.items == null) {
+      return null;
+    }
+
+    return $PageItemBasketResponseCopyWith<$Res>(_value.items!, (value) {
+      return _then(_value.copyWith(items: value));
+    });
   }
 }
 
@@ -131,15 +109,13 @@ abstract class _$$_BasketResponseCopyWith<$Res>
   @override
   $Res call(
       {String? id,
-      String? creationDate,
-      String userId,
-      List<ItemImpl> items,
-      Map<dynamic, int> amount,
+      PageItemBasketResponse? items,
       double? price,
-      double purchasePrice,
-      int discountPercents,
-      double oldTotal,
-      bool? empty});
+      double? purchasePrice,
+      int? discountPercents});
+
+  @override
+  $PageItemBasketResponseCopyWith<$Res>? get items;
 }
 
 /// @nodoc
@@ -156,37 +132,20 @@ class __$$_BasketResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? creationDate = freezed,
-    Object? userId = freezed,
     Object? items = freezed,
-    Object? amount = freezed,
     Object? price = freezed,
     Object? purchasePrice = freezed,
     Object? discountPercents = freezed,
-    Object? oldTotal = freezed,
-    Object? empty = freezed,
   }) {
     return _then(_$_BasketResponse(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      creationDate: creationDate == freezed
-          ? _value.creationDate
-          : creationDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
       items: items == freezed
-          ? _value._items
+          ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemImpl>,
-      amount: amount == freezed
-          ? _value._amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, int>,
+              as PageItemBasketResponse?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -194,39 +153,25 @@ class __$$_BasketResponseCopyWithImpl<$Res>
       purchasePrice: purchasePrice == freezed
           ? _value.purchasePrice
           : purchasePrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       discountPercents: discountPercents == freezed
           ? _value.discountPercents
           : discountPercents // ignore: cast_nullable_to_non_nullable
-              as int,
-      oldTotal: oldTotal == freezed
-          ? _value.oldTotal
-          : oldTotal // ignore: cast_nullable_to_non_nullable
-              as double,
-      empty: empty == freezed
-          ? _value.empty
-          : empty // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as int?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_BasketResponse implements _BasketResponse {
   const _$_BasketResponse(
       {this.id,
-      this.creationDate,
-      required this.userId,
-      required final List<ItemImpl> items,
-      required final Map<dynamic, int> amount,
+      this.items,
       this.price,
-      required this.purchasePrice,
-      required this.discountPercents,
-      required this.oldTotal,
-      this.empty})
-      : _items = items,
-        _amount = amount;
+      this.purchasePrice,
+      this.discountPercents});
 
   factory _$_BasketResponse.fromJson(Map<String, dynamic> json) =>
       _$$_BasketResponseFromJson(json);
@@ -234,37 +179,17 @@ class _$_BasketResponse implements _BasketResponse {
   @override
   final String? id;
   @override
-  final String? creationDate;
-  @override
-  final String userId;
-  final List<ItemImpl> _items;
-  @override
-  List<ItemImpl> get items {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  final Map<dynamic, int> _amount;
-  @override
-  Map<dynamic, int> get amount {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_amount);
-  }
-
+  final PageItemBasketResponse? items;
   @override
   final double? price;
   @override
-  final double purchasePrice;
+  final double? purchasePrice;
   @override
-  final int discountPercents;
-  @override
-  final double oldTotal;
-  @override
-  final bool? empty;
+  final int? discountPercents;
 
   @override
   String toString() {
-    return 'BasketResponse(id: $id, creationDate: $creationDate, userId: $userId, items: $items, amount: $amount, price: $price, purchasePrice: $purchasePrice, discountPercents: $discountPercents, oldTotal: $oldTotal, empty: $empty)';
+    return 'BasketResponse(id: $id, items: $items, price: $price, purchasePrice: $purchasePrice, discountPercents: $discountPercents)';
   }
 
   @override
@@ -273,18 +198,12 @@ class _$_BasketResponse implements _BasketResponse {
         (other.runtimeType == runtimeType &&
             other is _$_BasketResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.creationDate, creationDate) &&
-            const DeepCollectionEquality().equals(other.userId, userId) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            const DeepCollectionEquality().equals(other._amount, _amount) &&
+            const DeepCollectionEquality().equals(other.items, items) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality()
                 .equals(other.purchasePrice, purchasePrice) &&
             const DeepCollectionEquality()
-                .equals(other.discountPercents, discountPercents) &&
-            const DeepCollectionEquality().equals(other.oldTotal, oldTotal) &&
-            const DeepCollectionEquality().equals(other.empty, empty));
+                .equals(other.discountPercents, discountPercents));
   }
 
   @JsonKey(ignore: true)
@@ -292,15 +211,10 @@ class _$_BasketResponse implements _BasketResponse {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(creationDate),
-      const DeepCollectionEquality().hash(userId),
-      const DeepCollectionEquality().hash(_items),
-      const DeepCollectionEquality().hash(_amount),
+      const DeepCollectionEquality().hash(items),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(purchasePrice),
-      const DeepCollectionEquality().hash(discountPercents),
-      const DeepCollectionEquality().hash(oldTotal),
-      const DeepCollectionEquality().hash(empty));
+      const DeepCollectionEquality().hash(discountPercents));
 
   @JsonKey(ignore: true)
   @override
@@ -318,15 +232,10 @@ class _$_BasketResponse implements _BasketResponse {
 abstract class _BasketResponse implements BasketResponse {
   const factory _BasketResponse(
       {final String? id,
-      final String? creationDate,
-      required final String userId,
-      required final List<ItemImpl> items,
-      required final Map<dynamic, int> amount,
+      final PageItemBasketResponse? items,
       final double? price,
-      required final double purchasePrice,
-      required final int discountPercents,
-      required final double oldTotal,
-      final bool? empty}) = _$_BasketResponse;
+      final double? purchasePrice,
+      final int? discountPercents}) = _$_BasketResponse;
 
   factory _BasketResponse.fromJson(Map<String, dynamic> json) =
       _$_BasketResponse.fromJson;
@@ -334,23 +243,13 @@ abstract class _BasketResponse implements BasketResponse {
   @override
   String? get id;
   @override
-  String? get creationDate;
-  @override
-  String get userId;
-  @override
-  List<ItemImpl> get items;
-  @override
-  Map<dynamic, int> get amount;
+  PageItemBasketResponse? get items;
   @override
   double? get price;
   @override
-  double get purchasePrice;
+  double? get purchasePrice;
   @override
-  int get discountPercents;
-  @override
-  double get oldTotal;
-  @override
-  bool? get empty;
+  int? get discountPercents;
   @override
   @JsonKey(ignore: true)
   _$$_BasketResponseCopyWith<_$_BasketResponse> get copyWith =>
