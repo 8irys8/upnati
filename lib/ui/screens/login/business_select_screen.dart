@@ -62,7 +62,7 @@ class _BusinessSelectScreenState extends State<BusinessSelectScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 16,
+                    height: 80,
                   ),
                   Center(
                     child: Text(
@@ -84,8 +84,8 @@ class _BusinessSelectScreenState extends State<BusinessSelectScreen> {
                                 children: [
                                   Expanded(
                                     child: GestureDetector(
-                                      onTap: () =>
-                                          context.router.push(BusinessScreen()),
+                                      onTap: () => context.router.push(
+                                          RegisterScreen(isBusiness: true)),
                                       // onTap: () => context
                                       //     .read<UserCubit>()
                                       //     .changeUserRole(RoleType.role_incomplete.name),
@@ -138,10 +138,8 @@ class _BusinessSelectScreenState extends State<BusinessSelectScreen> {
                                   ),
                                   Expanded(
                                     child: GestureDetector(
-                                      onTap: () => context
-                                          .read<UserCubit>()
-                                          .changeUserRole(
-                                              RoleType.role_user.name),
+                                      onTap: () => context.router
+                                          .push(const MarketPlaceScreen()),
                                       child: Container(
                                         decoration: BoxDecoration(
                                           color: AppColors.white,

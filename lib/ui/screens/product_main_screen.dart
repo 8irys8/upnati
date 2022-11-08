@@ -9,9 +9,11 @@ import 'package:get_it/get_it.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/item_collection.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
+import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
@@ -42,13 +44,18 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
     _controller = CarouselController();
   }
 
-  void _putToBasket() {
-    context.read<BusinessCubit>().modifyBasket(
-        pageOrder: SortType.ASC.name,
-        page: 0,
-        size: 1,
-        itemCollection:
-            ItemCollection(amount: {widget.item?.id: _amountNotifier.value}));
+  void _putToBasket() async {
+    var user = await Utils.getCurrentUser();
+    if (user == null) {
+      Utils.showRegisterDialog(context);
+    } else {
+      context.read<BusinessCubit>().modifyBasket(
+          pageOrder: SortType.ASC.name,
+          page: 0,
+          size: 1,
+          itemCollection:
+              ItemCollection(amount: {widget.item?.id: _amountNotifier.value}));
+    }
   }
 
   @override
@@ -353,32 +360,46 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                              child: GestureDetector(
-                                onTap: () => context.router
-                                    .push(const BuyDetailsScreen()),
-                                child: Container(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 14),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.darkBlueLight,
-                                    borderRadius: BorderRadius.circular(25),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.16),
-                                        blurRadius: 3,
-                                        offset: const Offset(0, 1),
+                              child: FutureBuilder<UserDetailResponse?>(
+                                  future: Utils.getCurrentUser(),
+                                  builder: (context, snapshot) {
+                                    return GestureDetector(
+                                      onTap: () => snapshot.connectionState ==
+                                              ConnectionState.done
+                                          ? snapshot.data != null
+                                              ? context.router.push(
+                                                  const BuyDetailsScreen())
+                                              : Utils.showRegisterDialog(
+                                                  context)
+                                          : null,
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 14),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.darkBlueLight,
+                                          borderRadius:
+                                              BorderRadius.circular(25),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black
+                                                  .withOpacity(0.16),
+                                              blurRadius: 3,
+                                              offset: const Offset(0, 1),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                              LocaleKeys
+                                                  .product_info_buy_now_btn
+                                                  .tr(),
+                                              style: AppTheme.semi(
+                                                  size: 16,
+                                                  color: AppColors.white)),
+                                        ),
                                       ),
-                                    ],
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                        LocaleKeys.product_info_buy_now_btn
-                                            .tr(),
-                                        style: AppTheme.semi(
-                                            size: 16, color: AppColors.white)),
-                                  ),
-                                ),
-                              ),
+                                    );
+                                  }),
                             ),
                             const SizedBox(
                               width: 24,
@@ -439,46 +460,63 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
               Positioned(
                   top: 45,
                   right: 36,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () => context
-                            .read<BusinessCubit>()
-                            .addToFavorites(itemId: widget.item?.id ?? ''),
-                        child: Container(
-                          width: 25,
-                          height: 25,
-                          decoration: const BoxDecoration(
-                              color: AppColors.rozeLightbtn,
-                              shape: BoxShape.circle),
-                          child: SvgPicture.asset(
-                            Svgs.icHeartWhite,
-                            fit: BoxFit.scaleDown,
-                            height: 25,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 7,
-                      ),
-                      GestureDetector(
-                        onTap: () => context
-                            .read<BusinessCubit>()
-                            .shareItemLink(id: widget.item?.id ?? ''),
-                        child: Container(
-                          width: 25,
-                          height: 25,
-                          decoration: const BoxDecoration(
-                              color: Color(0xff3EBE00), shape: BoxShape.circle),
-                          child: SvgPicture.asset(
-                            Svgs.icShareSmall,
-                            fit: BoxFit.scaleDown,
-                            height: 25,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
+                  child: FutureBuilder<UserDetailResponse?>(
+                      future: Utils.getCurrentUser(),
+                      builder: (context, snapshot) {
+                        return Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () => snapshot.connectionState ==
+                                      ConnectionState.done
+                                  ? snapshot.data != null
+                                      ? context
+                                          .read<BusinessCubit>()
+                                          .addToFavorites(
+                                              itemId: widget.item?.id ?? '')
+                                      : Utils.showRegisterDialog(context)
+                                  : null,
+                              child: Container(
+                                width: 25,
+                                height: 25,
+                                decoration: const BoxDecoration(
+                                    color: AppColors.rozeLightbtn,
+                                    shape: BoxShape.circle),
+                                child: SvgPicture.asset(
+                                  Svgs.icHeartWhite,
+                                  fit: BoxFit.scaleDown,
+                                  height: 25,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 7,
+                            ),
+                            GestureDetector(
+                              onTap: () => snapshot.connectionState ==
+                                      ConnectionState.done
+                                  ? snapshot.data != null
+                                      ? context
+                                          .read<BusinessCubit>()
+                                          .shareItemLink(
+                                              id: widget.item?.id ?? '')
+                                      : Utils.showRegisterDialog(context)
+                                  : null,
+                              child: Container(
+                                width: 25,
+                                height: 25,
+                                decoration: const BoxDecoration(
+                                    color: Color(0xff3EBE00),
+                                    shape: BoxShape.circle),
+                                child: SvgPicture.asset(
+                                  Svgs.icShareSmall,
+                                  fit: BoxFit.scaleDown,
+                                  height: 25,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      })),
               Positioned(
                 top: 32,
                 left: 36,

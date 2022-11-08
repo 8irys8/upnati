@@ -63,7 +63,14 @@ class _BusinessRegistrationScreenState
     ];
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              onPressed: () => context.router.pop(),
+              icon: const Icon(Icons.chevron_right_outlined, size: 40))
+        ],
+      ),
       body: BlocListener<BusinessCubit, BusinessState>(
         listener: (context, state) {
           state.whenOrNull(

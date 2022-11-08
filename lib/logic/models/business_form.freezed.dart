@@ -27,6 +27,8 @@ mixin _$BusinessForm {
   String? get category => throw _privateConstructorUsedError;
   String? get defaultLocale => throw _privateConstructorUsedError;
   String? get deliveryScope => throw _privateConstructorUsedError;
+  List<String>? get imageUrls => throw _privateConstructorUsedError;
+  List<String>? get videoUrls => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,9 @@ abstract class $BusinessFormCopyWith<$Res> {
       List<LocalDescription>? description,
       String? category,
       String? defaultLocale,
-      String? deliveryScope});
+      String? deliveryScope,
+      List<String>? imageUrls,
+      List<String>? videoUrls});
 }
 
 /// @nodoc
@@ -64,6 +68,8 @@ class _$BusinessFormCopyWithImpl<$Res> implements $BusinessFormCopyWith<$Res> {
     Object? category = freezed,
     Object? defaultLocale = freezed,
     Object? deliveryScope = freezed,
+    Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -90,6 +96,14 @@ class _$BusinessFormCopyWithImpl<$Res> implements $BusinessFormCopyWith<$Res> {
           ? _value.deliveryScope
           : deliveryScope // ignore: cast_nullable_to_non_nullable
               as String?,
+      imageUrls: imageUrls == freezed
+          ? _value.imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value.videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -107,7 +121,9 @@ abstract class _$$_BusinessFormCopyWith<$Res>
       List<LocalDescription>? description,
       String? category,
       String? defaultLocale,
-      String? deliveryScope});
+      String? deliveryScope,
+      List<String>? imageUrls,
+      List<String>? videoUrls});
 }
 
 /// @nodoc
@@ -129,6 +145,8 @@ class __$$_BusinessFormCopyWithImpl<$Res>
     Object? category = freezed,
     Object? defaultLocale = freezed,
     Object? deliveryScope = freezed,
+    Object? imageUrls = freezed,
+    Object? videoUrls = freezed,
   }) {
     return _then(_$_BusinessForm(
       name: name == freezed
@@ -155,6 +173,14 @@ class __$$_BusinessFormCopyWithImpl<$Res>
           ? _value.deliveryScope
           : deliveryScope // ignore: cast_nullable_to_non_nullable
               as String?,
+      imageUrls: imageUrls == freezed
+          ? _value._imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      videoUrls: videoUrls == freezed
+          ? _value._videoUrls
+          : videoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -169,8 +195,12 @@ class _$_BusinessForm implements _BusinessForm {
       final List<LocalDescription>? description,
       this.category,
       this.defaultLocale,
-      this.deliveryScope})
-      : _description = description;
+      this.deliveryScope,
+      final List<String>? imageUrls,
+      final List<String>? videoUrls})
+      : _description = description,
+        _imageUrls = imageUrls,
+        _videoUrls = videoUrls;
 
   factory _$_BusinessForm.fromJson(Map<String, dynamic> json) =>
       _$$_BusinessFormFromJson(json);
@@ -196,10 +226,27 @@ class _$_BusinessForm implements _BusinessForm {
   final String? defaultLocale;
   @override
   final String? deliveryScope;
+  final List<String>? _imageUrls;
+  @override
+  List<String>? get imageUrls {
+    final value = _imageUrls;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _videoUrls;
+  @override
+  List<String>? get videoUrls {
+    final value = _videoUrls;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'BusinessForm(name: $name, cityName: $cityName, description: $description, category: $category, defaultLocale: $defaultLocale, deliveryScope: $deliveryScope)';
+    return 'BusinessForm(name: $name, cityName: $cityName, description: $description, category: $category, defaultLocale: $defaultLocale, deliveryScope: $deliveryScope, imageUrls: $imageUrls, videoUrls: $videoUrls)';
   }
 
   @override
@@ -215,7 +262,11 @@ class _$_BusinessForm implements _BusinessForm {
             const DeepCollectionEquality()
                 .equals(other.defaultLocale, defaultLocale) &&
             const DeepCollectionEquality()
-                .equals(other.deliveryScope, deliveryScope));
+                .equals(other.deliveryScope, deliveryScope) &&
+            const DeepCollectionEquality()
+                .equals(other._imageUrls, _imageUrls) &&
+            const DeepCollectionEquality()
+                .equals(other._videoUrls, _videoUrls));
   }
 
   @JsonKey(ignore: true)
@@ -227,7 +278,9 @@ class _$_BusinessForm implements _BusinessForm {
       const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(defaultLocale),
-      const DeepCollectionEquality().hash(deliveryScope));
+      const DeepCollectionEquality().hash(deliveryScope),
+      const DeepCollectionEquality().hash(_imageUrls),
+      const DeepCollectionEquality().hash(_videoUrls));
 
   @JsonKey(ignore: true)
   @override
@@ -249,7 +302,9 @@ abstract class _BusinessForm implements BusinessForm {
       final List<LocalDescription>? description,
       final String? category,
       final String? defaultLocale,
-      final String? deliveryScope}) = _$_BusinessForm;
+      final String? deliveryScope,
+      final List<String>? imageUrls,
+      final List<String>? videoUrls}) = _$_BusinessForm;
 
   factory _BusinessForm.fromJson(Map<String, dynamic> json) =
       _$_BusinessForm.fromJson;
@@ -266,6 +321,10 @@ abstract class _BusinessForm implements BusinessForm {
   String? get defaultLocale;
   @override
   String? get deliveryScope;
+  @override
+  List<String>? get imageUrls;
+  @override
+  List<String>? get videoUrls;
   @override
   @JsonKey(ignore: true)
   _$$_BusinessFormCopyWith<_$_BusinessForm> get copyWith =>

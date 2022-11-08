@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -27,7 +28,14 @@ class _AddCardScreenState extends State<AddCardScreen> {
   Widget build(BuildContext context) {
     return SideBarWrapper(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () => context.router.pop(),
+                icon: const Icon(Icons.chevron_right_outlined, size: 40))
+          ],
+        ),
         bottomNavigationBar: const CustomNavigatorBar(),
         body: SingleChildScrollView(
           child: SafeArea(
@@ -36,7 +44,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
               child: Column(
                 children: [
                   Text(LocaleKeys.buy_details_payment_methods.tr(),
-                      style: AppTheme.semi(size: 44, color: AppColors.textGray)),
+                      style:
+                          AppTheme.semi(size: 44, color: AppColors.textGray)),
                   const SizedBox(height: 44),
                   Row(
                     children: [
@@ -203,7 +212,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                       Padding(
                                         padding: const EdgeInsets.only(
                                             right: 12, bottom: 12),
-                                        child: Image.asset(Images.paymentDoneImg),
+                                        child:
+                                            Image.asset(Images.paymentDoneImg),
                                       ),
                                       Text(
                                         LocaleKeys
@@ -212,7 +222,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                         style: AppTheme.semiLight(
                                           size: 10,
                                         ).copyWith(
-                                            decoration: TextDecoration.underline),
+                                            decoration:
+                                                TextDecoration.underline),
                                       ),
                                       const SizedBox(
                                         height: 15,
@@ -230,7 +241,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                       Text(
                                         'shushu market',
                                         style: AppTheme.bold(
-                                                size: 12, color: AppColors.yellow)
+                                                size: 12,
+                                                color: AppColors.yellow)
                                             .copyWith(
                                                 decoration:
                                                     TextDecoration.underline),

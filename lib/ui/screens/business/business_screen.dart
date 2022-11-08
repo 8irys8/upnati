@@ -76,7 +76,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 24),
                 child: CustomButton(
-                  title: '!פה פותחים חנות בקלות',
+                  title: 'פה פותחים חנות בקלות!',
                   topPadding: 17,
                   bottomPadding: 14,
                   border: Border.all(color: AppColors.darkBlueLight),

@@ -16,7 +16,10 @@ class CustomInput extends StatelessWidget {
   final double? borderRadius;
   final FormFieldValidator<String?>? validator;
   final TextInputType? inputType;
+  final double? shadowColor;
+  final TextDirection? textDirection;
   final bool enabled;
+  final double? spreadRadius;
   const CustomInput({
     Key? key,
     this.label,
@@ -32,6 +35,9 @@ class CustomInput extends StatelessWidget {
     this.validator,
     this.inputType,
     this.enabled = true,
+    this.shadowColor,
+    this.spreadRadius,
+    this.textDirection,
   }) : super(key: key);
 
   @override
@@ -84,11 +90,11 @@ class CustomInput extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.text.withOpacity(.16),
+                color: AppColors.text.withOpacity(shadowColor ?? .40),
                 offset: const Offset(-3, 1),
                 blurRadius: 3,
                 blurStyle: BlurStyle.inner,
-                spreadRadius: 3.5,
+                spreadRadius: spreadRadius ?? 1,
                 inset: true,
               ),
             ],
@@ -98,7 +104,7 @@ class CustomInput extends StatelessWidget {
             validator: validator,
             enabled: enabled,
             keyboardType: inputType,
-            textDirection: TextDirection.ltr,
+            textDirection: textDirection ?? TextDirection.rtl,
             minLines: isMultiline == true ? 4 : 1,
             maxLines: isMultiline == true ? 10 : 1,
             textAlignVertical:

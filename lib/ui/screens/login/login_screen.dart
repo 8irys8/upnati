@@ -1,21 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as easy_localization;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
-import 'package:upnati/logic/models/user/login_payload.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
-import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_checkbox.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
-import 'package:upnati/ui/widgets/custom_radio.dart';
 
 class LoginScreen extends StatefulWidget with AutoRouteWrapper {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,7 +25,7 @@ class LoginScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _phoneController = MaskedTextController(mask: '+000-00-000-0000');
+  final _phoneController = MaskedTextController(mask: '000-000-0000');
   final termsChecked = ValueNotifier<bool>(true);
   final _formKey = GlobalKey<FormState>();
 
@@ -42,7 +38,8 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
     if (_formKey.currentState?.validate() == false) return;
-    context.read<AuthCubit>().authByPhone(phone);
+    var fixedPhone = phone.replaceFirst('0', '+972');
+    context.read<AuthCubit>().authByPhone(fixedPhone);
   }
 
   @override
@@ -86,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 30,
                   ),
                   Text(
-                    '!ברוך הבא\nטוב שבאת להרוויח כסף',
+                    'ברוך הבא!\nטוב שבאת להרוויח כסף',
                     textAlign: TextAlign.center,
                     style: AppTheme.regular(size: 27, color: AppColors.white),
                   ),
@@ -126,13 +123,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 key: _formKey,
                                 child: CustomInput(
                                     label: 'מספר נייד',
+                                    shadowColor: 0.4,
+                                    spreadRadius: 1,
                                     inputType: TextInputType.phone,
+                                    textDirection: TextDirection.ltr,
                                     validator: FormBuilderValidators.compose([
                                       FormBuilderValidators.required(
                                           errorText: 'נדרש'),
                                       FormBuilderValidators.minLength(
                                         errorText: 'מספר נייד לא תקין',
-                                        16,
+                                        10,
                                       )
                                     ]),
                                     controller: _phoneController),

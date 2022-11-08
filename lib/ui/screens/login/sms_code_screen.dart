@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
@@ -65,7 +66,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
                   context.router.replace(const MarketPlaceScreen());
                 }
               }, errorUserState: (err) {
-                context.router.replace(const RegisterScreen());
+                context.router.replace(const BusinessSelectScreen());
               });
             },
           ),
@@ -101,7 +102,7 @@ class _SmsCodeScreenState extends State<SmsCodeScreen> {
                     height: 30,
                   ),
                   Text(
-                    '!ברוך הבא\nטוב שבאת להרוויח כסף',
+                    'ברוך הבא!\nטוב שבאת להרוויח כסף',
                     textAlign: TextAlign.center,
                     style: AppTheme.regular(size: 27, color: AppColors.white),
                   ),

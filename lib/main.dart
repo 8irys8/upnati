@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/injectable_config.dart';
+import 'package:upnati/core/config/router.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/firebase_options.dart';
 import 'package:upnati/resources/resource.dart';
@@ -33,7 +34,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final _appRouter = AppRouter();
+  final _appRouter = AppRouter(registerGuard: RegisterGuard());
 
   @override
   Widget build(BuildContext context) {

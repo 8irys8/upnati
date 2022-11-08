@@ -1,4 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:upnati/core/config/utils.dart';
+import 'package:upnati/logic/providers/user_provider.dart';
+import 'package:upnati/resources/locale_keys.g.dart';
+import 'package:upnati/resources/resource.dart';
 import 'package:upnati/ui/screens/business/business_registration_screen.dart';
 import 'package:upnati/ui/screens/business/business_screen.dart';
 import 'package:upnati/ui/screens/business/market_detail_screen.dart';
@@ -43,29 +50,37 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     ),
     AutoRoute(
       page: ShopHomeScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(page: MarketDetailScreen),
     AutoRoute(page: ProduceDetailScreen),
     AutoRoute(
       page: MyBasketScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(
       page: BuyDetailsScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(
       page: PaymentDetailsScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(
       page: AddCardScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(
       page: UserMainScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(
       page: PurchaseHistoryScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(
       page: MessageScreen,
+      guards: [RegisterGuard],
     ),
     AutoRoute(
       page: CategoryScreen,
@@ -88,3 +103,17 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
   ],
 )
 class $AppRouter {}
+
+class RegisterGuard extends AutoRouteGuard {
+  @override
+  void onNavigation(NavigationResolver resolver, StackRouter router) async {
+    UserProvider userProvider = GetIt.I<UserProvider>();
+    try {
+      await userProvider.getUserDetails();
+      resolver.next(true);
+    } catch (e) {
+      await Utils.showRegisterDialog(router.navigatorKey.currentContext!);
+      resolver.next(false);
+    }
+  }
+}

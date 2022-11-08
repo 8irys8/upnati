@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
-import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
 import 'package:upnati/resources/resource.dart';
@@ -15,7 +15,8 @@ import 'package:upnati/ui/widgets/custom_checkbox.dart';
 import 'package:upnati/ui/widgets/custom_input.dart';
 
 class RegisterScreen extends StatefulWidget with AutoRouteWrapper {
-  const RegisterScreen({Key? key}) : super(key: key);
+  final bool? isBusiness;
+  const RegisterScreen({Key? key, this.isBusiness}) : super(key: key);
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -33,18 +34,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   // final passwordController = TextEditingController();
   final phoneController = TextEditingController();
   // final usernameController = TextEditingController();
-  final termsChecked = ValueNotifier<bool>(false);
+  // final termsChecked = ValueNotifier<bool>(false);
   final _formKey = GlobalKey<FormState>();
 
   Future<void> register() async {
-    if (!termsChecked.value) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('אנא אשר את התנאים תחילה'),
-      ));
-
-      return;
-    }
-
     if (_formKey.currentState?.validate() == true) {
       final name = nameController.text;
       final email = emailController.text;
@@ -62,14 +55,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    phoneController.text = FirebaseAuth.instance.currentUser?.phoneNumber
+            ?.replaceAll('+972', '0') ??
+        '';
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              onPressed: () => context.router.pop(),
+              icon: const Icon(Icons.chevron_right_outlined, size: 40))
+        ],
+      ),
       body: BlocListener<UserCubit, UserState>(
         listener: (context, state) {
           state.whenOrNull(
             successUserStateResponse: (response) {
-              print('successUserStateResponse');
-              context.router.replace(const BusinessSelectScreen());
+              if (widget.isBusiness == true) {
+                context.router
+                    .push(BusinessScreen(userDetailResponse: response));
+              } else {
+                context.router.replace(const MarketPlaceScreen());
+              }
             },
             errorUserState: (error) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -111,6 +124,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: nameController,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(errorText: 'נדרש'),
+                        FormBuilderValidators.minLength(3,
+                            errorText: 'שם קצר מדי'),
+                        FormBuilderValidators.maxLength(25,
+                            errorText: 'מספר לא תקין'),
                       ]),
                     ),
                     const SizedBox(
@@ -124,6 +141,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         FormBuilderValidators.required(errorText: 'נדרש'),
                         FormBuilderValidators.email(
                             errorText: 'כתובת לא תקינה'),
+                        FormBuilderValidators.maxLength(35,
+                            errorText: 'מספר לא תקין'),
                       ]),
                     ),
                     const SizedBox(
@@ -136,6 +155,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(errorText: 'נדרש'),
                         FormBuilderValidators.integer(
+                            errorText: 'מספר לא תקין'),
+                        FormBuilderValidators.maxLength(10,
                             errorText: 'מספר לא תקין'),
                       ]),
                     ),
@@ -157,23 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     //   controller: passwordController,
                     //   obscure: true,
                     // ),
-                    const SizedBox(
-                      height: 11,
-                    ),
-                    ValueListenableBuilder<bool>(
-                      valueListenable: termsChecked,
-                      builder: (context, value, child) {
-                        return CustomCheckbox(
-                          label: LocaleKeys.register_confirm_terms.tr(),
-                          underlineText:
-                              LocaleKeys.register_confirm_terms_link.tr(),
-                          value: value,
-                          onTap: () {
-                            termsChecked.value = !termsChecked.value;
-                          },
-                        );
-                      },
-                    ),
+
                     const SizedBox(
                       height: 37,
                     ),

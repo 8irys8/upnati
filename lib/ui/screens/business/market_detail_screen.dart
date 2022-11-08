@@ -45,7 +45,6 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
   bool _uploadedImg = false;
   final nameController = TextEditingController();
   final detailController = TextEditingController();
-  final agreementBox = ValueNotifier(true);
   final _formKey = GlobalKey<FormState>();
   String? _businessCategory;
   String? _businessScope;
@@ -99,23 +98,29 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
       return;
     }
     if (_formKey.currentState!.validate()) {
-      var businessForm = BusinessForm(
-          name: nameController.text,
-          description: [
-            LocalDescription(
-                locale: LocaleType.he.name,
-                description: Description(full: detailController.text))
-          ],
-          category: _businessCategory,
-          defaultLocale: LocaleType.he.name,
-          deliveryScope: _businessScope,
-          cityName: _businessCity);
-      if (widget.businessResponse == null) {
-        context.read<BusinessCubit>().createNewBusiness(businessForm);
+      if (_businessImage.value != null) {
+        context
+            .read<BusinessCubit>()
+            .getUploadImages(files: [_businessImage.value!]);
       } else {
-        context.read<BusinessCubit>().updateBusinessInfo(
-              businessForm,
-            );
+        var businessForm = BusinessForm(
+            name: nameController.text,
+            description: [
+              LocalDescription(
+                  locale: LocaleType.he.name,
+                  description: Description(full: detailController.text))
+            ],
+            category: _businessCategory,
+            defaultLocale: LocaleType.he.name,
+            deliveryScope: _businessScope,
+            cityName: _businessCity);
+        if (widget.businessResponse == null) {
+          context.read<BusinessCubit>().createNewBusiness(businessForm);
+        } else {
+          context.read<BusinessCubit>().updateBusinessInfo(
+                businessForm,
+              );
+        }
       }
     }
   }
@@ -151,34 +156,48 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
         ),
       ),
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () => context.router.pop(),
+                icon: const Icon(Icons.chevron_right_outlined, size: 40))
+          ],
+        ),
         body: BlocListener<BusinessCubit, BusinessState>(
           listener: (context, state) {
             state.whenOrNull(
-              successBusinessResponse: (businessResponse) {
-                if (_uploadedImg) {
-                  context.router.push(BusinessRegistrationScreen(
-                      businessResponse: businessResponse));
+              successFiles: (files) {
+                var businessForm = BusinessForm(
+                    name: nameController.text,
+                    description: [
+                      LocalDescription(
+                          locale: LocaleType.he.name,
+                          description: Description(full: detailController.text))
+                    ],
+                    imageUrls: files.urls,
+                    category: _businessCategory,
+                    defaultLocale: LocaleType.he.name,
+                    deliveryScope: _businessScope,
+                    cityName: _businessCity);
+                if (widget.businessResponse == null) {
+                  context.read<BusinessCubit>().createNewBusiness(businessForm);
                 } else {
-                  _marketDetail = businessResponse;
-                  context
-                      .read<BusinessCubit>()
-                      .uploadBusinessImage(file: _businessImage.value!);
-                  _uploadedImg = true;
+                  context.read<BusinessCubit>().updateBusinessInfo(
+                        businessForm,
+                      );
                 }
               },
+              successBusinessResponse: (businessResponse) {
+                context.router.push(BusinessRegistrationScreen(
+                    businessResponse: businessResponse));
+              },
               error: (err) {
-                print(err);
-                if (_uploadedImg) {
-                  context.router.push(BusinessRegistrationScreen(
-                      businessResponse: _marketDetail!));
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('something went wrong'),
-                    ),
-                  );
-                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('something went wrong'),
+                  ),
+                );
               },
             );
           },
@@ -207,6 +226,10 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                             label: LocaleKeys.market_screen_name.tr(),
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(errorText: 'נדרש'),
+                              FormBuilderValidators.minLength(3,
+                                  errorText: 'שם קצר מדי'),
+                              FormBuilderValidators.maxLength(25,
+                                  errorText: 'שם ארוך מדי'),
                             ]),
                           ),
                           const SizedBox(
@@ -409,24 +432,11 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                             label: LocaleKeys.market_screen_detail.tr(),
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(errorText: 'נדרש'),
+                              FormBuilderValidators.minLength(10,
+                                  errorText: 'שם קצר מדי'),
+                              FormBuilderValidators.maxLength(500,
+                                  errorText: 'שם ארוך מדי'),
                             ]),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          ValueListenableBuilder<bool>(
-                            valueListenable: agreementBox,
-                            builder: (context, value, _) {
-                              return CustomCheckbox(
-                                label:
-                                    LocaleKeys.market_screen_agreement_1.tr(),
-                                underlineText:
-                                    LocaleKeys.market_screen_agreement_2.tr(),
-                                value: value,
-                                onTap: () =>
-                                    agreementBox.value = !agreementBox.value,
-                              );
-                            },
                           ),
                           const SizedBox(
                             height: 30,

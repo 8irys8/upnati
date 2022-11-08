@@ -16,6 +16,12 @@ _$_BusinessForm _$$_BusinessFormFromJson(Map<String, dynamic> json) =>
       category: json['category'] as String?,
       defaultLocale: json['defaultLocale'] as String?,
       deliveryScope: json['deliveryScope'] as String?,
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      videoUrls: (json['videoUrls'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_BusinessFormToJson(_$_BusinessForm instance) =>
@@ -26,4 +32,6 @@ Map<String, dynamic> _$$_BusinessFormToJson(_$_BusinessForm instance) =>
       'category': instance.category,
       'defaultLocale': instance.defaultLocale,
       'deliveryScope': instance.deliveryScope,
+      'imageUrls': instance.imageUrls,
+      'videoUrls': instance.videoUrls,
     };

@@ -55,7 +55,7 @@ class CustomDropdown extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.text.withOpacity(0.16),
+                color: AppColors.text.withOpacity(0.40),
                 offset: const Offset(-3, 1),
                 blurRadius: 2,
                 spreadRadius: 1,
@@ -84,7 +84,7 @@ class CustomDropdown extends StatelessWidget {
               hintText: hint,
               hintTextDirection: TextDirection.ltr,
               suffixIcon: const Icon(
-                Icons.check_rounded,
+                Icons.keyboard_arrow_down,
                 color: AppColors.text,
                 size: 18,
               ),

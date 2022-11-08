@@ -16,6 +16,8 @@ class BusinessForm with _$BusinessForm {
     final String? category,
     final String? defaultLocale,
     final String? deliveryScope,
+    final List<String>? imageUrls,
+    final List<String>? videoUrls,
   }) = _BusinessForm;
 
   factory BusinessForm.fromJson(Map<String, dynamic> json) =>

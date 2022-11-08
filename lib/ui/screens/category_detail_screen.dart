@@ -61,7 +61,14 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
   Widget build(BuildContext context) {
     return SideBarWrapper(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () => context.router.pop(),
+                icon: const Icon(Icons.chevron_right_outlined, size: 40))
+          ],
+        ),
         bottomNavigationBar: CustomNavigatorBar(
             // initialIndex: 0,
             ),
@@ -83,7 +90,10 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                 child: BlocListener<BusinessCubit, BusinessState>(
                   listener: (context, state) {
                     state.whenOrNull(
-                      error: (err) => _pageController.appendLastPage([]),
+                      error: (err) {
+                        print(err.runtimeType);
+                        _pageController.appendLastPage([]);
+                      },
                       successPageItemResponse: (itemResponse) {
                         if (itemResponse.empty == true) {
                           _pageController.appendLastPage([]);

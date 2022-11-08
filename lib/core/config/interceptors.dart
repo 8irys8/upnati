@@ -28,6 +28,7 @@ class AppInterceptors {
           } else if (e.type == DioErrorType.other ||
               e.type == DioErrorType.response) {
             if (e.error is SocketException) {
+              print(e);
               handler.reject(DioError(
                   requestOptions: e.requestOptions,
                   error: AppExceptions('No internet connection')));

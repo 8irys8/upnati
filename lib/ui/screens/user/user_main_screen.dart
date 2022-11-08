@@ -296,6 +296,11 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                 padding: const EdgeInsets.only(bottom: 26),
                                 child: FormBuilderTextField(
                                   name: 'name',
+                                  onSubmitted: (value) => _updateUserInfo(
+                                    FirebaseUserInfoPayload(
+                                      displayName: value,
+                                    ),
+                                  ),
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(
                                         errorText: 'נדרש'),
@@ -304,14 +309,8 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                   style: AppTheme.bold(
                                       size: 20, color: AppColors.textGray),
                                   decoration: InputDecoration(
-                                    suffixIcon: GestureDetector(
-                                      onTap: () => _updateUserInfo(
-                                          FirebaseUserInfoPayload(
-                                              displayName:
-                                                  _nameController.text)),
-                                      child: SvgPicture.asset(
-                                        Svgs.icEditRect,
-                                      ),
+                                    suffixIcon: SvgPicture.asset(
+                                      Svgs.icEditRect,
                                     ),
                                     contentPadding: EdgeInsets.zero,
                                     suffixIconConstraints:
@@ -330,6 +329,8 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                 child: FormBuilderTextField(
                                   name: 'email',
                                   controller: _emailController,
+                                  onSubmitted: (value) => _updateUserInfo(
+                                      FirebaseUserInfoPayload(email: value)),
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(
                                         errorText: 'נדרש'),
@@ -339,13 +340,8 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                   style: AppTheme.bold(
                                       size: 20, color: AppColors.textGray),
                                   decoration: InputDecoration(
-                                    suffixIcon: GestureDetector(
-                                      onTap: () => _updateUserInfo(
-                                          FirebaseUserInfoPayload(
-                                              email: _emailController.text)),
-                                      child: SvgPicture.asset(
-                                        Svgs.icEditRect,
-                                      ),
+                                    suffixIcon: SvgPicture.asset(
+                                      Svgs.icEditRect,
                                     ),
                                     contentPadding: EdgeInsets.zero,
                                     suffixIconConstraints:
@@ -363,6 +359,9 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                 padding: const EdgeInsets.only(bottom: 26),
                                 child: FormBuilderTextField(
                                   name: 'phone',
+                                  onSubmitted: (value) => _updateUserInfo(
+                                      FirebaseUserInfoPayload(
+                                          phoneNumber: value)),
                                   controller: _phoneController,
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(
@@ -371,14 +370,8 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                   style: AppTheme.bold(
                                       size: 20, color: AppColors.textGray),
                                   decoration: InputDecoration(
-                                    suffixIcon: GestureDetector(
-                                      onTap: () => _updateUserInfo(
-                                          FirebaseUserInfoPayload(
-                                              phoneNumber:
-                                                  _phoneController.text)),
-                                      child: SvgPicture.asset(
-                                        Svgs.icEditRect,
-                                      ),
+                                    suffixIcon: SvgPicture.asset(
+                                      Svgs.icEditRect,
                                     ),
                                     contentPadding: EdgeInsets.zero,
                                     suffixIconConstraints:
