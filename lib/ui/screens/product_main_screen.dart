@@ -37,11 +37,13 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
   late CarouselController _controller;
   final ValueNotifier<int> _indexNotifier = ValueNotifier(0);
   final ValueNotifier<int> _amountNotifier = ValueNotifier(1);
+  final ValueNotifier<bool> _isFavNotifier = ValueNotifier(false);
 
   @override
   void initState() {
     super.initState();
     _controller = CarouselController();
+    _isFavNotifier.value = widget.item?.favorite ?? false;
   }
 
   void _putToBasket() async {
@@ -58,6 +60,20 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
     }
   }
 
+  void _addToFavorite() async {
+    if (_isFavNotifier.value) {
+      context
+          .read<BusinessCubit>()
+          .deleteFromFavorites(itemId: widget.item?.id ?? '');
+      _isFavNotifier.value = false;
+    } else {
+      context
+          .read<BusinessCubit>()
+          .addToFavorites(itemId: widget.item?.id ?? '');
+      _isFavNotifier.value = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SideBarWrapper(
@@ -68,9 +84,6 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
         body: BlocListener<BusinessCubit, BusinessState>(
           listener: (context, state) {
             state.whenOrNull(
-              successItemResponse: (itemResponse) =>
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('נוסף למועדפים בהצלחה'.tr()))),
               successLink: (link) => Share.share(link.url ?? ''),
               success: () {
                 context.router.push(const PurchaseHistoryScreen());
@@ -408,11 +421,11 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                               child: BlocBuilder<BusinessCubit, BusinessState>(
                                 builder: (context, state) {
                                   return state.maybeWhen(
-                                      loading: () => const Center(
-                                            child: SpinKitCircle(
-                                              color: AppColors.darkBlue,
-                                            ),
-                                          ),
+                                      // loading: () => const Center(
+                                      //       child: SpinKitCircle(
+                                      //         color: AppColors.darkBlue,
+                                      //       ),
+                                      //     ),
                                       orElse: () => GestureDetector(
                                             onTap: () => _putToBasket(),
                                             child: Container(
@@ -469,23 +482,26 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                               onTap: () => snapshot.connectionState ==
                                       ConnectionState.done
                                   ? snapshot.data != null
-                                      ? context
-                                          .read<BusinessCubit>()
-                                          .addToFavorites(
-                                              itemId: widget.item?.id ?? '')
+                                      ? _addToFavorite()
                                       : Utils.showRegisterDialog(context)
                                   : null,
                               child: Container(
                                 width: 25,
                                 height: 25,
                                 decoration: const BoxDecoration(
-                                    color: AppColors.rozeLightbtn,
+                                    color: AppColors.white,
                                     shape: BoxShape.circle),
-                                child: SvgPicture.asset(
-                                  Svgs.icHeartWhite,
-                                  fit: BoxFit.scaleDown,
-                                  height: 25,
-                                ),
+                                child: ValueListenableBuilder<bool>(
+                                    valueListenable: _isFavNotifier,
+                                    builder: (context, value, child) {
+                                      return SvgPicture.asset(
+                                        value
+                                            ? Svgs.icSelectedHeart
+                                            : Svgs.icUnselectedHeart,
+                                        fit: BoxFit.scaleDown,
+                                        height: 25,
+                                      );
+                                    }),
                               ),
                             ),
                             const SizedBox(

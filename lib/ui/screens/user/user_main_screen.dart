@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -11,6 +12,7 @@ import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
@@ -63,6 +65,107 @@ class _ProductMainScreenState extends State<UserMainScreen> {
         curve: Curves.fastLinearToSlowEaseIn);
   }
 
+  Future<void> _showConfirmDialog() async {
+    var result = await showDialog(
+        context: context,
+        barrierColor: Colors.black.withOpacity(.76),
+        builder: (context) => AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(21)),
+              scrollable: true,
+              contentPadding: EdgeInsets.zero,
+              content: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Align(
+                          alignment: Alignment.topRight,
+                          child: Icon(
+                            Icons.close_outlined,
+                            color: Colors.black,
+                            size: 30,
+                          )),
+                    ),
+                  ),
+                  Text(
+                    'מחיקת חשבון',
+                    style: AppTheme.bold(size: 23, color: Colors.black),
+                  ),
+                  const SizedBox(height: 24),
+                  Text(
+                    'העם אתה בטוח שברצונך \n למחוק את החשבון',
+                    textAlign: TextAlign.center,
+                    style: AppTheme.regular(size: 23, color: Colors.black),
+                  ),
+                  const SizedBox(height: 38),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              context.router.pop(true);
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xff00B01D),
+                                  borderRadius: BorderRadius.circular(27),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(.16),
+                                      blurRadius: 3,
+                                      offset: const Offset(0, 1),
+                                    ),
+                                  ]),
+                              child: Center(
+                                child: Text('אני רוצה למחוק',
+                                    style: AppTheme.bold(
+                                        size: 10, color: AppColors.white)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => context.router.pop(),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              decoration: BoxDecoration(
+                                  color: AppColors.red,
+                                  borderRadius: BorderRadius.circular(27),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(.16),
+                                      blurRadius: 3,
+                                      offset: const Offset(0, 1),
+                                    ),
+                                  ]),
+                              child: Center(
+                                child: Text('אני לא רוצה למחוק',
+                                    style: AppTheme.bold(
+                                        size: 10, color: AppColors.white)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
+            ));
+    if (result == true) {
+      if (!mounted) return;
+      context.read<UserCubit>().deleteUser();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -72,6 +175,7 @@ class _ProductMainScreenState extends State<UserMainScreen> {
 
   @override
   void dispose() {
+    _pageController.dispose();
     super.dispose();
   }
 
@@ -125,7 +229,11 @@ class _ProductMainScreenState extends State<UserMainScreen> {
     return SideBarWrapper(
       child: BlocListener<UserCubit, UserState>(
         listener: (context, state) {
-          state.whenOrNull(errorUserState: (err) {
+          state.whenOrNull(successUserState: () {
+            FirebaseAuth.instance.signOut();
+            context.router.pushAndPopUntil(const SplashScreen(),
+                predicate: (route) => false);
+          }, errorUserState: (err) {
             return ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(err.toString())));
           }, successUserStateResponse: (response) {
@@ -260,8 +368,14 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                     ],
                   ),
                 ),
-                Builder(builder: (context) {
-                  return ExpandablePageView(
+                BlocListener<BusinessCubit, BusinessState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      successPageItemResponse: (pageItemResponse) =>
+                          setState(() {}),
+                    );
+                  },
+                  child: ExpandablePageView(
                     onPageChanged: (index) {
                       if (!mounted) return;
                       setState(() {
@@ -380,6 +494,29 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                                     // hintText: '0520000000',
                                     fillColor: Colors.transparent,
                                   ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  FirebaseAuth.instance.signOut();
+                                  context.router.pushAndPopUntil(
+                                      const SplashScreen(),
+                                      predicate: (route) => false);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 27),
+                                  child: Text('יציאה מהחשבון',
+                                      style: AppTheme.regular(
+                                          size: 17, color: AppColors.textGray)),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () => _showConfirmDialog(),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 24),
+                                  child: Text('מחק חשבון',
+                                      style: AppTheme.regular(
+                                          size: 17, color: AppColors.textGray)),
                                 ),
                               ),
                               // Text(LocaleKeys.user_info_address.tr(),
@@ -635,8 +772,8 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                         ),
                       ),
                     ],
-                  );
-                }),
+                  ),
+                ),
                 const SizedBox(
                   height: 24,
                 ),
@@ -768,10 +905,12 @@ class _FavoritesGridState extends State<FavoritesGrid> {
         builderDelegate: PagedChildBuilderDelegate<ItemResponse>(
           itemBuilder: (context, item, index) => AddEmptyProductContainer(
             item: item,
+            key: Key(item.id.toString()),
             type: '1',
             title: item.name ?? '',
             desc: item.description?.full ?? '',
             price: item.price?.toStringAsFixed(2) ?? '',
+            onNeedRefresh: () => _pageController.refresh(),
             image:
                 item.imageUrls?.isEmpty == true ? null : item.imageUrls?.first,
           ),

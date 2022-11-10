@@ -29,7 +29,14 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
   Widget build(BuildContext context) {
     return SideBarWrapper(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () => context.router.pop(),
+                icon: const Icon(Icons.chevron_right_outlined, size: 40))
+          ],
+        ),
         bottomNavigationBar: const CustomNavigatorBar(),
         body: SafeArea(
           child: SingleChildScrollView(

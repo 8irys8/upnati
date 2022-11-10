@@ -67,66 +67,86 @@ class _SideBarState extends State<SideBar> {
                   children: [
                     BlocBuilder<UserCubit, UserState>(
                       builder: (context, state) {
-                        return state.maybeWhen(
-                            successUserStateResponse: (response) {
-                              return response.businessId == null
-                                  ? Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 30, bottom: 22),
-                                      child: response.images?.isEmpty == true
-                                          ? Container(
-                                              width: 100,
-                                              height: 100,
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: AppColors.darkBlueLight,
-                                              ),
-                                              child: Image.asset(
-                                                Images.emptyAvatar,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            )
-                                          : ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(150),
-                                              child: Image.network(
-                                                response.images?.first ?? '',
-                                                height: 100,
+                        return AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 300),
+                          child: state.maybeWhen(
+                              successUserStateResponse: (response) {
+                                return response.businessId == null
+                                    ? Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 30, bottom: 22),
+                                        child: response.images?.isEmpty == true
+                                            ? Container(
                                                 width: 100,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ))
-                                  : BlocBuilder<BusinessCubit, BusinessState>(
-                                      builder: (context, state) {
-                                      return state.maybeWhen(
-                                        successBusinessResponse:
-                                            (businessResponse) => Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 30, bottom: 22),
-                                                child: businessResponse
-                                                            .imageUrls
-                                                            ?.isEmpty ==
-                                                        true
-                                                    ? const SizedBox()
-                                                    : ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(150),
-                                                        child: Image.network(
-                                                          businessResponse
-                                                                  .imageUrls
-                                                                  ?.first ??
-                                                              '',
-                                                          height: 100,
-                                                          width: 100,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      )),
-                                        orElse: () => const SizedBox(),
-                                      );
-                                    });
-                            },
-                            orElse: () => const SizedBox());
+                                                height: 100,
+                                                decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color:
+                                                      AppColors.darkBlueLight,
+                                                ),
+                                                child: Image.asset(
+                                                  Images.emptyAvatar,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            : ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(150),
+                                                child: Image.network(
+                                                  response.images?.first ?? '',
+                                                  height: 100,
+                                                  width: 100,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ))
+                                    : BlocBuilder<BusinessCubit, BusinessState>(
+                                        builder: (context, state) {
+                                        return AnimatedSwitcher(
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          child: state.maybeWhen(
+                                            successBusinessResponse:
+                                                (businessResponse) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 30,
+                                                            bottom: 22),
+                                                    child: businessResponse
+                                                                .imageUrls
+                                                                ?.isEmpty ==
+                                                            true
+                                                        ? const SizedBox()
+                                                        : ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        150),
+                                                            child: SizedBox(
+                                                              height: 100,
+                                                              child:
+                                                                  Image.network(
+                                                                businessResponse
+                                                                        .imageUrls
+                                                                        ?.first ??
+                                                                    '',
+                                                                height: 100,
+                                                                width: 100,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          )),
+                                            orElse: () => const SizedBox(
+                                              height: 100,
+                                            ),
+                                          ),
+                                        );
+                                      });
+                              },
+                              orElse: () => const SizedBox(
+                                    height: 100,
+                                  )),
+                        );
                       },
                     ),
                     Divider(
@@ -200,10 +220,14 @@ class _SideBarState extends State<SideBar> {
                                                                     .asset(Images
                                                                         .icStoreRoze))
                                                           ])),
-                                          orElse: () => const SizedBox());
+                                          orElse: () => const SizedBox(
+                                                height: 80,
+                                              ));
                                     });
                             },
-                            orElse: () => const SizedBox());
+                            orElse: () => const SizedBox(
+                                  height: 80,
+                                ));
                       },
                     ),
                     Divider(

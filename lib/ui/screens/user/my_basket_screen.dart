@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,6 +19,12 @@ class _MyBasketScreenState extends State<MyBasketScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () => context.router.pop(),
+                icon: const Icon(Icons.chevron_right_outlined, size: 40))
+          ],
           title: Text(
             LocaleKeys.basket_info_my_basket.tr(),
             style: AppTheme.bold(size: 18, color: Colors.black),

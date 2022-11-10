@@ -7,6 +7,7 @@ part 'search_response.freezed.dart';
 
 @freezed
 class SearchResponse with _$SearchResponse {
+  @JsonSerializable(explicitToJson: true)
   const factory SearchResponse({
     ResponseMetadata? sdkResponseMetadata,
     SdkHttpMetadata? sdkHttpMetadata,

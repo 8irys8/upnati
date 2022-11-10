@@ -134,22 +134,50 @@ class _ShopHomeScreenState extends State<ShopHomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 35.0),
                 child: Row(
                   children: [
-                    widget.business.imageUrls?.isNotEmpty == true
-                        ? Image.network(widget.business.imageUrls?.first ?? '',
-                            height: 80, width: 80)
-                        : Container(
-                            height: 80,
-                            width: 80,
-                            decoration: BoxDecoration(
-                                color: const Color(0xffC7C7C7),
-                                border: Border.all(
-                                    color: AppColors.white.withOpacity(.86)),
-                                borderRadius: BorderRadius.circular(150)),
-                            child: SvgPicture.asset(
-                              Svgs.icBusinessEmpty,
-                              height: 30,
-                              fit: BoxFit.scaleDown,
-                            )),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        widget.business.imageUrls?.isNotEmpty == true
+                            ? Image.network(
+                                widget.business.imageUrls?.first ?? '',
+                                height: 80,
+                                width: 80,
+                                fit: BoxFit.cover,
+                              )
+                            : Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xffC7C7C7),
+                                    border: Border.all(
+                                        color:
+                                            AppColors.white.withOpacity(.86)),
+                                    borderRadius: BorderRadius.circular(150)),
+                                child: SvgPicture.asset(
+                                  Svgs.icBusinessEmpty,
+                                  height: 30,
+                                  fit: BoxFit.scaleDown,
+                                )),
+                        const SizedBox(height: 4),
+                        BlocBuilder<UserCubit, UserState>(
+                          builder: (context, state) {
+                            return state.maybeWhen(
+                                successUserStateResponse: (response) =>
+                                    response.businessId == widget.business.id
+                                        ? GestureDetector(
+                                            onTap: () => context.router.push(
+                                                MarketDetailScreen(
+                                                    businessResponse:
+                                                        widget.business)),
+                                            child: SvgPicture.asset(
+                                                Svgs.icEditGray),
+                                          )
+                                        : const SizedBox(),
+                                orElse: () => const SizedBox());
+                          },
+                        )
+                      ],
+                    ),
                     const SizedBox(
                       width: 10,
                     ),
@@ -167,24 +195,24 @@ class _ShopHomeScreenState extends State<ShopHomeScreen> {
                               const SizedBox(
                                 width: 24,
                               ),
-                              BlocBuilder<UserCubit, UserState>(
-                                builder: (context, state) {
-                                  return state.maybeWhen(
-                                      successUserStateResponse: (response) =>
-                                          response.businessId ==
-                                                  widget.business.id
-                                              ? GestureDetector(
-                                                  onTap: () => context.router
-                                                      .push(MarketDetailScreen(
-                                                          businessResponse:
-                                                              widget.business)),
-                                                  child: SvgPicture.asset(
-                                                      Svgs.icEditGray),
-                                                )
-                                              : const SizedBox(),
-                                      orElse: () => const SizedBox());
-                                },
-                              ),
+                              // BlocBuilder<UserCubit, UserState>(
+                              //   builder: (context, state) {
+                              //     return state.maybeWhen(
+                              //         successUserStateResponse: (response) =>
+                              //             response.businessId ==
+                              //                     widget.business.id
+                              //                 ? GestureDetector(
+                              //                     onTap: () => context.router
+                              //                         .push(MarketDetailScreen(
+                              //                             businessResponse:
+                              //                                 widget.business)),
+                              //                     child: SvgPicture.asset(
+                              //                         Svgs.icEditGray),
+                              //                   )
+                              //                 : const SizedBox(),
+                              //         orElse: () => const SizedBox());
+                              //   },
+                              // ),
                             ],
                           ),
                           const SizedBox(
@@ -229,38 +257,38 @@ class _ShopHomeScreenState extends State<ShopHomeScreen> {
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.rozeLightbtn,
-                                  borderRadius: BorderRadius.circular(12),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.16),
-                                      blurRadius: 6,
-                                      offset: const Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 7),
-                                  child: Row(children: [
-                                    SvgPicture.asset(Svgs.icHeartWhite),
-                                    const SizedBox(
-                                      width: 3,
-                                    ),
-                                    Text(
-                                        LocaleKeys
-                                            .business_register_addToFavorites
-                                            .tr(),
-                                        style: AppTheme.regular(
-                                            size: 10, color: AppColors.white))
-                                  ]),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 13,
-                              ),
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //     color: AppColors.rozeLightbtn,
+                              //     borderRadius: BorderRadius.circular(12),
+                              //     boxShadow: [
+                              //       BoxShadow(
+                              //         color: Colors.black.withOpacity(0.16),
+                              //         blurRadius: 6,
+                              //         offset: const Offset(0, 3),
+                              //       ),
+                              //     ],
+                              //   ),
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.symmetric(
+                              //         horizontal: 8, vertical: 7),
+                              //     child: Row(children: [
+                              //       SvgPicture.asset(Svgs.icHeartWhite),
+                              //       const SizedBox(
+                              //         width: 3,
+                              //       ),
+                              //       Text(
+                              //           LocaleKeys
+                              //               .business_register_addToFavorites
+                              //               .tr(),
+                              //           style: AppTheme.regular(
+                              //               size: 10, color: AppColors.white))
+                              //     ]),
+                              //   ),
+                              // ),
+                              // const SizedBox(
+                              //   width: 13,
+                              // ),
                               Container(
                                 decoration: BoxDecoration(
                                   color: AppColors.darkBlue,

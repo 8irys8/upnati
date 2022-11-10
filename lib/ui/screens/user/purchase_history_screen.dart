@@ -64,6 +64,12 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
     return SideBarWrapper(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () => context.router.pop(),
+                icon: const Icon(Icons.chevron_right_outlined, size: 40))
+          ],
           title: Column(
             children: [
               Image.asset(
@@ -142,185 +148,210 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                         },
                       );
                     },
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 26),
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                CustomSelector(
-                                    value: selectedItem,
-                                    onTap: () {
-                                      setState(() {
-                                        selectedItem = !selectedItem;
-                                      });
+                    child: _items.isEmpty == true
+                        ? Center(
+                            child: Text('אין פריטים בסל ',
+                                style: AppTheme.regular(size: 28)),
+                          )
+                        : SingleChildScrollView(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 26),
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 6,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      CustomSelector(
+                                          value: selectedItem,
+                                          onTap: () {
+                                            setState(() {
+                                              selectedItem = !selectedItem;
+                                            });
+                                            WidgetsBinding.instance
+                                                .addPostFrameCallback((_) {
+                                              _amountNotifier.value = 0;
+                                              _deliveryNotifier.value = 0;
+                                              _totalSumNotifier.value = 0;
+                                              _pagingController?.refresh();
+                                            });
+                                          }),
+                                      const SizedBox(
+                                        width: 6,
+                                      ),
+                                      Text(
+                                        LocaleKeys.basket_info_all.tr(),
+                                        style: AppTheme.semiLight(size: 12),
+                                      ),
+                                    ],
+                                  ),
+                                  BasketList(
+                                    isAllSelected: selectedItem,
+                                    onInit: (value) =>
+                                        _pagingController = value,
+                                    onAmountChange: (value) {
                                       WidgetsBinding.instance
                                           .addPostFrameCallback((_) {
-                                        _amountNotifier.value = 0;
-                                        _deliveryNotifier.value = 0;
-                                        _totalSumNotifier.value = 0;
-                                        _pagingController?.refresh();
+                                        _amountNotifier.value =
+                                            _amountNotifier.value + value;
+                                        _totalSumNotifier.value =
+                                            _amountNotifier.value +
+                                                _deliveryNotifier.value;
                                       });
-                                    }),
-                                const SizedBox(
-                                  width: 6,
-                                ),
-                                Text(
-                                  LocaleKeys.basket_info_all.tr(),
-                                  style: AppTheme.semiLight(size: 12),
-                                ),
-                              ],
-                            ),
-                            BasketList(
-                              isAllSelected: selectedItem,
-                              onInit: (value) => _pagingController = value,
-                              onAmountChange: (value) {
-                                WidgetsBinding.instance
-                                    .addPostFrameCallback((_) {
-                                  _amountNotifier.value =
-                                      _amountNotifier.value + value;
-                                  _totalSumNotifier.value =
-                                      _amountNotifier.value +
-                                          _deliveryNotifier.value;
-                                });
-                              },
-                              onDeliveryChange: (value) {
-                                WidgetsBinding.instance
-                                    .addPostFrameCallback((_) {
-                                  _deliveryNotifier.value =
-                                      _deliveryNotifier.value + value;
-                                  _totalSumNotifier.value =
-                                      _amountNotifier.value +
-                                          _deliveryNotifier.value;
-                                });
-                              },
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 100)
-                                      .copyWith(bottom: 10, top: 20),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        LocaleKeys.basket_info_for_payment.tr(),
-                                        style: AppTheme.semiLight(size: 12),
-                                      ),
-                                      ValueListenableBuilder<double>(
-                                          valueListenable: _amountNotifier,
-                                          builder: (context, value, child) {
-                                            return Text.rich(TextSpan(
-                                              text: _items.isEmpty
-                                                  ? '0'
-                                                  : value.toStringAsFixed(2),
-                                              // '${_items.map((e) => (e.amount ?? 0) * (e.price ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
-                                              style: AppTheme.bold(size: 18),
-                                              children: [
-                                                TextSpan(
-                                                  text: LocaleKeys
-                                                      .basket_info_nis
-                                                      .tr(args: ['']),
-                                                  style:
-                                                      AppTheme.bold(size: 10),
-                                                ),
-                                              ],
-                                            ));
-                                          }),
-                                    ],
+                                    },
+                                    onDeliveryChange: (value) {
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((_) {
+                                        _deliveryNotifier.value =
+                                            _deliveryNotifier.value + value;
+                                        _totalSumNotifier.value =
+                                            _amountNotifier.value +
+                                                _deliveryNotifier.value;
+                                      });
+                                    },
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        LocaleKeys.buy_details_shipping.tr(),
-                                        style: AppTheme.semiLight(size: 12),
-                                      ),
-                                      ValueListenableBuilder<double>(
-                                          valueListenable: _deliveryNotifier,
-                                          builder: (context, value, child) {
-                                            return Text.rich(TextSpan(
-                                              text: _items.isEmpty
-                                                  ? '0'
-                                                  : value.toStringAsFixed(2),
-                                              // '${_items.map((e) => (e.deliveryPrice ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
-                                              style: AppTheme.bold(size: 18),
-                                              children: [
-                                                TextSpan(
-                                                  text: LocaleKeys
-                                                      .basket_info_nis
-                                                      .tr(args: ['']),
-                                                  style:
-                                                      AppTheme.bold(size: 10),
-                                                ),
-                                              ],
-                                            ));
-                                          }),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                            horizontal: 100)
+                                        .copyWith(bottom: 10, top: 20),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              LocaleKeys.basket_info_for_payment
+                                                  .tr(),
+                                              style:
+                                                  AppTheme.semiLight(size: 12),
+                                            ),
+                                            ValueListenableBuilder<double>(
+                                                valueListenable:
+                                                    _amountNotifier,
+                                                builder:
+                                                    (context, value, child) {
+                                                  return Text.rich(TextSpan(
+                                                    text: _items.isEmpty
+                                                        ? '0'
+                                                        : value
+                                                            .toStringAsFixed(2),
+                                                    // '${_items.map((e) => (e.amount ?? 0) * (e.price ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
+                                                    style:
+                                                        AppTheme.bold(size: 18),
+                                                    children: [
+                                                      TextSpan(
+                                                        text: LocaleKeys
+                                                            .basket_info_nis
+                                                            .tr(args: ['']),
+                                                        style: AppTheme.bold(
+                                                            size: 10),
+                                                      ),
+                                                    ],
+                                                  ));
+                                                }),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              LocaleKeys.buy_details_shipping
+                                                  .tr(),
+                                              style:
+                                                  AppTheme.semiLight(size: 12),
+                                            ),
+                                            ValueListenableBuilder<double>(
+                                                valueListenable:
+                                                    _deliveryNotifier,
+                                                builder:
+                                                    (context, value, child) {
+                                                  return Text.rich(TextSpan(
+                                                    text: _items.isEmpty
+                                                        ? '0'
+                                                        : value
+                                                            .toStringAsFixed(2),
+                                                    // '${_items.map((e) => (e.deliveryPrice ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
+                                                    style:
+                                                        AppTheme.bold(size: 18),
+                                                    children: [
+                                                      TextSpan(
+                                                        text: LocaleKeys
+                                                            .basket_info_nis
+                                                            .tr(args: ['']),
+                                                        style: AppTheme.bold(
+                                                            size: 10),
+                                                      ),
+                                                    ],
+                                                  ));
+                                                }),
+                                          ],
+                                        ),
+                                        const Divider(
+                                          height: 5,
+                                          color: AppColors.text,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              LocaleKeys.buy_details_total.tr(),
+                                              style:
+                                                  AppTheme.semiLight(size: 12),
+                                            ),
+                                            ValueListenableBuilder<double>(
+                                                valueListenable:
+                                                    _totalSumNotifier,
+                                                builder:
+                                                    (context, value, child) {
+                                                  return Text.rich(TextSpan(
+                                                    text: _items.isEmpty
+                                                        ? '0'
+                                                        : value
+                                                            .toStringAsFixed(2),
+                                                    // '${_items.map((e) => (e.amount ?? 0) * (e.price ?? 0) + (e.deliveryPrice ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
+                                                    style:
+                                                        AppTheme.bold(size: 18),
+                                                    children: [
+                                                      TextSpan(
+                                                        text: LocaleKeys
+                                                            .basket_info_nis
+                                                            .tr(args: ['']),
+                                                        style: AppTheme.bold(
+                                                            size: 10),
+                                                      ),
+                                                    ],
+                                                  ));
+                                                }),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                  const Divider(
-                                    height: 5,
-                                    color: AppColors.text,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        LocaleKeys.buy_details_total.tr(),
-                                        style: AppTheme.semiLight(size: 12),
-                                      ),
-                                      ValueListenableBuilder<double>(
-                                          valueListenable: _totalSumNotifier,
-                                          builder: (context, value, child) {
-                                            return Text.rich(TextSpan(
-                                              text: _items.isEmpty
-                                                  ? '0'
-                                                  : value.toStringAsFixed(2),
-                                              // '${_items.map((e) => (e.amount ?? 0) * (e.price ?? 0) + (e.deliveryPrice ?? 0)).reduce((value, element) => value + element).toStringAsFixed(2)} ',
-                                              style: AppTheme.bold(size: 18),
-                                              children: [
-                                                TextSpan(
-                                                  text: LocaleKeys
-                                                      .basket_info_nis
-                                                      .tr(args: ['']),
-                                                  style:
-                                                      AppTheme.bold(size: 10),
-                                                ),
-                                              ],
-                                            ));
-                                          }),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: CustomButton(
+                                      title: LocaleKeys.basket_info_for_payment
+                                          .tr(),
+                                      borderRadius: 25,
+                                      color: AppColors.darkBlueLight,
+                                      innerShadow: true,
+                                      onPressed: () => context.router
+                                          .push(const BuyDetailsScreen()),
+                                    ),
                                   )
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: CustomButton(
-                                title: LocaleKeys.basket_info_for_payment.tr(),
-                                borderRadius: 25,
-                                color: AppColors.darkBlueLight,
-                                innerShadow: true,
-                                onPressed: () => context.router
-                                    .push(const BuyDetailsScreen()),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                          ),
                   ),
                 ],
               ),

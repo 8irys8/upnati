@@ -26,6 +26,7 @@ class _ExpandablePageViewState extends State<ExpandablePageView>
     super.initState();
     _pageController = widget.controller ?? PageController();
     _pageController.addListener(() {
+      if (!mounted) return;
       final _newPage = _pageController.page?.round();
       if (_currentPage != _newPage) {
         setState(() => _currentPage = _newPage ?? 0);
@@ -35,7 +36,6 @@ class _ExpandablePageViewState extends State<ExpandablePageView>
 
   @override
   void dispose() {
-    _pageController.dispose();
     super.dispose();
   }
 
