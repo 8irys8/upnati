@@ -3,7 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:upnati/resources/resource.dart';
 
-class CustomInput extends StatelessWidget {
+class CustomInput extends StatefulWidget {
   final String? label;
   final String? hint;
   final bool? obscure;
@@ -41,23 +41,30 @@ class CustomInput extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<CustomInput> createState() => _CustomInputState();
+}
+
+class _CustomInputState extends State<CustomInput> {
+  String? errorText;
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (label != null)
+        if (widget.label != null)
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              label == null
+              widget.label == null
                   ? const SizedBox()
-                  : leftAlignment == true
+                  : widget.leftAlignment == true
                       ? Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            label!,
-                            style: labelStyle ??
+                            widget.label!,
+                            style: widget.labelStyle ??
                                 AppTheme.regular(
                                   size: 12,
                                   color: AppColors.textGray,
@@ -67,8 +74,8 @@ class CustomInput extends StatelessWidget {
                       : Padding(
                           padding: const EdgeInsets.only(right: 8.0),
                           child: Text(
-                            label!,
-                            style: labelStyle ??
+                            widget.label!,
+                            style: widget.labelStyle ??
                                 AppTheme.regular(
                                   size: 12,
                                   color: AppColors.textGray,
@@ -80,58 +87,86 @@ class CustomInput extends StatelessWidget {
               ),
             ],
           ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderRadius ?? 22),
-            color: color ?? AppColors.white,
-            border: Border.all(
-              width: 0.5,
-              color: const Color(0xFF707070).withOpacity(0.36),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.text.withOpacity(shadowColor ?? .40),
-                offset: const Offset(-3, 1),
-                blurRadius: 3,
-                blurStyle: BlurStyle.inner,
-                spreadRadius: spreadRadius ?? 1,
-                inset: true,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? 22),
+                color: widget.color ?? AppColors.white,
+                border: Border.all(
+                  width: 0.5,
+                  color: const Color(0xFF707070).withOpacity(0.36),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color:
+                        AppColors.text.withOpacity(widget.shadowColor ?? .40),
+                    offset: const Offset(-3, 1),
+                    blurRadius: 3,
+                    blurStyle: BlurStyle.inner,
+                    spreadRadius: widget.spreadRadius ?? 1,
+                    inset: true,
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: FormBuilderTextField(
-            name: key.toString(),
-            validator: validator,
-            enabled: enabled,
-            keyboardType: inputType,
-            textDirection: textDirection ?? TextDirection.rtl,
-            minLines: isMultiline == true ? 4 : 1,
-            maxLines: isMultiline == true ? 10 : 1,
-            textAlignVertical:
-                isMultiline == true ? TextAlignVertical.top : null,
-            controller: controller,
-            obscureText: obscure ?? false,
-            obscuringCharacter: '*',
-            style: AppTheme.semi(
-              size: 18,
-              color: AppColors.textGray,
+              child: FormBuilderTextField(
+                name: widget.key.toString(),
+                validator: (value) {
+                  setState(() {
+                    errorText = widget.validator?.call(value);
+                  });
+
+                  return errorText;
+                },
+                enabled: widget.enabled,
+                keyboardType: widget.inputType,
+                textDirection: widget.textDirection ?? TextDirection.rtl,
+                minLines: widget.isMultiline == true ? 4 : 1,
+                maxLines: widget.isMultiline == true ? 10 : 1,
+                textAlignVertical:
+                    widget.isMultiline == true ? TextAlignVertical.top : null,
+                controller: widget.controller,
+                obscureText: widget.obscure ?? false,
+                obscuringCharacter: '*',
+                style: AppTheme.semi(
+                  size: 18,
+                  color: AppColors.textGray,
+                ),
+                decoration: InputDecoration(
+                  filled: true,
+                  hintText: widget.hint,
+                  hintStyle: widget.hintStyle,
+                  errorText: errorText == null ? null : '',
+                  errorStyle: const TextStyle(
+                    height: 0,
+                    color: Colors.transparent,
+                    fontSize: 0,
+                  ),
+                  border:
+                      const UnderlineInputBorder(borderSide: BorderSide.none),
+                  disabledBorder:
+                      const UnderlineInputBorder(borderSide: BorderSide.none),
+                  enabledBorder:
+                      const UnderlineInputBorder(borderSide: BorderSide.none),
+                  focusedBorder:
+                      const UnderlineInputBorder(borderSide: BorderSide.none),
+                  errorBorder:
+                      const UnderlineInputBorder(borderSide: BorderSide.none),
+                  fillColor: Colors.transparent,
+                ),
+              ),
             ),
-            decoration: InputDecoration(
-              filled: true,
-              hintText: hint,
-              hintStyle: hintStyle,
-              border: const UnderlineInputBorder(borderSide: BorderSide.none),
-              disabledBorder:
-                  const UnderlineInputBorder(borderSide: BorderSide.none),
-              enabledBorder:
-                  const UnderlineInputBorder(borderSide: BorderSide.none),
-              focusedBorder:
-                  const UnderlineInputBorder(borderSide: BorderSide.none),
-              errorBorder:
-                  const UnderlineInputBorder(borderSide: BorderSide.none),
-              fillColor: Colors.transparent,
-            ),
-          ),
+            errorText == null
+                ? const SizedBox()
+                : Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      errorText ?? '',
+                      style: AppTheme.medium(size: 12, color: AppColors.red),
+                    ),
+                  ),
+          ],
         ),
       ],
     );

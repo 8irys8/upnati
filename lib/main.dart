@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
-      title: 'Upnati',
+      title: 'UPstore',
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
