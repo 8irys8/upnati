@@ -133,6 +133,9 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
             .read<BusinessCubit>()
             .updateItem(newItem.copyWith(id: widget.item?.id));
       }
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('בבקשה מלא את כל השדות')));
     }
   }
 
@@ -249,6 +252,12 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () => context.router.pop(),
+                icon: const Icon(Icons.chevron_right_outlined, size: 40))
+          ],
           title: Text(
             LocaleKeys.add_product_title.tr(),
             style: AppTheme.regular(color: AppColors.text),

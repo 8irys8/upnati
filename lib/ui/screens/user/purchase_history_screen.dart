@@ -37,6 +37,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   ValueNotifier<double> _deliveryNotifier = ValueNotifier(0);
   ValueNotifier<double> _totalSumNotifier = ValueNotifier(0);
   PagingController? _pagingController;
+  bool? _isFetched = false;
 
   void _changeIndex(int index) {
     setState(() {
@@ -143,12 +144,13 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                           _deliveryNotifier.value = 0;
                           _totalSumNotifier.value = 0;
                           setState(() {
-                            _items = basketResponse.items?.content ?? [];
+                            _items = [...basketResponse.items?.content ?? []];
+                            _isFetched = true;
                           });
                         },
                       );
                     },
-                    child: _items.isEmpty == true
+                    child: _items.isEmpty && _isFetched == true
                         ? Center(
                             child: Text('אין פריטים בסל ',
                                 style: AppTheme.regular(size: 28)),
@@ -335,19 +337,22 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
-                                    child: CustomButton(
-                                      title: LocaleKeys.basket_info_for_payment
-                                          .tr(),
-                                      borderRadius: 25,
-                                      color: AppColors.darkBlueLight,
-                                      innerShadow: true,
-                                      onPressed: () => context.router
-                                          .push(const BuyDetailsScreen()),
-                                    ),
-                                  )
+                                  _isFetched == false
+                                      ? const SizedBox()
+                                      : Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: CustomButton(
+                                            title: LocaleKeys
+                                                .basket_info_for_payment
+                                                .tr(),
+                                            borderRadius: 25,
+                                            color: AppColors.darkBlueLight,
+                                            innerShadow: true,
+                                            onPressed: () => context.router
+                                                .push(const BuyDetailsScreen()),
+                                          ),
+                                        )
                                 ],
                               ),
                             ),

@@ -17,11 +17,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      // if (FirebaseAuth.instance.currentUser != null) {
-      //   context.router.replace(const MarketPlaceScreen());
-      // } else {
-      context.router.replace(const LoginScreen());
-      // }
+      if (FirebaseAuth.instance.currentUser != null) {
+        context.router.replace(const MarketPlaceScreen());
+      } else {
+        context.router.replace(const LoginScreen());
+      }
     });
   }
 

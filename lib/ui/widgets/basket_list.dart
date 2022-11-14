@@ -91,8 +91,8 @@ class _BasketListState extends State<BasketList> {
         pagingController: _pageController,
         // scrollDirection: Axis.horizontal,
         builderDelegate: PagedChildBuilderDelegate<ItemBasketResponse>(
-          noItemsFoundIndicatorBuilder: (context) => const Center(
-            child: Text('No items found'),
+          noItemsFoundIndicatorBuilder: (context) => Center(
+            child: Text('אין פריטים בסל ', style: AppTheme.regular(size: 28)),
           ),
           itemBuilder: (context, item, index) => BasketItem(
             onAmountChange: widget.onAmountChange,

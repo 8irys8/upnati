@@ -122,6 +122,10 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
               );
         }
       }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: AppColors.roze.withOpacity(0.9),
+          content: const Text('בבקשה מלא את כל השדות')));
     }
   }
 
