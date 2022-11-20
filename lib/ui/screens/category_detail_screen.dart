@@ -100,9 +100,10 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                         } else {
                           if (itemResponse.last == true) {
                             _pageController
-                                .appendLastPage(itemResponse.content);
+                                .appendLastPage(itemResponse.content ?? []);
                           } else {
-                            _pageController.appendPage(itemResponse.content,
+                            _pageController.appendPage(
+                                itemResponse.content ?? [],
                                 (itemResponse.pageable?.pageNumber ?? 0) + 1);
                           }
                         }

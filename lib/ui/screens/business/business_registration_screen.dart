@@ -81,7 +81,7 @@ class _BusinessRegistrationScreenState
             ),
             successPageItemResponse: (pageItemResponse) {
               setState(() {
-                for (var element in pageItemResponse.content) {
+                for (var element in pageItemResponse.content ?? []) {
                   if (!_items.contains(element)) {
                     _items.add(element);
                   }

@@ -50,9 +50,10 @@ class _ListOfShopsState extends State<ListOfShops> {
               _pageController.appendLastPage([]);
             } else {
               if (pageBusinessResponse.last == true) {
-                _pageController.appendLastPage(pageBusinessResponse.content);
+                _pageController
+                    .appendLastPage(pageBusinessResponse.content ?? []);
               } else {
-                _pageController.appendPage(pageBusinessResponse.content,
+                _pageController.appendPage(pageBusinessResponse.content ?? [],
                     (pageBusinessResponse.pageable?.pageNumber ?? 0) + 1);
               }
             }
@@ -153,9 +154,10 @@ class _GridOfShopsState extends State<GridOfShops> {
               _pageController.appendLastPage([]);
             } else {
               if (pageBusinessResponse.last == true) {
-                _pageController.appendLastPage(pageBusinessResponse.content);
+                _pageController
+                    .appendLastPage(pageBusinessResponse.content ?? []);
               } else {
-                _pageController.appendPage(pageBusinessResponse.content,
+                _pageController.appendPage(pageBusinessResponse.content ?? [],
                     (pageBusinessResponse.pageable?.pageNumber ?? 0) + 1);
               }
             }

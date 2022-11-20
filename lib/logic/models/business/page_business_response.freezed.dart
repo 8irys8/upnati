@@ -29,7 +29,7 @@ mixin _$PageBusinessResponse {
   int? get numberOfElements => throw _privateConstructorUsedError;
   Pageable? get pageable => throw _privateConstructorUsedError;
   int? get size => throw _privateConstructorUsedError;
-  List<BusinessResponse> get content => throw _privateConstructorUsedError;
+  List<BusinessResponse>? get content => throw _privateConstructorUsedError;
   bool? get empty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $PageBusinessResponseCopyWith<$Res> {
       int? numberOfElements,
       Pageable? pageable,
       int? size,
-      List<BusinessResponse> content,
+      List<BusinessResponse>? content,
       bool? empty});
 
   $SortCopyWith<$Res>? get sort;
@@ -123,7 +123,7 @@ class _$PageBusinessResponseCopyWithImpl<$Res>
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as List<BusinessResponse>,
+              as List<BusinessResponse>?,
       empty: empty == freezed
           ? _value.empty
           : empty // ignore: cast_nullable_to_non_nullable
@@ -171,7 +171,7 @@ abstract class _$$_PageBusinessResponseCopyWith<$Res>
       int? numberOfElements,
       Pageable? pageable,
       int? size,
-      List<BusinessResponse> content,
+      List<BusinessResponse>? content,
       bool? empty});
 
   @override
@@ -245,7 +245,7 @@ class __$$_PageBusinessResponseCopyWithImpl<$Res>
       content: content == freezed
           ? _value._content
           : content // ignore: cast_nullable_to_non_nullable
-              as List<BusinessResponse>,
+              as List<BusinessResponse>?,
       empty: empty == freezed
           ? _value.empty
           : empty // ignore: cast_nullable_to_non_nullable
@@ -267,7 +267,7 @@ class _$_PageBusinessResponse implements _PageBusinessResponse {
       this.numberOfElements,
       this.pageable,
       this.size,
-      required final List<BusinessResponse> content,
+      final List<BusinessResponse>? content,
       this.empty})
       : _content = content;
 
@@ -292,11 +292,13 @@ class _$_PageBusinessResponse implements _PageBusinessResponse {
   final Pageable? pageable;
   @override
   final int? size;
-  final List<BusinessResponse> _content;
+  final List<BusinessResponse>? _content;
   @override
-  List<BusinessResponse> get content {
+  List<BusinessResponse>? get content {
+    final value = _content;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_content);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -369,7 +371,7 @@ abstract class _PageBusinessResponse implements PageBusinessResponse {
       final int? numberOfElements,
       final Pageable? pageable,
       final int? size,
-      required final List<BusinessResponse> content,
+      final List<BusinessResponse>? content,
       final bool? empty}) = _$_PageBusinessResponse;
 
   factory _PageBusinessResponse.fromJson(Map<String, dynamic> json) =
@@ -394,7 +396,7 @@ abstract class _PageBusinessResponse implements PageBusinessResponse {
   @override
   int? get size;
   @override
-  List<BusinessResponse> get content;
+  List<BusinessResponse>? get content;
   @override
   bool? get empty;
   @override

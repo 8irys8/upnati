@@ -9,35 +9,38 @@ part of 'order_preview_response.dart';
 _$_OrderPreviewResponse _$$_OrderPreviewResponseFromJson(
         Map<String, dynamic> json) =>
     _$_OrderPreviewResponse(
-      businessName: json['businessName'] as String,
-      businessId: json['businessId'] as String,
-      itemPreviews: (json['itemPreviews'] as List<dynamic>)
-          .map((e) => ItemPreview.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      oldTotal: (json['oldTotal'] as num).toDouble(),
-      purchasePrice: (json['purchasePrice'] as num).toDouble(),
-      discountPercents: json['discountPercents'] as int,
+      businessId: json['businessId'] as String?,
+      deliveryOptionId: json['deliveryOptionId'] as String?,
+      itemCollections: json['itemCollections'] == null
+          ? null
+          : ItemCollection.fromJson(
+              json['itemCollections'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_OrderPreviewResponseToJson(
         _$_OrderPreviewResponse instance) =>
     <String, dynamic>{
-      'businessName': instance.businessName,
       'businessId': instance.businessId,
-      'itemPreviews': instance.itemPreviews,
-      'oldTotal': instance.oldTotal,
-      'purchasePrice': instance.purchasePrice,
-      'discountPercents': instance.discountPercents,
+      'deliveryOptionId': instance.deliveryOptionId,
+      'itemCollections': instance.itemCollections?.toJson(),
     };
 
-_$_ItemPreview _$$_ItemPreviewFromJson(Map<String, dynamic> json) =>
-    _$_ItemPreview(
-      item: ItemResponse.fromJson(json['item'] as Map<String, dynamic>),
-      amount: json['amount'] as int,
+_$_DeliveryInfo _$$_DeliveryInfoFromJson(Map<String, dynamic> json) =>
+    _$_DeliveryInfo(
+      address: json['address'] as String?,
+      city: json['city'] as String?,
+      postalCode: json['postalCode'] as String?,
+      receiverName: json['receiverName'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      email: json['email'] as String?,
     );
 
-Map<String, dynamic> _$$_ItemPreviewToJson(_$_ItemPreview instance) =>
+Map<String, dynamic> _$$_DeliveryInfoToJson(_$_DeliveryInfo instance) =>
     <String, dynamic>{
-      'item': instance.item,
-      'amount': instance.amount,
+      'address': instance.address,
+      'city': instance.city,
+      'postalCode': instance.postalCode,
+      'receiverName': instance.receiverName,
+      'phoneNumber': instance.phoneNumber,
+      'email': instance.email,
     };

@@ -29,6 +29,7 @@ import 'package:upnati/ui/screens/user/market_place_screen.dart';
 import 'package:upnati/ui/screens/user/message_screen.dart';
 import 'package:upnati/ui/screens/user/my_basket_screen.dart';
 import 'package:upnati/ui/screens/user/payment_details_screen.dart';
+import 'package:upnati/ui/screens/user/payment_web_view_screen.dart';
 import 'package:upnati/ui/screens/user/purchase_history_screen.dart';
 import 'package:upnati/ui/screens/user/user_main_screen.dart';
 
@@ -100,6 +101,7 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     AutoRoute(page: ProductMainScreen),
     AutoRoute(page: AllShopsScreen),
     AutoRoute(page: CategoryDetailScreen),
+    AutoRoute(page: PaymentWebViewScreen),
   ],
 )
 class $AppRouter {}

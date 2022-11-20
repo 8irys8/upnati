@@ -26,7 +26,7 @@ enum BankCurrency { UPSTORE_STAR, USD, NIS }
 
 enum SortType { ASC, DESC }
 
-enum PaymentMethod { cardcom, meshulam_card, meshulam_bit }
+enum PaymentMethod { cardcom, meshulam_card, meshulam_bit, upstore }
 
 enum PriceModifier { spm_dp, spm_ds }
 

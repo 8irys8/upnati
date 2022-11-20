@@ -22,8 +22,8 @@ _$_PageBusinessResponse _$$_PageBusinessResponseFromJson(
           ? null
           : Pageable.fromJson(json['pageable'] as Map<String, dynamic>),
       size: json['size'] as int?,
-      content: (json['content'] as List<dynamic>)
-          .map((e) => BusinessResponse.fromJson(e as Map<String, dynamic>))
+      content: (json['content'] as List<dynamic>?)
+          ?.map((e) => BusinessResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       empty: json['empty'] as bool?,
     );

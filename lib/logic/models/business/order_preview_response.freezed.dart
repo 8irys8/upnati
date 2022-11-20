@@ -20,12 +20,9 @@ OrderPreviewResponse _$OrderPreviewResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderPreviewResponse {
-  String get businessName => throw _privateConstructorUsedError;
-  String get businessId => throw _privateConstructorUsedError;
-  List<ItemPreview> get itemPreviews => throw _privateConstructorUsedError;
-  double get oldTotal => throw _privateConstructorUsedError;
-  double get purchasePrice => throw _privateConstructorUsedError;
-  int get discountPercents => throw _privateConstructorUsedError;
+  String? get businessId => throw _privateConstructorUsedError;
+  String? get deliveryOptionId => throw _privateConstructorUsedError;
+  ItemCollection? get itemCollections => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,12 +36,11 @@ abstract class $OrderPreviewResponseCopyWith<$Res> {
           $Res Function(OrderPreviewResponse) then) =
       _$OrderPreviewResponseCopyWithImpl<$Res>;
   $Res call(
-      {String businessName,
-      String businessId,
-      List<ItemPreview> itemPreviews,
-      double oldTotal,
-      double purchasePrice,
-      int discountPercents});
+      {String? businessId,
+      String? deliveryOptionId,
+      ItemCollection? itemCollections});
+
+  $ItemCollectionCopyWith<$Res>? get itemCollections;
 }
 
 /// @nodoc
@@ -58,39 +54,35 @@ class _$OrderPreviewResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? businessName = freezed,
     Object? businessId = freezed,
-    Object? itemPreviews = freezed,
-    Object? oldTotal = freezed,
-    Object? purchasePrice = freezed,
-    Object? discountPercents = freezed,
+    Object? deliveryOptionId = freezed,
+    Object? itemCollections = freezed,
   }) {
     return _then(_value.copyWith(
-      businessName: businessName == freezed
-          ? _value.businessName
-          : businessName // ignore: cast_nullable_to_non_nullable
-              as String,
       businessId: businessId == freezed
           ? _value.businessId
           : businessId // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemPreviews: itemPreviews == freezed
-          ? _value.itemPreviews
-          : itemPreviews // ignore: cast_nullable_to_non_nullable
-              as List<ItemPreview>,
-      oldTotal: oldTotal == freezed
-          ? _value.oldTotal
-          : oldTotal // ignore: cast_nullable_to_non_nullable
-              as double,
-      purchasePrice: purchasePrice == freezed
-          ? _value.purchasePrice
-          : purchasePrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      discountPercents: discountPercents == freezed
-          ? _value.discountPercents
-          : discountPercents // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      deliveryOptionId: deliveryOptionId == freezed
+          ? _value.deliveryOptionId
+          : deliveryOptionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      itemCollections: itemCollections == freezed
+          ? _value.itemCollections
+          : itemCollections // ignore: cast_nullable_to_non_nullable
+              as ItemCollection?,
     ));
+  }
+
+  @override
+  $ItemCollectionCopyWith<$Res>? get itemCollections {
+    if (_value.itemCollections == null) {
+      return null;
+    }
+
+    return $ItemCollectionCopyWith<$Res>(_value.itemCollections!, (value) {
+      return _then(_value.copyWith(itemCollections: value));
+    });
   }
 }
 
@@ -102,12 +94,12 @@ abstract class _$$_OrderPreviewResponseCopyWith<$Res>
       __$$_OrderPreviewResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String businessName,
-      String businessId,
-      List<ItemPreview> itemPreviews,
-      double oldTotal,
-      double purchasePrice,
-      int discountPercents});
+      {String? businessId,
+      String? deliveryOptionId,
+      ItemCollection? itemCollections});
+
+  @override
+  $ItemCollectionCopyWith<$Res>? get itemCollections;
 }
 
 /// @nodoc
@@ -123,78 +115,47 @@ class __$$_OrderPreviewResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? businessName = freezed,
     Object? businessId = freezed,
-    Object? itemPreviews = freezed,
-    Object? oldTotal = freezed,
-    Object? purchasePrice = freezed,
-    Object? discountPercents = freezed,
+    Object? deliveryOptionId = freezed,
+    Object? itemCollections = freezed,
   }) {
     return _then(_$_OrderPreviewResponse(
-      businessName: businessName == freezed
-          ? _value.businessName
-          : businessName // ignore: cast_nullable_to_non_nullable
-              as String,
       businessId: businessId == freezed
           ? _value.businessId
           : businessId // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemPreviews: itemPreviews == freezed
-          ? _value._itemPreviews
-          : itemPreviews // ignore: cast_nullable_to_non_nullable
-              as List<ItemPreview>,
-      oldTotal: oldTotal == freezed
-          ? _value.oldTotal
-          : oldTotal // ignore: cast_nullable_to_non_nullable
-              as double,
-      purchasePrice: purchasePrice == freezed
-          ? _value.purchasePrice
-          : purchasePrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      discountPercents: discountPercents == freezed
-          ? _value.discountPercents
-          : discountPercents // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      deliveryOptionId: deliveryOptionId == freezed
+          ? _value.deliveryOptionId
+          : deliveryOptionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      itemCollections: itemCollections == freezed
+          ? _value.itemCollections
+          : itemCollections // ignore: cast_nullable_to_non_nullable
+              as ItemCollection?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_OrderPreviewResponse implements _OrderPreviewResponse {
   const _$_OrderPreviewResponse(
-      {required this.businessName,
-      required this.businessId,
-      required final List<ItemPreview> itemPreviews,
-      required this.oldTotal,
-      required this.purchasePrice,
-      required this.discountPercents})
-      : _itemPreviews = itemPreviews;
+      {this.businessId, this.deliveryOptionId, this.itemCollections});
 
   factory _$_OrderPreviewResponse.fromJson(Map<String, dynamic> json) =>
       _$$_OrderPreviewResponseFromJson(json);
 
   @override
-  final String businessName;
+  final String? businessId;
   @override
-  final String businessId;
-  final List<ItemPreview> _itemPreviews;
+  final String? deliveryOptionId;
   @override
-  List<ItemPreview> get itemPreviews {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_itemPreviews);
-  }
-
-  @override
-  final double oldTotal;
-  @override
-  final double purchasePrice;
-  @override
-  final int discountPercents;
+  final ItemCollection? itemCollections;
 
   @override
   String toString() {
-    return 'OrderPreviewResponse(businessName: $businessName, businessId: $businessId, itemPreviews: $itemPreviews, oldTotal: $oldTotal, purchasePrice: $purchasePrice, discountPercents: $discountPercents)';
+    return 'OrderPreviewResponse(businessId: $businessId, deliveryOptionId: $deliveryOptionId, itemCollections: $itemCollections)';
   }
 
   @override
@@ -203,28 +164,20 @@ class _$_OrderPreviewResponse implements _OrderPreviewResponse {
         (other.runtimeType == runtimeType &&
             other is _$_OrderPreviewResponse &&
             const DeepCollectionEquality()
-                .equals(other.businessName, businessName) &&
-            const DeepCollectionEquality()
                 .equals(other.businessId, businessId) &&
             const DeepCollectionEquality()
-                .equals(other._itemPreviews, _itemPreviews) &&
-            const DeepCollectionEquality().equals(other.oldTotal, oldTotal) &&
+                .equals(other.deliveryOptionId, deliveryOptionId) &&
             const DeepCollectionEquality()
-                .equals(other.purchasePrice, purchasePrice) &&
-            const DeepCollectionEquality()
-                .equals(other.discountPercents, discountPercents));
+                .equals(other.itemCollections, itemCollections));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(businessName),
       const DeepCollectionEquality().hash(businessId),
-      const DeepCollectionEquality().hash(_itemPreviews),
-      const DeepCollectionEquality().hash(oldTotal),
-      const DeepCollectionEquality().hash(purchasePrice),
-      const DeepCollectionEquality().hash(discountPercents));
+      const DeepCollectionEquality().hash(deliveryOptionId),
+      const DeepCollectionEquality().hash(itemCollections));
 
   @JsonKey(ignore: true)
   @override
@@ -242,194 +195,267 @@ class _$_OrderPreviewResponse implements _OrderPreviewResponse {
 
 abstract class _OrderPreviewResponse implements OrderPreviewResponse {
   const factory _OrderPreviewResponse(
-      {required final String businessName,
-      required final String businessId,
-      required final List<ItemPreview> itemPreviews,
-      required final double oldTotal,
-      required final double purchasePrice,
-      required final int discountPercents}) = _$_OrderPreviewResponse;
+      {final String? businessId,
+      final String? deliveryOptionId,
+      final ItemCollection? itemCollections}) = _$_OrderPreviewResponse;
 
   factory _OrderPreviewResponse.fromJson(Map<String, dynamic> json) =
       _$_OrderPreviewResponse.fromJson;
 
   @override
-  String get businessName;
+  String? get businessId;
   @override
-  String get businessId;
+  String? get deliveryOptionId;
   @override
-  List<ItemPreview> get itemPreviews;
-  @override
-  double get oldTotal;
-  @override
-  double get purchasePrice;
-  @override
-  int get discountPercents;
+  ItemCollection? get itemCollections;
   @override
   @JsonKey(ignore: true)
   _$$_OrderPreviewResponseCopyWith<_$_OrderPreviewResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ItemPreview _$ItemPreviewFromJson(Map<String, dynamic> json) {
-  return _ItemPreview.fromJson(json);
+DeliveryInfo _$DeliveryInfoFromJson(Map<String, dynamic> json) {
+  return _DeliveryInfo.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ItemPreview {
-  ItemResponse get item => throw _privateConstructorUsedError;
-  int get amount => throw _privateConstructorUsedError;
+mixin _$DeliveryInfo {
+  String? get address => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
+  String? get receiverName => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemPreviewCopyWith<ItemPreview> get copyWith =>
+  $DeliveryInfoCopyWith<DeliveryInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemPreviewCopyWith<$Res> {
-  factory $ItemPreviewCopyWith(
-          ItemPreview value, $Res Function(ItemPreview) then) =
-      _$ItemPreviewCopyWithImpl<$Res>;
-  $Res call({ItemResponse item, int amount});
-
-  $ItemResponseCopyWith<$Res> get item;
+abstract class $DeliveryInfoCopyWith<$Res> {
+  factory $DeliveryInfoCopyWith(
+          DeliveryInfo value, $Res Function(DeliveryInfo) then) =
+      _$DeliveryInfoCopyWithImpl<$Res>;
+  $Res call(
+      {String? address,
+      String? city,
+      String? postalCode,
+      String? receiverName,
+      String? phoneNumber,
+      String? email});
 }
 
 /// @nodoc
-class _$ItemPreviewCopyWithImpl<$Res> implements $ItemPreviewCopyWith<$Res> {
-  _$ItemPreviewCopyWithImpl(this._value, this._then);
+class _$DeliveryInfoCopyWithImpl<$Res> implements $DeliveryInfoCopyWith<$Res> {
+  _$DeliveryInfoCopyWithImpl(this._value, this._then);
 
-  final ItemPreview _value;
+  final DeliveryInfo _value;
   // ignore: unused_field
-  final $Res Function(ItemPreview) _then;
+  final $Res Function(DeliveryInfo) _then;
 
   @override
   $Res call({
-    Object? item = freezed,
-    Object? amount = freezed,
+    Object? address = freezed,
+    Object? city = freezed,
+    Object? postalCode = freezed,
+    Object? receiverName = freezed,
+    Object? phoneNumber = freezed,
+    Object? email = freezed,
   }) {
     return _then(_value.copyWith(
-      item: item == freezed
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as ItemResponse,
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      receiverName: receiverName == freezed
+          ? _value.receiverName
+          : receiverName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
-
-  @override
-  $ItemResponseCopyWith<$Res> get item {
-    return $ItemResponseCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_ItemPreviewCopyWith<$Res>
-    implements $ItemPreviewCopyWith<$Res> {
-  factory _$$_ItemPreviewCopyWith(
-          _$_ItemPreview value, $Res Function(_$_ItemPreview) then) =
-      __$$_ItemPreviewCopyWithImpl<$Res>;
+abstract class _$$_DeliveryInfoCopyWith<$Res>
+    implements $DeliveryInfoCopyWith<$Res> {
+  factory _$$_DeliveryInfoCopyWith(
+          _$_DeliveryInfo value, $Res Function(_$_DeliveryInfo) then) =
+      __$$_DeliveryInfoCopyWithImpl<$Res>;
   @override
-  $Res call({ItemResponse item, int amount});
-
-  @override
-  $ItemResponseCopyWith<$Res> get item;
+  $Res call(
+      {String? address,
+      String? city,
+      String? postalCode,
+      String? receiverName,
+      String? phoneNumber,
+      String? email});
 }
 
 /// @nodoc
-class __$$_ItemPreviewCopyWithImpl<$Res> extends _$ItemPreviewCopyWithImpl<$Res>
-    implements _$$_ItemPreviewCopyWith<$Res> {
-  __$$_ItemPreviewCopyWithImpl(
-      _$_ItemPreview _value, $Res Function(_$_ItemPreview) _then)
-      : super(_value, (v) => _then(v as _$_ItemPreview));
+class __$$_DeliveryInfoCopyWithImpl<$Res>
+    extends _$DeliveryInfoCopyWithImpl<$Res>
+    implements _$$_DeliveryInfoCopyWith<$Res> {
+  __$$_DeliveryInfoCopyWithImpl(
+      _$_DeliveryInfo _value, $Res Function(_$_DeliveryInfo) _then)
+      : super(_value, (v) => _then(v as _$_DeliveryInfo));
 
   @override
-  _$_ItemPreview get _value => super._value as _$_ItemPreview;
+  _$_DeliveryInfo get _value => super._value as _$_DeliveryInfo;
 
   @override
   $Res call({
-    Object? item = freezed,
-    Object? amount = freezed,
+    Object? address = freezed,
+    Object? city = freezed,
+    Object? postalCode = freezed,
+    Object? receiverName = freezed,
+    Object? phoneNumber = freezed,
+    Object? email = freezed,
   }) {
-    return _then(_$_ItemPreview(
-      item: item == freezed
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as ItemResponse,
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$_DeliveryInfo(
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      receiverName: receiverName == freezed
+          ? _value.receiverName
+          : receiverName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ItemPreview implements _ItemPreview {
-  const _$_ItemPreview({required this.item, required this.amount});
+class _$_DeliveryInfo implements _DeliveryInfo {
+  const _$_DeliveryInfo(
+      {this.address,
+      this.city,
+      this.postalCode,
+      this.receiverName,
+      this.phoneNumber,
+      this.email});
 
-  factory _$_ItemPreview.fromJson(Map<String, dynamic> json) =>
-      _$$_ItemPreviewFromJson(json);
+  factory _$_DeliveryInfo.fromJson(Map<String, dynamic> json) =>
+      _$$_DeliveryInfoFromJson(json);
 
   @override
-  final ItemResponse item;
+  final String? address;
   @override
-  final int amount;
+  final String? city;
+  @override
+  final String? postalCode;
+  @override
+  final String? receiverName;
+  @override
+  final String? phoneNumber;
+  @override
+  final String? email;
 
   @override
   String toString() {
-    return 'ItemPreview(item: $item, amount: $amount)';
+    return 'DeliveryInfo(address: $address, city: $city, postalCode: $postalCode, receiverName: $receiverName, phoneNumber: $phoneNumber, email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemPreview &&
-            const DeepCollectionEquality().equals(other.item, item) &&
-            const DeepCollectionEquality().equals(other.amount, amount));
+            other is _$_DeliveryInfo &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality()
+                .equals(other.postalCode, postalCode) &&
+            const DeepCollectionEquality()
+                .equals(other.receiverName, receiverName) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber) &&
+            const DeepCollectionEquality().equals(other.email, email));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(amount));
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(postalCode),
+      const DeepCollectionEquality().hash(receiverName),
+      const DeepCollectionEquality().hash(phoneNumber),
+      const DeepCollectionEquality().hash(email));
 
   @JsonKey(ignore: true)
   @override
-  _$$_ItemPreviewCopyWith<_$_ItemPreview> get copyWith =>
-      __$$_ItemPreviewCopyWithImpl<_$_ItemPreview>(this, _$identity);
+  _$$_DeliveryInfoCopyWith<_$_DeliveryInfo> get copyWith =>
+      __$$_DeliveryInfoCopyWithImpl<_$_DeliveryInfo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ItemPreviewToJson(
+    return _$$_DeliveryInfoToJson(
       this,
     );
   }
 }
 
-abstract class _ItemPreview implements ItemPreview {
-  const factory _ItemPreview(
-      {required final ItemResponse item,
-      required final int amount}) = _$_ItemPreview;
+abstract class _DeliveryInfo implements DeliveryInfo {
+  const factory _DeliveryInfo(
+      {final String? address,
+      final String? city,
+      final String? postalCode,
+      final String? receiverName,
+      final String? phoneNumber,
+      final String? email}) = _$_DeliveryInfo;
 
-  factory _ItemPreview.fromJson(Map<String, dynamic> json) =
-      _$_ItemPreview.fromJson;
+  factory _DeliveryInfo.fromJson(Map<String, dynamic> json) =
+      _$_DeliveryInfo.fromJson;
 
   @override
-  ItemResponse get item;
+  String? get address;
   @override
-  int get amount;
+  String? get city;
+  @override
+  String? get postalCode;
+  @override
+  String? get receiverName;
+  @override
+  String? get phoneNumber;
+  @override
+  String? get email;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemPreviewCopyWith<_$_ItemPreview> get copyWith =>
+  _$$_DeliveryInfoCopyWith<_$_DeliveryInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

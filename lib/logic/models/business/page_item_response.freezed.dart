@@ -29,7 +29,7 @@ mixin _$PageItemResponse {
   int? get numberOfElements => throw _privateConstructorUsedError;
   Pageable? get pageable => throw _privateConstructorUsedError;
   int? get size => throw _privateConstructorUsedError;
-  List<ItemResponse> get content => throw _privateConstructorUsedError;
+  List<ItemResponse>? get content => throw _privateConstructorUsedError;
   bool? get empty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $PageItemResponseCopyWith<$Res> {
       int? numberOfElements,
       Pageable? pageable,
       int? size,
-      List<ItemResponse> content,
+      List<ItemResponse>? content,
       bool? empty});
 
   $SortCopyWith<$Res>? get sort;
@@ -123,7 +123,7 @@ class _$PageItemResponseCopyWithImpl<$Res>
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as List<ItemResponse>,
+              as List<ItemResponse>?,
       empty: empty == freezed
           ? _value.empty
           : empty // ignore: cast_nullable_to_non_nullable
@@ -171,7 +171,7 @@ abstract class _$$_PageItemResponseCopyWith<$Res>
       int? numberOfElements,
       Pageable? pageable,
       int? size,
-      List<ItemResponse> content,
+      List<ItemResponse>? content,
       bool? empty});
 
   @override
@@ -245,7 +245,7 @@ class __$$_PageItemResponseCopyWithImpl<$Res>
       content: content == freezed
           ? _value._content
           : content // ignore: cast_nullable_to_non_nullable
-              as List<ItemResponse>,
+              as List<ItemResponse>?,
       empty: empty == freezed
           ? _value.empty
           : empty // ignore: cast_nullable_to_non_nullable
@@ -267,7 +267,7 @@ class _$_PageItemResponse implements _PageItemResponse {
       this.numberOfElements,
       this.pageable,
       this.size,
-      required final List<ItemResponse> content,
+      final List<ItemResponse>? content,
       this.empty})
       : _content = content;
 
@@ -292,11 +292,13 @@ class _$_PageItemResponse implements _PageItemResponse {
   final Pageable? pageable;
   @override
   final int? size;
-  final List<ItemResponse> _content;
+  final List<ItemResponse>? _content;
   @override
-  List<ItemResponse> get content {
+  List<ItemResponse>? get content {
+    final value = _content;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_content);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -368,7 +370,7 @@ abstract class _PageItemResponse implements PageItemResponse {
       final int? numberOfElements,
       final Pageable? pageable,
       final int? size,
-      required final List<ItemResponse> content,
+      final List<ItemResponse>? content,
       final bool? empty}) = _$_PageItemResponse;
 
   factory _PageItemResponse.fromJson(Map<String, dynamic> json) =
@@ -393,7 +395,7 @@ abstract class _PageItemResponse implements PageItemResponse {
   @override
   int? get size;
   @override
-  List<ItemResponse> get content;
+  List<ItemResponse>? get content;
   @override
   bool? get empty;
   @override

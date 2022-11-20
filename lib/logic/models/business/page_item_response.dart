@@ -18,7 +18,7 @@ class PageItemResponse with _$PageItemResponse {
     int? numberOfElements,
     Pageable? pageable,
     int? size,
-    required List<ItemResponse> content,
+    List<ItemResponse>? content,
     bool? empty,
   }) = _PageItemResponse;
 

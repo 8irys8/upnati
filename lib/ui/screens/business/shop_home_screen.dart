@@ -353,9 +353,10 @@ class _ShopHomeScreenState extends State<ShopHomeScreen> {
                         _pageController.appendLastPage([]);
                       } else {
                         if (itemResponse.last == true) {
-                          _pageController.appendLastPage(itemResponse.content);
+                          _pageController
+                              .appendLastPage(itemResponse.content ?? []);
                         } else {
-                          _pageController.appendPage(itemResponse.content,
+                          _pageController.appendPage(itemResponse.content ?? [],
                               (itemResponse.pageable?.pageNumber ?? 0) + 1);
                         }
                       }

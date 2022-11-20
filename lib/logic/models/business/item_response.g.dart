@@ -42,6 +42,7 @@ _$_ItemResponse _$$_ItemResponseFromJson(Map<String, dynamic> json) =>
       deliveryPrice: (json['deliveryPrice'] as num?)?.toDouble(),
       deliveryPreparationTime: json['deliveryPreparationTime'] as String?,
       favorite: json['favorite'] as bool?,
+      amount: json['amount'] as int?,
       deliveryTime: json['deliveryTime'] as String?,
     );
 
@@ -68,5 +69,6 @@ Map<String, dynamic> _$$_ItemResponseToJson(_$_ItemResponse instance) =>
       'deliveryPrice': instance.deliveryPrice,
       'deliveryPreparationTime': instance.deliveryPreparationTime,
       'favorite': instance.favorite,
+      'amount': instance.amount,
       'deliveryTime': instance.deliveryTime,
     };

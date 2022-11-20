@@ -154,9 +154,10 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                           } else {
                             if (itemResponse.last == true) {
                               _pageController
-                                  .appendLastPage(itemResponse.content);
+                                  .appendLastPage(itemResponse.content ?? []);
                             } else {
-                              _pageController.appendPage(itemResponse.content,
+                              _pageController.appendPage(
+                                  itemResponse.content ?? [],
                                   (itemResponse.pageable?.pageNumber ?? 0) + 1);
                             }
                           }

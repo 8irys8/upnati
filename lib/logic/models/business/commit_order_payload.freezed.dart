@@ -20,7 +20,8 @@ CommitOrderPayload _$CommitOrderPayloadFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommitOrderPayload {
-  ItemCollection? get itemCollections => throw _privateConstructorUsedError;
+  List<OrderPreviewResponse>? get orders => throw _privateConstructorUsedError;
+  DeliveryInfo? get deliveryInfo => throw _privateConstructorUsedError;
   String? get currency => throw _privateConstructorUsedError;
   String? get paymentMethod => throw _privateConstructorUsedError;
 
@@ -36,11 +37,12 @@ abstract class $CommitOrderPayloadCopyWith<$Res> {
           CommitOrderPayload value, $Res Function(CommitOrderPayload) then) =
       _$CommitOrderPayloadCopyWithImpl<$Res>;
   $Res call(
-      {ItemCollection? itemCollections,
+      {List<OrderPreviewResponse>? orders,
+      DeliveryInfo? deliveryInfo,
       String? currency,
       String? paymentMethod});
 
-  $ItemCollectionCopyWith<$Res>? get itemCollections;
+  $DeliveryInfoCopyWith<$Res>? get deliveryInfo;
 }
 
 /// @nodoc
@@ -54,15 +56,20 @@ class _$CommitOrderPayloadCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? itemCollections = freezed,
+    Object? orders = freezed,
+    Object? deliveryInfo = freezed,
     Object? currency = freezed,
     Object? paymentMethod = freezed,
   }) {
     return _then(_value.copyWith(
-      itemCollections: itemCollections == freezed
-          ? _value.itemCollections
-          : itemCollections // ignore: cast_nullable_to_non_nullable
-              as ItemCollection?,
+      orders: orders == freezed
+          ? _value.orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as List<OrderPreviewResponse>?,
+      deliveryInfo: deliveryInfo == freezed
+          ? _value.deliveryInfo
+          : deliveryInfo // ignore: cast_nullable_to_non_nullable
+              as DeliveryInfo?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -75,13 +82,13 @@ class _$CommitOrderPayloadCopyWithImpl<$Res>
   }
 
   @override
-  $ItemCollectionCopyWith<$Res>? get itemCollections {
-    if (_value.itemCollections == null) {
+  $DeliveryInfoCopyWith<$Res>? get deliveryInfo {
+    if (_value.deliveryInfo == null) {
       return null;
     }
 
-    return $ItemCollectionCopyWith<$Res>(_value.itemCollections!, (value) {
-      return _then(_value.copyWith(itemCollections: value));
+    return $DeliveryInfoCopyWith<$Res>(_value.deliveryInfo!, (value) {
+      return _then(_value.copyWith(deliveryInfo: value));
     });
   }
 }
@@ -94,12 +101,13 @@ abstract class _$$_CommitOrderPayloadCopyWith<$Res>
       __$$_CommitOrderPayloadCopyWithImpl<$Res>;
   @override
   $Res call(
-      {ItemCollection? itemCollections,
+      {List<OrderPreviewResponse>? orders,
+      DeliveryInfo? deliveryInfo,
       String? currency,
       String? paymentMethod});
 
   @override
-  $ItemCollectionCopyWith<$Res>? get itemCollections;
+  $DeliveryInfoCopyWith<$Res>? get deliveryInfo;
 }
 
 /// @nodoc
@@ -115,15 +123,20 @@ class __$$_CommitOrderPayloadCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? itemCollections = freezed,
+    Object? orders = freezed,
+    Object? deliveryInfo = freezed,
     Object? currency = freezed,
     Object? paymentMethod = freezed,
   }) {
     return _then(_$_CommitOrderPayload(
-      itemCollections: itemCollections == freezed
-          ? _value.itemCollections
-          : itemCollections // ignore: cast_nullable_to_non_nullable
-              as ItemCollection?,
+      orders: orders == freezed
+          ? _value._orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as List<OrderPreviewResponse>?,
+      deliveryInfo: deliveryInfo == freezed
+          ? _value.deliveryInfo
+          : deliveryInfo // ignore: cast_nullable_to_non_nullable
+              as DeliveryInfo?,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -137,16 +150,30 @@ class __$$_CommitOrderPayloadCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_CommitOrderPayload implements _CommitOrderPayload {
   const _$_CommitOrderPayload(
-      {this.itemCollections, this.currency, this.paymentMethod});
+      {final List<OrderPreviewResponse>? orders,
+      this.deliveryInfo,
+      this.currency,
+      this.paymentMethod})
+      : _orders = orders;
 
   factory _$_CommitOrderPayload.fromJson(Map<String, dynamic> json) =>
       _$$_CommitOrderPayloadFromJson(json);
 
+  final List<OrderPreviewResponse>? _orders;
   @override
-  final ItemCollection? itemCollections;
+  List<OrderPreviewResponse>? get orders {
+    final value = _orders;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final DeliveryInfo? deliveryInfo;
   @override
   final String? currency;
   @override
@@ -154,7 +181,7 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
 
   @override
   String toString() {
-    return 'CommitOrderPayload(itemCollections: $itemCollections, currency: $currency, paymentMethod: $paymentMethod)';
+    return 'CommitOrderPayload(orders: $orders, deliveryInfo: $deliveryInfo, currency: $currency, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -162,8 +189,9 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CommitOrderPayload &&
+            const DeepCollectionEquality().equals(other._orders, _orders) &&
             const DeepCollectionEquality()
-                .equals(other.itemCollections, itemCollections) &&
+                .equals(other.deliveryInfo, deliveryInfo) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
                 .equals(other.paymentMethod, paymentMethod));
@@ -173,7 +201,8 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(itemCollections),
+      const DeepCollectionEquality().hash(_orders),
+      const DeepCollectionEquality().hash(deliveryInfo),
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(paymentMethod));
 
@@ -193,7 +222,8 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
 
 abstract class _CommitOrderPayload implements CommitOrderPayload {
   const factory _CommitOrderPayload(
-      {final ItemCollection? itemCollections,
+      {final List<OrderPreviewResponse>? orders,
+      final DeliveryInfo? deliveryInfo,
       final String? currency,
       final String? paymentMethod}) = _$_CommitOrderPayload;
 
@@ -201,7 +231,9 @@ abstract class _CommitOrderPayload implements CommitOrderPayload {
       _$_CommitOrderPayload.fromJson;
 
   @override
-  ItemCollection? get itemCollections;
+  List<OrderPreviewResponse>? get orders;
+  @override
+  DeliveryInfo? get deliveryInfo;
   @override
   String? get currency;
   @override

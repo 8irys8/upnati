@@ -6,6 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
+import 'package:upnati/logic/models/business/item_collection.dart';
+import 'package:upnati/logic/models/business/order_preview_response.dart';
 import 'package:upnati/logic/models/item_basket_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
@@ -14,6 +16,7 @@ import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/custom_selector.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
+import 'package:collection/collection.dart';
 
 class PurchaseHistoryScreen extends StatefulWidget with AutoRouteWrapper {
   const PurchaseHistoryScreen({Key? key}) : super(key: key);
@@ -349,8 +352,31 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                             borderRadius: 25,
                                             color: AppColors.darkBlueLight,
                                             innerShadow: true,
-                                            onPressed: () => context.router
-                                                .push(const BuyDetailsScreen()),
+                                            onPressed: () {
+                                              List<OrderPreviewResponse>
+                                                  orders = [];
+                                              var grouped = _items.groupListsBy(
+                                                  (element) =>
+                                                      element.businessId);
+                                              grouped.forEach((key, value) {
+                                                var map = <dynamic, int>{};
+                                                value.forEach((element) {
+                                                  map[element.id] =
+                                                      element.amount ?? 0;
+                                                  orders.add(
+                                                      OrderPreviewResponse(
+                                                          businessId: key,
+                                                          itemCollections:
+                                                              ItemCollection(
+                                                                  amount:
+                                                                      map)));
+                                                });
+                                              });
+
+                                              context.router.push(
+                                                  BuyDetailsScreen(
+                                                      orders: orders));
+                                            },
                                           ),
                                         )
                                 ],

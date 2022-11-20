@@ -13,6 +13,7 @@ import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/item_collection.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
+import 'package:upnati/logic/models/business/order_preview_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
@@ -381,7 +382,19 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                               ConnectionState.done
                                           ? snapshot.data != null
                                               ? context.router.push(
-                                                  const BuyDetailsScreen())
+                                                  BuyDetailsScreen(orders: [
+                                                  OrderPreviewResponse(
+                                                      businessId: widget.item
+                                                              ?.businessId ??
+                                                          '',
+                                                      itemCollections:
+                                                          ItemCollection(
+                                                              amount: {
+                                                            widget.item?.id:
+                                                                _amountNotifier
+                                                                    .value
+                                                          }))
+                                                ]))
                                               : Utils.showRegisterDialog(
                                                   context)
                                           : null,

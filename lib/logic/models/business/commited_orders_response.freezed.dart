@@ -21,8 +21,13 @@ CommitedOrdersResponse _$CommitedOrdersResponseFromJson(
 
 /// @nodoc
 mixin _$CommitedOrdersResponse {
-  Map<dynamic, Order>? get orders => throw _privateConstructorUsedError;
-  Map<dynamic, String>? get paymentLinks => throw _privateConstructorUsedError;
+  String? get businessName => throw _privateConstructorUsedError;
+  String? get businessId => throw _privateConstructorUsedError;
+  List<ItemResponse>? get items => throw _privateConstructorUsedError;
+  double? get oldTotal => throw _privateConstructorUsedError;
+  double? get purchasePrice => throw _privateConstructorUsedError;
+  int? get discountPercents => throw _privateConstructorUsedError;
+  String? get paymentLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +40,14 @@ abstract class $CommitedOrdersResponseCopyWith<$Res> {
   factory $CommitedOrdersResponseCopyWith(CommitedOrdersResponse value,
           $Res Function(CommitedOrdersResponse) then) =
       _$CommitedOrdersResponseCopyWithImpl<$Res>;
-  $Res call({Map<dynamic, Order>? orders, Map<dynamic, String>? paymentLinks});
+  $Res call(
+      {String? businessName,
+      String? businessId,
+      List<ItemResponse>? items,
+      double? oldTotal,
+      double? purchasePrice,
+      int? discountPercents,
+      String? paymentLink});
 }
 
 /// @nodoc
@@ -49,18 +61,43 @@ class _$CommitedOrdersResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? orders = freezed,
-    Object? paymentLinks = freezed,
+    Object? businessName = freezed,
+    Object? businessId = freezed,
+    Object? items = freezed,
+    Object? oldTotal = freezed,
+    Object? purchasePrice = freezed,
+    Object? discountPercents = freezed,
+    Object? paymentLink = freezed,
   }) {
     return _then(_value.copyWith(
-      orders: orders == freezed
-          ? _value.orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, Order>?,
-      paymentLinks: paymentLinks == freezed
-          ? _value.paymentLinks
-          : paymentLinks // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, String>?,
+      businessName: businessName == freezed
+          ? _value.businessName
+          : businessName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      businessId: businessId == freezed
+          ? _value.businessId
+          : businessId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ItemResponse>?,
+      oldTotal: oldTotal == freezed
+          ? _value.oldTotal
+          : oldTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      purchasePrice: purchasePrice == freezed
+          ? _value.purchasePrice
+          : purchasePrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      discountPercents: discountPercents == freezed
+          ? _value.discountPercents
+          : discountPercents // ignore: cast_nullable_to_non_nullable
+              as int?,
+      paymentLink: paymentLink == freezed
+          ? _value.paymentLink
+          : paymentLink // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -72,7 +109,14 @@ abstract class _$$_CommitedOrdersResponseCopyWith<$Res>
           $Res Function(_$_CommitedOrdersResponse) then) =
       __$$_CommitedOrdersResponseCopyWithImpl<$Res>;
   @override
-  $Res call({Map<dynamic, Order>? orders, Map<dynamic, String>? paymentLinks});
+  $Res call(
+      {String? businessName,
+      String? businessId,
+      List<ItemResponse>? items,
+      double? oldTotal,
+      double? purchasePrice,
+      int? discountPercents,
+      String? paymentLink});
 }
 
 /// @nodoc
@@ -89,55 +133,89 @@ class __$$_CommitedOrdersResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? orders = freezed,
-    Object? paymentLinks = freezed,
+    Object? businessName = freezed,
+    Object? businessId = freezed,
+    Object? items = freezed,
+    Object? oldTotal = freezed,
+    Object? purchasePrice = freezed,
+    Object? discountPercents = freezed,
+    Object? paymentLink = freezed,
   }) {
     return _then(_$_CommitedOrdersResponse(
-      orders: orders == freezed
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, Order>?,
-      paymentLinks: paymentLinks == freezed
-          ? _value._paymentLinks
-          : paymentLinks // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, String>?,
+      businessName: businessName == freezed
+          ? _value.businessName
+          : businessName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      businessId: businessId == freezed
+          ? _value.businessId
+          : businessId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      items: items == freezed
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ItemResponse>?,
+      oldTotal: oldTotal == freezed
+          ? _value.oldTotal
+          : oldTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      purchasePrice: purchasePrice == freezed
+          ? _value.purchasePrice
+          : purchasePrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      discountPercents: discountPercents == freezed
+          ? _value.discountPercents
+          : discountPercents // ignore: cast_nullable_to_non_nullable
+              as int?,
+      paymentLink: paymentLink == freezed
+          ? _value.paymentLink
+          : paymentLink // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_CommitedOrdersResponse implements _CommitedOrdersResponse {
   const _$_CommitedOrdersResponse(
-      {final Map<dynamic, Order>? orders,
-      final Map<dynamic, String>? paymentLinks})
-      : _orders = orders,
-        _paymentLinks = paymentLinks;
+      {this.businessName,
+      this.businessId,
+      final List<ItemResponse>? items,
+      this.oldTotal,
+      this.purchasePrice,
+      this.discountPercents,
+      this.paymentLink})
+      : _items = items;
 
   factory _$_CommitedOrdersResponse.fromJson(Map<String, dynamic> json) =>
       _$$_CommitedOrdersResponseFromJson(json);
 
-  final Map<dynamic, Order>? _orders;
   @override
-  Map<dynamic, Order>? get orders {
-    final value = _orders;
+  final String? businessName;
+  @override
+  final String? businessId;
+  final List<ItemResponse>? _items;
+  @override
+  List<ItemResponse>? get items {
+    final value = _items;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
+    return EqualUnmodifiableListView(value);
   }
 
-  final Map<dynamic, String>? _paymentLinks;
   @override
-  Map<dynamic, String>? get paymentLinks {
-    final value = _paymentLinks;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
+  final double? oldTotal;
+  @override
+  final double? purchasePrice;
+  @override
+  final int? discountPercents;
+  @override
+  final String? paymentLink;
 
   @override
   String toString() {
-    return 'CommitedOrdersResponse(orders: $orders, paymentLinks: $paymentLinks)';
+    return 'CommitedOrdersResponse(businessName: $businessName, businessId: $businessId, items: $items, oldTotal: $oldTotal, purchasePrice: $purchasePrice, discountPercents: $discountPercents, paymentLink: $paymentLink)';
   }
 
   @override
@@ -145,17 +223,31 @@ class _$_CommitedOrdersResponse implements _CommitedOrdersResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CommitedOrdersResponse &&
-            const DeepCollectionEquality().equals(other._orders, _orders) &&
             const DeepCollectionEquality()
-                .equals(other._paymentLinks, _paymentLinks));
+                .equals(other.businessName, businessName) &&
+            const DeepCollectionEquality()
+                .equals(other.businessId, businessId) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            const DeepCollectionEquality().equals(other.oldTotal, oldTotal) &&
+            const DeepCollectionEquality()
+                .equals(other.purchasePrice, purchasePrice) &&
+            const DeepCollectionEquality()
+                .equals(other.discountPercents, discountPercents) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentLink, paymentLink));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_orders),
-      const DeepCollectionEquality().hash(_paymentLinks));
+      const DeepCollectionEquality().hash(businessName),
+      const DeepCollectionEquality().hash(businessId),
+      const DeepCollectionEquality().hash(_items),
+      const DeepCollectionEquality().hash(oldTotal),
+      const DeepCollectionEquality().hash(purchasePrice),
+      const DeepCollectionEquality().hash(discountPercents),
+      const DeepCollectionEquality().hash(paymentLink));
 
   @JsonKey(ignore: true)
   @override
@@ -173,16 +265,31 @@ class _$_CommitedOrdersResponse implements _CommitedOrdersResponse {
 
 abstract class _CommitedOrdersResponse implements CommitedOrdersResponse {
   const factory _CommitedOrdersResponse(
-      {final Map<dynamic, Order>? orders,
-      final Map<dynamic, String>? paymentLinks}) = _$_CommitedOrdersResponse;
+      {final String? businessName,
+      final String? businessId,
+      final List<ItemResponse>? items,
+      final double? oldTotal,
+      final double? purchasePrice,
+      final int? discountPercents,
+      final String? paymentLink}) = _$_CommitedOrdersResponse;
 
   factory _CommitedOrdersResponse.fromJson(Map<String, dynamic> json) =
       _$_CommitedOrdersResponse.fromJson;
 
   @override
-  Map<dynamic, Order>? get orders;
+  String? get businessName;
   @override
-  Map<dynamic, String>? get paymentLinks;
+  String? get businessId;
+  @override
+  List<ItemResponse>? get items;
+  @override
+  double? get oldTotal;
+  @override
+  double? get purchasePrice;
+  @override
+  int? get discountPercents;
+  @override
+  String? get paymentLink;
   @override
   @JsonKey(ignore: true)
   _$$_CommitedOrdersResponseCopyWith<_$_CommitedOrdersResponse> get copyWith =>

@@ -18,7 +18,7 @@ class PageBusinessResponse with _$PageBusinessResponse {
     int? numberOfElements,
     Pageable? pageable,
     int? size,
-    required List<BusinessResponse> content,
+    List<BusinessResponse>? content,
     bool? empty,
   }) = _PageBusinessResponse;
 

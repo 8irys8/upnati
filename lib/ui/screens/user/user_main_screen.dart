@@ -889,9 +889,10 @@ class _FavoritesGridState extends State<FavoritesGrid> {
               _pageController.appendLastPage([]);
             } else {
               if (pageBusinessResponse.last == true) {
-                _pageController.appendLastPage(pageBusinessResponse.content);
+                _pageController
+                    .appendLastPage(pageBusinessResponse.content ?? []);
               } else {
-                _pageController.appendPage(pageBusinessResponse.content,
+                _pageController.appendPage(pageBusinessResponse.content ?? [],
                     (pageBusinessResponse.pageable?.pageNumber ?? 0) + 1);
               }
             }

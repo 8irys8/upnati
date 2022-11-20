@@ -43,6 +43,7 @@ mixin _$ItemResponse {
   double? get deliveryPrice => throw _privateConstructorUsedError;
   String? get deliveryPreparationTime => throw _privateConstructorUsedError;
   bool? get favorite => throw _privateConstructorUsedError;
+  int? get amount => throw _privateConstructorUsedError;
   String? get deliveryTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -78,6 +79,7 @@ abstract class $ItemResponseCopyWith<$Res> {
       double? deliveryPrice,
       String? deliveryPreparationTime,
       bool? favorite,
+      int? amount,
       String? deliveryTime});
 
   $DescriptionCopyWith<$Res>? get description;
@@ -114,6 +116,7 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
     Object? deliveryPrice = freezed,
     Object? deliveryPreparationTime = freezed,
     Object? favorite = freezed,
+    Object? amount = freezed,
     Object? deliveryTime = freezed,
   }) {
     return _then(_value.copyWith(
@@ -201,6 +204,10 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
       deliveryTime: deliveryTime == freezed
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
@@ -249,6 +256,7 @@ abstract class _$$_ItemResponseCopyWith<$Res>
       double? deliveryPrice,
       String? deliveryPreparationTime,
       bool? favorite,
+      int? amount,
       String? deliveryTime});
 
   @override
@@ -289,6 +297,7 @@ class __$$_ItemResponseCopyWithImpl<$Res>
     Object? deliveryPrice = freezed,
     Object? deliveryPreparationTime = freezed,
     Object? favorite = freezed,
+    Object? amount = freezed,
     Object? deliveryTime = freezed,
   }) {
     return _then(_$_ItemResponse(
@@ -376,6 +385,10 @@ class __$$_ItemResponseCopyWithImpl<$Res>
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
       deliveryTime: deliveryTime == freezed
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
@@ -409,6 +422,7 @@ class _$_ItemResponse implements _ItemResponse {
       this.deliveryPrice,
       this.deliveryPreparationTime,
       this.favorite,
+      this.amount,
       this.deliveryTime})
       : _imageUrls = imageUrls,
         _videoUrls = videoUrls,
@@ -489,11 +503,13 @@ class _$_ItemResponse implements _ItemResponse {
   @override
   final bool? favorite;
   @override
+  final int? amount;
+  @override
   final String? deliveryTime;
 
   @override
   String toString() {
-    return 'ItemResponse(id: $id, name: $name, businessId: $businessId, businessName: $businessName, businessImageUrl: $businessImageUrl, itemCategory: $itemCategory, itemType: $itemType, currency: $currency, price: $price, description: $description, imageUrls: $imageUrls, videoUrls: $videoUrls, characteristicsMap: $characteristicsMap, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, stockConfigured: $stockConfigured, deliveryPrice: $deliveryPrice, deliveryPreparationTime: $deliveryPreparationTime, favorite: $favorite, deliveryTime: $deliveryTime)';
+    return 'ItemResponse(id: $id, name: $name, businessId: $businessId, businessName: $businessName, businessImageUrl: $businessImageUrl, itemCategory: $itemCategory, itemType: $itemType, currency: $currency, price: $price, description: $description, imageUrls: $imageUrls, videoUrls: $videoUrls, characteristicsMap: $characteristicsMap, purchasePrice: $purchasePrice, discountPercents: $discountPercents, inStock: $inStock, singleValuePriceModifiers: $singleValuePriceModifiers, stockConfigured: $stockConfigured, deliveryPrice: $deliveryPrice, deliveryPreparationTime: $deliveryPreparationTime, favorite: $favorite, amount: $amount, deliveryTime: $deliveryTime)';
   }
 
   @override
@@ -536,6 +552,7 @@ class _$_ItemResponse implements _ItemResponse {
             const DeepCollectionEquality().equals(
                 other.deliveryPreparationTime, deliveryPreparationTime) &&
             const DeepCollectionEquality().equals(other.favorite, favorite) &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryTime, deliveryTime));
   }
@@ -565,6 +582,7 @@ class _$_ItemResponse implements _ItemResponse {
         const DeepCollectionEquality().hash(deliveryPrice),
         const DeepCollectionEquality().hash(deliveryPreparationTime),
         const DeepCollectionEquality().hash(favorite),
+        const DeepCollectionEquality().hash(amount),
         const DeepCollectionEquality().hash(deliveryTime)
       ]);
 
@@ -604,6 +622,7 @@ abstract class _ItemResponse implements ItemResponse {
       final double? deliveryPrice,
       final String? deliveryPreparationTime,
       final bool? favorite,
+      final int? amount,
       final String? deliveryTime}) = _$_ItemResponse;
 
   factory _ItemResponse.fromJson(Map<String, dynamic> json) =
@@ -651,6 +670,8 @@ abstract class _ItemResponse implements ItemResponse {
   String? get deliveryPreparationTime;
   @override
   bool? get favorite;
+  @override
+  int? get amount;
   @override
   String? get deliveryTime;
   @override
