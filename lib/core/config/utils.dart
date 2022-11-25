@@ -10,6 +10,7 @@ import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/logic/providers/user_provider.dart';
 import 'package:upnati/resources/locale_keys.g.dart';
 import 'package:upnati/resources/resource.dart';
+import 'package:upnati/resources/resources.dart';
 
 class Utils {
   static Future<Box> get box async => await Hive.boxExists('system') == true
@@ -40,6 +41,72 @@ class Utils {
     } catch (e) {
       return null;
     }
+  }
+
+  static Future<void> showSuccessOrderDialog(BuildContext context) async {
+    showDialog(
+        context: context,
+        barrierColor: Colors.black.withOpacity(0.76),
+        builder: (context) => AlertDialog(
+              contentPadding: EdgeInsets.zero,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(35)),
+              scrollable: true,
+              content: Builder(builder: (context) {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: const Padding(
+                          padding: EdgeInsets.only(top: 16.0, right: 12),
+                          child: Align(
+                              alignment: Alignment.topRight,
+                              child: Icon(
+                                Icons.close_outlined,
+                                color: Colors.black,
+                                size: 30,
+                              )),
+                        ),
+                      ),
+                      Text(LocaleKeys.buy_details_payment_done.tr(),
+                          style: AppTheme.semiLight(
+                              size: 12, color: AppColors.textGray)),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12, bottom: 12),
+                        child: Image.asset(Images.paymentDoneImg),
+                      ),
+                      Text(
+                        LocaleKeys.buy_details_for_transit_after_delivery.tr(),
+                        style: AppTheme.semiLight(
+                          size: 10,
+                        ).copyWith(decoration: TextDecoration.underline),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        LocaleKeys.buy_details_for_more_products.tr(),
+                        style: AppTheme.semiLight(
+                          size: 10,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'shushu market',
+                        style: AppTheme.bold(size: 12, color: AppColors.yellow)
+                            .copyWith(decoration: TextDecoration.underline),
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                );
+              }),
+            ));
   }
 
   static Future<void> showRegisterDialog(BuildContext context) async {

@@ -382,19 +382,12 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                               ConnectionState.done
                                           ? snapshot.data != null
                                               ? context.router.push(
-                                                  BuyDetailsScreen(orders: [
-                                                  OrderPreviewResponse(
-                                                      businessId: widget.item
-                                                              ?.businessId ??
-                                                          '',
-                                                      itemCollections:
-                                                          ItemCollection(
-                                                              amount: {
-                                                            widget.item?.id:
-                                                                _amountNotifier
-                                                                    .value
-                                                          }))
-                                                ]))
+                                                  BuyDetailsScreen(
+                                                      order: ItemCollection(
+                                                          amount: {
+                                                      widget.item?.id:
+                                                          _amountNotifier.value
+                                                    })))
                                               : Utils.showRegisterDialog(
                                                   context)
                                           : null,

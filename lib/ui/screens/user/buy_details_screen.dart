@@ -5,9 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/logic/models/business/commit_order_payload.dart';
+import 'package:upnati/logic/models/business/item_collection.dart';
 import 'package:upnati/logic/models/business/order_preview_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
@@ -17,8 +19,8 @@ import 'package:upnati/ui/widgets/side_bar.dart';
 import 'package:upnati/core/config/router.gr.dart';
 
 class BuyDetailsScreen extends StatefulWidget with AutoRouteWrapper {
-  final List<OrderPreviewResponse> orders;
-  const BuyDetailsScreen({Key? key, required this.orders}) : super(key: key);
+  final ItemCollection? order;
+  const BuyDetailsScreen({Key? key, this.order}) : super(key: key);
 
   @override
   State<BuyDetailsScreen> createState() => _BuyDetailsScreenState();
@@ -59,7 +61,7 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
                   postalCode: _postalCodeController.text,
                   receiverName: _nameController.text,
                 ),
-                orders: widget.orders,
+                items: widget.order,
                 currency: BankCurrency.NIS.name,
                 paymentMethod: PaymentMethod.cardcom.name),
           );
@@ -74,9 +76,13 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
         listener: (context, state) {
           print(state);
           state.whenOrNull(
-            successCommitedOrdersResponse: (commitedOrdersResponse) {
-              context.router.push(PaymentWebViewScreen(
+            successCommitedOrdersResponse: (commitedOrdersResponse) async {
+              var result = await context.router.push(PaymentWebViewScreen(
                   url: commitedOrdersResponse.paymentLink ?? ''));
+              if (result == true) {
+                if (!mounted) return;
+                Utils.showSuccessOrderDialog(context);
+              }
             },
           );
         },

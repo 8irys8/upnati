@@ -9,7 +9,7 @@ part 'commit_order_payload.freezed.dart';
 class CommitOrderPayload with _$CommitOrderPayload {
   @JsonSerializable(explicitToJson: true)
   const factory CommitOrderPayload({
-    final List<OrderPreviewResponse>? orders,
+    final ItemCollection? items,
     final DeliveryInfo? deliveryInfo,
     final String? currency,
     final String? paymentMethod,

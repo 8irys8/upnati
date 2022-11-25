@@ -353,29 +353,35 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                             color: AppColors.darkBlueLight,
                                             innerShadow: true,
                                             onPressed: () {
-                                              List<OrderPreviewResponse>
-                                                  orders = [];
-                                              var grouped = _items.groupListsBy(
-                                                  (element) =>
-                                                      element.businessId);
-                                              grouped.forEach((key, value) {
-                                                var map = <dynamic, int>{};
-                                                value.forEach((element) {
-                                                  map[element.id] =
-                                                      element.amount ?? 0;
-                                                  orders.add(
-                                                      OrderPreviewResponse(
-                                                          businessId: key,
-                                                          itemCollections:
-                                                              ItemCollection(
-                                                                  amount:
-                                                                      map)));
-                                                });
-                                              });
+                                              // List<OrderPreviewResponse>
+                                              //     orders = [];
+                                              // var grouped = _items.groupListsBy(
+                                              //     (element) =>
+                                              //         element.businessId);
+                                              // grouped.forEach((key, value) {
+                                              //   var map = <dynamic, int>{};
+                                              // value.forEach((element) {
+                                              //   map[element.id] =
+                                              //       element.amount ?? 0;
+                                              //   orders.add(
+                                              //       OrderPreviewResponse(
+                                              //           businessId: key,
+                                              //           itemCollections:
+                                              // ItemCollection(
+                                              //     amount:
+                                              //         map)));
+                                              // });
+                                              // });
+                                              var map = <dynamic, int>{};
+                                              for (var element in _items) {
+                                                map[element.id] =
+                                                    element.amount ?? 0;
+                                              }
 
                                               context.router.push(
                                                   BuyDetailsScreen(
-                                                      orders: orders));
+                                                      order: ItemCollection(
+                                                          amount: map)));
                                             },
                                           ),
                                         )

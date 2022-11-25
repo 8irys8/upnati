@@ -20,7 +20,7 @@ CommitOrderPayload _$CommitOrderPayloadFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommitOrderPayload {
-  List<OrderPreviewResponse>? get orders => throw _privateConstructorUsedError;
+  ItemCollection? get items => throw _privateConstructorUsedError;
   DeliveryInfo? get deliveryInfo => throw _privateConstructorUsedError;
   String? get currency => throw _privateConstructorUsedError;
   String? get paymentMethod => throw _privateConstructorUsedError;
@@ -37,11 +37,12 @@ abstract class $CommitOrderPayloadCopyWith<$Res> {
           CommitOrderPayload value, $Res Function(CommitOrderPayload) then) =
       _$CommitOrderPayloadCopyWithImpl<$Res>;
   $Res call(
-      {List<OrderPreviewResponse>? orders,
+      {ItemCollection? items,
       DeliveryInfo? deliveryInfo,
       String? currency,
       String? paymentMethod});
 
+  $ItemCollectionCopyWith<$Res>? get items;
   $DeliveryInfoCopyWith<$Res>? get deliveryInfo;
 }
 
@@ -56,16 +57,16 @@ class _$CommitOrderPayloadCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? orders = freezed,
+    Object? items = freezed,
     Object? deliveryInfo = freezed,
     Object? currency = freezed,
     Object? paymentMethod = freezed,
   }) {
     return _then(_value.copyWith(
-      orders: orders == freezed
-          ? _value.orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<OrderPreviewResponse>?,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as ItemCollection?,
       deliveryInfo: deliveryInfo == freezed
           ? _value.deliveryInfo
           : deliveryInfo // ignore: cast_nullable_to_non_nullable
@@ -79,6 +80,17 @@ class _$CommitOrderPayloadCopyWithImpl<$Res>
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  @override
+  $ItemCollectionCopyWith<$Res>? get items {
+    if (_value.items == null) {
+      return null;
+    }
+
+    return $ItemCollectionCopyWith<$Res>(_value.items!, (value) {
+      return _then(_value.copyWith(items: value));
+    });
   }
 
   @override
@@ -101,11 +113,13 @@ abstract class _$$_CommitOrderPayloadCopyWith<$Res>
       __$$_CommitOrderPayloadCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<OrderPreviewResponse>? orders,
+      {ItemCollection? items,
       DeliveryInfo? deliveryInfo,
       String? currency,
       String? paymentMethod});
 
+  @override
+  $ItemCollectionCopyWith<$Res>? get items;
   @override
   $DeliveryInfoCopyWith<$Res>? get deliveryInfo;
 }
@@ -123,16 +137,16 @@ class __$$_CommitOrderPayloadCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? orders = freezed,
+    Object? items = freezed,
     Object? deliveryInfo = freezed,
     Object? currency = freezed,
     Object? paymentMethod = freezed,
   }) {
     return _then(_$_CommitOrderPayload(
-      orders: orders == freezed
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<OrderPreviewResponse>?,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as ItemCollection?,
       deliveryInfo: deliveryInfo == freezed
           ? _value.deliveryInfo
           : deliveryInfo // ignore: cast_nullable_to_non_nullable
@@ -154,24 +168,13 @@ class __$$_CommitOrderPayloadCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_CommitOrderPayload implements _CommitOrderPayload {
   const _$_CommitOrderPayload(
-      {final List<OrderPreviewResponse>? orders,
-      this.deliveryInfo,
-      this.currency,
-      this.paymentMethod})
-      : _orders = orders;
+      {this.items, this.deliveryInfo, this.currency, this.paymentMethod});
 
   factory _$_CommitOrderPayload.fromJson(Map<String, dynamic> json) =>
       _$$_CommitOrderPayloadFromJson(json);
 
-  final List<OrderPreviewResponse>? _orders;
   @override
-  List<OrderPreviewResponse>? get orders {
-    final value = _orders;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ItemCollection? items;
   @override
   final DeliveryInfo? deliveryInfo;
   @override
@@ -181,7 +184,7 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
 
   @override
   String toString() {
-    return 'CommitOrderPayload(orders: $orders, deliveryInfo: $deliveryInfo, currency: $currency, paymentMethod: $paymentMethod)';
+    return 'CommitOrderPayload(items: $items, deliveryInfo: $deliveryInfo, currency: $currency, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -189,7 +192,7 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CommitOrderPayload &&
-            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            const DeepCollectionEquality().equals(other.items, items) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryInfo, deliveryInfo) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
@@ -201,7 +204,7 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_orders),
+      const DeepCollectionEquality().hash(items),
       const DeepCollectionEquality().hash(deliveryInfo),
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(paymentMethod));
@@ -222,7 +225,7 @@ class _$_CommitOrderPayload implements _CommitOrderPayload {
 
 abstract class _CommitOrderPayload implements CommitOrderPayload {
   const factory _CommitOrderPayload(
-      {final List<OrderPreviewResponse>? orders,
+      {final ItemCollection? items,
       final DeliveryInfo? deliveryInfo,
       final String? currency,
       final String? paymentMethod}) = _$_CommitOrderPayload;
@@ -231,7 +234,7 @@ abstract class _CommitOrderPayload implements CommitOrderPayload {
       _$_CommitOrderPayload.fromJson;
 
   @override
-  List<OrderPreviewResponse>? get orders;
+  ItemCollection? get items;
   @override
   DeliveryInfo? get deliveryInfo;
   @override
