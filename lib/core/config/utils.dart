@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -44,7 +43,7 @@ class Utils {
   }
 
   static Future<void> showSuccessOrderDialog(BuildContext context) async {
-    showDialog(
+    await showDialog(
         context: context,
         barrierColor: Colors.black.withOpacity(0.76),
         builder: (context) => AlertDialog(
@@ -93,20 +92,21 @@ class Utils {
                           size: 10,
                         ),
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        'shushu market',
-                        style: AppTheme.bold(size: 12, color: AppColors.yellow)
-                            .copyWith(decoration: TextDecoration.underline),
-                      ),
+                      // const SizedBox(
+                      //   height: 15,
+                      // ),
+                      // Text(
+                      //   'shushu market',
+                      //   style: AppTheme.bold(size: 12, color: AppColors.yellow)
+                      //       .copyWith(decoration: TextDecoration.underline),
+                      // ),
                       const SizedBox(height: 30),
                     ],
                   ),
                 );
               }),
             ));
+    context.router.replaceAll([const MarketPlaceScreen()]);
   }
 
   static Future<void> showRegisterDialog(BuildContext context) async {

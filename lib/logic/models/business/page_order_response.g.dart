@@ -32,13 +32,13 @@ Map<String, dynamic> _$$_PageOrderResponseToJson(
     <String, dynamic>{
       'totalPages': instance.totalPages,
       'totalElements': instance.totalElements,
-      'sort': instance.sort,
+      'sort': instance.sort?.toJson(),
       'first': instance.first,
       'last': instance.last,
       'number': instance.number,
       'numberOfElements': instance.numberOfElements,
-      'pageable': instance.pageable,
+      'pageable': instance.pageable?.toJson(),
       'size': instance.size,
-      'content': instance.content,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
       'empty': instance.empty,
     };

@@ -255,7 +255,8 @@ class __$$_PageOrderResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_PageOrderResponse implements _PageOrderResponse {
   const _$_PageOrderResponse(
       {this.totalPages,

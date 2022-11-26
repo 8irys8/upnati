@@ -8,18 +8,19 @@ part 'page_order_response.freezed.dart';
 
 @freezed
 class PageOrderResponse with _$PageOrderResponse {
+  @JsonSerializable(explicitToJson: true)
   const factory PageOrderResponse({
-    int? totalPages,
-    int? totalElements,
-    Sort? sort,
-    bool? first,
-    bool? last,
-    int? number,
-    int? numberOfElements,
-    Pageable? pageable,
-    int? size,
-    List<Order>? content,
-    bool? empty,
+    final int? totalPages,
+    final int? totalElements,
+    final Sort? sort,
+    final bool? first,
+    final bool? last,
+    final int? number,
+    final int? numberOfElements,
+    final Pageable? pageable,
+    final int? size,
+    final List<Order>? content,
+    final bool? empty,
   }) = _PageOrderResponse;
 
   factory PageOrderResponse.fromJson(Map<String, dynamic> json) =>

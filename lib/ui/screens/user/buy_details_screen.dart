@@ -67,25 +67,45 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
           );
     }
   }
-  //http://awseb-awseb-12mq41bnldz6m-2145322268.eu-central-1.elb.amazonaws.com/payment-service/redirect/cardcom/payment/success?terminalnumber=1000&lowprofilecode=1d3ade53-48f8-4e90-aefc-67b941f06262&ResponeCode=0&Operation=1&ResponseCode=0&Status=0
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<UserCubit>().getUserDetails();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SideBarWrapper(
-      child: BlocListener<BusinessCubit, BusinessState>(
-        listener: (context, state) {
-          print(state);
-          state.whenOrNull(
-            successCommitedOrdersResponse: (commitedOrdersResponse) async {
-              var result = await context.router.push(PaymentWebViewScreen(
-                  url: commitedOrdersResponse.paymentLink ?? ''));
-              if (result == true) {
-                if (!mounted) return;
-                Utils.showSuccessOrderDialog(context);
-              }
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<BusinessCubit, BusinessState>(
+            listener: (context, state) {
+              print(state);
+              state.whenOrNull(
+                successCommitedOrdersResponse: (commitedOrdersResponse) async {
+                  var result = await context.router.push(PaymentWebViewScreen(
+                      url: commitedOrdersResponse.paymentLink ?? ''));
+                  if (result == true) {
+                    if (!mounted) return;
+                    Utils.showSuccessOrderDialog(context);
+                  }
+                },
+              );
             },
-          );
-        },
+          ),
+          BlocListener<UserCubit, UserState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                successUserStateResponse: (response) {
+                  _emailController.text = response.email ?? '';
+                  _nameController.text = response.fullName ?? '';
+                  _phoneController.text = response.phoneNumber ?? '';
+                },
+              );
+            },
+          ),
+        ],
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,

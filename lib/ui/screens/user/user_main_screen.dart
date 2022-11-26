@@ -373,6 +373,8 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                     state.whenOrNull(
                       successPageItemResponse: (pageItemResponse) =>
                           setState(() {}),
+                      successPageOrderResponse: (commitedOrdersResponse) =>
+                          setState(() {}),
                     );
                   },
                   child: ExpandablePageView(
@@ -980,7 +982,7 @@ class _BasketHistoryGridState extends State<BasketHistoryGrid> {
             } else {
               var items = <ItemResponse>[];
               pageBusinessResponse.content?.forEach((element) {
-                items.addAll(element.items);
+                items.addAll(element.items ?? []);
               });
               if (pageBusinessResponse.last == true) {
                 _pageController.appendLastPage(items);
@@ -989,6 +991,7 @@ class _BasketHistoryGridState extends State<BasketHistoryGrid> {
                     (pageBusinessResponse.pageable?.pageNumber ?? 0) + 1);
               }
             }
+            // _pageController.refresh();
           },
         );
       },
@@ -999,7 +1002,9 @@ class _BasketHistoryGridState extends State<BasketHistoryGrid> {
         builderDelegate: PagedChildBuilderDelegate<ItemResponse>(
           itemBuilder: (context, item, index) => AddEmptyProductContainer(
             item: item,
+            key: Key(item.id.toString()),
             type: '2',
+            onNeedRefresh: () => _pageController.refresh(),
             title: item.name ?? '',
             desc: item.description?.full ?? '',
             price: item.price?.toStringAsFixed(2) ?? '',
