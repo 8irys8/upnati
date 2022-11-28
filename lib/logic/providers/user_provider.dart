@@ -12,7 +12,9 @@ import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
 import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
+import 'package:upnati/logic/models/user/page_notification_response.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
+import 'package:upnati/logic/models/user/subscription_payload.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/logic/services/user_service.dart';
 
@@ -113,4 +115,40 @@ class UserProvider {
   Future<UserDetailResponse> updateUserDetail(
           {required FirebaseUserInfoPayload payload}) =>
       _userService.updateUserDetail(payload);
+
+  // @GET('/info/terms')
+  // Future<> getTerms();
+
+  // @GET('/info/policy')
+  // Future<> getPolicy();
+
+// @GET('/info/contact/phone')
+  // Future<> getContactPhone();
+
+  // @GET('/info/contact/email')
+  // Future<> getContactEmail();
+
+  //notification controller
+  Future<PageNotificationResponse> getNotifications({
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) =>
+      _userService.getNotifications(
+          pageOrder: pageOrder, size: size, page: page);
+
+  Future<void> unsubscribe({
+    required SubscriptionPayload payload,
+  }) =>
+      _userService.unsubscribe(payload: payload);
+
+  Future<void> subscribe({
+    required SubscriptionPayload payload,
+  }) =>
+      _userService.subscribe(payload: payload);
+
+  Future<void> testNotifications({
+    String? test,
+  }) =>
+      _userService.testNotifications(test: test);
 }

@@ -16,4 +16,10 @@ class UserState with _$UserState {
   const factory UserState.successBusinessInvitation(
           BusinessInvitationResponse businessInvitationResponse) =
       _SuccessBusinessInvitation;
+
+  const factory UserState.successNotificationState(
+      PageNotificationResponse response) = _SuccessNotificationState;
+  const factory UserState.success() = _Success;
+  const factory UserState.error() = _Error;
+  const factory UserState.loading() = _Loading;
 }

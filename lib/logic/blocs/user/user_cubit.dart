@@ -8,7 +8,9 @@ import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
 import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
+import 'package:upnati/logic/models/user/page_notification_response.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
+import 'package:upnati/logic/models/user/subscription_payload.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 
 import 'package:upnati/logic/providers/user_provider.dart';
@@ -195,6 +197,48 @@ class UserCubit extends Cubit<UserState> {
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
       emit(UserState.errorUserState(e));
+    }
+  }
+
+  Future<void> getNotifications({
+    required String pageOrder,
+    int? page,
+    required int size,
+  }) async {
+    emit(const UserState.loading());
+    try {
+      final response = await _userProvider.getNotifications(
+        pageOrder: pageOrder,
+        page: page,
+        size: size,
+      );
+      emit(UserState.successNotificationState(response));
+    } catch (e) {
+      emit(const UserState.error());
+    }
+  }
+
+  Future<void> unsubscribe({
+    required SubscriptionPayload payload,
+  }) async {
+    emit(const UserState.loading());
+    try {
+      await _userProvider.unsubscribe(payload: payload);
+      emit(const UserState.success());
+    } catch (e) {
+      emit(const UserState.error());
+    }
+  }
+
+  Future<void> subscribe({
+    required SubscriptionPayload payload,
+  }) async {
+    emit(const UserState.loading());
+    try {
+      await _userProvider.subscribe(payload: payload);
+      emit(const UserState.success());
+    } catch (e) {
+      emit(const UserState.error());
     }
   }
 }

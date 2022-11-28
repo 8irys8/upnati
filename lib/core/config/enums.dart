@@ -37,3 +37,5 @@ enum DeliverySpeed { ds0, ds1 }
 enum ItemType { it0, it1 }
 
 enum OrderStatus { Processing, Confirmed, InProgress, Closed }
+
+enum SenderType { USER, BUSINESS }
