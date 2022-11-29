@@ -35,6 +35,7 @@ mixin _$UserState {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +55,7 @@ mixin _$UserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +75,7 @@ mixin _$UserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,6 +97,7 @@ mixin _$UserState {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +115,7 @@ mixin _$UserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -128,6 +133,7 @@ mixin _$UserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -204,6 +210,7 @@ class _$_Initial implements _Initial {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return initial();
   }
@@ -226,6 +233,7 @@ class _$_Initial implements _Initial {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return initial?.call();
   }
@@ -248,6 +256,7 @@ class _$_Initial implements _Initial {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -275,6 +284,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return initial(this);
   }
@@ -295,6 +305,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return initial?.call(this);
   }
@@ -315,6 +326,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -386,6 +398,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return loadingUserState();
   }
@@ -408,6 +421,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return loadingUserState?.call();
   }
@@ -430,6 +444,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (loadingUserState != null) {
@@ -457,6 +472,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return loadingUserState(this);
   }
@@ -477,6 +493,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return loadingUserState?.call(this);
   }
@@ -497,6 +514,7 @@ class _$_LoadingUserState implements _LoadingUserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (loadingUserState != null) {
@@ -592,6 +610,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return errorUserState(err);
   }
@@ -614,6 +633,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return errorUserState?.call(err);
   }
@@ -636,6 +656,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (errorUserState != null) {
@@ -663,6 +684,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return errorUserState(this);
   }
@@ -683,6 +705,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return errorUserState?.call(this);
   }
@@ -703,6 +726,7 @@ class _$_ErrorUserState implements _ErrorUserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (errorUserState != null) {
@@ -779,6 +803,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return successUserState();
   }
@@ -801,6 +826,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return successUserState?.call();
   }
@@ -823,6 +849,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserState != null) {
@@ -850,6 +877,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return successUserState(this);
   }
@@ -870,6 +898,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return successUserState?.call(this);
   }
@@ -890,6 +919,7 @@ class _$_SuccessUserState implements _SuccessUserState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserState != null) {
@@ -995,6 +1025,7 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return successUserLinkState(link);
   }
@@ -1017,6 +1048,7 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return successUserLinkState?.call(link);
   }
@@ -1039,6 +1071,7 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserLinkState != null) {
@@ -1066,6 +1099,7 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return successUserLinkState(this);
   }
@@ -1086,6 +1120,7 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return successUserLinkState?.call(this);
   }
@@ -1106,6 +1141,7 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserLinkState != null) {
@@ -1219,6 +1255,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return successUserStateResponse(response);
   }
@@ -1241,6 +1278,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return successUserStateResponse?.call(response);
   }
@@ -1263,6 +1301,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserStateResponse != null) {
@@ -1290,6 +1329,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return successUserStateResponse(this);
   }
@@ -1310,6 +1350,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return successUserStateResponse?.call(this);
   }
@@ -1330,6 +1371,7 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserStateResponse != null) {
@@ -1444,6 +1486,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return successUserPageDetails(pageUserDetailsResponse);
   }
@@ -1466,6 +1509,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return successUserPageDetails?.call(pageUserDetailsResponse);
   }
@@ -1488,6 +1532,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserPageDetails != null) {
@@ -1515,6 +1560,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return successUserPageDetails(this);
   }
@@ -1535,6 +1581,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return successUserPageDetails?.call(this);
   }
@@ -1555,6 +1602,7 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (successUserPageDetails != null) {
@@ -1672,6 +1720,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return successBusinessInvitation(businessInvitationResponse);
   }
@@ -1694,6 +1743,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return successBusinessInvitation?.call(businessInvitationResponse);
   }
@@ -1716,6 +1766,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (successBusinessInvitation != null) {
@@ -1743,6 +1794,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return successBusinessInvitation(this);
   }
@@ -1763,6 +1815,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return successBusinessInvitation?.call(this);
   }
@@ -1783,6 +1836,7 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (successBusinessInvitation != null) {
@@ -1897,6 +1951,7 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return successNotificationState(response);
   }
@@ -1919,6 +1974,7 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return successNotificationState?.call(response);
   }
@@ -1941,6 +1997,7 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (successNotificationState != null) {
@@ -1968,6 +2025,7 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return successNotificationState(this);
   }
@@ -1988,6 +2046,7 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return successNotificationState?.call(this);
   }
@@ -2008,6 +2067,7 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (successNotificationState != null) {
@@ -2083,6 +2143,7 @@ class _$_Success implements _Success {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return success();
   }
@@ -2105,6 +2166,7 @@ class _$_Success implements _Success {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return success?.call();
   }
@@ -2127,6 +2189,7 @@ class _$_Success implements _Success {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -2154,6 +2217,7 @@ class _$_Success implements _Success {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return success(this);
   }
@@ -2174,6 +2238,7 @@ class _$_Success implements _Success {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return success?.call(this);
   }
@@ -2194,6 +2259,7 @@ class _$_Success implements _Success {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -2262,6 +2328,7 @@ class _$_Error implements _Error {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return error();
   }
@@ -2284,6 +2351,7 @@ class _$_Error implements _Error {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return error?.call();
   }
@@ -2306,6 +2374,7 @@ class _$_Error implements _Error {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -2333,6 +2402,7 @@ class _$_Error implements _Error {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return error(this);
   }
@@ -2353,6 +2423,7 @@ class _$_Error implements _Error {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return error?.call(this);
   }
@@ -2373,6 +2444,7 @@ class _$_Error implements _Error {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -2442,6 +2514,7 @@ class _$_Loading implements _Loading {
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
   }) {
     return loading();
   }
@@ -2464,6 +2537,7 @@ class _$_Loading implements _Loading {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
   }) {
     return loading?.call();
   }
@@ -2486,6 +2560,7 @@ class _$_Loading implements _Loading {
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2513,6 +2588,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
   }) {
     return loading(this);
   }
@@ -2533,6 +2609,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
   }) {
     return loading?.call(this);
   }
@@ -2553,6 +2630,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2564,4 +2642,231 @@ class _$_Loading implements _Loading {
 
 abstract class _Loading implements UserState {
   const factory _Loading() = _$_Loading;
+}
+
+/// @nodoc
+abstract class _$$_SuccessInfoStateCopyWith<$Res> {
+  factory _$$_SuccessInfoStateCopyWith(
+          _$_SuccessInfoState value, $Res Function(_$_SuccessInfoState) then) =
+      __$$_SuccessInfoStateCopyWithImpl<$Res>;
+  $Res call({InfoResponse response});
+
+  $InfoResponseCopyWith<$Res> get response;
+}
+
+/// @nodoc
+class __$$_SuccessInfoStateCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res>
+    implements _$$_SuccessInfoStateCopyWith<$Res> {
+  __$$_SuccessInfoStateCopyWithImpl(
+      _$_SuccessInfoState _value, $Res Function(_$_SuccessInfoState) _then)
+      : super(_value, (v) => _then(v as _$_SuccessInfoState));
+
+  @override
+  _$_SuccessInfoState get _value => super._value as _$_SuccessInfoState;
+
+  @override
+  $Res call({
+    Object? response = freezed,
+  }) {
+    return _then(_$_SuccessInfoState(
+      response == freezed
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as InfoResponse,
+    ));
+  }
+
+  @override
+  $InfoResponseCopyWith<$Res> get response {
+    return $InfoResponseCopyWith<$Res>(_value.response, (value) {
+      return _then(_value.copyWith(response: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SuccessInfoState implements _SuccessInfoState {
+  const _$_SuccessInfoState(this.response);
+
+  @override
+  final InfoResponse response;
+
+  @override
+  String toString() {
+    return 'UserState.successInfoState(response: $response)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SuccessInfoState &&
+            const DeepCollectionEquality().equals(other.response, response));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessInfoStateCopyWith<_$_SuccessInfoState> get copyWith =>
+      __$$_SuccessInfoStateCopyWithImpl<_$_SuccessInfoState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingUserState,
+    required TResult Function(dynamic err) errorUserState,
+    required TResult Function() successUserState,
+    required TResult Function(AppLinkResponse link) successUserLinkState,
+    required TResult Function(UserDetailResponse response)
+        successUserStateResponse,
+    required TResult Function(PageUserDetailsResponse pageUserDetailsResponse)
+        successUserPageDetails,
+    required TResult Function(
+            BusinessInvitationResponse businessInvitationResponse)
+        successBusinessInvitation,
+    required TResult Function(PageNotificationResponse response)
+        successNotificationState,
+    required TResult Function() success,
+    required TResult Function() error,
+    required TResult Function() loading,
+    required TResult Function(InfoResponse response) successInfoState,
+  }) {
+    return successInfoState(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingUserState,
+    TResult Function(dynamic err)? errorUserState,
+    TResult Function()? successUserState,
+    TResult Function(AppLinkResponse link)? successUserLinkState,
+    TResult Function(UserDetailResponse response)? successUserStateResponse,
+    TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
+        successUserPageDetails,
+    TResult Function(BusinessInvitationResponse businessInvitationResponse)?
+        successBusinessInvitation,
+    TResult Function(PageNotificationResponse response)?
+        successNotificationState,
+    TResult Function()? success,
+    TResult Function()? error,
+    TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
+  }) {
+    return successInfoState?.call(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingUserState,
+    TResult Function(dynamic err)? errorUserState,
+    TResult Function()? successUserState,
+    TResult Function(AppLinkResponse link)? successUserLinkState,
+    TResult Function(UserDetailResponse response)? successUserStateResponse,
+    TResult Function(PageUserDetailsResponse pageUserDetailsResponse)?
+        successUserPageDetails,
+    TResult Function(BusinessInvitationResponse businessInvitationResponse)?
+        successBusinessInvitation,
+    TResult Function(PageNotificationResponse response)?
+        successNotificationState,
+    TResult Function()? success,
+    TResult Function()? error,
+    TResult Function()? loading,
+    TResult Function(InfoResponse response)? successInfoState,
+    required TResult orElse(),
+  }) {
+    if (successInfoState != null) {
+      return successInfoState(response);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingUserState value) loadingUserState,
+    required TResult Function(_ErrorUserState value) errorUserState,
+    required TResult Function(_SuccessUserState value) successUserState,
+    required TResult Function(_SuccessUserLinkState value) successUserLinkState,
+    required TResult Function(_SuccessUserStateResponse value)
+        successUserStateResponse,
+    required TResult Function(_SuccessUserPageDetails value)
+        successUserPageDetails,
+    required TResult Function(_SuccessBusinessInvitation value)
+        successBusinessInvitation,
+    required TResult Function(_SuccessNotificationState value)
+        successNotificationState,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_SuccessInfoState value) successInfoState,
+  }) {
+    return successInfoState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingUserState value)? loadingUserState,
+    TResult Function(_ErrorUserState value)? errorUserState,
+    TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
+    TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
+    TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
+    TResult Function(_SuccessBusinessInvitation value)?
+        successBusinessInvitation,
+    TResult Function(_SuccessNotificationState value)? successNotificationState,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
+  }) {
+    return successInfoState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingUserState value)? loadingUserState,
+    TResult Function(_ErrorUserState value)? errorUserState,
+    TResult Function(_SuccessUserState value)? successUserState,
+    TResult Function(_SuccessUserLinkState value)? successUserLinkState,
+    TResult Function(_SuccessUserStateResponse value)? successUserStateResponse,
+    TResult Function(_SuccessUserPageDetails value)? successUserPageDetails,
+    TResult Function(_SuccessBusinessInvitation value)?
+        successBusinessInvitation,
+    TResult Function(_SuccessNotificationState value)? successNotificationState,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SuccessInfoState value)? successInfoState,
+    required TResult orElse(),
+  }) {
+    if (successInfoState != null) {
+      return successInfoState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessInfoState implements UserState {
+  const factory _SuccessInfoState(final InfoResponse response) =
+      _$_SuccessInfoState;
+
+  InfoResponse get response;
+  @JsonKey(ignore: true)
+  _$$_SuccessInfoStateCopyWith<_$_SuccessInfoState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

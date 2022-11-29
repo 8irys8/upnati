@@ -18,6 +18,7 @@ import 'package:upnati/ui/screens/login/register_screen.dart';
 import 'package:upnati/ui/screens/login/sms_code_screen.dart';
 import 'package:upnati/ui/screens/more_info_screen.dart';
 import 'package:upnati/ui/screens/onboard_screen.dart';
+import 'package:upnati/ui/screens/policy_screen.dart';
 import 'package:upnati/ui/screens/product_main_screen.dart';
 import 'package:upnati/ui/screens/splash_screen.dart';
 import 'package:upnati/ui/screens/terms_screen.dart';
@@ -88,6 +89,9 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     ),
     AutoRoute(
       page: MarketPlaceScreen,
+    ),
+    AutoRoute(
+      page: PolicyScreen,
     ),
     AutoRoute(
       page: OnboardScreen,

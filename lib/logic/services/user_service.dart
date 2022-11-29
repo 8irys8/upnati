@@ -9,6 +9,7 @@ import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
 import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
+import 'package:upnati/logic/models/user/info_response.dart';
 import 'package:upnati/logic/models/user/page_notification_response.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
 import 'package:upnati/logic/models/user/subscription_payload.dart';
@@ -91,17 +92,17 @@ abstract class UserService {
   Future<AppLinkResponse> getAppLink();
 
   //info controller
-  // @GET('/info/terms')
-  // Future<> getTerms();
+  @GET('/info/terms')
+  Future<InfoResponse> getTerms();
 
-  // @GET('/info/policy')
-  // Future<> getPolicy();
+  @GET('/info/policy')
+  Future<InfoResponse> getPolicy();
 
-//  @GET('/info/contact/phone')
-//   Future<> getContactPhone();
+  @GET('/info/contact/phone')
+  Future<InfoResponse> getContactPhone();
 
-  // @GET('/info/contact/email')
-  // Future<> getContactEmail();
+  @GET('/info/contact/email')
+  Future<InfoResponse> getContactEmail();
 
   //notification controller
   @GET('/notifications')
@@ -113,12 +114,12 @@ abstract class UserService {
 
   @POST('/notifications/unsubscribe')
   Future<void> unsubscribe({
-    @Body() SubscriptionPayload payload,
+    @Body() required SubscriptionPayload payload,
   });
 
   @POST('/notifications/subscribe')
   Future<void> subscribe({
-    @Body() SubscriptionPayload payload,
+    @Body() required SubscriptionPayload payload,
   });
 
   @POST('/notifications/test')

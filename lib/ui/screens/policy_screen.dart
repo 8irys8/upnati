@@ -7,11 +7,11 @@ import 'package:get_it/get_it.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 
-class TermsScreen extends StatefulWidget with AutoRouteWrapper {
-  const TermsScreen({Key? key}) : super(key: key);
+class PolicyScreen extends StatefulWidget with AutoRouteWrapper {
+  const PolicyScreen({Key? key}) : super(key: key);
 
   @override
-  State<TermsScreen> createState() => _TermsScreenState();
+  State<PolicyScreen> createState() => _TermsScreenState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -22,11 +22,11 @@ class TermsScreen extends StatefulWidget with AutoRouteWrapper {
   }
 }
 
-class _TermsScreenState extends State<TermsScreen> {
+class _TermsScreenState extends State<PolicyScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<UserCubit>().getTerms();
+    context.read<UserCubit>().getPolicy();
   }
 
   @override
@@ -49,16 +49,6 @@ class _TermsScreenState extends State<TermsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 35),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 33),
-                  child: Center(
-                    child: Text(
-                      LocaleKeys.onboard_for_full_regulation.tr(),
-                      style:
-                          AppTheme.regular(size: 17, color: AppColors.darkBlue),
-                    ),
-                  ),
-                ),
                 BlocBuilder<UserCubit, UserState>(
                   builder: (context, state) {
                     return state.maybeWhen(

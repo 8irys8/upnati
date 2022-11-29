@@ -12,6 +12,7 @@ import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
 import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
+import 'package:upnati/logic/models/user/info_response.dart';
 import 'package:upnati/logic/models/user/page_notification_response.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
 import 'package:upnati/logic/models/user/subscription_payload.dart';
@@ -151,4 +152,12 @@ class UserProvider {
     String? test,
   }) =>
       _userService.testNotifications(test: test);
+
+  Future<InfoResponse> getTerms() => _userService.getTerms();
+
+  Future<InfoResponse> getPolicy() => _userService.getPolicy();
+
+  Future<InfoResponse> getContactPhone() => _userService.getContactPhone();
+
+  Future<InfoResponse> getContactEmail() => _userService.getContactEmail();
 }

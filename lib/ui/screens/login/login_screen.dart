@@ -156,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         .register_confirm_terms_link
                                         .tr(),
                                     onUnderlineTextTap: () => context.router
-                                        .push(const TermsScreen()),
+                                        .push(const PolicyScreen()),
                                     value: value,
                                     onTap: () {
                                       termsChecked.value = !termsChecked.value;

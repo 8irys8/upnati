@@ -79,21 +79,24 @@ class _MoreInfoScreenState extends State<MoreInfoScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      children: [
-                        Image.asset(Images.pencilImg),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Transform.translate(
-                          offset: const Offset(-6, 0),
-                          child: Text(
-                            LocaleKeys.onboard_policy.tr(),
-                            style: AppTheme.regular(
-                                size: 16, color: AppColors.darkBlue),
+                    GestureDetector(
+                      onTap: () => context.router.push(const PolicyScreen()),
+                      child: Column(
+                        children: [
+                          Image.asset(Images.pencilImg),
+                          const SizedBox(
+                            height: 8,
                           ),
-                        )
-                      ],
+                          Transform.translate(
+                            offset: const Offset(-6, 0),
+                            child: Text(
+                              LocaleKeys.onboard_policy.tr(),
+                              style: AppTheme.regular(
+                                  size: 16, color: AppColors.darkBlue),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       width: 60,

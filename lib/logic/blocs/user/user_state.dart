@@ -22,4 +22,7 @@ class UserState with _$UserState {
   const factory UserState.success() = _Success;
   const factory UserState.error() = _Error;
   const factory UserState.loading() = _Loading;
+
+  const factory UserState.successInfoState(InfoResponse response) =
+      _SuccessInfoState;
 }

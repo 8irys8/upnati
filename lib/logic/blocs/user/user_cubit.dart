@@ -15,6 +15,8 @@ import 'package:upnati/logic/models/user/user_detail_response.dart';
 
 import 'package:upnati/logic/providers/user_provider.dart';
 
+import '../../models/user/info_response.dart';
+
 part 'user_state.dart';
 part 'user_cubit.freezed.dart';
 
@@ -237,6 +239,46 @@ class UserCubit extends Cubit<UserState> {
     try {
       await _userProvider.subscribe(payload: payload);
       emit(const UserState.success());
+    } catch (e) {
+      emit(const UserState.error());
+    }
+  }
+
+  Future<void> getTerms() async {
+    emit(const UserState.loading());
+    try {
+      var result = await _userProvider.getTerms();
+      emit(UserState.successInfoState(result));
+    } catch (e) {
+      emit(const UserState.error());
+    }
+  }
+
+  Future<void> getPolicy() async {
+    emit(const UserState.loading());
+    try {
+      var result = await _userProvider.getPolicy();
+      emit(UserState.successInfoState(result));
+    } catch (e) {
+      emit(const UserState.error());
+    }
+  }
+
+  Future<void> getContactPhone() async {
+    emit(const UserState.loading());
+    try {
+      var result = await _userProvider.getContactPhone();
+      emit(UserState.successInfoState(result));
+    } catch (e) {
+      emit(const UserState.error());
+    }
+  }
+
+  Future<void> getContactEmail() async {
+    emit(const UserState.loading());
+    try {
+      var result = await _userProvider.getContactEmail();
+      emit(UserState.successInfoState(result));
     } catch (e) {
       emit(const UserState.error());
     }

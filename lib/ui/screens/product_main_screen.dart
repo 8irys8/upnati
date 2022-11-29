@@ -171,10 +171,23 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                         padding: const EdgeInsets.only(right: 28),
                         child: Row(
                           children: [
-                            Image.network(
-                              widget.item?.businessImageUrl ?? '',
-                              width: 53,
-                            ),
+                            widget.item?.businessImageUrl == null
+                                ? Container(
+                                    width: 53,
+                                    height: 53,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: AppColors.darkBlueLight,
+                                    ),
+                                    child: Image.asset(
+                                      Images.emptyAvatar,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : Image.network(
+                                    widget.item?.businessImageUrl ?? '',
+                                    width: 53,
+                                  ),
                             const SizedBox(
                               width: 5,
                             ),
