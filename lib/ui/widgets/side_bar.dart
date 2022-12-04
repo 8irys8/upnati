@@ -50,7 +50,7 @@ class _SideBarState extends State<SideBar> {
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                color: Color(0xff707070).withOpacity(.49),
+                color: const Color(0xff707070).withOpacity(.49),
               ),
             ),
           ),
@@ -150,7 +150,7 @@ class _SideBarState extends State<SideBar> {
                       },
                     ),
                     Divider(
-                      color: Color(0xff707070).withOpacity(.49),
+                      color: const Color(0xff707070).withOpacity(.49),
                       height: 5,
                     ),
                     BlocBuilder<UserCubit, UserState>(
@@ -231,7 +231,7 @@ class _SideBarState extends State<SideBar> {
                       },
                     ),
                     Divider(
-                      color: Color(0xff707070).withOpacity(.49),
+                      color: const Color(0xff707070).withOpacity(.49),
                       height: 5,
                     ),
                     GestureDetector(
@@ -258,7 +258,7 @@ class _SideBarState extends State<SideBar> {
                       ),
                     ),
                     Divider(
-                      color: Color(0xff707070).withOpacity(.49),
+                      color: const Color(0xff707070).withOpacity(.49),
                       height: 5,
                     ),
                     GestureDetector(
@@ -285,7 +285,7 @@ class _SideBarState extends State<SideBar> {
                       ),
                     ),
                     Divider(
-                      color: Color(0xff707070).withOpacity(.49),
+                      color: const Color(0xff707070).withOpacity(.49),
                       height: 5,
                     ),
                     GestureDetector(
@@ -312,7 +312,7 @@ class _SideBarState extends State<SideBar> {
                       ),
                     ),
                     Divider(
-                      color: Color(0xff707070).withOpacity(.49),
+                      color: const Color(0xff707070).withOpacity(.49),
                       height: 5,
                     ),
                     GestureDetector(
@@ -339,7 +339,7 @@ class _SideBarState extends State<SideBar> {
                       ),
                     ),
                     Divider(
-                      color: Color(0xff707070).withOpacity(.49),
+                      color: const Color(0xff707070).withOpacity(.49),
                       height: 5,
                     ),
                   ],
@@ -420,6 +420,8 @@ class SideBarControllerWidget extends InheritedWidget {
     this.controller,
   }) : super(key: key, child: child);
 
+  @override
+  // ignore: overridden_fields
   final Widget child;
 
   static SideBarControllerWidget? of(BuildContext context) {

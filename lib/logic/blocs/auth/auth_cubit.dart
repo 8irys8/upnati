@@ -36,7 +36,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final userCredential = await _localAuthService.signInWithSmsCode(sms);
       //TODO: save token and user data
-      print(await userCredential.user?.getIdToken());
+      // print(await userCredential.user?.getIdToken());
       emit(const AuthState.success());
     } catch (e) {
       emit(AuthState.error(e.toString()));

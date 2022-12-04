@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/models/user/auth_response.dart';

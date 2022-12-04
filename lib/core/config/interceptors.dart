@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:upnati/core/config/constants.dart';
-import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/providers/auth_provider.dart';
 

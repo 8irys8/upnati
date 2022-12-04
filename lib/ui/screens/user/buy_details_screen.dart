@@ -47,7 +47,7 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
   final _phoneController = TextEditingController();
   final _addressController = TextEditingController();
   final _postalCodeController = TextEditingController();
-  ValueNotifier<String?> _isSelectedDeliveryType = ValueNotifier(null);
+  final ValueNotifier<String?> _isSelectedDeliveryType = ValueNotifier(null);
 
   void _onBuy() {
     if (_formKey.currentState!.validate()) {

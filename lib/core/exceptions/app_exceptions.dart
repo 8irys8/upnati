@@ -5,6 +5,6 @@ class AppExceptions implements Exception {
 
   @override
   String toString() {
-    return "$message";
+    return '$message';
   }
 }

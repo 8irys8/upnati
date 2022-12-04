@@ -7,7 +7,6 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/item_collection.dart';
-import 'package:upnati/logic/models/business/order_preview_response.dart';
 import 'package:upnati/logic/models/item_basket_response.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
@@ -16,7 +15,6 @@ import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/custom_selector.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
-import 'package:collection/collection.dart';
 
 class PurchaseHistoryScreen extends StatefulWidget with AutoRouteWrapper {
   const PurchaseHistoryScreen({Key? key}) : super(key: key);
@@ -36,9 +34,9 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   late PageController _pageController;
   bool selectedItem = true;
   List<ItemBasketResponse> _items = <ItemBasketResponse>[];
-  ValueNotifier<double> _amountNotifier = ValueNotifier(0);
-  ValueNotifier<double> _deliveryNotifier = ValueNotifier(0);
-  ValueNotifier<double> _totalSumNotifier = ValueNotifier(0);
+  final ValueNotifier<double> _amountNotifier = ValueNotifier(0);
+  final ValueNotifier<double> _deliveryNotifier = ValueNotifier(0);
+  final ValueNotifier<double> _totalSumNotifier = ValueNotifier(0);
   PagingController? _pagingController;
   bool? _isFetched = false;
 

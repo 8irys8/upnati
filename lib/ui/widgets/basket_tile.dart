@@ -6,7 +6,7 @@ import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_button.dart';
 
 class BasketTile extends StatefulWidget {
-  BasketTile({Key? key}) : super(key: key);
+  const BasketTile({Key? key}) : super(key: key);
 
   @override
   State<BasketTile> createState() => _BasketTileState();

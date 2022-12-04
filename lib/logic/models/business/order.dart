@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:upnati/logic/models/business/item_impl.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
-import 'package:upnati/logic/models/user/location_response.dart';
 
 part 'order.g.dart';
 part 'order.freezed.dart';

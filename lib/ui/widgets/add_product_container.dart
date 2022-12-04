@@ -3,7 +3,6 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_svg/svg.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
 import 'package:upnati/resources/resource.dart';
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/main_container.dart';
 

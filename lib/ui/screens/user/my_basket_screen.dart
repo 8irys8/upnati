@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:upnati/resources/resource.dart';
-import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/basket_tile.dart';
-import 'package:upnati/ui/widgets/custom_button.dart';
 
 class MyBasketScreen extends StatefulWidget {
   const MyBasketScreen({Key? key}) : super(key: key);
@@ -33,15 +30,16 @@ class _MyBasketScreenState extends State<MyBasketScreen> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
                 const SizedBox(
                   height: 26,
                 ),
-                BasketTile(),
+                const BasketTile(),
                 const SizedBox(
                   height: 10,
                 ),
-                BasketTile(),
+                const BasketTile(),
               ],
             ),
           ),

@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
     if (_formKey.currentState?.validate() == false) return;
-    print('object tapped');
+    // print('object tapped');
     var fixedPhone = phone.replaceFirst('0', '+972');
     context.read<AuthCubit>().authByPhone(fixedPhone);
   }
@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: GestureDetector(
                             behavior: HitTestBehavior.opaque,
                             onTap: () {
-                              print('tap');
+                              // print('tap');
                               _doLogin(context,
                                   _phoneController.text.replaceAll(r'-', ''));
                             },

@@ -7,11 +7,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
 import 'package:upnati/logic/providers/user_provider.dart';
-import 'package:upnati/resources/locale_keys.g.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
 class Utils {
+  // ignore: no-boolean-literal-compare
   static Future<Box> get box async => await Hive.boxExists('system') == true
       ? Hive.box('system')
       : await Hive.openBox('system');

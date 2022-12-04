@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:upnati/logic/models/local_description.dart';
-import 'package:upnati/logic/models/user/location_response.dart';
 
 part 'business_form.g.dart';
 part 'business_form.freezed.dart';

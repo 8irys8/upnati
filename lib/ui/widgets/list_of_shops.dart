@@ -6,7 +6,6 @@ import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
-import 'package:upnati/logic/models/description.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/category_container.dart';
 

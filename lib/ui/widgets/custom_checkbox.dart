@@ -1,4 +1,3 @@
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;

@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
-import 'package:upnati/logic/models/business/order.dart';
 
 part 'commited_orders_response.g.dart';
 part 'commited_orders_response.freezed.dart';

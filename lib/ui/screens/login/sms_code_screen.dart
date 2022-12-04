@@ -8,7 +8,6 @@ import 'package:get_it/get_it.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
-import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';

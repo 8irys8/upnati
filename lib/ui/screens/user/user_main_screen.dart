@@ -46,12 +46,12 @@ class _ProductMainScreenState extends State<UserMainScreen> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _addressController = TextEditingController();
-  final _creditCardController = TextEditingController();
+  // final _creditCardController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _cardNumberController = TextEditingController();
-  final _cvvController = TextEditingController();
-  final _expMonthController = TextEditingController();
-  final _expYearController = TextEditingController();
+  // final _cardNumberController = TextEditingController();
+  // final _cvvController = TextEditingController();
+  // final _expMonthController = TextEditingController();
+  // final _expYearController = TextEditingController();
   final ValueNotifier<File?> _userImage = ValueNotifier(null);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

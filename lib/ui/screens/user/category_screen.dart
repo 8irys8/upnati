@@ -7,7 +7,6 @@ import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/resources/resource.dart';
-import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/search_field.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
