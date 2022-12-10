@@ -85,7 +85,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
             state.whenOrNull(
               successLink: (link) => Share.share(link.url ?? ''),
               success: () {
-                context.router.push(const PurchaseHistoryScreen());
+                context.router.push(PurchaseHistoryScreen());
               },
             );
           },
@@ -228,7 +228,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                       width: 4,
                                     ),
                                     Text(
-                                        '(234 ${LocaleKeys.business_register_reviews.tr()})',
+                                        '(${LocaleKeys.business_register_reviews.tr()} 234)',
                                         style: AppTheme.regular(
                                             size: 8,
                                             color: AppColors.textGray)),
@@ -267,27 +267,30 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                               ],
                             ),
                           ),
-                          Transform.translate(
-                            offset: const Offset(0, -45),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.fromLTRB(25, 10, 20, 25),
-                                decoration: const BoxDecoration(
-                                    color: AppColors.roze,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(27),
-                                      bottomRight: Radius.circular(27),
-                                    )),
-                                child: Text(
-                                  '${widget.item?.discountPercents}%',
-                                  style: AppTheme.bold(
-                                      size: 24, color: AppColors.white),
+                          widget.item?.discountPercents == 0 ||
+                                  widget.item?.discountPercents == null
+                              ? const SizedBox()
+                              : Transform.translate(
+                                  offset: const Offset(0, -45),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Container(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          25, 10, 20, 25),
+                                      decoration: const BoxDecoration(
+                                          color: AppColors.roze,
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(27),
+                                            bottomRight: Radius.circular(27),
+                                          )),
+                                      child: Text(
+                                        '${widget.item?.discountPercents}%',
+                                        style: AppTheme.bold(
+                                            size: 24, color: AppColors.white),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                       const SizedBox(
@@ -319,6 +322,10 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                             color: const Color(0xff707070),
                                             width: .5)),
                                     child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         GestureDetector(
                                           onTap: () {
@@ -328,9 +335,11 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                           },
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 4),
+                                                horizontal: 10),
                                             child: Image.asset(
                                               Images.icMinusAdd,
+                                              height: 18,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
@@ -363,9 +372,11 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                           },
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 4),
+                                                horizontal: 10),
                                             child: Image.asset(
                                               Images.icPlusAdd,
+                                              height: 18,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),

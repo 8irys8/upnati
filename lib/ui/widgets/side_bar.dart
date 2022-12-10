@@ -263,7 +263,7 @@ class _SideBarState extends State<SideBar> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        context.router.push(const PurchaseHistoryScreen());
+                        context.router.push(PurchaseHistoryScreen());
                         SideBarControllerWidget.of(context)
                             ?.controller
                             ?.toggleSideBar

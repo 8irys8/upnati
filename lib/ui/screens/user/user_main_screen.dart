@@ -864,7 +864,7 @@ class _FavoritesGridState extends State<FavoritesGrid> {
 
   void _fetchPage(int pageKey) async {
     await context.read<BusinessCubit>().getFavoriteItems(
-        pageOrder: SortType.ASC.name, size: 10, page: pageKey);
+        pageOrder: SortType.DESC.name, size: 10, page: pageKey);
   }
 
   @override
@@ -951,7 +951,7 @@ class _BasketHistoryGridState extends State<BasketHistoryGrid> {
 
   void _fetchPage(int pageKey) async {
     await context.read<BusinessCubit>().getAllUserOrders(
-        pageOrder: SortType.ASC.name,
+        pageOrder: SortType.DESC.name,
         size: 10,
         page: pageKey,
         param: 'creationDate');

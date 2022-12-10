@@ -106,7 +106,7 @@ class Utils {
                 );
               }),
             ));
-    context.router.replaceAll([const MarketPlaceScreen()]);
+    context.router.replaceAll([PurchaseHistoryScreen(selectedTab: 0)]);
   }
 
   static Future<void> showRegisterDialog(BuildContext context) async {

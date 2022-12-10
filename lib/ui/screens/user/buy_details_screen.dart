@@ -81,7 +81,7 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
         listeners: [
           BlocListener<BusinessCubit, BusinessState>(
             listener: (context, state) {
-              print(state);
+              // print(state);
               state.whenOrNull(
                 successCommitedOrdersResponse: (commitedOrdersResponse) async {
                   var result = await context.router.push(PaymentWebViewScreen(
@@ -89,6 +89,14 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
                   if (result == true) {
                     if (!mounted) return;
                     Utils.showSuccessOrderDialog(context);
+                    context.read<BusinessCubit>().modifyBasket(
+                        pageOrder: SortType.DESC.name,
+                        size: 1,
+                        itemCollection: widget.order?.copyWith(
+                                amount: widget.order?.amount.map(
+                                        (key, value) => MapEntry(key, 0)) ??
+                                    {}) ??
+                            const ItemCollection(amount: {}));
                   }
                 },
               );

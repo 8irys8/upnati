@@ -16,6 +16,7 @@ class BasketItem extends StatefulWidget {
   final VoidCallback? onRemove;
   final ValueChanged<double>? onAmountChange;
   final ValueChanged<double>? onDeliveryChange;
+  final void Function(ItemBasketResponse item, bool selected)? onSelect;
   final bool isAllSelected;
 
   const BasketItem({
@@ -25,6 +26,7 @@ class BasketItem extends StatefulWidget {
     this.onAmountChange,
     this.onDeliveryChange,
     this.isAllSelected = false,
+    this.onSelect,
   }) : super(key: key);
 
   @override
@@ -72,6 +74,7 @@ class _BasketItemState extends State<BasketItem> {
                             setState(() {
                               isSelected = !isSelected;
                             });
+                            widget.onSelect?.call(widget.item!, isSelected);
                             if (isSelected) {
                               widget.onAmountChange?.call(
                                   counter.value * (widget.item?.price ?? 0));

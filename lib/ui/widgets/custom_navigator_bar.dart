@@ -58,17 +58,24 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
                   title: LocaleKeys.user_info_my_purchases.tr(),
                   isSelected: _selectedIndex == 3,
                   onPressed: () {
+                    if (context.router
+                        .isRouteActive(PurchaseHistoryScreen.name)) return;
                     setState(() {
                       _selectedIndex = 3;
                     });
                     widget.onItemPressed?.call(3);
-                    context.router.push(const PurchaseHistoryScreen());
+
+                    context.router.push(
+                      PurchaseHistoryScreen(),
+                    );
                   }),
               _CustomBottomNavItem(
                   icon: Svgs.icAdditionalInfo,
                   title: LocaleKeys.user_info_more_info.tr(),
                   isSelected: _selectedIndex == 2,
                   onPressed: () {
+                    if (context.router.isRouteActive(MoreInfoScreen.name))
+                      return;
                     setState(() {
                       _selectedIndex = 2;
                     });
@@ -76,7 +83,11 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
                     context.router.push(const MoreInfoScreen());
                   }),
               GestureDetector(
-                onTap: () => context.router.push(const MarketPlaceScreen()),
+                onTap: () {
+                  if (context.router.isRouteActive(MarketPlaceScreen.name))
+                    return;
+                  context.router.push(const MarketPlaceScreen());
+                },
                 child: Transform.translate(
                     offset: const Offset(0, -20),
                     child: Column(
@@ -99,6 +110,8 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
                   title: LocaleKeys.user_info_categories.tr(),
                   isSelected: _selectedIndex == 1,
                   onPressed: () {
+                    if (context.router.isRouteActive(CategoryScreen.name))
+                      return;
                     setState(() {
                       _selectedIndex = 1;
                     });

@@ -17,7 +17,9 @@ import 'package:upnati/ui/widgets/custom_selector.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
 
 class PurchaseHistoryScreen extends StatefulWidget with AutoRouteWrapper {
-  const PurchaseHistoryScreen({Key? key}) : super(key: key);
+  final int? selectedTab;
+
+  const PurchaseHistoryScreen({Key? key, this.selectedTab}) : super(key: key);
 
   @override
   State<PurchaseHistoryScreen> createState() => _PurchaseHistoryScreenState();
@@ -39,6 +41,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   final ValueNotifier<double> _totalSumNotifier = ValueNotifier(0);
   PagingController? _pagingController;
   bool? _isFetched = false;
+  BasketListController? _basketListController = BasketListController();
 
   void _changeIndex(int index) {
     setState(() {
@@ -52,6 +55,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
   @override
   void initState() {
     super.initState();
+    _selectedIndex = widget.selectedTab ?? 1;
     _pageController = PageController(initialPage: _selectedIndex);
   }
 
@@ -153,7 +157,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                     },
                     child: _items.isEmpty && _isFetched == true
                         ? Center(
-                            child: Text('אין פריטים בסל ',
+                            child: Text('אין פריטים בסל',
                                 style: AppTheme.regular(size: 28)),
                           )
                         : SingleChildScrollView(
@@ -175,6 +179,8 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                             setState(() {
                                               selectedItem = !selectedItem;
                                             });
+                                            _basketListController?.selectAll
+                                                ?.call(selectedItem);
                                             WidgetsBinding.instance
                                                 .addPostFrameCallback((_) {
                                               _amountNotifier.value = 0;
@@ -193,6 +199,12 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                     ],
                                   ),
                                   BasketList(
+                                    controller: _basketListController,
+                                    onAllSelectChange: (value) {
+                                      setState(() {
+                                        selectedItem = value;
+                                      });
+                                    },
                                     isAllSelected: selectedItem,
                                     onInit: (value) =>
                                         _pagingController = value,
@@ -351,27 +363,19 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                                             color: AppColors.darkBlueLight,
                                             innerShadow: true,
                                             onPressed: () {
-                                              // List<OrderPreviewResponse>
-                                              //     orders = [];
-                                              // var grouped = _items.groupListsBy(
-                                              //     (element) =>
-                                              //         element.businessId);
-                                              // grouped.forEach((key, value) {
-                                              //   var map = <dynamic, int>{};
-                                              // value.forEach((element) {
-                                              //   map[element.id] =
-                                              //       element.amount ?? 0;
-                                              //   orders.add(
-                                              //       OrderPreviewResponse(
-                                              //           businessId: key,
-                                              //           itemCollections:
-                                              // ItemCollection(
-                                              //     amount:
-                                              //         map)));
-                                              // });
-                                              // });
+                                              var orderedItems =
+                                                  _basketListController
+                                                          ?.getAllSelected
+                                                          ?.call() ??
+                                                      {};
+
+                                              print(orderedItems);
                                               var map = <dynamic, int>{};
                                               for (var element in _items) {
+                                                if (orderedItems[element.id] ==
+                                                    false) {
+                                                  continue;
+                                                }
                                                 map[element.id] =
                                                     element.amount ?? 0;
                                               }

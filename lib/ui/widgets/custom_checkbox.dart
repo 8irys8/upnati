@@ -23,7 +23,14 @@ class CustomCheckbox extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.translucent,
       child: Row(children: [
-        Image.asset(value ? Images.icChecked : Images.icUnchecked),
+        // Image.asset(value ? Images.icChecked : Images.icUnchecked),
+        Icon(
+          value
+              ? Icons.check_box_outlined
+              : Icons.check_box_outline_blank_sharp,
+          color: AppColors.text.withOpacity(.7),
+          size: 16,
+        ),
         const SizedBox(width: 4),
         Text(
           label,

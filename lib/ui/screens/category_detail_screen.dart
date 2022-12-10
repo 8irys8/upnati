@@ -82,7 +82,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                 padding: EdgeInsets.only(bottom: 7, left: 37, right: 37),
                 child: SearchField(),
               ),
-              Text('מוצרי חשמל', style: AppTheme.bold(size: 25)),
+              Text(widget.category?.name ?? '', style: AppTheme.bold(size: 25)),
               const SizedBox(
                 height: 10,
               ),

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -19,6 +20,7 @@ import 'package:upnati/ui/widgets/custom_button.dart';
 import 'package:upnati/ui/widgets/custom_navigator_bar.dart';
 import 'package:upnati/ui/widgets/search_field.dart';
 import 'package:upnati/ui/widgets/side_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ShopHomeScreen extends StatefulWidget with AutoRouteWrapper {
   final BusinessResponse business;
@@ -289,28 +291,76 @@ class _ShopHomeScreenState extends State<ShopHomeScreen> {
                               // const SizedBox(
                               //   width: 13,
                               // ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.darkBlue,
-                                  borderRadius: BorderRadius.circular(12),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.16),
-                                      blurRadius: 6,
-                                      offset: const Offset(0, 3),
+                              BlocConsumer<UserCubit, UserState>(
+                                listener: (context, state) {
+                                  state.whenOrNull(
+                                      successInfoState: (response) {
+                                    launchUrl(
+                                        Uri.parse('tel:${response.value}'));
+                                  });
+                                },
+                                builder: (context, state) {
+                                  return AnimatedSwitcher(
+                                    duration: const Duration(milliseconds: 300),
+                                    child: state.maybeWhen(
+                                      loading: () => Container(
+                                        decoration: BoxDecoration(
+                                          color: AppColors.grayInput,
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black
+                                                  .withOpacity(0.16),
+                                              blurRadius: 6,
+                                              offset: const Offset(0, 3),
+                                            ),
+                                          ],
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 44, vertical: 4),
+                                          child: SpinKitCircle(
+                                              size: 20,
+                                              color: AppColors.darkBlue),
+                                        ),
+                                      ),
+                                      orElse: () => GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<UserCubit>()
+                                              .getContactPhone();
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: AppColors.darkBlue,
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.16),
+                                                blurRadius: 6,
+                                                offset: const Offset(0, 3),
+                                              ),
+                                            ],
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12, vertical: 7.5),
+                                            child: Text(
+                                                LocaleKeys
+                                                    .business_register_contactToStore
+                                                    .tr(),
+                                                style: AppTheme.regular(
+                                                    size: 10,
+                                                    color: AppColors.white)),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ],
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 7.5),
-                                  child: Text(
-                                      LocaleKeys
-                                          .business_register_contactToStore
-                                          .tr(),
-                                      style: AppTheme.regular(
-                                          size: 10, color: AppColors.white)),
-                                ),
+                                  );
+                                },
                               ),
                             ],
                           ),

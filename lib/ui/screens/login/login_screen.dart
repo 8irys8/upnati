@@ -26,7 +26,7 @@ class LoginScreen extends StatefulWidget with AutoRouteWrapper {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _phoneController = MaskedTextController(mask: '000-000-0000');
-  final termsChecked = ValueNotifier<bool>(true);
+  final termsChecked = ValueNotifier<bool>(false);
   final _formKey = GlobalKey<FormState>();
 
   void _doLogin(BuildContext context, String phone) {
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 46)
+                                  const EdgeInsets.symmetric(horizontal: 34)
                                       .copyWith(bottom: 113),
                               child: ValueListenableBuilder<bool>(
                                 valueListenable: termsChecked,
@@ -235,7 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   const SizedBox(
-                    height: 60,
+                    height: 38,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

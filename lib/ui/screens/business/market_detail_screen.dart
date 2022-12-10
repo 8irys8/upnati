@@ -198,8 +198,8 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
               },
               error: (err) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('something went wrong'),
+                  SnackBar(
+                    content: Text(err.message),
                   ),
                 );
               },

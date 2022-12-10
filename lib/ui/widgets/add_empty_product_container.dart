@@ -67,25 +67,33 @@ class AddEmptyProductContainer extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            GestureDetector(
-                              onTap: type == '1'
-                                  ? () {
-                                      context
-                                          .read<BusinessCubit>()
-                                          .deleteFromFavorites(
-                                              itemId: item?.id ?? '');
-                                      onNeedRefresh?.call();
-                                    }
-                                  : null,
-                              child: Padding(
-                                padding: const EdgeInsets.all(7.0),
-                                child: SvgPicture.asset(
-                                  type == '1'
-                                      ? Svgs.icHeeartRoze
-                                      : Svgs.icBagRoze,
-                                  color: AppColors.rozeLightbtn,
-                                  fit: BoxFit.scaleDown,
-                                  height: 12,
+                            BlocListener<BusinessCubit, BusinessState>(
+                              listener: (context, state) {
+                                state.whenOrNull(
+                                  successItemResponse: (itemResponse) {
+                                    onNeedRefresh?.call();
+                                  },
+                                );
+                              },
+                              child: GestureDetector(
+                                onTap: type == '1'
+                                    ? () {
+                                        context
+                                            .read<BusinessCubit>()
+                                            .deleteFromFavorites(
+                                                itemId: item?.id ?? '');
+                                      }
+                                    : null,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(7.0),
+                                  child: SvgPicture.asset(
+                                    type == '1'
+                                        ? Svgs.icHeeartRoze
+                                        : Svgs.icBagRoze,
+                                    color: AppColors.rozeLightbtn,
+                                    fit: BoxFit.scaleDown,
+                                    height: 12,
+                                  ),
                                 ),
                               ),
                             ),

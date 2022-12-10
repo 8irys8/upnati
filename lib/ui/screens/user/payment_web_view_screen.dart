@@ -15,12 +15,15 @@ class _PaymentWebViewScreenState extends State<PaymentWebViewScreen> {
   Widget build(BuildContext context) {
     return WebView(
       navigationDelegate: (navigation) {
-        // print(navigation.url);
+        print(navigation.url);
         if (navigation.url.contains('/success')) {
           context.router.pop(true);
 
           return NavigationDecision.prevent;
         } else {
+          if (navigation.url.contains(widget.url)) {
+            return NavigationDecision.navigate;
+          }
           context.router.pop();
 
           return NavigationDecision.prevent;
