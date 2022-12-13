@@ -72,7 +72,7 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
       page: UserMainScreen,
       guards: [RegisterGuard],
     ),
-    AutoRoute(
+    CustomRoute(
       page: PurchaseHistoryScreen,
       guards: [RegisterGuard],
     ),
@@ -80,10 +80,10 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
       page: MessageScreen,
       guards: [RegisterGuard],
     ),
-    AutoRoute(
+    CustomRoute(
       page: CategoryScreen,
     ),
-    AutoRoute(
+    CustomRoute(
       page: MarketPlaceScreen,
     ),
     AutoRoute(
@@ -92,7 +92,7 @@ import 'package:upnati/ui/screens/user/user_main_screen.dart';
     AutoRoute(
       page: OnboardScreen,
     ),
-    AutoRoute(page: MoreInfoScreen),
+    CustomRoute(page: MoreInfoScreen),
     AutoRoute(page: TermsScreen),
     AutoRoute(page: SplashScreen, initial: true),
     AutoRoute(

@@ -53,4 +53,17 @@ class LocalAuthService {
   Future<String?> getToken() async {
     return await _firebaseAuth.currentUser?.getIdToken();
   }
+
+  // Google auth with firebase
+  Future<void> signInWithGoogle() async {
+    await _firebaseAuth.signInWithProvider(
+      GoogleAuthProvider(),
+    );
+  }
+
+  Future<void> signInWithFacebook() async {
+    await _firebaseAuth.signInWithProvider(
+      FacebookAuthProvider(),
+    );
+  }
 }

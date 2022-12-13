@@ -97,6 +97,27 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  //Google auth with firebase
+  Future<void> signInWithGoogle() async {
+    emit(const AuthState.loading());
+    try {
+      await _localAuthService.signInWithGoogle();
+      emit(const AuthState.successWithProvider());
+    } catch (e) {
+      emit(AuthState.error(e));
+    }
+  }
+
+  Future<void> signInWithFacebook() async {
+    emit(const AuthState.loading());
+    try {
+      await _localAuthService.signInWithFacebook();
+      emit(const AuthState.successWithProvider());
+    } catch (e) {
+      emit(AuthState.error(e));
+    }
+  }
+
   Future<void> confirmRestoreCode(
     ConfirmRestorePayload confirmRestorePayload,
   ) async {

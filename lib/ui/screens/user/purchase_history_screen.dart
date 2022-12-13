@@ -111,7 +111,7 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                     ),
                   ),
                   const SizedBox(
-                    width: 46,
+                    width: 35,
                   ),
                   Expanded(
                     child: TabButton(

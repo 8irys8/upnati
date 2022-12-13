@@ -22,6 +22,7 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function(dynamic err) error,
     required TResult Function() success,
+    required TResult Function() successWithProvider,
     required TResult Function(AuthResponse response) successResponse,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +42,7 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
     required TResult orElse(),
   }) =>
@@ -50,6 +53,7 @@ mixin _$AuthState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessWithProvider value) successWithProvider,
     required TResult Function(_SuccessResponse value) successResponse,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +63,7 @@ mixin _$AuthState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +73,7 @@ mixin _$AuthState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
     required TResult orElse(),
   }) =>
@@ -132,6 +138,7 @@ class _$_Initial implements _Initial {
     required TResult Function() loading,
     required TResult Function(dynamic err) error,
     required TResult Function() success,
+    required TResult Function() successWithProvider,
     required TResult Function(AuthResponse response) successResponse,
   }) {
     return initial();
@@ -144,6 +151,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
   }) {
     return initial?.call();
@@ -156,6 +164,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
     required TResult orElse(),
   }) {
@@ -172,6 +181,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessWithProvider value) successWithProvider,
     required TResult Function(_SuccessResponse value) successResponse,
   }) {
     return initial(this);
@@ -184,6 +194,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
   }) {
     return initial?.call(this);
@@ -196,6 +207,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
     required TResult orElse(),
   }) {
@@ -253,6 +265,7 @@ class _$_Loading implements _Loading {
     required TResult Function() loading,
     required TResult Function(dynamic err) error,
     required TResult Function() success,
+    required TResult Function() successWithProvider,
     required TResult Function(AuthResponse response) successResponse,
   }) {
     return loading();
@@ -265,6 +278,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
   }) {
     return loading?.call();
@@ -277,6 +291,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
     required TResult orElse(),
   }) {
@@ -293,6 +308,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessWithProvider value) successWithProvider,
     required TResult Function(_SuccessResponse value) successResponse,
   }) {
     return loading(this);
@@ -305,6 +321,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
   }) {
     return loading?.call(this);
@@ -317,6 +334,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
     required TResult orElse(),
   }) {
@@ -397,6 +415,7 @@ class _$_Error implements _Error {
     required TResult Function() loading,
     required TResult Function(dynamic err) error,
     required TResult Function() success,
+    required TResult Function() successWithProvider,
     required TResult Function(AuthResponse response) successResponse,
   }) {
     return error(err);
@@ -409,6 +428,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
   }) {
     return error?.call(err);
@@ -421,6 +441,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
     required TResult orElse(),
   }) {
@@ -437,6 +458,7 @@ class _$_Error implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessWithProvider value) successWithProvider,
     required TResult Function(_SuccessResponse value) successResponse,
   }) {
     return error(this);
@@ -449,6 +471,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
   }) {
     return error?.call(this);
@@ -461,6 +484,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
     required TResult orElse(),
   }) {
@@ -523,6 +547,7 @@ class _$_Success implements _Success {
     required TResult Function() loading,
     required TResult Function(dynamic err) error,
     required TResult Function() success,
+    required TResult Function() successWithProvider,
     required TResult Function(AuthResponse response) successResponse,
   }) {
     return success();
@@ -535,6 +560,7 @@ class _$_Success implements _Success {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
   }) {
     return success?.call();
@@ -547,6 +573,7 @@ class _$_Success implements _Success {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
     required TResult orElse(),
   }) {
@@ -563,6 +590,7 @@ class _$_Success implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessWithProvider value) successWithProvider,
     required TResult Function(_SuccessResponse value) successResponse,
   }) {
     return success(this);
@@ -575,6 +603,7 @@ class _$_Success implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
   }) {
     return success?.call(this);
@@ -587,6 +616,7 @@ class _$_Success implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
     required TResult orElse(),
   }) {
@@ -599,6 +629,135 @@ class _$_Success implements _Success {
 
 abstract class _Success implements AuthState {
   const factory _Success() = _$_Success;
+}
+
+/// @nodoc
+abstract class _$$_SuccessWithProviderCopyWith<$Res> {
+  factory _$$_SuccessWithProviderCopyWith(_$_SuccessWithProvider value,
+          $Res Function(_$_SuccessWithProvider) then) =
+      __$$_SuccessWithProviderCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SuccessWithProviderCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_SuccessWithProviderCopyWith<$Res> {
+  __$$_SuccessWithProviderCopyWithImpl(_$_SuccessWithProvider _value,
+      $Res Function(_$_SuccessWithProvider) _then)
+      : super(_value, (v) => _then(v as _$_SuccessWithProvider));
+
+  @override
+  _$_SuccessWithProvider get _value => super._value as _$_SuccessWithProvider;
+}
+
+/// @nodoc
+
+class _$_SuccessWithProvider implements _SuccessWithProvider {
+  const _$_SuccessWithProvider();
+
+  @override
+  String toString() {
+    return 'AuthState.successWithProvider()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SuccessWithProvider);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(dynamic err) error,
+    required TResult Function() success,
+    required TResult Function() successWithProvider,
+    required TResult Function(AuthResponse response) successResponse,
+  }) {
+    return successWithProvider();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(dynamic err)? error,
+    TResult Function()? success,
+    TResult Function()? successWithProvider,
+    TResult Function(AuthResponse response)? successResponse,
+  }) {
+    return successWithProvider?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(dynamic err)? error,
+    TResult Function()? success,
+    TResult Function()? successWithProvider,
+    TResult Function(AuthResponse response)? successResponse,
+    required TResult orElse(),
+  }) {
+    if (successWithProvider != null) {
+      return successWithProvider();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Success value) success,
+    required TResult Function(_SuccessWithProvider value) successWithProvider,
+    required TResult Function(_SuccessResponse value) successResponse,
+  }) {
+    return successWithProvider(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
+    TResult Function(_SuccessResponse value)? successResponse,
+  }) {
+    return successWithProvider?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
+    TResult Function(_SuccessResponse value)? successResponse,
+    required TResult orElse(),
+  }) {
+    if (successWithProvider != null) {
+      return successWithProvider(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessWithProvider implements AuthState {
+  const factory _SuccessWithProvider() = _$_SuccessWithProvider;
 }
 
 /// @nodoc
@@ -679,6 +838,7 @@ class _$_SuccessResponse implements _SuccessResponse {
     required TResult Function() loading,
     required TResult Function(dynamic err) error,
     required TResult Function() success,
+    required TResult Function() successWithProvider,
     required TResult Function(AuthResponse response) successResponse,
   }) {
     return successResponse(response);
@@ -691,6 +851,7 @@ class _$_SuccessResponse implements _SuccessResponse {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
   }) {
     return successResponse?.call(response);
@@ -703,6 +864,7 @@ class _$_SuccessResponse implements _SuccessResponse {
     TResult Function()? loading,
     TResult Function(dynamic err)? error,
     TResult Function()? success,
+    TResult Function()? successWithProvider,
     TResult Function(AuthResponse response)? successResponse,
     required TResult orElse(),
   }) {
@@ -719,6 +881,7 @@ class _$_SuccessResponse implements _SuccessResponse {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessWithProvider value) successWithProvider,
     required TResult Function(_SuccessResponse value) successResponse,
   }) {
     return successResponse(this);
@@ -731,6 +894,7 @@ class _$_SuccessResponse implements _SuccessResponse {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
   }) {
     return successResponse?.call(this);
@@ -743,6 +907,7 @@ class _$_SuccessResponse implements _SuccessResponse {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessWithProvider value)? successWithProvider,
     TResult Function(_SuccessResponse value)? successResponse,
     required TResult orElse(),
   }) {

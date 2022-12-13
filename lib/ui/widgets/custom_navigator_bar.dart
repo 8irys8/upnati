@@ -21,7 +21,7 @@ class CustomNavigatorBar extends StatefulWidget {
 }
 
 class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
-  int _selectedIndex = 0;
+  // int _selectedIndex = 0;
   SideBarController? _sideBarController;
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _sideBarController = SideBarControllerWidget.of(context)?.controller;
     });
-    _selectedIndex = widget.initialIndex ?? 0;
+    // _selectedIndex = widget.initialIndex ?? 0;
   }
 
   @override
@@ -56,13 +56,13 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
               _CustomBottomNavItem(
                   icon: Svgs.icBasket,
                   title: LocaleKeys.user_info_my_purchases.tr(),
-                  isSelected: _selectedIndex == 3,
+                  isSelected: false,
                   onPressed: () {
                     if (context.router
                         .isRouteActive(PurchaseHistoryScreen.name)) return;
-                    setState(() {
-                      _selectedIndex = 3;
-                    });
+                    // setState(() {
+                    //   _selectedIndex = 3;
+                    // });
                     widget.onItemPressed?.call(3);
 
                     context.router.push(
@@ -72,13 +72,13 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
               _CustomBottomNavItem(
                   icon: Svgs.icAdditionalInfo,
                   title: LocaleKeys.user_info_more_info.tr(),
-                  isSelected: _selectedIndex == 2,
+                  isSelected: false,
                   onPressed: () {
                     if (context.router.isRouteActive(MoreInfoScreen.name))
                       return;
-                    setState(() {
-                      _selectedIndex = 2;
-                    });
+                    // setState(() {
+                    //   _selectedIndex = 2;
+                    // });
                     widget.onItemPressed?.call(2);
                     context.router.push(const MoreInfoScreen());
                   }),
@@ -108,24 +108,24 @@ class _CustomNavigatorBarState extends State<CustomNavigatorBar> {
               _CustomBottomNavItem(
                   icon: Svgs.icCategories,
                   title: LocaleKeys.user_info_categories.tr(),
-                  isSelected: _selectedIndex == 1,
+                  isSelected: false,
                   onPressed: () {
                     if (context.router.isRouteActive(CategoryScreen.name))
                       return;
-                    setState(() {
-                      _selectedIndex = 1;
-                    });
+                    // setState(() {
+                    //   _selectedIndex = 1;
+                    // });
                     widget.onItemPressed?.call(1);
                     context.router.push(const CategoryScreen());
                   }),
               _CustomBottomNavItem(
                   icon: Svgs.icProfile,
                   title: LocaleKeys.user_info_my_account.tr(),
-                  isSelected: _selectedIndex == 0,
+                  isSelected: false,
                   onPressed: () {
-                    setState(() {
-                      _selectedIndex = 0;
-                    });
+                    // setState(() {
+                    //   _selectedIndex = 0;
+                    // });
                     widget.onItemPressed?.call(0);
                     _sideBarController?.toggleSideBar?.call();
                     // context.router.push(const UserMainScreen());
@@ -153,23 +153,22 @@ class _CustomBottomNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: isSelected ? AppColors.rozeLight : AppColors.white,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onPressed,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          IconButton(
-            splashColor: Colors.white,
-            padding: const EdgeInsets.only(top: 6, left: 12, right: 12),
-            constraints: const BoxConstraints(),
-            onPressed: onPressed,
-            icon: SvgPicture.asset(icon),
+          Container(
+            margin: const EdgeInsets.only(top: 6),
+            height: 24,
+            width: 24,
+            child: SvgPicture.asset(icon),
           ),
-          Expanded(
-            child: Text(
-              title,
-              style: AppTheme.regular(size: 9, color: AppColors.roze),
-            ),
-          )
+          Text(
+            title,
+            style: AppTheme.regular(size: 9, color: AppColors.roze),
+          ),
         ],
       ),
     );

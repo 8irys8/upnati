@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/models/user/auth_response.dart';
@@ -14,6 +15,7 @@ import 'package:upnati/logic/services/local_auth_service.dart';
 class AuthProvider {
   late final AuthService _authService;
   final LocalAuthService _localAuthService;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   AuthProvider(this._localAuthService) {
     //todo: fix later

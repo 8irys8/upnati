@@ -6,8 +6,10 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
+import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/auth/auth_cubit.dart';
+import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/custom_checkbox.dart';
@@ -17,7 +19,10 @@ class LoginScreen extends StatefulWidget with AutoRouteWrapper {
   const LoginScreen({Key? key}) : super(key: key);
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(create: (context) => GetIt.I<AuthCubit>(), child: this);
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (context) => GetIt.I<AuthCubit>()),
+      BlocProvider(create: (context) => GetIt.I<UserCubit>())
+    ], child: this);
   }
 
   @override
@@ -46,15 +51,32 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            success: () => context.router.push(const SmsCodeScreen()),
-            error: (err) => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(err.toString())),
-            ),
-          );
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<UserCubit, UserState>(
+            listener: (context, state) {
+              state.whenOrNull(successUserStateResponse: (data) {
+                if (data.role == RoleType.role_incomplete.name) {
+                  context.router.replace(const BusinessSelectScreen());
+                } else {
+                  context.router.replace(const MarketPlaceScreen());
+                }
+              }, errorUserState: (err) {
+                context.router.replace(const BusinessSelectScreen());
+              });
+            },
+          ),
+          BlocListener<AuthCubit, AuthState>(listener: (context, state) {
+            state.whenOrNull(
+              successWithProvider: () =>
+                  context.read<UserCubit>().getUserDetails(),
+              success: () => context.router.push(const SmsCodeScreen()),
+              error: (err) => ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(err.toString())),
+              ),
+            );
+          }),
+        ],
         child: SingleChildScrollView(
           child: Stack(
             clipBehavior: Clip.none,
@@ -241,11 +263,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(Images.googleImg),
+                      GestureDetector(
+                          onTap: () {
+                            context.read<AuthCubit>().signInWithGoogle();
+                          },
+                          child: Image.asset(Images.googleImg)),
                       const SizedBox(
                         width: 41,
                       ),
-                      Image.asset(Images.fbImg),
+                      GestureDetector(child: Image.asset(Images.fbImg)),
                     ],
                   )
                 ],
