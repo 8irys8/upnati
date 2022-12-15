@@ -21,6 +21,7 @@ _$_PageNotificationResponse _$$_PageNotificationResponseFromJson(
       pageable: json['pageable'] == null
           ? null
           : Pageable.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: json['size'] as int?,
       content: (json['content'] as List<dynamic>?)
           ?.map((e) => NotificationResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -38,6 +39,7 @@ Map<String, dynamic> _$$_PageNotificationResponseToJson(
       'number': instance.number,
       'numberOfElements': instance.numberOfElements,
       'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
       'content': instance.content?.map((e) => e.toJson()).toList(),
       'empty': instance.empty,
     };
@@ -47,11 +49,13 @@ _$_NotificationResponse _$$_NotificationResponseFromJson(
     _$_NotificationResponse(
       id: json['id'] as String?,
       title: json['title'] as String?,
+      date: json['date'] as String?,
       message: json['message'] as String?,
       senderName: json['senderName'] as String?,
       senderId: json['senderId'] as String?,
       senderImage: json['senderImage'] as String?,
       senderType: json['senderType'] as String?,
+      read: json['read'] as bool?,
     );
 
 Map<String, dynamic> _$$_NotificationResponseToJson(
@@ -59,9 +63,11 @@ Map<String, dynamic> _$$_NotificationResponseToJson(
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'date': instance.date,
       'message': instance.message,
       'senderName': instance.senderName,
       'senderId': instance.senderId,
       'senderImage': instance.senderImage,
       'senderType': instance.senderType,
+      'read': instance.read,
     };

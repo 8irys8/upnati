@@ -17,6 +17,7 @@ class PageNotificationResponse with _$PageNotificationResponse {
     final int? number,
     final int? numberOfElements,
     final Pageable? pageable,
+    final int? size,
     final List<NotificationResponse>? content,
     final bool? empty,
   }) = _PageNotificationResponse;
@@ -30,11 +31,13 @@ class NotificationResponse with _$NotificationResponse {
   const factory NotificationResponse({
     final String? id,
     final String? title,
+    final String? date,
     final String? message,
     final String? senderName,
     final String? senderId,
     final String? senderImage,
     final String? senderType,
+    final bool? read,
   }) = _NotificationResponse;
 
   factory NotificationResponse.fromJson(Map<String, dynamic> json) =>

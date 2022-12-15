@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/resources/resource.dart';
@@ -13,16 +14,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
+  Future<void> checkPermission() async {
+    await Future.delayed(const Duration(seconds: 2), () {
       if (FirebaseAuth.instance.currentUser != null) {
         context.router.replace(const MarketPlaceScreen());
       } else {
         context.router.replace(const LoginScreen());
       }
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkPermission();
   }
 
   @override

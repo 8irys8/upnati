@@ -18,11 +18,19 @@ class UserState with _$UserState {
       _SuccessBusinessInvitation;
 
   const factory UserState.successNotificationState(
-      PageNotificationResponse response) = _SuccessNotificationState;
+      PageNotificationResponse response,
+      {NotificationCountResponse? countUser,
+      NotificationCountResponse? countBusiness}) = _SuccessNotificationState;
   const factory UserState.success() = _Success;
   const factory UserState.error() = _Error;
   const factory UserState.loading() = _Loading;
 
   const factory UserState.successInfoState(InfoResponse response) =
       _SuccessInfoState;
+  // const factory UserState.successNotificationCountState(
+  //     NotificationCountResponse response) = _SuccessNotificationCountState;
+
+  // const factory UserState.successNotificationCountBusinessState(
+  //         NotificationCountResponse response) =
+  //     _SuccessNotificationCountBusinessState;
 }

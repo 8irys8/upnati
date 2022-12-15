@@ -70,7 +70,7 @@ class _MessageScreenState extends State<MessageScreen> {
             builder: (context, state) {
               return state.maybeWhen(
                 orElse: () => const SizedBox(),
-                successNotificationState: (response) {
+                successNotificationState: (response, countUser, countBusiness) {
                   var listClient = response.content
                       ?.where((el) => el.senderType == SenderType.USER.name)
                       .toList();
@@ -95,18 +95,19 @@ class _MessageScreenState extends State<MessageScreen> {
                           ),
                           tabs: [
                             Tab(
-                                child: Text.rich(
-                              TextSpan(
-                                  text: '${LocaleKeys.user_info_known.tr()} ',
-                                  style: AppTheme.regular(size: 16),
-                                  children: [
-                                    TextSpan(
-                                        text:
-                                            '', //must done when back will do it
-                                        style: AppTheme.regular(
-                                            size: 16, color: AppColors.red))
-                                  ]),
-                            )),
+                              child: Text.rich(
+                                TextSpan(
+                                    text: '${LocaleKeys.user_info_known.tr()} ',
+                                    style: AppTheme.regular(size: 16),
+                                    children: [
+                                      TextSpan(
+                                          text:
+                                              '${countBusiness?.count == 0 ? '' : (countBusiness?.count ?? '')}',
+                                          style: AppTheme.regular(
+                                              size: 16, color: AppColors.red))
+                                    ]),
+                              ),
+                            ),
                             Tab(
                                 child: Text.rich(
                               TextSpan(
@@ -115,7 +116,7 @@ class _MessageScreenState extends State<MessageScreen> {
                                   children: [
                                     TextSpan(
                                         text:
-                                            '', //must done when back will do it
+                                            '${countUser?.count == 0 ? '' : (countUser?.count ?? '')}',
                                         style: AppTheme.regular(
                                             size: 16, color: AppColors.red))
                                   ]),

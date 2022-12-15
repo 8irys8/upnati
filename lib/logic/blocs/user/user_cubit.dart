@@ -8,6 +8,7 @@ import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
 import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
+import 'package:upnati/logic/models/user/notification_count_response.dart';
 import 'package:upnati/logic/models/user/page_notification_response.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
 import 'package:upnati/logic/models/user/subscription_payload.dart';
@@ -209,12 +210,18 @@ class UserCubit extends Cubit<UserState> {
   }) async {
     emit(const UserState.loading());
     try {
+      final user = await _userProvider.getNotificationsCountUser();
+      final business = await _userProvider.getNotificationsCountBusiness();
       final response = await _userProvider.getNotifications(
         pageOrder: pageOrder,
         page: page,
         size: size,
       );
-      emit(UserState.successNotificationState(response));
+      emit(UserState.successNotificationState(
+        response,
+        countBusiness: business,
+        countUser: user,
+      ));
     } catch (e) {
       emit(const UserState.error());
     }

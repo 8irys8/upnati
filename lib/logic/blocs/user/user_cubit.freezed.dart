@@ -30,7 +30,10 @@ mixin _$UserState {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -50,7 +53,10 @@ mixin _$UserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -70,7 +76,10 @@ mixin _$UserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -205,7 +214,10 @@ class _$_Initial implements _Initial {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -228,7 +240,10 @@ class _$_Initial implements _Initial {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -251,7 +266,10 @@ class _$_Initial implements _Initial {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -393,7 +411,10 @@ class _$_LoadingUserState implements _LoadingUserState {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -416,7 +437,10 @@ class _$_LoadingUserState implements _LoadingUserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -439,7 +463,10 @@ class _$_LoadingUserState implements _LoadingUserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -605,7 +632,10 @@ class _$_ErrorUserState implements _ErrorUserState {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -628,7 +658,10 @@ class _$_ErrorUserState implements _ErrorUserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -651,7 +684,10 @@ class _$_ErrorUserState implements _ErrorUserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -798,7 +834,10 @@ class _$_SuccessUserState implements _SuccessUserState {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -821,7 +860,10 @@ class _$_SuccessUserState implements _SuccessUserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -844,7 +886,10 @@ class _$_SuccessUserState implements _SuccessUserState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1020,7 +1065,10 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -1043,7 +1091,10 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1066,7 +1117,10 @@ class _$_SuccessUserLinkState implements _SuccessUserLinkState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1250,7 +1304,10 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -1273,7 +1330,10 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1296,7 +1356,10 @@ class _$_SuccessUserStateResponse implements _SuccessUserStateResponse {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1481,7 +1544,10 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -1504,7 +1570,10 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1527,7 +1596,10 @@ class _$_SuccessUserPageDetails implements _SuccessUserPageDetails {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1715,7 +1787,10 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -1738,7 +1813,10 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1761,7 +1839,10 @@ class _$_SuccessBusinessInvitation implements _SuccessBusinessInvitation {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -1863,9 +1944,14 @@ abstract class _$$_SuccessNotificationStateCopyWith<$Res> {
           _$_SuccessNotificationState value,
           $Res Function(_$_SuccessNotificationState) then) =
       __$$_SuccessNotificationStateCopyWithImpl<$Res>;
-  $Res call({PageNotificationResponse response});
+  $Res call(
+      {PageNotificationResponse response,
+      NotificationCountResponse? countUser,
+      NotificationCountResponse? countBusiness});
 
   $PageNotificationResponseCopyWith<$Res> get response;
+  $NotificationCountResponseCopyWith<$Res>? get countUser;
+  $NotificationCountResponseCopyWith<$Res>? get countBusiness;
 }
 
 /// @nodoc
@@ -1883,12 +1969,22 @@ class __$$_SuccessNotificationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? response = freezed,
+    Object? countUser = freezed,
+    Object? countBusiness = freezed,
   }) {
     return _then(_$_SuccessNotificationState(
       response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as PageNotificationResponse,
+      countUser: countUser == freezed
+          ? _value.countUser
+          : countUser // ignore: cast_nullable_to_non_nullable
+              as NotificationCountResponse?,
+      countBusiness: countBusiness == freezed
+          ? _value.countBusiness
+          : countBusiness // ignore: cast_nullable_to_non_nullable
+              as NotificationCountResponse?,
     ));
   }
 
@@ -1898,19 +1994,47 @@ class __$$_SuccessNotificationStateCopyWithImpl<$Res>
       return _then(_value.copyWith(response: value));
     });
   }
+
+  @override
+  $NotificationCountResponseCopyWith<$Res>? get countUser {
+    if (_value.countUser == null) {
+      return null;
+    }
+
+    return $NotificationCountResponseCopyWith<$Res>(_value.countUser!, (value) {
+      return _then(_value.copyWith(countUser: value));
+    });
+  }
+
+  @override
+  $NotificationCountResponseCopyWith<$Res>? get countBusiness {
+    if (_value.countBusiness == null) {
+      return null;
+    }
+
+    return $NotificationCountResponseCopyWith<$Res>(_value.countBusiness!,
+        (value) {
+      return _then(_value.copyWith(countBusiness: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_SuccessNotificationState implements _SuccessNotificationState {
-  const _$_SuccessNotificationState(this.response);
+  const _$_SuccessNotificationState(this.response,
+      {this.countUser, this.countBusiness});
 
   @override
   final PageNotificationResponse response;
+  @override
+  final NotificationCountResponse? countUser;
+  @override
+  final NotificationCountResponse? countBusiness;
 
   @override
   String toString() {
-    return 'UserState.successNotificationState(response: $response)';
+    return 'UserState.successNotificationState(response: $response, countUser: $countUser, countBusiness: $countBusiness)';
   }
 
   @override
@@ -1918,12 +2042,18 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SuccessNotificationState &&
-            const DeepCollectionEquality().equals(other.response, response));
+            const DeepCollectionEquality().equals(other.response, response) &&
+            const DeepCollectionEquality().equals(other.countUser, countUser) &&
+            const DeepCollectionEquality()
+                .equals(other.countBusiness, countBusiness));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(response),
+      const DeepCollectionEquality().hash(countUser),
+      const DeepCollectionEquality().hash(countBusiness));
 
   @JsonKey(ignore: true)
   @override
@@ -1946,14 +2076,17 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
     required TResult Function() loading,
     required TResult Function(InfoResponse response) successInfoState,
   }) {
-    return successNotificationState(response);
+    return successNotificationState(response, countUser, countBusiness);
   }
 
   @override
@@ -1969,14 +2102,17 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
     TResult Function()? loading,
     TResult Function(InfoResponse response)? successInfoState,
   }) {
-    return successNotificationState?.call(response);
+    return successNotificationState?.call(response, countUser, countBusiness);
   }
 
   @override
@@ -1992,7 +2128,10 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2001,7 +2140,7 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
     required TResult orElse(),
   }) {
     if (successNotificationState != null) {
-      return successNotificationState(response);
+      return successNotificationState(response, countUser, countBusiness);
     }
     return orElse();
   }
@@ -2079,9 +2218,14 @@ class _$_SuccessNotificationState implements _SuccessNotificationState {
 
 abstract class _SuccessNotificationState implements UserState {
   const factory _SuccessNotificationState(
-      final PageNotificationResponse response) = _$_SuccessNotificationState;
+          final PageNotificationResponse response,
+          {final NotificationCountResponse? countUser,
+          final NotificationCountResponse? countBusiness}) =
+      _$_SuccessNotificationState;
 
   PageNotificationResponse get response;
+  NotificationCountResponse? get countUser;
+  NotificationCountResponse? get countBusiness;
   @JsonKey(ignore: true)
   _$$_SuccessNotificationStateCopyWith<_$_SuccessNotificationState>
       get copyWith => throw _privateConstructorUsedError;
@@ -2138,7 +2282,10 @@ class _$_Success implements _Success {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -2161,7 +2308,10 @@ class _$_Success implements _Success {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2184,7 +2334,10 @@ class _$_Success implements _Success {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2323,7 +2476,10 @@ class _$_Error implements _Error {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -2346,7 +2502,10 @@ class _$_Error implements _Error {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2369,7 +2528,10 @@ class _$_Error implements _Error {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2509,7 +2671,10 @@ class _$_Loading implements _Loading {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -2532,7 +2697,10 @@ class _$_Loading implements _Loading {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2555,7 +2723,10 @@ class _$_Loading implements _Loading {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2730,7 +2901,10 @@ class _$_SuccessInfoState implements _SuccessInfoState {
     required TResult Function(
             BusinessInvitationResponse businessInvitationResponse)
         successBusinessInvitation,
-    required TResult Function(PageNotificationResponse response)
+    required TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)
         successNotificationState,
     required TResult Function() success,
     required TResult Function() error,
@@ -2753,7 +2927,10 @@ class _$_SuccessInfoState implements _SuccessInfoState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,
@@ -2776,7 +2953,10 @@ class _$_SuccessInfoState implements _SuccessInfoState {
         successUserPageDetails,
     TResult Function(BusinessInvitationResponse businessInvitationResponse)?
         successBusinessInvitation,
-    TResult Function(PageNotificationResponse response)?
+    TResult Function(
+            PageNotificationResponse response,
+            NotificationCountResponse? countUser,
+            NotificationCountResponse? countBusiness)?
         successNotificationState,
     TResult Function()? success,
     TResult Function()? error,

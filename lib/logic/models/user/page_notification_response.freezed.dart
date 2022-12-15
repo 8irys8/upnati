@@ -29,6 +29,7 @@ mixin _$PageNotificationResponse {
   int? get number => throw _privateConstructorUsedError;
   int? get numberOfElements => throw _privateConstructorUsedError;
   Pageable? get pageable => throw _privateConstructorUsedError;
+  int? get size => throw _privateConstructorUsedError;
   List<NotificationResponse>? get content => throw _privateConstructorUsedError;
   bool? get empty => throw _privateConstructorUsedError;
 
@@ -52,6 +53,7 @@ abstract class $PageNotificationResponseCopyWith<$Res> {
       int? number,
       int? numberOfElements,
       Pageable? pageable,
+      int? size,
       List<NotificationResponse>? content,
       bool? empty});
 
@@ -78,6 +80,7 @@ class _$PageNotificationResponseCopyWithImpl<$Res>
     Object? number = freezed,
     Object? numberOfElements = freezed,
     Object? pageable = freezed,
+    Object? size = freezed,
     Object? content = freezed,
     Object? empty = freezed,
   }) {
@@ -114,6 +117,10 @@ class _$PageNotificationResponseCopyWithImpl<$Res>
           ? _value.pageable
           : pageable // ignore: cast_nullable_to_non_nullable
               as Pageable?,
+      size: size == freezed
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -165,6 +172,7 @@ abstract class _$$_PageNotificationResponseCopyWith<$Res>
       int? number,
       int? numberOfElements,
       Pageable? pageable,
+      int? size,
       List<NotificationResponse>? content,
       bool? empty});
 
@@ -196,6 +204,7 @@ class __$$_PageNotificationResponseCopyWithImpl<$Res>
     Object? number = freezed,
     Object? numberOfElements = freezed,
     Object? pageable = freezed,
+    Object? size = freezed,
     Object? content = freezed,
     Object? empty = freezed,
   }) {
@@ -232,6 +241,10 @@ class __$$_PageNotificationResponseCopyWithImpl<$Res>
           ? _value.pageable
           : pageable // ignore: cast_nullable_to_non_nullable
               as Pageable?,
+      size: size == freezed
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
       content: content == freezed
           ? _value._content
           : content // ignore: cast_nullable_to_non_nullable
@@ -257,6 +270,7 @@ class _$_PageNotificationResponse implements _PageNotificationResponse {
       this.number,
       this.numberOfElements,
       this.pageable,
+      this.size,
       final List<NotificationResponse>? content,
       this.empty})
       : _content = content;
@@ -280,6 +294,8 @@ class _$_PageNotificationResponse implements _PageNotificationResponse {
   final int? numberOfElements;
   @override
   final Pageable? pageable;
+  @override
+  final int? size;
   final List<NotificationResponse>? _content;
   @override
   List<NotificationResponse>? get content {
@@ -294,7 +310,7 @@ class _$_PageNotificationResponse implements _PageNotificationResponse {
 
   @override
   String toString() {
-    return 'PageNotificationResponse(totalPages: $totalPages, totalElements: $totalElements, sort: $sort, first: $first, last: $last, number: $number, numberOfElements: $numberOfElements, pageable: $pageable, content: $content, empty: $empty)';
+    return 'PageNotificationResponse(totalPages: $totalPages, totalElements: $totalElements, sort: $sort, first: $first, last: $last, number: $number, numberOfElements: $numberOfElements, pageable: $pageable, size: $size, content: $content, empty: $empty)';
   }
 
   @override
@@ -313,6 +329,7 @@ class _$_PageNotificationResponse implements _PageNotificationResponse {
             const DeepCollectionEquality()
                 .equals(other.numberOfElements, numberOfElements) &&
             const DeepCollectionEquality().equals(other.pageable, pageable) &&
+            const DeepCollectionEquality().equals(other.size, size) &&
             const DeepCollectionEquality().equals(other._content, _content) &&
             const DeepCollectionEquality().equals(other.empty, empty));
   }
@@ -329,6 +346,7 @@ class _$_PageNotificationResponse implements _PageNotificationResponse {
       const DeepCollectionEquality().hash(number),
       const DeepCollectionEquality().hash(numberOfElements),
       const DeepCollectionEquality().hash(pageable),
+      const DeepCollectionEquality().hash(size),
       const DeepCollectionEquality().hash(_content),
       const DeepCollectionEquality().hash(empty));
 
@@ -356,6 +374,7 @@ abstract class _PageNotificationResponse implements PageNotificationResponse {
       final int? number,
       final int? numberOfElements,
       final Pageable? pageable,
+      final int? size,
       final List<NotificationResponse>? content,
       final bool? empty}) = _$_PageNotificationResponse;
 
@@ -379,6 +398,8 @@ abstract class _PageNotificationResponse implements PageNotificationResponse {
   @override
   Pageable? get pageable;
   @override
+  int? get size;
+  @override
   List<NotificationResponse>? get content;
   @override
   bool? get empty;
@@ -396,11 +417,13 @@ NotificationResponse _$NotificationResponseFromJson(Map<String, dynamic> json) {
 mixin _$NotificationResponse {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
+  String? get date => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get senderName => throw _privateConstructorUsedError;
   String? get senderId => throw _privateConstructorUsedError;
   String? get senderImage => throw _privateConstructorUsedError;
   String? get senderType => throw _privateConstructorUsedError;
+  bool? get read => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -416,11 +439,13 @@ abstract class $NotificationResponseCopyWith<$Res> {
   $Res call(
       {String? id,
       String? title,
+      String? date,
       String? message,
       String? senderName,
       String? senderId,
       String? senderImage,
-      String? senderType});
+      String? senderType,
+      bool? read});
 }
 
 /// @nodoc
@@ -436,11 +461,13 @@ class _$NotificationResponseCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
+    Object? date = freezed,
     Object? message = freezed,
     Object? senderName = freezed,
     Object? senderId = freezed,
     Object? senderImage = freezed,
     Object? senderType = freezed,
+    Object? read = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -450,6 +477,10 @@ class _$NotificationResponseCopyWithImpl<$Res>
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String?,
       message: message == freezed
           ? _value.message
@@ -471,6 +502,10 @@ class _$NotificationResponseCopyWithImpl<$Res>
           ? _value.senderType
           : senderType // ignore: cast_nullable_to_non_nullable
               as String?,
+      read: read == freezed
+          ? _value.read
+          : read // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -485,11 +520,13 @@ abstract class _$$_NotificationResponseCopyWith<$Res>
   $Res call(
       {String? id,
       String? title,
+      String? date,
       String? message,
       String? senderName,
       String? senderId,
       String? senderImage,
-      String? senderType});
+      String? senderType,
+      bool? read});
 }
 
 /// @nodoc
@@ -507,11 +544,13 @@ class __$$_NotificationResponseCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
+    Object? date = freezed,
     Object? message = freezed,
     Object? senderName = freezed,
     Object? senderId = freezed,
     Object? senderImage = freezed,
     Object? senderType = freezed,
+    Object? read = freezed,
   }) {
     return _then(_$_NotificationResponse(
       id: id == freezed
@@ -521,6 +560,10 @@ class __$$_NotificationResponseCopyWithImpl<$Res>
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String?,
       message: message == freezed
           ? _value.message
@@ -542,6 +585,10 @@ class __$$_NotificationResponseCopyWithImpl<$Res>
           ? _value.senderType
           : senderType // ignore: cast_nullable_to_non_nullable
               as String?,
+      read: read == freezed
+          ? _value.read
+          : read // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -552,11 +599,13 @@ class _$_NotificationResponse implements _NotificationResponse {
   const _$_NotificationResponse(
       {this.id,
       this.title,
+      this.date,
       this.message,
       this.senderName,
       this.senderId,
       this.senderImage,
-      this.senderType});
+      this.senderType,
+      this.read});
 
   factory _$_NotificationResponse.fromJson(Map<String, dynamic> json) =>
       _$$_NotificationResponseFromJson(json);
@@ -565,6 +614,8 @@ class _$_NotificationResponse implements _NotificationResponse {
   final String? id;
   @override
   final String? title;
+  @override
+  final String? date;
   @override
   final String? message;
   @override
@@ -575,10 +626,12 @@ class _$_NotificationResponse implements _NotificationResponse {
   final String? senderImage;
   @override
   final String? senderType;
+  @override
+  final bool? read;
 
   @override
   String toString() {
-    return 'NotificationResponse(id: $id, title: $title, message: $message, senderName: $senderName, senderId: $senderId, senderImage: $senderImage, senderType: $senderType)';
+    return 'NotificationResponse(id: $id, title: $title, date: $date, message: $message, senderName: $senderName, senderId: $senderId, senderImage: $senderImage, senderType: $senderType, read: $read)';
   }
 
   @override
@@ -588,6 +641,7 @@ class _$_NotificationResponse implements _NotificationResponse {
             other is _$_NotificationResponse &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality()
                 .equals(other.senderName, senderName) &&
@@ -595,7 +649,8 @@ class _$_NotificationResponse implements _NotificationResponse {
             const DeepCollectionEquality()
                 .equals(other.senderImage, senderImage) &&
             const DeepCollectionEquality()
-                .equals(other.senderType, senderType));
+                .equals(other.senderType, senderType) &&
+            const DeepCollectionEquality().equals(other.read, read));
   }
 
   @JsonKey(ignore: true)
@@ -604,11 +659,13 @@ class _$_NotificationResponse implements _NotificationResponse {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(message),
       const DeepCollectionEquality().hash(senderName),
       const DeepCollectionEquality().hash(senderId),
       const DeepCollectionEquality().hash(senderImage),
-      const DeepCollectionEquality().hash(senderType));
+      const DeepCollectionEquality().hash(senderType),
+      const DeepCollectionEquality().hash(read));
 
   @JsonKey(ignore: true)
   @override
@@ -628,11 +685,13 @@ abstract class _NotificationResponse implements NotificationResponse {
   const factory _NotificationResponse(
       {final String? id,
       final String? title,
+      final String? date,
       final String? message,
       final String? senderName,
       final String? senderId,
       final String? senderImage,
-      final String? senderType}) = _$_NotificationResponse;
+      final String? senderType,
+      final bool? read}) = _$_NotificationResponse;
 
   factory _NotificationResponse.fromJson(Map<String, dynamic> json) =
       _$_NotificationResponse.fromJson;
@@ -641,6 +700,8 @@ abstract class _NotificationResponse implements NotificationResponse {
   String? get id;
   @override
   String? get title;
+  @override
+  String? get date;
   @override
   String? get message;
   @override
@@ -651,6 +712,8 @@ abstract class _NotificationResponse implements NotificationResponse {
   String? get senderImage;
   @override
   String? get senderType;
+  @override
+  bool? get read;
   @override
   @JsonKey(ignore: true)
   _$$_NotificationResponseCopyWith<_$_NotificationResponse> get copyWith =>

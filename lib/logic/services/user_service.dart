@@ -10,6 +10,7 @@ import 'package:upnati/logic/models/user/business_invitation_response.dart';
 import 'package:upnati/logic/models/user/change_user_role_payload.dart';
 import 'package:upnati/logic/models/user/firebase_user_info_payload.dart';
 import 'package:upnati/logic/models/user/info_response.dart';
+import 'package:upnati/logic/models/user/notification_count_response.dart';
 import 'package:upnati/logic/models/user/page_notification_response.dart';
 import 'package:upnati/logic/models/user/page_user_details_response.dart';
 import 'package:upnati/logic/models/user/subscription_payload.dart';
@@ -126,4 +127,10 @@ abstract class UserService {
   Future<void> testNotifications({
     @Body() String? test,
   });
+
+  @GET('/notifications/count/user')
+  Future<NotificationCountResponse> getNotificationsCountUser();
+
+  @GET('/notifications/count/business')
+  Future<NotificationCountResponse> getNotificationsCountBusiness();
 }
