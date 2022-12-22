@@ -116,23 +116,34 @@ class _SideBarState extends State<SideBar> {
                                                                 ?.isEmpty ==
                                                             true
                                                         ? const SizedBox()
-                                                        : ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        150),
-                                                            child: SizedBox(
-                                                              height: 100,
-                                                              child:
-                                                                  Image.network(
-                                                                businessResponse
-                                                                        .imageUrls
-                                                                        ?.first ??
-                                                                    '',
+                                                        : GestureDetector(
+                                                            onTap: () {
+                                                              context.router.push(
+                                                                  const UserMainScreen());
+                                                              SideBarControllerWidget
+                                                                      .of(context)
+                                                                  ?.controller
+                                                                  ?.toggleSideBar
+                                                                  ?.call();
+                                                            },
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          150),
+                                                              child: SizedBox(
                                                                 height: 100,
-                                                                width: 100,
-                                                                fit: BoxFit
-                                                                    .cover,
+                                                                child: Image
+                                                                    .network(
+                                                                  businessResponse
+                                                                          .imageUrls
+                                                                          ?.first ??
+                                                                      '',
+                                                                  height: 100,
+                                                                  width: 100,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
                                                               ),
                                                             ),
                                                           )),

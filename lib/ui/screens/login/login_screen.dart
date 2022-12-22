@@ -259,21 +259,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 38,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            context.read<AuthCubit>().signInWithGoogle();
-                          },
-                          child: Image.asset(Images.googleImg)),
-                      const SizedBox(
-                        width: 41,
-                      ),
-                      GestureDetector(child: Image.asset(Images.fbImg)),
-                    ],
-                  )
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   mainAxisSize: MainAxisSize.min,
+                  //   children: [
+                  //     GestureDetector(
+                  //         onTap: () {
+                  //           context.read<AuthCubit>().signInWithGoogle();
+                  //         },
+                  //         child: Image.asset(Images.googleImg)),
+                  //     const SizedBox(
+                  //       width: 41,
+                  //     ),
+                  //     GestureDetector(child: Image.asset(Images.fbImg)),
+                  //   ],
+                  // )
                 ],
               ),
             ],
