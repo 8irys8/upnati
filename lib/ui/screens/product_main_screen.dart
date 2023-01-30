@@ -9,6 +9,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/core/config/utils.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/item_collection.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
@@ -86,6 +87,21 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
               successLink: (link) => Share.share(link.url ?? ''),
               success: () {
                 context.router.push(PurchaseHistoryScreen());
+              },
+              error: (err) {
+                if (err.error is AppExceptions) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(err.message ?? ''),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Something went wrong'),
+                    ),
+                  );
+                }
               },
             );
           },
@@ -182,9 +198,14 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                                       fit: BoxFit.cover,
                                     ),
                                   )
-                                : Image.network(
-                                    widget.item?.businessImageUrl ?? '',
-                                    width: 53,
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(150),
+                                    child: Image.network(
+                                      widget.item?.businessImageUrl ?? '',
+                                      width: 53,
+                                      height: 53,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                             const SizedBox(
                               width: 5,

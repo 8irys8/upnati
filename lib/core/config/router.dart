@@ -109,9 +109,8 @@ class $AppRouter {}
 class RegisterGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
-    UserProvider userProvider = GetIt.I<UserProvider>();
     try {
-      await userProvider.getUserDetails();
+      await Utils.getCurrentUser();
       resolver.next(true);
     } catch (e) {
       await Utils.showRegisterDialog(router.navigatorKey.currentContext!);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/item_collection.dart';
 import 'package:upnati/logic/models/item_basket_response.dart';
@@ -54,6 +55,21 @@ class _BasketItemState extends State<BasketItem> {
       listener: (context, state) {
         state.whenOrNull(
           success: () => widget.onRemove?.call(),
+          error: (err) {
+            if (err.error is AppExceptions) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(err.message ?? ''),
+                ),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Something went wrong'),
+                ),
+              );
+            }
+          },
         );
       },
       child: Padding(

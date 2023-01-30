@@ -12,6 +12,7 @@ import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
 import 'package:upnati/logic/models/business_form.dart';
@@ -197,11 +198,19 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                     businessResponse: businessResponse));
               },
               error: (err) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(err.message),
-                  ),
-                );
+                if (err.error is AppExceptions) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(err.message ?? ''),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Something went wrong'),
+                    ),
+                  );
+                }
               },
             );
           },
@@ -333,7 +342,8 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                                         child: Text('errorCity'),
                                       ),
                                   orElse: () => const Center(
-                                        child: CircularProgressIndicator(),
+                                        child: SpinKitCircle(
+                                            color: AppColors.darkBlueLight),
                                       ),
                                   successBusinessCity: (businessCity) =>
                                       CustomDropdown(
@@ -367,7 +377,8 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                                         child: Text('errorCategory'),
                                       ),
                                   orElse: () => const Center(
-                                        child: CircularProgressIndicator(),
+                                        child: SpinKitCircle(
+                                            color: AppColors.darkBlueLight),
                                       ),
                                   successBusinessMap: (businessCategory) =>
                                       CustomDropdown(
@@ -405,7 +416,8 @@ class _MarketDetailScreenState extends State<MarketDetailScreen> {
                                         child: Text('errorDelivery'),
                                       ),
                                   orElse: () => const Center(
-                                        child: CircularProgressIndicator(),
+                                        child: SpinKitCircle(
+                                            color: AppColors.darkBlueLight),
                                       ),
                                   successBusinessList: (businessScope) =>
                                       CustomDropdown(

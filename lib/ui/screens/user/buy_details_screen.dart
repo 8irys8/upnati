@@ -6,6 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/utils.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/logic/models/business/commit_order_payload.dart';
@@ -83,6 +84,21 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
             listener: (context, state) {
               // print(state);
               state.whenOrNull(
+                error: (err) {
+                  if (err.error is AppExceptions) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(err.message ?? ''),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Something went wrong'),
+                      ),
+                    );
+                  }
+                },
                 successCommitedOrdersResponse: (commitedOrdersResponse) async {
                   var result = await context.router.push(PaymentWebViewScreen(
                       url: commitedOrdersResponse.paymentLink ?? ''));
@@ -105,6 +121,21 @@ class _BuyDetailsScreenState extends State<BuyDetailsScreen> {
           BlocListener<UserCubit, UserState>(
             listener: (context, state) {
               state.whenOrNull(
+                errorUserState: (err) {
+                  if (err.error is AppExceptions) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(err.message ?? ''),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Something went wrong'),
+                      ),
+                    );
+                  }
+                },
                 successUserStateResponse: (response) {
                   _emailController.text = response.email ?? '';
                   _nameController.text = response.fullName ?? '';

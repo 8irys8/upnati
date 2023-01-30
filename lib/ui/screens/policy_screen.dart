@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 
@@ -49,21 +50,32 @@ class _TermsScreenState extends State<PolicyScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 35),
             child: Column(
               children: [
-                BlocBuilder<UserCubit, UserState>(
-                  builder: (context, state) {
-                    return state.maybeWhen(
-                        loading: () => const Center(
-                              child:
-                                  SpinKitCircle(color: AppColors.darkBlueLight),
-                            ),
-                        successInfoState: (response) => Text(
-                              response.value ?? '',
-                              textAlign: TextAlign.center,
-                              style: AppTheme.regular(
-                                  size: 17, color: AppColors.darkBlue),
-                            ),
-                        orElse: () => const SizedBox());
+                BlocListener<UserCubit, UserState>(
+                  listener: (context, state) {
+                    state.whenOrNull(error: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Something went wrong'),
+                        ),
+                      );
+                    });
                   },
+                  child: BlocBuilder<UserCubit, UserState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                          loading: () => const Center(
+                                child: SpinKitCircle(
+                                    color: AppColors.darkBlueLight),
+                              ),
+                          successInfoState: (response) => Text(
+                                response.value ?? '',
+                                textAlign: TextAlign.center,
+                                style: AppTheme.regular(
+                                    size: 17, color: AppColors.darkBlue),
+                              ),
+                          orElse: () => const SizedBox());
+                    },
+                  ),
                 ),
                 const SizedBox(
                   height: 24,

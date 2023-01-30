@@ -59,21 +59,32 @@ class _TermsScreenState extends State<TermsScreen> {
                     ),
                   ),
                 ),
-                BlocBuilder<UserCubit, UserState>(
-                  builder: (context, state) {
-                    return state.maybeWhen(
-                        loading: () => const Center(
-                              child:
-                                  SpinKitCircle(color: AppColors.darkBlueLight),
-                            ),
-                        successInfoState: (response) => Text(
-                              response.value ?? '',
-                              textAlign: TextAlign.center,
-                              style: AppTheme.regular(
-                                  size: 17, color: AppColors.darkBlue),
-                            ),
-                        orElse: () => const SizedBox());
+                BlocListener<UserCubit, UserState>(
+                  listener: (context, state) {
+                    state.whenOrNull(error: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Something went wrong'),
+                        ),
+                      );
+                    });
                   },
+                  child: BlocBuilder<UserCubit, UserState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                          loading: () => const Center(
+                                child: SpinKitCircle(
+                                    color: AppColors.darkBlueLight),
+                              ),
+                          successInfoState: (response) => Text(
+                                response.value ?? '',
+                                textAlign: TextAlign.center,
+                                style: AppTheme.regular(
+                                    size: 17, color: AppColors.darkBlue),
+                              ),
+                          orElse: () => const SizedBox());
+                    },
+                  ),
                 ),
                 const SizedBox(
                   height: 24,

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
@@ -74,11 +75,21 @@ class _BusinessRegistrationScreenState
       body: BlocListener<BusinessCubit, BusinessState>(
         listener: (context, state) {
           state.whenOrNull(
-            error: (err) => ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('error'),
-              ),
-            ),
+            error: (err) {
+              if (err.error is AppExceptions) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(err.message ?? ''),
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Something went wrong'),
+                  ),
+                );
+              }
+            },
             successPageItemResponse: (pageItemResponse) {
               setState(() {
                 for (var element in pageItemResponse.content ?? []) {

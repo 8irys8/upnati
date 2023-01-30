@@ -10,6 +10,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/image_url_payload.dart';
 import 'package:upnati/logic/models/business/item_form.dart';
@@ -271,11 +272,19 @@ class _ProduceDetailScreenState extends State<ProduceDetailScreen> {
                 Navigator.of(context).pop(item);
               },
               error: (error) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('error.'),
-                  ),
-                );
+                if (error.error is AppExceptions) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(error.message ?? ''),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Something went wrong'),
+                    ),
+                  );
+                }
               },
               successFiles: (files) {
                 _isUploadingImage = true;

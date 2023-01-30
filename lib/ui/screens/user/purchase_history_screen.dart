@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/item_collection.dart';
 import 'package:upnati/logic/models/item_basket_response.dart';
@@ -144,6 +145,21 @@ class _PurchaseHistoryScreenState extends State<PurchaseHistoryScreen> {
                   BlocListener<BusinessCubit, BusinessState>(
                     listener: (context, state) {
                       state.whenOrNull(
+                        error: (err) {
+                          if (err.error is AppExceptions) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(err.message ?? ''),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Something went wrong'),
+                              ),
+                            );
+                          }
+                        },
                         successBasketResponse: (basketResponse) {
                           _amountNotifier.value = 0;
                           _deliveryNotifier.value = 0;

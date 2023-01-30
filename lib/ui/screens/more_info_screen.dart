@@ -39,43 +39,43 @@ class _MoreInfoScreenState extends State<MoreInfoScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 5.5,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [
-                        Image.asset(Images.aboutImg),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          LocaleKeys.onboard_about.tr(),
-                          style: AppTheme.regular(
-                              size: 16, color: AppColors.darkBlue),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 65,
-                    ),
-                    Column(
-                      children: [
-                        Image.asset(Images.girlImg),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          LocaleKeys.onboard_contact_us.tr(),
-                          style: AppTheme.regular(
-                              size: 16, color: AppColors.darkBlue),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Column(
+                //       children: [
+                //         Image.asset(Images.aboutImg),
+                //         const SizedBox(
+                //           height: 8,
+                //         ),
+                //         Text(
+                //           LocaleKeys.onboard_about.tr(),
+                //           style: AppTheme.regular(
+                //               size: 16, color: AppColors.darkBlue),
+                //         )
+                //       ],
+                //     ),
+                //     const SizedBox(
+                //       width: 65,
+                //     ),
+                //     Column(
+                //       children: [
+                //         Image.asset(Images.girlImg),
+                //         const SizedBox(
+                //           height: 8,
+                //         ),
+                //         Text(
+                //           LocaleKeys.onboard_contact_us.tr(),
+                //           style: AppTheme.regular(
+                //               size: 16, color: AppColors.darkBlue),
+                //         )
+                //       ],
+                //     ),
+                //   ],
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

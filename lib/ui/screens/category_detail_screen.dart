@@ -2,10 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/category_model.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
@@ -91,8 +93,19 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                   listener: (context, state) {
                     state.whenOrNull(
                       error: (err) {
-                        print(err.runtimeType);
-                        _pageController.appendLastPage([]);
+                        if (err.error is AppExceptions) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(err.message ?? ''),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Something went wrong'),
+                            ),
+                          );
+                        }
                       },
                       successPageItemResponse: (itemResponse) {
                         if (itemResponse.empty == true) {
@@ -135,7 +148,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                         ),
                         newPageProgressIndicatorBuilder: (context) =>
                             const Center(
-                          child: CircularProgressIndicator(),
+                          child: SpinKitCircle(color: AppColors.darkBlueLight),
                         ),
                         noItemsFoundIndicatorBuilder: (context) => const Center(
                           child: Text('No items found'),

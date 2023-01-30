@@ -25,7 +25,11 @@ class AppInterceptors {
                 error: AppExceptions('Connection Timeout')));
           } else if (e.type == DioErrorType.other ||
               e.type == DioErrorType.response) {
-            if (e.error is SocketException) {
+            if (e.response?.statusCode == 401) {
+              handler.reject((DioError(
+                  requestOptions: e.requestOptions,
+                  error: AppExceptions('401', true))));
+            } else if (e.error is SocketException) {
               print(e);
               handler.reject(DioError(
                   requestOptions: e.requestOptions,
@@ -36,6 +40,7 @@ class AppInterceptors {
             } else {
               var message =
                   e.response?.data['message'] ?? 'Something went wrong';
+
               handler.reject(DioError(
                   requestOptions: e.requestOptions,
                   error: AppExceptions(message)));

@@ -1,8 +1,11 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:upnati/core/config/utils.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/logic/models/user/business_invitation_payload.dart';
 import 'package:upnati/logic/models/user/business_invitation_response.dart';
@@ -33,6 +36,7 @@ class UserCubit extends Cubit<UserState> {
           await _userProvider.changeUserRole(ChangeUserRolePayload(role: role));
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -43,6 +47,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.updateUserDetail(payload: payload);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -53,6 +58,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.getAppLink();
       emit(UserState.successUserLinkState(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -65,6 +71,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.uploadUserImage(file);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -77,6 +84,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.deleteUserImage(url);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -89,6 +97,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.setPrimaryImage(url);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -97,9 +106,12 @@ class UserCubit extends Cubit<UserState> {
     emit(const UserState.loadingUserState());
     try {
       final response = await _userProvider.getUserDetails();
+
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
+      print(e);
     }
   }
 
@@ -109,6 +121,7 @@ class UserCubit extends Cubit<UserState> {
       await _userProvider.deleteUser();
       emit(const UserState.successUserState());
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -121,6 +134,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.getUserDetailsById(id);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -143,6 +157,7 @@ class UserCubit extends Cubit<UserState> {
       );
       emit(UserState.successUserPageDetails(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -163,6 +178,7 @@ class UserCubit extends Cubit<UserState> {
       );
       emit(UserState.successUserPageDetails(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -175,6 +191,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.inviteBusiness(payload);
       emit(UserState.successBusinessInvitation(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -187,6 +204,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.inviteBusinessOwnership(id: id);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -199,6 +217,7 @@ class UserCubit extends Cubit<UserState> {
       final response = await _userProvider.acceptBusinessInvitation(id: id);
       emit(UserState.successUserStateResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(UserState.errorUserState(e));
     }
   }
@@ -223,6 +242,7 @@ class UserCubit extends Cubit<UserState> {
         countUser: user,
       ));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(const UserState.error());
     }
   }
@@ -235,6 +255,7 @@ class UserCubit extends Cubit<UserState> {
       await _userProvider.unsubscribe(payload: payload);
       emit(const UserState.success());
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(const UserState.error());
     }
   }
@@ -247,6 +268,7 @@ class UserCubit extends Cubit<UserState> {
       await _userProvider.subscribe(payload: payload);
       emit(const UserState.success());
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(const UserState.error());
     }
   }
@@ -257,6 +279,7 @@ class UserCubit extends Cubit<UserState> {
       var result = await _userProvider.getTerms();
       emit(UserState.successInfoState(result));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(const UserState.error());
     }
   }
@@ -267,6 +290,7 @@ class UserCubit extends Cubit<UserState> {
       var result = await _userProvider.getPolicy();
       emit(UserState.successInfoState(result));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(const UserState.error());
     }
   }
@@ -277,6 +301,7 @@ class UserCubit extends Cubit<UserState> {
       var result = await _userProvider.getContactPhone();
       emit(UserState.successInfoState(result));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(const UserState.error());
     }
   }
@@ -287,6 +312,7 @@ class UserCubit extends Cubit<UserState> {
       var result = await _userProvider.getContactEmail();
       emit(UserState.successInfoState(result));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(const UserState.error());
     }
   }

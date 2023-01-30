@@ -2,15 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
+import 'package:upnati/logic/blocs/login/login_bloc.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
+import 'package:upnati/logic/providers/auth_provider.dart';
 import 'package:upnati/logic/providers/user_provider.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 
 class Utils {
+  static UserDetailResponse? _currentUser;
   // ignore: no-boolean-literal-compare
   static Future<Box> get box async => await Hive.boxExists('system') == true
       ? Hive.box('system')
@@ -36,10 +41,20 @@ class Utils {
   static Future<UserDetailResponse?> getCurrentUser() async {
     UserProvider userProvider = GetIt.I<UserProvider>();
     try {
-      return await userProvider.getUserDetails();
+      _currentUser ??= await userProvider.getUserDetails();
+
+      return _currentUser;
     } catch (e) {
       return null;
     }
+  }
+
+  static Future<void> clearCurrentUser() async {
+    AuthProvider authProvider = GetIt.I<AuthProvider>();
+    try {
+      _currentUser = null;
+      await authProvider.clearUserDetails();
+    } catch (e) {}
   }
 
   static Future<void> showSuccessOrderDialog(BuildContext context) async {
@@ -162,5 +177,33 @@ class Utils {
                 ],
               ),
             ));
+  }
+
+  static void checkUserTokenExpired(dynamic e) {
+    if (e is DioError) {
+      var dioErr = e.error;
+      if (dioErr is AppExceptions) {
+        if (dioErr.isNeedLogin == true) {
+          var loginBloc = GetIt.I<LoginBloc>();
+          loginBloc.add(const LoginEvent.endSession());
+        }
+      }
+    }
+  }
+
+  static bool checkBlocUnauthorized({
+    required dynamic e,
+    required BlocBase bloc,
+  }) {
+    if (e is DioError &&
+        e.error is AppExceptions &&
+        e.error.isNeedLogin == true) {
+      // ignore: invalid_use_of_protected_member
+      bloc.addError(e);
+
+      return true;
+    }
+
+    return false;
   }
 }

@@ -55,4 +55,9 @@ class AuthProvider {
   Future<String?> getToken() async {
     return await _localAuthService.getToken();
   }
+
+  Future<void> clearUserDetails() async {
+    var _boxSettings = await Utils.box;
+    await _boxSettings.clear();
+  }
 }

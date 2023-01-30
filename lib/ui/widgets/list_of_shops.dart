@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
+import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
 import 'package:upnati/ui/widgets/category_container.dart';
 
@@ -190,7 +192,7 @@ class _GridOfShopsState extends State<GridOfShops> {
             child: Text('Error'),
           ),
           newPageProgressIndicatorBuilder: (context) => const Center(
-            child: CircularProgressIndicator(),
+            child: SpinKitCircle(color: AppColors.darkBlueLight),
           ),
           noItemsFoundIndicatorBuilder: (context) => const Center(
             child: Text('No items found'),

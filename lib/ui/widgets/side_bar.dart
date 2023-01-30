@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
@@ -33,9 +34,45 @@ class _SideBarState extends State<SideBar> {
         BlocListener<UserCubit, UserState>(
           listener: (context, state) {
             state.whenOrNull(
+              errorUserState: (err) {
+                if (err.error is AppExceptions) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(err.message ?? ''),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Something went wrong'),
+                    ),
+                  );
+                }
+              },
               successUserStateResponse: (response) {
                 if (response.businessId != null) {
                   context.read<BusinessCubit>().getBusinessInfo();
+                }
+              },
+            );
+          },
+        ),
+        BlocListener<BusinessCubit, BusinessState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              error: (err) {
+                if (err.error is AppExceptions) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(err.message ?? ''),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Something went wrong'),
+                    ),
+                  );
                 }
               },
             );
@@ -72,33 +109,47 @@ class _SideBarState extends State<SideBar> {
                           child: state.maybeWhen(
                               successUserStateResponse: (response) {
                                 return response.businessId == null
-                                    ? Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 30, bottom: 22),
-                                        child: response.images?.isEmpty == true
-                                            ? Container(
-                                                width: 100,
-                                                height: 100,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color:
-                                                      AppColors.darkBlueLight,
-                                                ),
-                                                child: Image.asset(
-                                                  Images.emptyAvatar,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              )
-                                            : ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(150),
-                                                child: Image.network(
-                                                  response.images?.first ?? '',
-                                                  height: 100,
-                                                  width: 100,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ))
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          context.router
+                                              .push(const UserMainScreen());
+                                          SideBarControllerWidget.of(context)
+                                              ?.controller
+                                              ?.toggleSideBar
+                                              ?.call();
+                                        },
+                                        child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 30, bottom: 22),
+                                            child: response.images?.isEmpty ==
+                                                    true
+                                                ? Container(
+                                                    width: 100,
+                                                    height: 100,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: AppColors
+                                                          .darkBlueLight,
+                                                    ),
+                                                    child: Image.asset(
+                                                      Images.emptyAvatar,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  )
+                                                : ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            150),
+                                                    child: Image.network(
+                                                      response.images?.first ??
+                                                          '',
+                                                      height: 100,
+                                                      width: 100,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  )),
+                                      )
                                     : BlocBuilder<BusinessCubit, BusinessState>(
                                         builder: (context, state) {
                                         return AnimatedSwitcher(

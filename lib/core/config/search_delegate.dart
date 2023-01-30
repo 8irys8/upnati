@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:upnati/core/config/debouncer.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 
@@ -64,73 +65,95 @@ class CustomSearchDelegate extends SearchDelegate {
       _businessCubit.search(query: query, size: 10);
     });
 
-    return BlocBuilder<BusinessCubit, BusinessState>(
-        bloc: _businessCubit,
-        builder: (context, state) {
-          return state.maybeWhen(
-              loading: () => const Padding(
-                    padding: EdgeInsets.only(left: 16, top: 16),
-                    child: SpinKitCircle(
-                      color: AppColors.darkBlue,
-                      size: 30,
+    return BlocListener<BusinessCubit, BusinessState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          error: (err) {
+            if (err.error is AppExceptions) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(err.message ?? ''),
+                ),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Something went wrong'),
+                ),
+              );
+            }
+          },
+        );
+      },
+      child: BlocBuilder<BusinessCubit, BusinessState>(
+          bloc: _businessCubit,
+          builder: (context, state) {
+            return state.maybeWhen(
+                loading: () => const Padding(
+                      padding: EdgeInsets.only(left: 16, top: 16),
+                      child: SpinKitCircle(
+                        color: AppColors.darkBlue,
+                        size: 30,
+                      ),
                     ),
-                  ),
-              successSearchResponse: (search) {
-                if (search.item?.empty == true) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Center(
-                        child: Text(
-                          'אין תוצאות חיפוש',
-                          style: AppTheme.regular(size: 28),
-                          textAlign: TextAlign.center,
-                        ),
-                      )
-                    ],
-                  );
-                }
+                successSearchResponse: (search) {
+                  if (search.item?.empty == true) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: Text(
+                            'אין תוצאות חיפוש',
+                            style: AppTheme.regular(size: 28),
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      ],
+                    );
+                  }
 
-                return Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
-                  child: ListView.builder(
-                    itemCount: search.item?.numberOfElements ?? 0,
-                    itemBuilder: (context, index) {
-                      var item = search.item?.content?[index];
-                      var name = item?.name ?? '';
-                      var image = item?.imageUrls?.first;
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: ListView.builder(
+                      itemCount: search.item?.numberOfElements ?? 0,
+                      itemBuilder: (context, index) {
+                        var item = search.item?.content?[index];
+                        var name = item?.name ?? '';
+                        var image = item?.imageUrls?.first;
 
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 10),
-                        child: ListTile(
-                          title: Text(name),
-                          leading: image != null
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(150),
-                                  child: Image.network(
-                                    image,
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 10),
+                          child: ListTile(
+                            title: Text(name),
+                            leading: image != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(150),
+                                    child: Image.network(
+                                      image,
+                                      height: 50,
+                                      width: 50,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : Container(
                                     height: 50,
                                     width: 50,
-                                    fit: BoxFit.cover,
+                                    color: Colors.grey,
                                   ),
-                                )
-                              : Container(
-                                  height: 50,
-                                  width: 50,
-                                  color: Colors.grey,
-                                ),
-                          onTap: () {
-                            context.router.push(ProductMainScreen(item: item));
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-              orElse: () => const SizedBox());
-        });
+                            onTap: () {
+                              context.router
+                                  .push(ProductMainScreen(item: item));
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+                orElse: () => const SizedBox());
+          }),
+    );
   }
 
   @override

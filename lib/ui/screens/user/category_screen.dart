@@ -38,7 +38,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         listener: (context, state) {
           state.whenOrNull(
             error: (err) {
-              if (err is AppExceptions) {
+              if (err.error is AppExceptions) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(err.message ?? ''),

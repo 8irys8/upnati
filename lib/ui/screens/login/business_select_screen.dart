@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/resources/resource.dart';
 import 'package:upnati/resources/resources.dart';
@@ -35,6 +36,21 @@ class _BusinessSelectScreenState extends State<BusinessSelectScreen> {
               } else {
                 context.router
                     .push(BusinessScreen(userDetailResponse: response));
+              }
+            },
+            errorUserState: (err) {
+              if (err.error is AppExceptions) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(err.message ?? ''),
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Something went wrong'),
+                  ),
+                );
               }
             },
           );

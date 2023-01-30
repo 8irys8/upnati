@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:upnati/core/config/enums.dart';
+import 'package:upnati/core/config/utils.dart';
 import 'package:upnati/logic/models/business/basket_response.dart';
 import 'package:upnati/logic/models/business/business_response.dart';
 import 'package:upnati/logic/models/business/category_model.dart';
@@ -39,6 +40,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessInfo();
       emit(BusinessState.successBusinessResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -49,6 +51,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.createNewBusiness(businessForm);
       emit(BusinessState.successBusinessResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -61,6 +64,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.updateBusinessInfo(business);
       emit(BusinessState.successBusinessResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -71,6 +75,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.deleteBusiness();
       emit(BusinessState.successUserDetailResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -83,6 +88,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.uploadBusinessImage(file: file);
       emit(BusinessState.successBusinessResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -95,6 +101,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.deleteBusinessImage(url: url);
       emit(BusinessState.successBusinessResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -107,6 +114,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.setPrimaryImage(url: url);
       emit(BusinessState.successBusinessResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -127,6 +135,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageBusinessResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -144,6 +153,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -157,6 +167,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessRegionMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -169,6 +180,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessRegionIdMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -187,6 +199,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successBusinessFilter(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -199,6 +212,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessCountry(locale);
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -211,6 +225,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessCountryMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -223,6 +238,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessCountryIdMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -242,6 +258,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successBusinessCity(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -254,6 +271,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessCityMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -266,6 +284,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getBusinessCityIdMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -277,6 +296,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getDeliveryType(locale: locale);
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -288,6 +308,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getDeliveryTime(locale: locale);
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -299,6 +320,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getDeliveryScope(locale: locale);
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -313,6 +335,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.getBusinessCategory(locale: locale);
       emit(BusinessState.successBusinessMap(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -335,6 +358,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -349,6 +373,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.getBusinessCategoryMap(locale: locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -362,6 +387,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.getBusinessCategoryIdMap(locale: locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -376,6 +402,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemType(locale);
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -388,6 +415,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemTypeMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -400,6 +428,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemTypeIdMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -413,6 +442,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemCategory(locale);
       emit(BusinessState.successBusinessMap(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -425,6 +455,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemServiceCategory(locale);
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -438,6 +469,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.getItemServiceCategoryMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -451,6 +483,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.getItemServiceCategoryIdMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -463,6 +496,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemCategoryMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -475,6 +509,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemCategoryIdMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -487,6 +522,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemGoodsCategory(locale);
       emit(BusinessState.successBusinessList(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -499,6 +535,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getItemGoodsCategoryMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -512,6 +549,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.getItemGoodsCategoryIdMap(locale);
       emit(BusinessState.successBusinessMapInfo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -533,6 +571,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -545,6 +584,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.createNewItem(item);
       emit(BusinessState.successItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -557,6 +597,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.updateItem(item);
       emit(BusinessState.successItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -571,6 +612,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.setBusinessImage(id: id, file: file);
       emit(BusinessState.successItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -585,6 +627,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.deleteItemImage(id: id, payload: payload);
       emit(BusinessState.successItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -599,6 +642,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.setPrimaryItemImage(id: id, payload: payload);
       emit(BusinessState.successItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -621,6 +665,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -633,6 +678,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       await _businessProvider.deleteItem(id: id);
       emit(const BusinessState.success());
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -653,6 +699,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -672,6 +719,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successBasketResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -691,6 +739,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           itemCollection: itemCollection);
       emit(const BusinessState.success());
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -701,6 +750,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.clearBasket();
       emit(BusinessState.successBasketResponse(response));
     } catch (err) {
+      if (Utils.checkBlocUnauthorized(e: err, bloc: this)) return;
       emit(BusinessState.error(err));
     }
   }
@@ -715,6 +765,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.previewOrder(collection: collection);
       emit(BusinessState.successOrderPreviewResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -727,6 +778,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.createOrder(payload: payload);
       emit(BusinessState.successCommitedOrdersResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -747,6 +799,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageOrderResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -767,6 +820,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageOrderResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -784,6 +838,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successSearchResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -796,6 +851,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getUploadImages(files: files);
       emit(BusinessState.successFiles(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -808,6 +864,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.getUploadVideos(files: files);
       emit(BusinessState.successVideo(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -827,6 +884,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       );
       emit(BusinessState.successPageItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -839,6 +897,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.addToFavorites(itemId: itemId);
       emit(BusinessState.successItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -852,6 +911,7 @@ class BusinessCubit extends Cubit<BusinessState> {
           await _businessProvider.deleteFromFavorites(itemId: itemId);
       emit(BusinessState.successItemResponse(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }
@@ -862,6 +922,7 @@ class BusinessCubit extends Cubit<BusinessState> {
       final response = await _businessProvider.shareItemLink(id: id);
       emit(BusinessState.successLink(response));
     } catch (e) {
+      if (Utils.checkBlocUnauthorized(e: e, bloc: this)) return;
       emit(BusinessState.error(e));
     }
   }

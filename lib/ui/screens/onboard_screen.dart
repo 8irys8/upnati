@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:upnati/core/config/router.gr.dart';
 import 'package:upnati/core/config/utils.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/logic/models/user/app_link_response.dart';
 import 'package:upnati/logic/models/user/user_detail_response.dart';
@@ -41,6 +42,21 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 state.whenOrNull(
                   successUserLinkState: (AppLinkResponse link) {
                     Share.share(link.url ?? '');
+                  },
+                  errorUserState: (err) {
+                    if (err.error is AppExceptions) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(err.message ?? ''),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Something went wrong'),
+                        ),
+                      );
+                    }
                   },
                 );
               },

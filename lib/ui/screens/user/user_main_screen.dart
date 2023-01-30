@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
@@ -13,6 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:upnati/core/config/enums.dart';
 import 'package:upnati/core/config/router.gr.dart';
+import 'package:upnati/core/exceptions/app_exceptions.dart';
 import 'package:upnati/logic/blocs/business/business_cubit.dart';
 import 'package:upnati/logic/blocs/user/user_cubit.dart';
 import 'package:upnati/logic/models/business/item_response.dart';
@@ -234,8 +236,19 @@ class _ProductMainScreenState extends State<UserMainScreen> {
             context.router.pushAndPopUntil(const SplashScreen(),
                 predicate: (route) => false);
           }, errorUserState: (err) {
-            return ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(err.toString())));
+            if (err.error is AppExceptions) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(err.message ?? ''),
+                ),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Something went wrong'),
+                ),
+              );
+            }
           }, successUserStateResponse: (response) {
             _nameController.text = response.fullName ?? '';
             _emailController.text = response.email ?? '';
@@ -371,6 +384,21 @@ class _ProductMainScreenState extends State<UserMainScreen> {
                 BlocListener<BusinessCubit, BusinessState>(
                   listener: (context, state) {
                     state.whenOrNull(
+                      error: (err) {
+                        if (err.error is AppExceptions) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(err.message ?? ''),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Something went wrong'),
+                            ),
+                          );
+                        }
+                      },
                       successPageItemResponse: (pageItemResponse) =>
                           setState(() {}),
                       successPageOrderResponse: (commitedOrdersResponse) =>
@@ -921,7 +949,7 @@ class _FavoritesGridState extends State<FavoritesGrid> {
             child: Text('Error'),
           ),
           newPageProgressIndicatorBuilder: (context) => const Center(
-            child: CircularProgressIndicator(),
+            child: SpinKitCircle(color: AppColors.darkBlueLight),
           ),
           noItemsFoundIndicatorBuilder: (context) => const Center(
             child: Text('No items found'),
@@ -1015,7 +1043,7 @@ class _BasketHistoryGridState extends State<BasketHistoryGrid> {
             child: Text('Error'),
           ),
           newPageProgressIndicatorBuilder: (context) => const Center(
-            child: CircularProgressIndicator(),
+            child: SpinKitCircle(color: AppColors.darkBlueLight),
           ),
           noItemsFoundIndicatorBuilder: (context) => const Center(
             child: Text('No items found'),
